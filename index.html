@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 <style>
 
 /* =========================
-   BASIC
+   RESET
 ========================= */
 
 *{
@@ -53,10 +53,9 @@ body::after{
     font-size:38px;
     line-height:180px;
     word-spacing:45px;
-
     opacity:.055;
-    transform:rotate(-8deg) scale(1.15);
 
+    transform:rotate(-8deg) scale(1.15);
     pointer-events:none;
 }
 
@@ -69,7 +68,7 @@ header{
     top:0;
     z-index:1000;
 
-    background:rgba(255,255,255,.88);
+    background:rgba(255,255,255,.90);
     backdrop-filter:blur(15px);
 
     border-bottom:1px solid rgba(0,0,0,.06);
@@ -101,7 +100,7 @@ header{
 
 nav{
     display:flex;
-    gap:20px;
+    gap:18px;
     align-items:center;
 }
 
@@ -120,8 +119,10 @@ nav a:hover{
     border:none;
     background:#eff6ff;
     border-radius:50%;
+
     width:40px;
     height:40px;
+
     cursor:pointer;
     font-size:18px;
 }
@@ -138,6 +139,7 @@ nav a:hover{
 
     display:grid;
     grid-template-columns:1.2fr .8fr;
+
     gap:40px;
     align-items:center;
 }
@@ -169,22 +171,29 @@ nav a:hover{
 
 .btn{
     display:inline-block;
+
     padding:13px 20px;
+
     border-radius:12px;
+
     text-decoration:none;
     font-weight:700;
+
     border:1px solid transparent;
     cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
 }
 
 .btn-primary{
     background:#2563eb;
     color:white;
-    box-shadow:0 8px 20px rgba(37,99,235,.22);
-}
 
-.btn-primary:hover{
-    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(37,99,235,.22);
 }
 
 .btn-secondary{
@@ -193,7 +202,7 @@ nav a:hover{
     border-color:#dbeafe;
 }
 
-/* Hero Illustration */
+/* HERO CARD */
 
 .hero-card{
     background:rgba(255,255,255,.72);
@@ -202,11 +211,14 @@ nav a:hover{
     border:1px solid rgba(255,255,255,.9);
 
     border-radius:28px;
+
     padding:35px;
 
     box-shadow:0 20px 60px rgba(37,99,235,.12);
 
     text-align:center;
+
+    animation:float 4s ease-in-out infinite;
 }
 
 .book{
@@ -235,14 +247,17 @@ nav a:hover{
 
     display:grid;
     grid-template-columns:repeat(3,1fr);
+
     gap:18px;
 }
 
 .stat{
     background:rgba(255,255,255,.8);
+
     border:1px solid #e4edf7;
 
     border-radius:18px;
+
     padding:22px;
 
     text-align:center;
@@ -252,8 +267,11 @@ nav a:hover{
 
 .stat strong{
     display:block;
+
     font-size:28px;
+
     color:#2563eb;
+
     margin-bottom:5px;
 }
 
@@ -263,12 +281,13 @@ nav a:hover{
 }
 
 /* =========================
-   SECTION
+   SECTIONS
 ========================= */
 
 section{
     max-width:1150px;
     margin:auto;
+
     padding:55px 20px;
 }
 
@@ -300,6 +319,7 @@ section{
     background:white;
 
     border:1px solid #dbe7f3;
+
     border-radius:15px;
 
     padding:5px;
@@ -316,6 +336,7 @@ section{
     padding:13px 15px;
 
     font-size:15px;
+
     background:transparent;
 }
 
@@ -330,17 +351,21 @@ section{
 
 .subject-grid{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:20px;
 }
 
 .subject-card{
     background:rgba(255,255,255,.84);
+
     backdrop-filter:blur(10px);
 
     border:1px solid #e1eaf4;
 
     border-radius:22px;
+
     padding:25px;
 
     box-shadow:0 10px 35px rgba(0,0,0,.05);
@@ -350,6 +375,7 @@ section{
 
 .subject-card:hover{
     transform:translateY(-6px);
+
     box-shadow:0 18px 40px rgba(37,99,235,.12);
 }
 
@@ -377,34 +403,44 @@ section{
 
 .subject-card p{
     color:#64748b;
+
     font-size:14px;
+
     line-height:1.6;
+
     margin-bottom:17px;
 }
 
 .note-list{
     display:flex;
     flex-direction:column;
+
     gap:9px;
 }
 
 .note{
     background:#f8fafc;
+
     border:1px solid #edf2f7;
 
     border-radius:10px;
+
     padding:11px;
 
     font-size:13px;
 
     display:flex;
+
     justify-content:space-between;
+
     gap:8px;
 }
 
 .note a{
     color:#2563eb;
+
     text-decoration:none;
+
     font-weight:700;
 }
 
@@ -417,6 +453,7 @@ section{
     margin:auto;
 
     background:rgba(255,255,255,.86);
+
     border:2px dashed #bfdbfe;
 
     border-radius:25px;
@@ -463,8 +500,154 @@ section{
 
 #fileName{
     margin-top:18px;
+
     color:#2563eb;
+
     font-weight:600;
+}
+
+/* =========================================================
+   😂 FUNNY STORIES SECTION
+========================================================= */
+
+.fun-section{
+    padding-top:70px;
+}
+
+.fun-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.fun-title h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.fun-title h2 span{
+    color:#f59e0b;
+}
+
+.fun-title p{
+    color:#64748b;
+}
+
+/* STORY GRID */
+
+.story-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+}
+
+/* STORY CARD */
+
+.story-card{
+    position:relative;
+
+    background:rgba(255,255,255,.90);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid #e5edf6;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.06);
+
+    transition:.3s;
+}
+
+.story-card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 20px 45px rgba(245,158,11,.12);
+}
+
+/* CARTOON AREA */
+
+.cartoon{
+    min-height:190px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+    linear-gradient(135deg,#fff7ed,#eff6ff);
+
+    border-bottom:1px solid #edf2f7;
+
+    padding:20px;
+}
+
+.cartoon svg{
+    width:100%;
+    max-width:300px;
+    height:160px;
+}
+
+/* STORY CONTENT */
+
+.story-content{
+    padding:25px;
+}
+
+.story-number{
+    display:inline-block;
+
+    background:#fff7ed;
+
+    color:#ea580c;
+
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+}
+
+.story-content h3{
+    font-size:21px;
+
+    margin-bottom:13px;
+}
+
+.story-content p{
+    color:#536174;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+/* FUNNY END */
+
+.punchline{
+    margin-top:15px;
+
+    padding:12px 14px;
+
+    background:#fffbeb;
+
+    border-left:4px solid #f59e0b;
+
+    border-radius:8px;
+
+    color:#92400e;
+
+    font-weight:700;
+
+    font-size:14px;
 }
 
 /* =========================
@@ -487,9 +670,11 @@ section{
 
 .about p{
     max-width:750px;
+
     margin:auto;
 
     color:#64748b;
+
     line-height:1.8;
 }
 
@@ -501,6 +686,7 @@ footer{
     margin-top:40px;
 
     background:#172033;
+
     color:white;
 
     text-align:center;
@@ -514,7 +700,9 @@ footer h3{
 
 footer p{
     color:#cbd5e1;
+
     font-size:13px;
+
     margin-top:8px;
 }
 
@@ -524,6 +712,7 @@ footer p{
 
 .dark{
     background:#0f172a;
+
     color:#e5e7eb;
 }
 
@@ -535,7 +724,8 @@ footer p{
 }
 
 .dark header{
-    background:rgba(15,23,42,.88);
+    background:rgba(15,23,42,.90);
+
     border-color:#263244;
 }
 
@@ -547,8 +737,10 @@ footer p{
 .dark .stat,
 .dark .subject-card,
 .dark .upload-box,
-.dark .about{
-    background:rgba(30,41,59,.82);
+.dark .about,
+.dark .story-card{
+    background:rgba(30,41,59,.88);
+
     border-color:#334155;
 }
 
@@ -557,7 +749,9 @@ footer p{
 .dark .section-title p,
 .dark .stat span,
 .dark .upload-box p,
-.dark .about p{
+.dark .about p,
+.dark .fun-title p,
+.dark .story-content p{
     color:#94a3b8;
 }
 
@@ -568,11 +762,13 @@ footer p{
 
 .dark .btn-secondary{
     background:#1e293b;
+
     border-color:#334155;
 }
 
 .dark .search-box{
     background:#1e293b;
+
     border-color:#334155;
 }
 
@@ -582,6 +778,32 @@ footer p{
 
 .dark .mode-btn{
     background:#1e293b;
+}
+
+.dark .cartoon{
+    background:linear-gradient(135deg,#1e293b,#172033);
+}
+
+.dark .punchline{
+    background:#29220e;
+
+    color:#fbbf24;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
 }
 
 /* =========================
@@ -596,7 +818,9 @@ footer p{
 
     .hero{
         grid-template-columns:1fr;
+
         text-align:center;
+
         padding-top:55px;
     }
 
@@ -650,6 +874,7 @@ footer p{
 
     .stats{
         grid-template-columns:1fr;
+
         padding:0 15px;
     }
 
@@ -665,38 +890,30 @@ footer p{
         grid-template-columns:1fr;
     }
 
+    .story-grid{
+        grid-template-columns:1fr;
+    }
+
+    .fun-title h2{
+        font-size:30px;
+    }
+
     .upload-box{
         padding:30px 18px;
     }
 
 }
 
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-}
-
-.hero-card{
-    animation:float 4s ease-in-out infinite;
-}
-
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
@@ -707,14 +924,26 @@ footer p{
 </div>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#notes">Notes</a>
-    <a href="#upload">Upload</a>
-    <a href="#about">About</a>
+
+<a href="#home">Home</a>
+
+<a href="#notes">Notes</a>
+
+<a href="#fun">আর হাসো 😄</a>
+
+<a href="#upload">Upload</a>
+
+<a href="#about">About</a>
+
 </nav>
 
-<button class="mode-btn" onclick="toggleMode()" id="modeBtn">
-    🌙
+<button
+class="mode-btn"
+onclick="toggleMode()"
+id="modeBtn">
+
+🌙
+
 </button>
 
 </div>
@@ -722,9 +951,9 @@ footer p{
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <main id="home">
 
@@ -733,23 +962,28 @@ footer p{
 <div>
 
 <h1>
-    Learn Better.<br>
-    <span>Study Smarter.</span>
+
+Learn Better.<br>
+
+<span>Study Smarter.</span>
+
 </h1>
 
 <p>
-    Welcome to StudyNest — a simple and beautiful place
-    for students to discover, organize and share study notes.
+
+Welcome to StudyNest — a simple and beautiful place
+for students to discover, organize and share study notes.
+
 </p>
 
 <div class="hero-buttons">
 
 <a href="#notes" class="btn btn-primary">
-    📚 Explore Notes
+📚 Explore Notes
 </a>
 
-<a href="#upload" class="btn btn-secondary">
-    📤 Upload Note
+<a href="#fun" class="btn btn-secondary">
+😂 আর হাসো
 </a>
 
 </div>
@@ -760,15 +994,15 @@ footer p{
 <div class="hero-card">
 
 <div class="book">
-    📚
+📚
 </div>
 
 <h3>
-    Your Digital Study Space
+Your Digital Study Space
 </h3>
 
 <p>
-    Notes • Knowledge • Progress
+Notes • Knowledge • Fun • Progress
 </p>
 
 </div>
@@ -776,42 +1010,55 @@ footer p{
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      STATS
-========================= -->
+===================================================== -->
 
 <div class="stats">
 
 <div class="stat">
-    <strong>7+</strong>
-    <span>Subjects</span>
+
+<strong>7+</strong>
+
+<span>Subjects</span>
+
 </div>
+
 
 <div class="stat">
-    <strong>∞</strong>
-    <span>Learning</span>
+
+<strong>6</strong>
+
+<span>Funny Stories</span>
+
 </div>
+
 
 <div class="stat">
-    <strong>24/7</strong>
-    <span>Study Access</span>
-</div>
+
+<strong>24/7</strong>
+
+<span>Study Access</span>
 
 </div>
 
+</div>
 
-<!-- =========================
+
+<!-- =====================================================
      NOTES
-========================= -->
+===================================================== -->
 
 <section id="notes">
 
 <div class="section-title">
 
-<h2>📚 Study Notes</h2>
+<h2>
+📚 Study Notes
+</h2>
 
 <p>
-    Choose your subject and start learning.
+Choose your subject and start learning.
 </p>
 
 </div>
@@ -819,7 +1066,9 @@ footer p{
 
 <div class="search-box">
 
-<span class="search-icon">🔎</span>
+<span class="search-icon">
+🔎
+</span>
 
 <input
 type="text"
@@ -834,33 +1083,37 @@ onkeyup="searchNotes()"
 <div class="subject-grid" id="subjectGrid">
 
 
-<!-- Physics -->
+<!-- PHYSICS -->
 
 <div class="subject-card">
 
-<div class="subject-icon">⚛️</div>
+<div class="subject-icon">
+⚛️
+</div>
 
-<h3>Physics</h3>
+<h3>
+Physics
+</h3>
 
 <p>
-    Physics formulas, concepts and important chapters.
+Physics formulas, concepts and important chapters.
 </p>
 
 <div class="note-list">
 
 <div class="note">
-    <span>Motion & Force</span>
-    <a href="#">Open</a>
+<span>Motion & Force</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Work & Energy</span>
-    <a href="#">Open</a>
+<span>Work & Energy</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Electricity</span>
-    <a href="#">Open</a>
+<span>Electricity</span>
+<a href="#">Open</a>
 </div>
 
 </div>
@@ -868,33 +1121,37 @@ onkeyup="searchNotes()"
 </div>
 
 
-<!-- Chemistry -->
+<!-- CHEMISTRY -->
 
 <div class="subject-card">
 
-<div class="subject-icon">🧪</div>
+<div class="subject-icon">
+🧪
+</div>
 
-<h3>Chemistry</h3>
+<h3>
+Chemistry
+</h3>
 
 <p>
-    Reactions, equations and important chemistry notes.
+Reactions, equations and important chemistry notes.
 </p>
 
 <div class="note-list">
 
 <div class="note">
-    <span>Organic Chemistry</span>
-    <a href="#">Open</a>
+<span>Organic Chemistry</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Chemical Bond</span>
-    <a href="#">Open</a>
+<span>Chemical Bond</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Periodic Table</span>
-    <a href="#">Open</a>
+<span>Periodic Table</span>
+<a href="#">Open</a>
 </div>
 
 </div>
@@ -902,33 +1159,37 @@ onkeyup="searchNotes()"
 </div>
 
 
-<!-- Higher Math -->
+<!-- HIGHER MATH -->
 
 <div class="subject-card">
 
-<div class="subject-icon">📐</div>
+<div class="subject-icon">
+📐
+</div>
 
-<h3>Higher Math</h3>
+<h3>
+Higher Math
+</h3>
 
 <p>
-    Mathematics formulas, problems and solutions.
+Mathematics formulas, problems and solutions.
 </p>
 
 <div class="note-list">
 
 <div class="note">
-    <span>Calculus</span>
-    <a href="#">Open</a>
+<span>Calculus</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Trigonometry</span>
-    <a href="#">Open</a>
+<span>Trigonometry</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Coordinate Geometry</span>
-    <a href="#">Open</a>
+<span>Coordinate Geometry</span>
+<a href="#">Open</a>
 </div>
 
 </div>
@@ -936,33 +1197,37 @@ onkeyup="searchNotes()"
 </div>
 
 
-<!-- Biology -->
+<!-- BIOLOGY -->
 
 <div class="subject-card">
 
-<div class="subject-icon">🧬</div>
+<div class="subject-icon">
+🧬
+</div>
 
-<h3>Biology</h3>
+<h3>
+Biology
+</h3>
 
 <p>
-    Biology concepts, diagrams and chapter notes.
+Biology concepts, diagrams and chapter notes.
 </p>
 
 <div class="note-list">
 
 <div class="note">
-    <span>Cell Biology</span>
-    <a href="#">Open</a>
+<span>Cell Biology</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Genetics</span>
-    <a href="#">Open</a>
+<span>Genetics</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Human Physiology</span>
-    <a href="#">Open</a>
+<span>Human Physiology</span>
+<a href="#">Open</a>
 </div>
 
 </div>
@@ -974,29 +1239,33 @@ onkeyup="searchNotes()"
 
 <div class="subject-card">
 
-<div class="subject-icon">💻</div>
+<div class="subject-icon">
+💻
+</div>
 
-<h3>ICT</h3>
+<h3>
+ICT
+</h3>
 
 <p>
-    ICT concepts, programming and digital technology.
+ICT concepts, programming and digital technology.
 </p>
 
 <div class="note-list">
 
 <div class="note">
-    <span>HTML & Web</span>
-    <a href="#">Open</a>
+<span>HTML & Web</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Programming</span>
-    <a href="#">Open</a>
+<span>Programming</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Database</span>
-    <a href="#">Open</a>
+<span>Database</span>
+<a href="#">Open</a>
 </div>
 
 </div>
@@ -1004,33 +1273,37 @@ onkeyup="searchNotes()"
 </div>
 
 
-<!-- Bangla -->
+<!-- BANGLA -->
 
 <div class="subject-card">
 
-<div class="subject-icon">📖</div>
+<div class="subject-icon">
+📖
+</div>
 
-<h3>Bangla</h3>
+<h3>
+Bangla
+</h3>
 
 <p>
-    বাংলা সাহিত্য, ব্যাকরণ ও গুরুত্বপূর্ণ নোট।
+বাংলা সাহিত্য, ব্যাকরণ ও গুরুত্বপূর্ণ নোট।
 </p>
 
 <div class="note-list">
 
 <div class="note">
-    <span>সাহিত্য</span>
-    <a href="#">Open</a>
+<span>সাহিত্য</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>ব্যাকরণ</span>
-    <a href="#">Open</a>
+<span>ব্যাকরণ</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>রচনা</span>
-    <a href="#">Open</a>
+<span>রচনা</span>
+<a href="#">Open</a>
 </div>
 
 </div>
@@ -1038,33 +1311,37 @@ onkeyup="searchNotes()"
 </div>
 
 
-<!-- English -->
+<!-- ENGLISH -->
 
 <div class="subject-card">
 
-<div class="subject-icon">✏️</div>
+<div class="subject-icon">
+✏️
+</div>
 
-<h3>English</h3>
+<h3>
+English
+</h3>
 
 <p>
-    Grammar, writing and important English notes.
+Grammar, writing and important English notes.
 </p>
 
 <div class="note-list">
 
 <div class="note">
-    <span>Grammar</span>
-    <a href="#">Open</a>
+<span>Grammar</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Writing</span>
-    <a href="#">Open</a>
+<span>Writing</span>
+<a href="#">Open</a>
 </div>
 
 <div class="note">
-    <span>Vocabulary</span>
-    <a href="#">Open</a>
+<span>Vocabulary</span>
+<a href="#">Open</a>
 </div>
 
 </div>
@@ -1077,18 +1354,643 @@ onkeyup="searchNotes()"
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+     😂 আর হাসো
+===================================================== -->
+
+<section id="fun" class="fun-section">
+
+<div class="fun-title">
+
+<h2>
+😂 <span>আর হাসো</span>
+</h2>
+
+<p>
+পড়াশোনার মাঝে একটু হাসি হলে ক্ষতি কী? 😄
+</p>
+
+</div>
+
+
+<div class="story-grid">
+
+
+<!-- =================================================
+     STORY 1
+================================================= -->
+
+<div class="story-card">
+
+<div class="cartoon">
+
+<svg viewBox="0 0 300 160">
+
+<!-- desk -->
+<rect x="70" y="115" width="160" height="10"
+rx="5" fill="#9a6b45"/>
+
+<!-- student body -->
+<rect x="125" y="70" width="50" height="50"
+rx="15" fill="#60a5fa"/>
+
+<!-- head -->
+<circle cx="150" cy="52" r="25"
+fill="#f6c7a8"/>
+
+<!-- hair -->
+<path d="M128 50 Q150 18 173 48"
+fill="#333"/>
+
+<!-- eyes -->
+<circle cx="142" cy="52" r="3"/>
+<circle cx="158" cy="52" r="3"/>
+
+<!-- smile -->
+<path d="M143 62 Q150 68 157 62"
+stroke="#333"
+fill="none"
+stroke-width="2"/>
+
+<!-- book -->
+<rect x="85" y="92" width="45" height="25"
+rx="3" fill="#fff"/>
+
+<line x1="108" y1="94"
+x2="108" y2="115"
+stroke="#aaa"/>
+
+<!-- clock -->
+<circle cx="220" cy="40" r="22"
+fill="#fff"
+stroke="#555"
+stroke-width="3"/>
+
+<line x1="220" y1="40"
+x2="220" y2="28"
+stroke="#333"
+stroke-width="3"/>
+
+<line x1="220" y1="40"
+x2="230" y2="45"
+stroke="#333"
+stroke-width="3"/>
+
+</svg>
+
+</div>
+
+
+<div class="story-content">
+
+<span class="story-number">
+গল্প ১
+</span>
+
+<h3>
+⏰ পরীক্ষার আগের রাত
+</h3>
+
+<p>
+
+রাফি ঠিক করল, আজ রাতে সে ৫টা chapter শেষ করবে।
+বই খুলে প্রথম chapter পড়তে বসলো।
+
+১০ মিনিট পর সে ভাবল,
+“একটু ফোনটা দেখি, তারপর শুরু করব।”
+
+ফোন দেখতে দেখতে ১ ঘণ্টা চলে গেল।
+তারপর ঘুম এসে গেল।
+
+সকালে মা জিজ্ঞেস করলেন,
+“পড়াশোনা কেমন হলো?”
+
+রাফি গম্ভীর মুখে বলল,
+“মা, বইটা পুরো রাত আমার পাশে ছিল।”
+
+</p>
+
+<div class="punchline">
+😂 বই পড়েনি, কিন্তু বইকে একা রাখেনি!
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+     STORY 2
+================================================= -->
+
+<div class="story-card">
+
+<div class="cartoon">
+
+<svg viewBox="0 0 300 160">
+
+<!-- teacher -->
+<circle cx="80" cy="55" r="23"
+fill="#f3c6a5"/>
+
+<path d="M58 52 Q80 22 103 50"
+fill="#333"/>
+
+<rect x="55" y="78"
+width="50"
+height="55"
+rx="12"
+fill="#f59e0b"/>
+
+<!-- board -->
+<rect x="125" y="25"
+width="140"
+height="90"
+rx="5"
+fill="#dff4e8"
+stroke="#555"
+stroke-width="3"/>
+
+<!-- equation -->
+<text x="145" y="60"
+font-size="20"
+fill="#222">
+2 + 2 = ?
+</text>
+
+<!-- student -->
+<circle cx="220" cy="135"
+r="15"
+fill="#f6c7a8"/>
+
+</svg>
+
+</div>
+
+
+<div class="story-content">
+
+<span class="story-number">
+গল্প ২
+</span>
+
+<h3>
+🧮 স্যারের কঠিন প্রশ্ন
+</h3>
+
+<p>
+
+স্যার ক্লাসে বললেন,
+“বলো তো, ২ আর ২ যোগ করলে কত?”
+
+সবাই একসাথে বলল,
+“৪!”
+
+কিন্তু বাবু চুপ।
+
+স্যার বললেন,
+“বাবু, তুমি বলো।”
+
+বাবু বলল,
+“স্যার, প্রশ্নটা কি বাসার কাজ নাকি পরীক্ষার?”
+
+স্যার বললেন,
+“না, শুধু প্রশ্ন।”
+
+বাবু বলল,
+“তাহলে স্যার... ৪-ই হবে!”
+
+</p>
+
+<div class="punchline">
+😂 পরীক্ষার হলে হলে উত্তরটা আবার ভেবে দেখত!
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+     STORY 3
+================================================= -->
+
+<div class="story-card">
+
+<div class="cartoon">
+
+<svg viewBox="0 0 300 160">
+
+<!-- chair -->
+<rect x="120" y="105"
+width="60"
+height="10"
+rx="4"
+fill="#8b5e3c"/>
+
+<!-- student -->
+<circle cx="150" cy="55"
+r="24"
+fill="#f5c6a5"/>
+
+<path d="M127 53 Q150 20 174 51"
+fill="#222"/>
+
+<!-- body -->
+<rect x="130" y="78"
+width="40"
+height="45"
+rx="10"
+fill="#34d399"/>
+
+<!-- book -->
+<rect x="105" y="80"
+width="45" height="30"
+fill="white"
+stroke="#777"/>
+
+<!-- ZZZ -->
+<text x="185" y="45"
+font-size="20"
+font-weight="bold">
+Z
+</text>
+
+<text x="205" y="30"
+font-size="15"
+font-weight="bold">
+Z
+</text>
+
+</svg>
+
+</div>
+
+
+<div class="story-content">
+
+<span class="story-number">
+গল্প ৩
+</span>
+
+<h3>
+😴 পড়ার টেবিলে ঘুম
+</h3>
+
+<p>
+
+সুমন প্রতিদিন ঠিক করে,
+“আজ থেকে নিয়ম করে পড়ব।”
+
+একদিন সে বই খুলে পড়তে বসলো।
+
+৫ মিনিট পর চোখ বন্ধ।
+
+১০ মিনিট পর মাথা বইয়ের ওপর।
+
+১৫ মিনিট পর সে স্বপ্নে দেখল,
+সে পরীক্ষার হলে বসে আছে।
+
+স্যার বলছেন,
+“খাতা দাও!”
+
+সুমন ভয় পেয়ে ঘুম থেকে উঠে বলল,
+“স্যার আর দুই মিনিট!”
+
+</p>
+
+<div class="punchline">
+😂 স্বপ্নেও পড়াশোনা চলছে!
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+     STORY 4
+================================================= -->
+
+<div class="story-card">
+
+<div class="cartoon">
+
+<svg viewBox="0 0 300 160">
+
+<!-- laptop -->
+<rect x="75" y="35"
+width="150"
+height="85"
+rx="8"
+fill="#475569"/>
+
+<rect x="87" y="47"
+width="126"
+height="60"
+rx="4"
+fill="#dbeafe"/>
+
+<!-- screen -->
+<text x="100" y="72"
+font-size="13">
+Study
+</text>
+
+<text x="100" y="92"
+font-size="13">
+Study
+</text>
+
+<!-- keyboard -->
+<path d="M55 125 L245 125 L230 140 L70 140 Z"
+fill="#64748b"/>
+
+<!-- student head -->
+<circle cx="40" cy="70"
+r="20"
+fill="#f4c4a4"/>
+
+<path d="M20 67 Q40 38 60 66"
+fill="#222"/>
+
+</svg>
+
+</div>
+
+
+<div class="story-content">
+
+<span class="story-number">
+গল্প ৪
+</span>
+
+<h3>
+💻 ICT-এর রহস্য
+</h3>
+
+<p>
+
+রাহাত ICT পরীক্ষার আগের দিন কম্পিউটার খুলে বসলো।
+
+বন্ধু জিজ্ঞেস করল,
+“পড়ছিস?”
+
+রাহাত বলল,
+“হ্যাঁ।”
+
+বন্ধু দেখল, স্ক্রিনে YouTube খোলা।
+
+বন্ধু বলল,
+“এটা কী পড়া?”
+
+রাহাত খুব আত্মবিশ্বাসের সঙ্গে বলল,
+“ভিডিও দেখে practical knowledge নিচ্ছি!”
+
+দুই ঘণ্টা পর দেখা গেল,
+সে পড়াশোনার ভিডিও নয়,
+বিড়ালের ভিডিও দেখছে।
+
+</p>
+
+<div class="punchline">
+😂 Knowledge পেল... কিন্তু ICT পেল না!
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+     STORY 5
+================================================= -->
+
+<div class="story-card">
+
+<div class="cartoon">
+
+<svg viewBox="0 0 300 160">
+
+<!-- teacher -->
+<circle cx="75" cy="60"
+r="22"
+fill="#f5c7a7"/>
+
+<path d="M53 58 Q75 28 97 57"
+fill="#333"/>
+
+<rect x="52" y="82"
+width="46"
+height="50"
+rx="10"
+fill="#8b5cf6"/>
+
+<!-- question paper -->
+<rect x="125" y="30"
+width="100"
+height="105"
+rx="5"
+fill="white"
+stroke="#777"
+stroke-width="2"/>
+
+<line x1="140" y1="50"
+x2="205" y2="50"
+stroke="#aaa"/>
+
+<line x1="140" y1="68"
+x2="205" y2="68"
+stroke="#aaa"/>
+
+<line x1="140" y1="86"
+x2="190" y2="86"
+stroke="#aaa"/>
+
+<!-- confused face -->
+<circle cx="255" cy="105"
+r="18"
+fill="#f6c7a8"/>
+
+<text x="248" y="98"
+font-size="18">
+?
+</text>
+
+</svg>
+
+</div>
+
+
+<div class="story-content">
+
+<span class="story-number">
+গল্প ৫
+</span>
+
+<h3>
+📄 খাতার শেষ পৃষ্ঠা
+</h3>
+
+<p>
+
+পরীক্ষার হলে নিলয় প্রশ্নপত্র হাতে নিয়ে দেখল,
+প্রথম প্রশ্নটাই খুব কঠিন।
+
+সে দ্বিতীয় প্রশ্নে গেল।
+সেটাও কঠিন।
+
+তৃতীয় প্রশ্ন...
+সেটাও কঠিন!
+
+শেষে সে খাতার শেষ পৃষ্ঠায় লিখল—
+
+“স্যার, আমি সব প্রশ্নের উত্তর জানি।
+কিন্তু পরীক্ষার সময় মনে পড়ছে না।”
+
+খাতা জমা দিয়ে সে খুব খুশি।
+
+</p>
+
+<div class="punchline">
+😂 অন্তত সত্য কথাটা লিখেছে!
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+     STORY 6
+================================================= -->
+
+<div class="story-card">
+
+<div class="cartoon">
+
+<svg viewBox="0 0 300 160">
+
+<!-- phone -->
+<rect x="105" y="25"
+width="90"
+height="120"
+rx="14"
+fill="#1f2937"/>
+
+<rect x="114" y="38"
+width="72"
+height="88"
+rx="5"
+fill="#dbeafe"/>
+
+<!-- notification -->
+<rect x="120" y="55"
+width="60"
+height="25"
+rx="5"
+fill="white"/>
+
+<text x="127" y="72"
+font-size="9">
+New message
+</text>
+
+<!-- person -->
+<circle cx="55" cy="75"
+r="22"
+fill="#f5c7a7"/>
+
+<path d="M33 72 Q55 42 77 70"
+fill="#222"/>
+
+<rect x="35" y="98"
+width="40"
+height="45"
+rx="10"
+fill="#60a5fa"/>
+
+<!-- notification marks -->
+<text x="205" y="50"
+font-size="22">
+!
+</text>
+
+<text x="215" y="75"
+font-size="22">
+!
+</text>
+
+</svg>
+
+</div>
+
+
+<div class="story-content">
+
+<span class="story-number">
+গল্প ৬
+</span>
+
+<h3>
+📱 “শেষবার ফোন দেখব”
+</h3>
+
+<p>
+
+তানভীর পড়তে বসে বলল,
+“শুধু একবার ফোন দেখব।”
+
+ফোন হাতে নিল।
+
+একটা notification।
+
+তারপর আরেকটা।
+
+তারপর বন্ধুর message।
+
+তারপর একটা short video।
+
+তারপর আরেকটা।
+
+হঠাৎ সে ঘড়ির দিকে তাকিয়ে দেখল,
+দুই ঘণ্টা চলে গেছে!
+
+তানভীর ফোনটা রেখে বলল,
+“ঠিক আছে... এবার সত্যি পড়ব।”
+
+ফোনটা আবার notification দিল।
+
+</p>
+
+<div class="punchline">
+😂 ফোন বলল: “আমাকে ছেড়ে এত সহজে যাওয়া যাবে না!” 📱
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
      UPLOAD
-========================= -->
+===================================================== -->
 
 <section id="upload">
 
 <div class="section-title">
 
-<h2>📤 Upload Your Note</h2>
+<h2>
+📤 Upload Your Note
+</h2>
 
 <p>
-    Select a PDF, image or document from your phone.
+Select a PDF, image or document from your phone.
 </p>
 
 </div>
@@ -1097,17 +1999,16 @@ onkeyup="searchNotes()"
 <div class="upload-box">
 
 <div class="upload-icon">
-    📁
+📁
 </div>
 
 <h2>
-    Share Your Knowledge
+Share Your Knowledge
 </h2>
 
 <p>
-    Choose your study file and add it to your StudyNest.
+Choose your study file and add it to your StudyNest.
 </p>
-
 
 <input
 type="file"
@@ -1117,8 +2018,12 @@ accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
 onchange="showFileName()"
 >
 
-<label for="fileInput" class="upload-label">
-    📤 Choose Note
+<label
+for="fileInput"
+class="upload-label">
+
+📤 Choose Note
+
 </label>
 
 <div id="fileName"></div>
@@ -1128,15 +2033,17 @@ onchange="showFileName()"
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      ABOUT
-========================= -->
+===================================================== -->
 
 <section id="about">
 
 <div class="section-title">
 
-<h2>ℹ️ About StudyNest</h2>
+<h2>
+ℹ️ About StudyNest
+</h2>
 
 </div>
 
@@ -1148,11 +2055,11 @@ onchange="showFileName()"
 designed to make studying easier and more organized.
 
 Here you can organize notes by subject, search for important
-topics and build your own digital study library.
+topics and enjoy some original funny stories between study sessions.
 
 <br><br>
 
-📚 Learn • ✏️ Practice • 💡 Improve • 🚀 Grow
+📚 Learn • ✏️ Practice • 😂 Laugh • 💡 Improve • 🚀 Grow
 
 </p>
 
@@ -1160,72 +2067,87 @@ topics and build your own digital study library.
 
 </section>
 
+
 </main>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
 <h3>
-    StudyNest 📚
+StudyNest 📚
 </h3>
 
 <p>
-    Made for students who love to learn.
+Made for students who love to learn.
 </p>
 
 <p>
-    © 2026 StudyNest. All Rights Reserved.
+© 2026 StudyNest. All Rights Reserved.
 </p>
 
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      JAVASCRIPT
-========================= -->
+===================================================== -->
 
 <script>
 
-/* Dark / Light Mode */
+/* =========================
+   DARK / LIGHT MODE
+========================= */
 
 function toggleMode(){
 
     document.body.classList.toggle("dark");
 
-    const button = document.getElementById("modeBtn");
+    const button =
+    document.getElementById("modeBtn");
 
     if(document.body.classList.contains("dark")){
+
         button.innerHTML = "☀️";
+
     }else{
+
         button.innerHTML = "🌙";
+
     }
 
 }
 
 
-/* File Name */
+/* =========================
+   FILE NAME
+========================= */
 
 function showFileName(){
 
-    const input = document.getElementById("fileInput");
+    const input =
+    document.getElementById("fileInput");
 
-    const name = document.getElementById("fileName");
+    const name =
+    document.getElementById("fileName");
 
     if(input.files.length > 0){
 
         name.innerHTML =
-        "✅ Selected: " + input.files[0].name;
+        "✅ Selected: " +
+        input.files[0].name;
 
     }
 
 }
 
 
-/* Search */
+/* =========================
+   SEARCH NOTES
+========================= */
 
 function searchNotes(){
 
@@ -1257,6 +2179,7 @@ function searchNotes(){
 }
 
 </script>
+
 
 </body>
 </html>
