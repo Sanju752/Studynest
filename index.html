@@ -1,1 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>StudyNest | Student Notes</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Background */
+body::before{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    background:#6c63ff;
+    filter:blur(140px);
+    opacity:.25;
+    top:-100px;
+    left:-100px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    background:#00d9ff;
+    filter:blur(150px);
+    opacity:.18;
+    bottom:-100px;
+    right:-100px;
+    z-index:-1;
+}
+
+/* Header */
+header{
+    width:100%;
+    padding:20px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#8b7cff;
+}
+
+nav a{
+    color:#bbb;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* Hero */
+.hero{
+    text-align:center;
+    padding:80px 20px 55px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.05);
+    border-radius:30px;
+    font-size:13px;
+    color:#c8c4ff;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(40px,9vw,75px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#9c8cff,#00d9ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+    color:#aaa;
+    line-height:1.7;
+}
+
+/* Button */
+.btn{
+    display:inline-block;
+    margin-top:28px;
+    padding:13px 24px;
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(90deg,#6c63ff,#00bcd4);
+    font-weight:bold;
+    box-shadow:0 10px 30px rgba(0,180,255,.15);
+}
+
+/* Section */
+section{
+    padding:55px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-size:30px;
+}
+
+.section-title p{
+    color:#888;
+    margin-top:8px;
+}
+
+/* Search */
+.search{
+    max-width:600px;
+    margin:0 auto 30px;
+}
+
+.search input{
+    width:100%;
+    padding:16px 20px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.05);
+    color:white;
+    outline:none;
+}
+
+/* Subjects */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:16px;
+}
+
+.card{
+    padding:25px 18px;
+    border-radius:20px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(140,125,255,.5);
+}
+
+.icon{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:7px;
+}
+
+.card p{
+    color:#888;
+    font-size:13px;
+}
+
+/* Notes */
+.note{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.note small{
+    color:#777;
+}
+
+.view{
+    padding:9px 15px;
+    border-radius:20px;
+    background:#191d31;
+    color:#aaa;
+    text-decoration:none;
+    font-size:13px;
+}
+
+/* Upload */
+.upload-box{
+    max-width:650px;
+    margin:auto;
+    text-align:center;
+    padding:40px 20px;
+    border:1px dashed #555;
+    border-radius:25px;
+    background:rgba(255,255,255,.035);
+}
+
+.upload-box input{
+    margin-top:20px;
+    max-width:100%;
+    color:#aaa;
+}
+
+/* About */
+.about{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+    color:#aaa;
+    line-height:1.8;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    color:#666;
+    border-top:1px solid rgba(255,255,255,.07);
+    font-size:13px;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+    header{
+        padding:17px 5%;
+    }
+
+    nav a{
+        margin-left:9px;
+        font-size:12px;
+    }
+
+    .hero{
+        padding-top:65px;
+    }
+
+    section{
+        padding:45px 5%;
+    }
+
+    .note{
+        align-items:flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Study<span>Nest</span></div>
+
+    <nav>
+        <a href="#notes">Notes</a>
+        <a href="#upload">Upload</a>
+        <a href="#about">About</a>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<div class="hero">
+
+    <div class="badge">🎓 Class 12 • Science</div>
+
+    <h1>
+        Learn.<br>
+        Share. <span>Grow.</span>
+    </h1>
+
+    <p>
+        A simple and aesthetic place to organize,
+        discover and share study notes.
+    </p>
+
+    <a href="#notes" class="btn">Explore Notes →</a>
+
+</div>
+
+
+<!-- SUBJECTS -->
+<section>
+
+    <div class="section-title">
+        <h2>Explore Subjects</h2>
+        <p>Choose a subject and start learning.</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">⚛️</div>
+            <h3>Physics</h3>
+            <p>HSC Physics notes</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧪</div>
+            <h3>Chemistry</h3>
+            <p>Important chemistry notes</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📐</div>
+            <h3>Higher Math</h3>
+            <p>Math formulas & solutions</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧬</div>
+            <h3>Biology</h3>
+            <p>Biology study materials</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💻</div>
+            <h3>ICT</h3>
+            <p>ICT notes & concepts</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h3>English</h3>
+            <p>Grammar & preparation</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NOTES -->
+<section id="notes">
+
+    <div class="section-title">
+        <h2>Latest Notes</h2>
+        <p>Find your study materials.</p>
+    </div>
+
+    <div class="search">
+        <input
+            type="text"
+            id="search"
+            placeholder="🔎 Search notes..."
+            onkeyup="searchNotes()">
+    </div>
+
+    <div class="grid" id="noteList">
+
+        <div class="card note">
+            <div>
+                <h3>Physics — Chapter 1</h3>
+                <small>Physics • HSC</small>
+            </div>
+            <a href="#" class="view">View</a>
+        </div>
+
+        <div class="card note">
+            <div>
+                <h3>Organic Chemistry</h3>
+                <small>Chemistry • HSC</small>
+            </div>
+            <a href="#" class="view">View</a>
+        </div>
+
+        <div class="card note">
+            <div>
+                <h3>Calculus Formula Sheet</h3>
+                <small>Higher Math</small>
+            </div>
+            <a href="#" class="view">View</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- UPLOAD -->
+<section id="upload">
+
+    <div class="section-title">
+        <h2>Upload a Note</h2>
+        <p>Select a PDF or image from your phone.</p>
+    </div>
+
+    <div class="upload-box">
+
+        <h3>📤 Upload Study Material</h3>
+
+        <p style="color:#777;margin-top:10px;">
+            PDF, JPG, PNG
+        </p>
+
+        <input
+            type="file"
+            id="fileInput"
+            accept=".pdf,.jpg,.jpeg,.png">
+
+        <p id="fileName"
+           style="margin-top:18px;color:#8b7cff;">
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+    <div class="section-title">
+        <h2>About StudyNest</h2>
+    </div>
+
+    <div class="about">
+
+        <p>
+            StudyNest is a student-focused notes platform
+            created to make studying simple, organized and accessible.
+            More subjects, notes and features will be added soon.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 StudyNest • Made for Students ✨
+</footer>
+
+
+<script>
+
+/* Search */
+function searchNotes(){
+
+    let input =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    let notes =
+        document.querySelectorAll(".note");
+
+    notes.forEach(function(note){
+
+        let text =
+            note.innerText.toLowerCase();
+
+        note.style.display =
+            text.includes(input)
+            ? "flex"
+            : "none";
+
+    });
+}
+
+
+/* File upload preview */
+document
+.getElementById("fileInput")
+.addEventListener("change", function(){
+
+    let file = this.files[0];
+
+    if(file){
+
+        document
+        .getElementById("fileName")
+        .innerText =
+        "Selected: " + file.name;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
