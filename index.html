@@ -4,295 +4,1259 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>StudyNest | Student Notes</title>
+<title>StudyNest | Student Notes Hub</title>
 
 <style>
+
+/* =========================
+   BASIC
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-html{
     scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#070914;
-    color:#f5f7ff;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#172033;
+    background:#f7fbff;
+    min-height:100vh;
     overflow-x:hidden;
 }
 
-/* Background glow */
+/* =========================
+   EDUCATION BACKGROUND
+========================= */
+
 body::before{
     content:"";
     position:fixed;
-    width:330px;
-    height:330px;
-    background:#7567ff;
-    filter:blur(130px);
-    opacity:.16;
-    top:-120px;
-    left:-120px;
-    z-index:-1;
+    inset:0;
+    z-index:-2;
+
+    background:
+    radial-gradient(circle at 10% 20%, rgba(72,149,239,.12) 0 80px, transparent 82px),
+    radial-gradient(circle at 90% 15%, rgba(76,201,240,.12) 0 100px, transparent 102px),
+    radial-gradient(circle at 80% 80%, rgba(67,170,139,.10) 0 90px, transparent 92px),
+    linear-gradient(135deg,#f8fcff,#eef7ff,#f9fcff);
 }
 
 body::after{
-    content:"";
+    content:"📚     ⚛     ✏     ∑     🧪     💡     📐     📖";
     position:fixed;
-    width:330px;
-    height:330px;
-    background:#00d9ff;
-    filter:blur(140px);
-    opacity:.12;
-    bottom:-120px;
-    right:-120px;
+    inset:0;
     z-index:-1;
+
+    font-size:38px;
+    line-height:180px;
+    word-spacing:45px;
+
+    opacity:.055;
+    transform:rotate(-8deg) scale(1.15);
+
+    pointer-events:none;
 }
 
-/* NAVBAR */
-nav{
+/* =========================
+   HEADER
+========================= */
+
+header{
     position:sticky;
     top:0;
-    z-index:100;
-    padding:16px 6%;
+    z-index:1000;
+
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    box-shadow:0 5px 25px rgba(0,0,0,.05);
+}
+
+.navbar{
+    max-width:1150px;
+    margin:auto;
+
+    padding:15px 20px;
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    background:rgba(7,9,20,.82);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.07);
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
-    font-size:22px;
+    font-size:25px;
     font-weight:800;
+    color:#2563eb;
 }
 
 .logo span{
-    color:#8c7cff;
+    color:#14b8a6;
 }
 
-.menu{
+nav{
     display:flex;
-    gap:18px;
-}
-
-.menu a{
-    color:#aeb3c4;
-    text-decoration:none;
-    font-size:12px;
-}
-
-.menu a:hover{
-    color:white;
-}
-
-/* HERO */
-.hero{
-    min-height:78vh;
-    display:flex;
-    justify-content:center;
+    gap:20px;
     align-items:center;
-    text-align:center;
-    padding:70px 20px;
 }
 
-.hero-content{
-    max-width:750px;
+nav a{
+    text-decoration:none;
+    color:#263449;
+    font-size:14px;
+    font-weight:600;
 }
 
-.badge{
-    display:inline-block;
-    padding:8px 15px;
-    border-radius:30px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
-    color:#aaa2ff;
-    font-size:12px;
-    margin-bottom:22px;
+nav a:hover{
+    color:#2563eb;
+}
+
+.mode-btn{
+    border:none;
+    background:#eff6ff;
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    max-width:1150px;
+    margin:auto;
+
+    padding:80px 20px 55px;
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:40px;
+    align-items:center;
 }
 
 .hero h1{
-    font-size:clamp(43px,10vw,80px);
-    line-height:1;
-    letter-spacing:-3px;
-    margin-bottom:22px;
+    font-size:54px;
+    line-height:1.08;
+    margin-bottom:18px;
 }
 
-.gradient{
-    background:linear-gradient(90deg,#9b8cff,#43dcff);
-    -webkit-background-clip:text;
-    color:transparent;
+.hero h1 span{
+    color:#2563eb;
 }
 
 .hero p{
-    color:#9298aa;
-    line-height:1.8;
-    font-size:14px;
+    font-size:17px;
+    line-height:1.7;
+    color:#64748b;
+    max-width:620px;
 }
 
-.buttons{
+.hero-buttons{
     margin-top:28px;
+
     display:flex;
-    justify-content:center;
     gap:12px;
     flex-wrap:wrap;
 }
 
 .btn{
     display:inline-block;
-    padding:13px 21px;
-    border-radius:30px;
+    padding:13px 20px;
+    border-radius:12px;
     text-decoration:none;
-    font-size:12px;
-    font-weight:bold;
+    font-weight:700;
+    border:1px solid transparent;
+    cursor:pointer;
 }
 
-.primary{
+.btn-primary{
+    background:#2563eb;
     color:white;
-    background:linear-gradient(90deg,#6d5dfc,#00bcd4);
+    box-shadow:0 8px 20px rgba(37,99,235,.22);
 }
 
-.secondary{
-    color:#c4c8d8;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
+.btn-primary:hover{
+    transform:translateY(-2px);
 }
 
-/* GENERAL SECTION */
-section{
-    padding:65px 6%;
+.btn-secondary{
+    background:white;
+    color:#2563eb;
+    border-color:#dbeafe;
 }
 
-.title{
+/* Hero Illustration */
+
+.hero-card{
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.9);
+
+    border-radius:28px;
+    padding:35px;
+
+    box-shadow:0 20px 60px rgba(37,99,235,.12);
+
     text-align:center;
-    margin-bottom:30px;
 }
 
-.title h2{
-    font-size:30px;
+.book{
+    font-size:100px;
+    margin-bottom:15px;
 }
 
-.title p{
-    color:#777d90;
+.hero-card h3{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.hero-card p{
+    font-size:14px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    max-width:1050px;
+    margin:10px auto 50px;
+
+    padding:0 20px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.stat{
+    background:rgba(255,255,255,.8);
+    border:1px solid #e4edf7;
+
+    border-radius:18px;
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.04);
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:#2563eb;
+    margin-bottom:5px;
+}
+
+.stat span{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    max-width:1150px;
+    margin:auto;
+    padding:55px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#64748b;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    max-width:650px;
+    margin:0 auto 35px;
+
+    display:flex;
+    align-items:center;
+
+    background:white;
+
+    border:1px solid #dbe7f3;
+    border-radius:15px;
+
+    padding:5px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.search-box input{
+    flex:1;
+
+    border:none;
+    outline:none;
+
+    padding:13px 15px;
+
+    font-size:15px;
+    background:transparent;
+}
+
+.search-icon{
+    padding:0 12px;
+    font-size:20px;
+}
+
+/* =========================
+   SUBJECT GRID
+========================= */
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.subject-card{
+    background:rgba(255,255,255,.84);
+    backdrop-filter:blur(10px);
+
+    border:1px solid #e1eaf4;
+
+    border-radius:22px;
+    padding:25px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.05);
+
+    transition:.3s;
+}
+
+.subject-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(37,99,235,.12);
+}
+
+.subject-icon{
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:#eff6ff;
+
+    font-size:27px;
+
+    margin-bottom:17px;
+}
+
+.subject-card h3{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.subject-card p{
+    color:#64748b;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:17px;
+}
+
+.note-list{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.note{
+    background:#f8fafc;
+    border:1px solid #edf2f7;
+
+    border-radius:10px;
+    padding:11px;
+
+    font-size:13px;
+
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.note a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* =========================
+   UPLOAD
+========================= */
+
+.upload-box{
+    max-width:700px;
+    margin:auto;
+
+    background:rgba(255,255,255,.86);
+    border:2px dashed #bfdbfe;
+
+    border-radius:25px;
+
+    padding:40px 25px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(37,99,235,.07);
+}
+
+.upload-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.upload-box h2{
+    margin-bottom:10px;
+}
+
+.upload-box p{
+    color:#64748b;
+    margin-bottom:20px;
+}
+
+.file-input{
+    display:none;
+}
+
+.upload-label{
+    display:inline-block;
+
+    background:#2563eb;
+    color:white;
+
+    padding:13px 20px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+#fileName{
+    margin-top:18px;
+    color:#2563eb;
+    font-weight:600;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:rgba(255,255,255,.72);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    border:1px solid #e3edf7;
+
+    text-align:center;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.04);
+}
+
+.about p{
+    max-width:750px;
+    margin:auto;
+
+    color:#64748b;
+    line-height:1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:40px;
+
+    background:#172033;
+    color:white;
+
+    text-align:center;
+
+    padding:35px 20px;
+}
+
+footer h3{
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#cbd5e1;
     font-size:13px;
     margin-top:8px;
 }
 
-/* SUBJECTS */
-.subject-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-    gap:15px;
+/* =========================
+   DARK MODE
+========================= */
+
+.dark{
+    background:#0f172a;
+    color:#e5e7eb;
 }
 
-.subject{
-    padding:25px 18px;
-    border-radius:20px;
-    text-decoration:none;
+.dark::before{
+    background:
+    radial-gradient(circle at 10% 20%,rgba(59,130,246,.15),transparent 100px),
+    radial-gradient(circle at 90% 15%,rgba(20,184,166,.12),transparent 110px),
+    linear-gradient(135deg,#0f172a,#111827,#0f172a);
+}
+
+.dark header{
+    background:rgba(15,23,42,.88);
+    border-color:#263244;
+}
+
+.dark nav a{
+    color:#e2e8f0;
+}
+
+.dark .hero-card,
+.dark .stat,
+.dark .subject-card,
+.dark .upload-box,
+.dark .about{
+    background:rgba(30,41,59,.82);
+    border-color:#334155;
+}
+
+.dark .subject-card p,
+.dark .hero p,
+.dark .section-title p,
+.dark .stat span,
+.dark .upload-box p,
+.dark .about p{
+    color:#94a3b8;
+}
+
+.dark .note{
+    background:#172033;
+    border-color:#334155;
+}
+
+.dark .btn-secondary{
+    background:#1e293b;
+    border-color:#334155;
+}
+
+.dark .search-box{
+    background:#1e293b;
+    border-color:#334155;
+}
+
+.dark .search-box input{
     color:white;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.08);
-    transition:.3s;
 }
 
-.subject:hover{
-    transform:translateY(-6px);
-    border-color:#7568ff;
+.dark .mode-btn{
+    background:#1e293b;
 }
 
-.subject-icon{
-    font-size:30px;
-    margin-bottom:14px;
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+        padding-top:55px;
+    }
+
+    .hero p{
+        margin:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .subject-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
-.subject h3{
-    font-size:15px;
+@media(max-width:600px){
+
+    .navbar{
+        padding:13px 15px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .hero{
+        padding:45px 15px 35px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .hero-card{
+        padding:25px;
+    }
+
+    .book{
+        font-size:75px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+        padding:0 15px;
+    }
+
+    section{
+        padding:40px 15px;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+    .subject-grid{
+        grid-template-columns:1fr;
+    }
+
+    .upload-box{
+        padding:30px 18px;
+    }
+
 }
 
-.subject p{
-    color:#747a8d;
-    font-size:11px;
-    margin-top:6px;
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
 }
 
-/* SEARCH */
-.search{
-    max-width:650px;
-    margin:0 auto 30px;
+.hero-card{
+    animation:float 4s ease-in-out infinite;
 }
 
-.search input{
-    width:100%;
-    padding:16px 20px;
-    border-radius:30px;
-    border:1px solid rgba(255,255,255,.1);
-    outline:none;
-    background:rgba(255,255,255,.045);
-    color:white;
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+    Study<span>Nest</span> 📚
+</div>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#notes">Notes</a>
+    <a href="#upload">Upload</a>
+    <a href="#about">About</a>
+</nav>
+
+<button class="mode-btn" onclick="toggleMode()" id="modeBtn">
+    🌙
+</button>
+
+</div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="home">
+
+<div class="hero">
+
+<div>
+
+<h1>
+    Learn Better.<br>
+    <span>Study Smarter.</span>
+</h1>
+
+<p>
+    Welcome to StudyNest — a simple and beautiful place
+    for students to discover, organize and share study notes.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#notes" class="btn btn-primary">
+    📚 Explore Notes
+</a>
+
+<a href="#upload" class="btn btn-secondary">
+    📤 Upload Note
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-card">
+
+<div class="book">
+    📚
+</div>
+
+<h3>
+    Your Digital Study Space
+</h3>
+
+<p>
+    Notes • Knowledge • Progress
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="stats">
+
+<div class="stat">
+    <strong>7+</strong>
+    <span>Subjects</span>
+</div>
+
+<div class="stat">
+    <strong>∞</strong>
+    <span>Learning</span>
+</div>
+
+<div class="stat">
+    <strong>24/7</strong>
+    <span>Study Access</span>
+</div>
+
+</div>
+
+
+<!-- =========================
+     NOTES
+========================= -->
+
+<section id="notes">
+
+<div class="section-title">
+
+<h2>📚 Study Notes</h2>
+
+<p>
+    Choose your subject and start learning.
+</p>
+
+</div>
+
+
+<div class="search-box">
+
+<span class="search-icon">🔎</span>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search subject or note..."
+onkeyup="searchNotes()"
+>
+
+</div>
+
+
+<div class="subject-grid" id="subjectGrid">
+
+
+<!-- Physics -->
+
+<div class="subject-card">
+
+<div class="subject-icon">⚛️</div>
+
+<h3>Physics</h3>
+
+<p>
+    Physics formulas, concepts and important chapters.
+</p>
+
+<div class="note-list">
+
+<div class="note">
+    <span>Motion & Force</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Work & Energy</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Electricity</span>
+    <a href="#">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Chemistry -->
+
+<div class="subject-card">
+
+<div class="subject-icon">🧪</div>
+
+<h3>Chemistry</h3>
+
+<p>
+    Reactions, equations and important chemistry notes.
+</p>
+
+<div class="note-list">
+
+<div class="note">
+    <span>Organic Chemistry</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Chemical Bond</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Periodic Table</span>
+    <a href="#">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Higher Math -->
+
+<div class="subject-card">
+
+<div class="subject-icon">📐</div>
+
+<h3>Higher Math</h3>
+
+<p>
+    Mathematics formulas, problems and solutions.
+</p>
+
+<div class="note-list">
+
+<div class="note">
+    <span>Calculus</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Trigonometry</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Coordinate Geometry</span>
+    <a href="#">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Biology -->
+
+<div class="subject-card">
+
+<div class="subject-icon">🧬</div>
+
+<h3>Biology</h3>
+
+<p>
+    Biology concepts, diagrams and chapter notes.
+</p>
+
+<div class="note-list">
+
+<div class="note">
+    <span>Cell Biology</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Genetics</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Human Physiology</span>
+    <a href="#">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ICT -->
+
+<div class="subject-card">
+
+<div class="subject-icon">💻</div>
+
+<h3>ICT</h3>
+
+<p>
+    ICT concepts, programming and digital technology.
+</p>
+
+<div class="note-list">
+
+<div class="note">
+    <span>HTML & Web</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Programming</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Database</span>
+    <a href="#">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Bangla -->
+
+<div class="subject-card">
+
+<div class="subject-icon">📖</div>
+
+<h3>Bangla</h3>
+
+<p>
+    বাংলা সাহিত্য, ব্যাকরণ ও গুরুত্বপূর্ণ নোট।
+</p>
+
+<div class="note-list">
+
+<div class="note">
+    <span>সাহিত্য</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>ব্যাকরণ</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>রচনা</span>
+    <a href="#">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- English -->
+
+<div class="subject-card">
+
+<div class="subject-icon">✏️</div>
+
+<h3>English</h3>
+
+<p>
+    Grammar, writing and important English notes.
+</p>
+
+<div class="note-list">
+
+<div class="note">
+    <span>Grammar</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Writing</span>
+    <a href="#">Open</a>
+</div>
+
+<div class="note">
+    <span>Vocabulary</span>
+    <a href="#">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     UPLOAD
+========================= -->
+
+<section id="upload">
+
+<div class="section-title">
+
+<h2>📤 Upload Your Note</h2>
+
+<p>
+    Select a PDF, image or document from your phone.
+</p>
+
+</div>
+
+
+<div class="upload-box">
+
+<div class="upload-icon">
+    📁
+</div>
+
+<h2>
+    Share Your Knowledge
+</h2>
+
+<p>
+    Choose your study file and add it to your StudyNest.
+</p>
+
+
+<input
+type="file"
+id="fileInput"
+class="file-input"
+accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+onchange="showFileName()"
+>
+
+<label for="fileInput" class="upload-label">
+    📤 Choose Note
+</label>
+
+<div id="fileName"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+<div class="section-title">
+
+<h2>ℹ️ About StudyNest</h2>
+
+</div>
+
+<div class="about">
+
+<p>
+
+<strong>StudyNest</strong> is a student-focused notes platform
+designed to make studying easier and more organized.
+
+Here you can organize notes by subject, search for important
+topics and build your own digital study library.
+
+<br><br>
+
+📚 Learn • ✏️ Practice • 💡 Improve • 🚀 Grow
+
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h3>
+    StudyNest 📚
+</h3>
+
+<p>
+    Made for students who love to learn.
+</p>
+
+<p>
+    © 2026 StudyNest. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* Dark / Light Mode */
+
+function toggleMode(){
+
+    document.body.classList.toggle("dark");
+
+    const button = document.getElementById("modeBtn");
+
+    if(document.body.classList.contains("dark")){
+        button.innerHTML = "☀️";
+    }else{
+        button.innerHTML = "🌙";
+    }
+
 }
 
-.search input::placeholder{
-    color:#6e7486;
+
+/* File Name */
+
+function showFileName(){
+
+    const input = document.getElementById("fileInput");
+
+    const name = document.getElementById("fileName");
+
+    if(input.files.length > 0){
+
+        name.innerHTML =
+        "✅ Selected: " + input.files[0].name;
+
+    }
+
 }
 
-/* SUBJECT SECTION */
-.subject-section{
-    margin-top:50px;
+
+/* Search */
+
+function searchNotes(){
+
+    const input =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+    const cards =
+    document.querySelectorAll(".subject-card");
+
+    cards.forEach(function(card){
+
+        const text =
+        card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            card.style.display = "";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
 }
 
-.subject-heading{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:20px;
-}
+</script>
 
-.subject-heading .big-icon{
-    font-size:30px;
-}
-
-.subject-heading h2{
-    font-size:23px;
-}
-
-.subject-heading p{
-    color:#73798c;
-    font-size:11px;
-    margin-top:4px;
-}
-
-/* NOTES */
-.notes{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:15px;
-}
-
-.note{
-    padding:20px;
-    border-radius:18px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.075);
-    transition:.3s;
-}
-
-.note:hover{
-    transform:translateY(-4px);
-    background:rgba(255,255,255,.06);
-}
-
-.note-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
-}
-
-.pdf{
-    width:40px;
-    height:40px;
-    display:flex;
-    justify
+</body>
+</html>
