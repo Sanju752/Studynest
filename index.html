@@ -13,8 +13,8 @@
         }
 
         body {
-            background-color: #0d0f17;
-            background-image: linear-gradient(rgba(13, 15, 23, 0.88), rgba(13, 15, 23, 0.95)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600');
+            background-color: #0b0d14;
+            background-image: linear-gradient(rgba(11, 13, 20, 0.9), rgba(11, 13, 20, 0.95)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -24,19 +24,25 @@
             overflow-x: hidden;
         }
 
-        /* Glowing Background Effect */
+        /* Animated Glowing Background Effect */
         .bg-glow {
             position: fixed;
-            width: 400px;
-            height: 400px;
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.2;
+            filter: blur(130px);
+            opacity: 0.25;
             pointer-events: none;
             z-index: 0;
+            animation: floatGlow 8s infinite alternate;
         }
-        .glow-1 { top: -100px; left: -100px; background: #6c5ce7; }
-        .glow-2 { bottom: -100px; right: -100px; background: #00cec9; }
+        .glow-1 { top: -50px; left: -50px; background: #6c5ce7; }
+        .glow-2 { bottom: -50px; right: -50px; background: #00cec9; }
+
+        @keyframes floatGlow {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
+        }
 
         /* Navigation Header */
         header {
@@ -44,9 +50,9 @@
             top: 0;
             z-index: 100;
             backdrop-filter: blur(15px);
-            background: rgba(13, 15, 23, 0.75);
+            background: rgba(11, 13, 20, 0.8);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 18px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,9 +79,9 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
             position: relative;
             z-index: 1;
         }
@@ -83,7 +89,13 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-badge {
@@ -94,14 +106,13 @@
             padding: 6px 18px;
             border-radius: 20px;
             font-size: 14px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(5px);
+            margin-bottom: 15px;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             background: linear-gradient(180deg, #ffffff, #dfe6e9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -109,39 +120,23 @@
 
         .hero p {
             color: #a0aec0;
-            font-size: 18px;
+            font-size: 16px;
             max-width: 600px;
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
         }
 
-        .hero-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #6c5ce7, #00cec9);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(0, 206, 201, 0.5);
-        }
-
-        /* Section Titles */
+        /* Section Title */
         .section-title {
-            font-size: 26px;
-            margin: 50px 0 20px;
+            font-size: 24px;
+            margin: 30px 0 20px;
             text-align: center;
+            color: #74b9ff;
         }
 
         /* Grid Cards Section */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -150,30 +145,49 @@
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 24px;
-            transition: 0.3s;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-            border-color: rgba(108, 92, 231, 0.5);
+            transform: translateY(-8px);
+            border-color: rgba(108, 92, 231, 0.6);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
         }
 
         .card h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #e2e8f0;
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: #ffffff;
         }
 
         .card p {
             color: #a0aec0;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px;
+            margin-bottom: 15px;
         }
 
         .card-btn {
@@ -182,10 +196,11 @@
             background: rgba(108, 92, 231, 0.2);
             color: #a29bfe;
             border: 1px solid rgba(108, 92, 231, 0.4);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 14px;
             transition: 0.3s;
         }
 
@@ -194,52 +209,54 @@
             color: white;
         }
 
-        /* Easy Upload Section */
+        /* Simple Upload Section */
         .upload-box {
-            background: rgba(13, 15, 23, 0.6);
-            border: 2px dashed rgba(108, 92, 231, 0.5);
+            background: rgba(11, 13, 20, 0.7);
+            border: 2px dashed rgba(0, 206, 201, 0.5);
             backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 40px;
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .upload-box h2 {
-            margin-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 8px;
         }
 
         .upload-box p {
             color: #a0aec0;
-            margin-bottom: 25px;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
         .upload-btn-main {
             display: inline-block;
             background: #00cec9;
-            color: #0d0f17;
-            padding: 14px 32px;
-            border-radius: 30px;
+            color: #0b0d14;
+            padding: 12px 28px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             transition: 0.3s;
         }
 
         .upload-btn-main:hover {
             box-shadow: 0 0 20px rgba(0, 206, 201, 0.6);
-            transform: translateY(-2px);
+            transform: scale(1.03);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             color: #a0aec0;
             font-size: 14px;
-            margin-top: 60px;
-            background: rgba(13, 15, 23, 0.8);
+            margin-top: 50px;
+            background: rgba(11, 13, 20, 0.9);
         }
 
         footer strong {
@@ -255,8 +272,8 @@
     <header>
         <div class="logo">StudyNest</div>
         <div class="nav-links">
-            <a href="#notes">Notes</a>
-            <a href="#upload">Upload</a>
+            <a href="#subjects">Subjects</a>
+            <a href="#upload">Upload Note</a>
             <a href="#author">About</a>
         </div>
     </header>
@@ -265,45 +282,151 @@
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-badge">Curated by Ahmed Sami</div>
+            <div class="hero-badge">Platform by Ahmed Sami</div>
             <h1>Learn. Share. Elevate.</h1>
-            <p>Your premium platform for organized academic notes, materials, and resources.</p>
-            <a href="#upload" class="hero-btn">Upload Your Note</a>
+            <p>Select your paper and view organized academic notes with a single click.</p>
         </section>
 
-        <!-- Notes Section -->
-        <h2 class="section-title" id="notes">Available Study Materials</h2>
+        <!-- Subjects Grid Section -->
+        <h2 class="section-title" id="subjects">Academic Subjects & Papers</h2>
         <div class="grid">
+            
+            <!-- Physics 1st Paper -->
             <div class="card">
-                <div>
-                    <h3>Physics Chapter 1</h3>
-                    <p>Complete formulas and lecture notes for HSC Physics.</p>
+                <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?q=80&w=600" alt="Physics" class="card-img">
+                <div class="card-body">
+                    <h3>Physics 1st Paper</h3>
+                    <p>Mechanics, waves, and vector short notes.</p>
+                    <a href="#" class="card-btn">View Notes</a>
                 </div>
-                <a href="#" class="card-btn">View Note</a>
             </div>
 
+            <!-- Physics 2nd Paper -->
             <div class="card">
-                <div>
-                    <h3>Organic Chemistry</h3>
-                    <p>Important reaction mechanisms and sheet notes.</p>
+                <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?q=80&w=600" alt="Physics" class="card-img">
+                <div class="card-body">
+                    <h3>Physics 2nd Paper</h3>
+                    <p>Thermodynamics & optics formula guides.</p>
+                    <a href="#" class="card-btn">View Notes</a>
                 </div>
-                <a href="#" class="card-btn">View Note</a>
             </div>
 
+            <!-- Chemistry 1st Paper -->
             <div class="card">
-                <div>
-                    <h3>Calculus Formula Sheet</h3>
-                    <p>Quick reference guide for Higher Math Integration.</p>
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600" alt="Chemistry" class="card-img">
+                <div class="card-body">
+                    <h3>Chemistry 1st Paper</h3>
+                    <p>Atomic structure & periodic table trends.</p>
+                    <a href="#" class="card-btn">View Notes</a>
                 </div>
-                <a href="#" class="card-btn">View Note</a>
             </div>
+
+            <!-- Chemistry 2nd Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600" alt="Chemistry" class="card-img">
+                <div class="card-body">
+                    <h3>Chemistry 2nd Paper</h3>
+                    <p>Organic chemistry reactions & equations.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- Higher Math 1st Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=600" alt="Higher Math" class="card-img">
+                <div class="card-body">
+                    <h3>Higher Math 1st Paper</h3>
+                    <p>Matrix, Straight Lines & Calculus solutions.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- Higher Math 2nd Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=600" alt="Higher Math" class="card-img">
+                <div class="card-body">
+                    <h3>Higher Math 2nd Paper</h3>
+                    <p>Complex numbers, Polynomials & Statics.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- Biology 1st Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=600" alt="Biology" class="card-img">
+                <div class="card-body">
+                    <h3>Biology 1st Paper (Botany)</h3>
+                    <p>Plant anatomy, cell structure & physiology.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- Biology 2nd Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=600" alt="Biology" class="card-img">
+                <div class="card-body">
+                    <h3>Biology 2nd Paper (Zoology)</h3>
+                    <p>Human physiology & genetics lecture notes.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- ICT (Single Option) -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600" alt="ICT" class="card-img">
+                <div class="card-body">
+                    <h3>ICT</h3>
+                    <p>C programming, HTML, Logic Gates & Web design.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- Bangla 1st Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="Bangla" class="card-img">
+                <div class="card-body">
+                    <h3>Bangla 1st Paper</h3>
+                    <p>Prose, Poetry, Novel & Drama summaries.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- Bangla 2nd Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="Bangla" class="card-img">
+                <div class="card-body">
+                    <h3>Bangla 2nd Paper</h3>
+                    <p>Grammar rules, essays & composition guides.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- English 1st Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="English" class="card-img">
+                <div class="card-body">
+                    <h3>English 1st Paper</h3>
+                    <p>Passages, flow charts & writing summaries.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- English 2nd Paper -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="English" class="card-img">
+                <div class="card-body">
+                    <h3>English 2nd Paper</h3>
+                    <p>Grammar rules, modifier, preposition & composition.</p>
+                    <a href="#" class="card-btn">View Notes</a>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Easy Upload Box -->
+        <!-- Easy Note Upload Box -->
         <div class="upload-box" id="upload">
-            <h2>📤 Upload Study Material</h2>
-            <p>Directly submit your notes (PDF, Images, Docs) to the StudyNest library without hassle.</p>
-            <!-- আপনার তৈরি করা Google Form বা ড্রাইভের লিঙ্কটি নিচে href="" এর ভেতরে বসিয়ে দিন -->
+            <h2>📤 Upload New Material</h2>
+            <p>Want to contribute? Submit your study notes easily to the StudyNest repository.</p>
             <a href="https://forms.google.com" target="_blank" class="upload-btn-main">Click Here to Upload File</a>
         </div>
 
