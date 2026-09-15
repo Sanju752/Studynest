@@ -1,534 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyNest | Platform by Ahmed Sami</title>
-    
-    <!-- App Icon & Manifest Links -->
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3429/3429149.png">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3429/3429149.png">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0b0d14">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #0b0d14;
-            background-image: linear-gradient(rgba(11, 13, 20, 0.9), rgba(11, 13, 20, 0.95)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #ffffff;
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated Glowing Background Effect */
-        .bg-glow {
-            position: fixed;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            filter: blur(130px);
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 0;
-            animation: floatGlow 8s infinite alternate;
-        }
-        .glow-1 { top: -50px; left: -50px; background: #6c5ce7; }
-        .glow-2 { bottom: -50px; right: -50px; background: #00cec9; }
-
-        @keyframes floatGlow {
-            0% { transform: translateY(0px) scale(1); }
-            100% { transform: translateY(30px) scale(1.1); }
-        }
-
-        /* Navigation Header */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(15px);
-            background: rgba(11, 13, 20, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 15px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #a29bfe, #74b9ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links a {
-            color: #b2bec3;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #74b9ff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(108, 92, 231, 0.25);
-            border: 1px solid rgba(108, 92, 231, 0.5);
-            color: #a29bfe;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(180deg, #ffffff, #dfe6e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: #a0aec0;
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto 25px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            margin: 30px 0 20px;
-            text-align: center;
-            color: #74b9ff;
-        }
-
-        /* Grid Cards Section */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 14px;
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(108, 92, 231, 0.6);
-            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
-        }
-
-        .card-img {
-            width: 100%;
-            height: 130px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .card:hover .card-img {
-            transform: scale(1.05);
-        }
-
-        .card-body {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .card h3 {
-            font-size: 18px;
-            margin-bottom: 6px;
-            color: #ffffff;
-        }
-
-        .card p {
-            color: #a0aec0;
-            font-size: 13px;
-            margin-bottom: 15px;
-        }
-
-        .card-btn {
-            display: inline-block;
-            text-align: center;
-            background: rgba(108, 92, 231, 0.2);
-            color: #a29bfe;
-            border: 1px solid rgba(108, 92, 231, 0.4);
-            padding: 8px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .card-btn:hover {
-            background: #6c5ce7;
-            color: white;
-        }
-
-        /* Modal / Popup Box Style */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: #141722;
-            border: 1px solid rgba(108, 92, 231, 0.5);
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(108, 92, 231, 0.3);
-            position: relative;
-        }
-
-        .modal-content h3 {
-            color: #a29bfe;
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
-
-        .modal-content p {
-            color: #b2bec3;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .modal-link-btn {
-            display: inline-block;
-            background: #00cec9;
-            color: #0b0d14;
-            padding: 10px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-bottom: 15px;
-            transition: 0.3s;
-        }
-
-        .modal-link-btn:hover {
-            box-shadow: 0 0 15px rgba(0, 206, 201, 0.6);
-        }
-
-        .close-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            padding: 6px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Upload Box */
-        .upload-box {
-            background: rgba(11, 13, 20, 0.7);
-            border: 2px dashed rgba(0, 206, 201, 0.5);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .upload-btn-main {
-            display: inline-block;
-            background: #00cec9;
-            color: #0b0d14;
-            padding: 12px 28px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            color: #a0aec0;
-            font-size: 14px;
-            margin-top: 50px;
-            background: rgba(11, 13, 20, 0.9);
-        }
-
-        footer strong {
-            color: #a29bfe;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
-
-    <header>
-        <div class="logo-container">
-            <img src="https://cdn-icons-png.flaticon.com/512/3429/3429149.png" alt="Icon" class="logo-img">
-            <div class="logo">StudyNest</div>
-        </div>
-        <div class="nav-links">
-            <a href="#subjects">Subjects</a>
-            <a href="#upload">Upload Note</a>
-            <a href="#author">About</a>
-        </div>
-    </header>
-
-    <div class="container">
-
-        <section class="hero">
-            <div class="hero-badge">Platform by Ahmed Sami</div>
-            <h1>Learn. Share. Elevate.</h1>
-            <p>Select your paper and view organized academic notes with a single click.</p>
-        </section>
-
-        <h2 class="section-title" id="subjects">Academic Subjects & Papers</h2>
-        <div class="grid">
-            
-            <!-- Physics 1st Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?q=80&w=600" alt="Physics" class="card-img">
-                <div class="card-body">
-                    <h3>Physics 1st Paper</h3>
-                    <p>Mechanics, waves, and vector short notes.</p>
-                    <button class="card-btn" onclick="openNotes('Physics 1st Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Physics 2nd Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?q=80&w=600" alt="Physics" class="card-img">
-                <div class="card-body">
-                    <h3>Physics 2nd Paper</h3>
-                    <p>Thermodynamics & optics formula guides.</p>
-                    <button class="card-btn" onclick="openNotes('Physics 2nd Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Chemistry 1st Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600" alt="Chemistry" class="card-img">
-                <div class="card-body">
-                    <h3>Chemistry 1st Paper</h3>
-                    <p>Atomic structure & periodic table trends.</p>
-                    <button class="card-btn" onclick="openNotes('Chemistry 1st Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Chemistry 2nd Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600" alt="Chemistry" class="card-img">
-                <div class="card-body">
-                    <h3>Chemistry 2nd Paper</h3>
-                    <p>Organic chemistry reactions & equations.</p>
-                    <button class="card-btn" onclick="openNotes('Chemistry 2nd Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Higher Math 1st Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=600" alt="Higher Math" class="card-img">
-                <div class="card-body">
-                    <h3>Higher Math 1st Paper</h3>
-                    <p>Matrix, Straight Lines & Calculus solutions.</p>
-                    <button class="card-btn" onclick="openNotes('Higher Math 1st Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Higher Math 2nd Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=600" alt="Higher Math" class="card-img">
-                <div class="card-body">
-                    <h3>Higher Math 2nd Paper</h3>
-                    <p>Complex numbers, Polynomials & Statics.</p>
-                    <button class="card-btn" onclick="openNotes('Higher Math 2nd Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Biology 1st Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=600" alt="Biology" class="card-img">
-                <div class="card-body">
-                    <h3>Biology 1st Paper (Botany)</h3>
-                    <p>Plant anatomy, cell structure & physiology.</p>
-                    <button class="card-btn" onclick="openNotes('Biology 1st Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Biology 2nd Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=600" alt="Biology" class="card-img">
-                <div class="card-body">
-                    <h3>Biology 2nd Paper (Zoology)</h3>
-                    <p>Human physiology & genetics lecture notes.</p>
-                    <button class="card-btn" onclick="openNotes('Biology 2nd Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- ICT -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600" alt="ICT" class="card-img">
-                <div class="card-body">
-                    <h3>ICT</h3>
-                    <p>C programming, HTML, Logic Gates & Web design.</p>
-                    <button class="card-btn" onclick="openNotes('ICT', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Bangla 1st Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="Bangla" class="card-img">
-                <div class="card-body">
-                    <h3>Bangla 1st Paper</h3>
-                    <p>Prose, Poetry, Novel & Drama summaries.</p>
-                    <button class="card-btn" onclick="openNotes('Bangla 1st Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- Bangla 2nd Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="Bangla" class="card-img">
-                <div class="card-body">
-                    <h3>Bangla 2nd Paper</h3>
-                    <p>Grammar rules, essays & composition guides.</p>
-                    <button class="card-btn" onclick="openNotes('Bangla 2nd Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- English 1st Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="English" class="card-img">
-                <div class="card-body">
-                    <h3>English 1st Paper</h3>
-                    <p>Passages, flow charts & writing summaries.</p>
-                    <button class="card-btn" onclick="openNotes('English 1st Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-            <!-- English 2nd Paper -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="English" class="card-img">
-                <div class="card-body">
-                    <h3>English 2nd Paper</h3>
-                    <p>Grammar rules, modifier, preposition & composition.</p>
-                    <button class="card-btn" onclick="openNotes('English 2nd Paper', 'https://drive.google.com')">View Notes</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="upload-box" id="upload">
-            <h2>📤 Upload New Material</h2>
-            <p>Want to contribute? Submit your study notes easily to the StudyNest repository.</p>
-            <a href="https://forms.google.com" target="_blank" class="upload-btn-main">Click Here to Upload File</a>
-        </div>
-
-    </div>
-
-    <!-- Modal Window Popup -->
-    <div class="modal-overlay" id="noteModal">
-        <div class="modal-content">
-            <h3 id="modalSubject">Subject Notes</h3>
-            <p>Click below to open/download the PDF or Drive folder for this subject.</p>
-            <a href="#" target="_blank" id="modalLink" class="modal-link-btn">Open Drive Folder 📂</a>
-            <br>
-            <button class="close-btn" onclick="closeNotes()">Close</button>
-        </div>
-    </div>
-
-    <footer id="author">
-        <p>Created with ❤️ by <strong>Ahmed Sami</strong> | Built for Students</p>
-    </footer>
-
-    <script>
-        function openNotes(subjectName, driveUrl) {
-            document.getElementById('modalSubject').innerText = subjectName;
-            document.getElementById('modalLink').href = driveUrl;
-            document.getElementById('noteModal').style.display = 'flex';
-        }
-
-        function closeNotes() {
-            document.getElementById('noteModal').style.display = 'none';
-        }
-    </script>
-
-</body>
-</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudyNest | Student Notes</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#070914;
+    color:#f5f7ff;
+    overflow-x:hidden;
+}
+
+/* Background glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:330px;
+    height:330px;
+    background:#7567ff;
+    filter:blur(130px);
+    opacity:.16;
+    top:-120px;
+    left:-120px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:330px;
+    height:330px;
+    background:#00d9ff;
+    filter:blur(140px);
+    opacity:.12;
+    bottom:-120px;
+    right:-120px;
+    z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(7,9,20,.82);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#8c7cff;
+}
+
+.menu{
+    display:flex;
+    gap:18px;
+}
+
+.menu a{
+    color:#aeb3c4;
+    text-decoration:none;
+    font-size:12px;
+}
+
+.menu a:hover{
+    color:white;
+}
+
+/* HERO */
+.hero{
+    min-height:78vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero-content{
+    max-width:750px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    color:#aaa2ff;
+    font-size:12px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(43px,10vw,80px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin-bottom:22px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#9b8cff,#43dcff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#9298aa;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.buttons{
+    margin-top:28px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 21px;
+    border-radius:30px;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.primary{
+    color:white;
+    background:linear-gradient(90deg,#6d5dfc,#00bcd4);
+}
+
+.secondary{
+    color:#c4c8d8;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+/* GENERAL SECTION */
+section{
+    padding:65px 6%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.title h2{
+    font-size:30px;
+}
+
+.title p{
+    color:#777d90;
+    font-size:13px;
+    margin-top:8px;
+}
+
+/* SUBJECTS */
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+    gap:15px;
+}
+
+.subject{
+    padding:25px 18px;
+    border-radius:20px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.subject:hover{
+    transform:translateY(-6px);
+    border-color:#7568ff;
+}
+
+.subject-icon{
+    font-size:30px;
+    margin-bottom:14px;
+}
+
+.subject h3{
+    font-size:15px;
+}
+
+.subject p{
+    color:#747a8d;
+    font-size:11px;
+    margin-top:6px;
+}
+
+/* SEARCH */
+.search{
+    max-width:650px;
+    margin:0 auto 30px;
+}
+
+.search input{
+    width:100%;
+    padding:16px 20px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.1);
+    outline:none;
+    background:rgba(255,255,255,.045);
+    color:white;
+}
+
+.search input::placeholder{
+    color:#6e7486;
+}
+
+/* SUBJECT SECTION */
+.subject-section{
+    margin-top:50px;
+}
+
+.subject-heading{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.subject-heading .big-icon{
+    font-size:30px;
+}
+
+.subject-heading h2{
+    font-size:23px;
+}
+
+.subject-heading p{
+    color:#73798c;
+    font-size:11px;
+    margin-top:4px;
+}
+
+/* NOTES */
+.notes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:15px;
+}
+
+.note{
+    padding:20px;
+    border-radius:18px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.075);
+    transition:.3s;
+}
+
+.note:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,.06);
+}
+
+.note-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.pdf{
+    width:40px;
+    height:40px;
+    display:flex;
+    justify
