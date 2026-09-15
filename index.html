@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyNest | Platform by Ahmed Sami</title>
+    
+    <!-- App Icon Links -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3429/3429149.png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3429/3429149.png">
+    <meta name="theme-color" content="#0b0d14">
+
     <style>
         * {
             margin: 0;
@@ -56,6 +62,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
         }
 
         .logo {
@@ -322,7 +340,10 @@
     <div class="bg-glow glow-2"></div>
 
     <header>
-        <div class="logo">StudyNest</div>
+        <div class="logo-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/3429/3429149.png" alt="Icon" class="logo-img">
+            <div class="logo">StudyNest</div>
+        </div>
         <div class="nav-links">
             <a href="#subjects">Subjects</a>
             <a href="#upload">Upload Note</a>
