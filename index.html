@@ -3,3211 +3,1786 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2563eb">
-<title>StudyNest — Student Learning Hub</title>
+<title>StudyNest — HSC Science</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+:root{
+  --bg:#f5f7fb;
+  --card:#fff;
+  --text:#172033;
+  --muted:#6b7280;
+  --primary:#2563eb;
+  --primary2:#7c3aed;
+  --border:#e5e7eb;
+  --soft:#eef4ff;
+  --danger:#ef4444;
+  --success:#16a34a;
+  --shadow:0 8px 25px rgba(20,30,60,.08);
 }
-
+*{box-sizing:border-box}
 body{
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:#f5f7fb;
-  color:#172033;
-  transition:.3s;
+  margin:0;
+  font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding-bottom:78px;
 }
-
-button,input,select,textarea{
-  font:inherit;
+body.dark{
+  --bg:#0f172a;
+  --card:#172033;
+  --text:#f3f4f6;
+  --muted:#aab3c2;
+  --border:#263247;
+  --soft:#1d2b46;
 }
-
-button{
-  cursor:pointer;
-}
-
-.app{
-  min-height:100vh;
-  padding-bottom:80px;
-}
-
-/* HEADER */
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
 .header{
-  background:linear-gradient(135deg,#2563eb,#4f46e5);
-  color:white;
-  padding:18px 16px 25px;
   position:sticky;
   top:0;
-  z-index:50;
-  box-shadow:0 4px 15px #0002;
+  z-index:20;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:12px 15px;
 }
-
-.header-top{
+.top{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  max-width:1100px;
-  margin:auto;
+  justify-content:space-between;
+  gap:10px;
 }
-
 .logo{
-  font-size:24px;
+  font-size:21px;
   font-weight:800;
+  color:var(--primary);
 }
-
-.logo span{
-  color:#bfdbfe;
+.logo span{color:var(--primary2)}
+.header-actions{display:flex;gap:7px}
+.icon-btn{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  width:40px;height:40px;
+  border-radius:12px;
 }
-
-.header-actions{
+.search{
+  margin-top:10px;
   display:flex;
   gap:8px;
 }
-
-.icon-btn{
-  border:0;
-  background:#ffffff22;
-  color:white;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  font-size:18px;
+.search input{
+  width:100%;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  padding:12px 14px;
+  border-radius:13px;
+  outline:none;
 }
-
-/* MAIN */
-main{
-  max-width:1100px;
+.container{
+  max-width:900px;
   margin:auto;
-  padding:20px 15px;
+  padding:16px;
 }
-
 .hero{
-  background:linear-gradient(135deg,#dbeafe,#eef2ff);
-  border-radius:25px;
-  padding:28px 20px;
-  margin-bottom:20px;
-}
-
-.hero h1{
-  font-size:32px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  color:#475569;
-  line-height:1.6;
-}
-
-.author{
-  display:inline-block;
-  margin-top:15px;
-  background:white;
-  padding:9px 14px;
-  border-radius:30px;
-  color:#2563eb;
-  font-weight:bold;
-  box-shadow:0 3px 10px #0001;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-  gap:14px;
-}
-
-.card{
-  background:white;
-  border-radius:18px;
-  padding:18px;
-  box-shadow:0 5px 18px #0000000b;
-  border:1px solid #e8edf5;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 9px 25px #0002;
-}
-
-.click-card{
-  cursor:pointer;
-}
-
-.card-icon{
-  font-size:30px;
-  margin-bottom:10px;
-}
-
-.card h3{
-  margin-bottom:6px;
-}
-
-.card p{
-  color:#64748b;
-  font-size:14px;
-  line-height:1.5;
-}
-
-/* SECTION */
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:24px 0 13px;
-}
-
-.section-title h2{
-  font-size:21px;
-}
-
-/* BUTTON */
-.btn{
-  border:0;
-  background:#2563eb;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
   color:white;
-  padding:11px 16px;
-  border-radius:12px;
-  font-weight:bold;
+  border-radius:24px;
+  padding:25px 20px;
+  box-shadow:var(--shadow);
 }
-
-.btn:hover{
+.hero h1{margin:0 0 7px;font-size:29px}
+.hero p{margin:5px 0;opacity:.92}
+.author{
+  margin-top:17px;
+  font-size:13px;
   opacity:.9;
 }
-
-.btn.secondary{
-  background:#e8eefc;
-  color:#2563eb;
-}
-
-.btn.success{
-  background:#16a34a;
-}
-
-.btn.danger{
-  background:#dc2626;
-}
-
-.btn.dark{
-  background:#172033;
-}
-
-/* BACK */
-.back{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  margin-bottom:16px;
-  border:0;
-  background:#e8eefc;
-  color:#2563eb;
-  padding:10px 15px;
-  border-radius:12px;
-  font-weight:bold;
-}
-
-/* SUBJECT */
-.subject-card{
-  min-height:145px;
-}
-
-.subject-card .emoji{
-  font-size:38px;
-}
-
-/* PAPER */
-.paper{
-  background:linear-gradient(135deg,#eff6ff,#eef2ff);
-}
-
-/* CHAPTER */
-.chapter{
+.section-title{
   display:flex;
   align-items:center;
-  gap:12px;
+  justify-content:space-between;
+  margin:23px 2px 12px;
 }
-
-.chapter-number{
-  min-width:38px;
-  height:38px;
-  border-radius:50%;
-  background:#2563eb;
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-weight:bold;
-}
-
-/* DETAIL */
-.detail-box{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 5px 20px #0001;
-  margin-bottom:15px;
-}
-
-.detail-box h2{
-  margin-bottom:10px;
-}
-
-.action-grid{
+.section-title h2{font-size:20px;margin:0}
+.grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:12px;
-  margin-top:15px;
 }
-
-/* SEARCH */
-.search-box{
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.click{cursor:pointer;transition:.18s}
+.click:active{transform:scale(.98)}
+.subject-icon{
+  font-size:30px;
+  margin-bottom:8px;
+}
+.card h3{margin:5px 0;font-size:16px}
+.card p{margin:4px 0;color:var(--muted);font-size:13px}
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:11px 15px;
+  background:var(--primary);
+  color:white;
+  font-weight:700;
+}
+.btn.secondary{
+  background:var(--soft);
+  color:var(--primary);
+}
+.btn.danger{background:var(--danger)}
+.btn.success{background:var(--success)}
+.btn.full{width:100%}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.back{
+  margin-bottom:13px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:9px 13px;
+}
+.paper{
   display:flex;
-  gap:8px;
-  margin-bottom:18px;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
-
-.search-box input{
-  flex:1;
-  padding:13px;
-  border:1px solid #d8dee9;
-  border-radius:13px;
-  outline:none;
-  background:white;
+.chapter-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
 }
-
-/* FORMS */
-.form{
-  background:white;
-  padding:20px;
+.chapter{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.chapter small{color:var(--muted)}
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  background:var(--soft);
+  color:var(--primary);
   border-radius:20px;
-  box-shadow:0 5px 20px #0001;
+  font-size:11px;
+  font-weight:700;
 }
-
-.form-group{
-  margin-bottom:14px;
+.tool-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
-
-.form-group label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:6px;
+.tool{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:15px;
 }
-
-.form-group input,
-.form-group select,
-.form-group textarea{
+.tool .big{font-size:27px}
+input,textarea,select{
   width:100%;
   padding:12px;
-  border:1px solid #d7deea;
-  border-radius:11px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--bg);
+  color:var(--text);
   outline:none;
-  background:white;
 }
-
-.form-group textarea{
-  min-height:100px;
-  resize:vertical;
+textarea{min-height:130px;resize:vertical}
+.form-group{margin-bottom:12px}
+.form-group label{
+  display:block;
+  margin-bottom:6px;
+  font-size:13px;
+  font-weight:700;
 }
-
-/* TIMER */
+.notice{
+  background:var(--soft);
+  border-radius:14px;
+  padding:13px;
+  margin:12px 0;
+  font-size:13px;
+}
+.empty{
+  text-align:center;
+  padding:30px 15px;
+  color:var(--muted);
+}
+.note{
+  position:relative;
+}
+.note h3{padding-right:25px}
+.note-meta{font-size:12px;color:var(--muted)}
+.delete{
+  position:absolute;
+  top:10px;
+  right:10px;
+  border:0;
+  background:transparent;
+  color:var(--danger);
+  font-size:18px;
+}
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+  padding:18px;
+}
+.modal.show{display:flex}
+.modal-box{
+  width:100%;
+  max-width:560px;
+  max-height:85vh;
+  overflow:auto;
+  background:var(--card);
+  border-radius:20px;
+  padding:20px;
+}
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.close{
+  border:0;
+  background:var(--bg);
+  color:var(--text);
+  border-radius:10px;
+  width:35px;height:35px;
+}
+.quiz-option{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin:8px 0;
+  padding:12px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  border-radius:12px;
+}
 .timer{
   text-align:center;
   font-size:45px;
   font-weight:800;
   padding:20px;
 }
-
-.timer-buttons{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-/* TODO */
-.todo-row{
-  display:flex;
-  gap:8px;
-  margin-bottom:15px;
-}
-
-.todo-row input{
-  flex:1;
-  padding:12px;
-  border:1px solid #d7deea;
-  border-radius:11px;
-}
-
-.todo-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#f8fafc;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:8px;
-}
-
-.todo-item.done span{
-  text-decoration:line-through;
-  opacity:.5;
-}
-
-/* QUIZ */
-.quiz-option{
-  width:100%;
-  text-align:left;
-  padding:13px;
-  border:1px solid #dbe2ef;
-  background:white;
-  border-radius:11px;
-  margin-top:8px;
-}
-
-.quiz-option:hover{
-  background:#eff6ff;
-}
-
-.quiz-score{
-  font-size:30px;
-  text-align:center;
-  font-weight:bold;
-  margin:20px;
-}
-
-/* PROGRESS */
-.progress-bar{
-  height:15px;
-  background:#e2e8f0;
-  border-radius:20px;
-  overflow:hidden;
-  margin:12px 0;
-}
-
-.progress-fill{
-  height:100%;
-  background:#2563eb;
-  width:0%;
-  transition:.3s;
-}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:#0008;
-  display:none;
-  align-items:center;
-  justify-content:center;
+.calc-display{
+  font-size:26px;
+  text-align:right;
   padding:15px;
-  z-index:100;
+  margin-bottom:9px;
 }
-
-.modal.show{
-  display:flex;
+.calc-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
 }
-
-.modal-box{
-  background:white;
-  width:100%;
-  max-width:600px;
-  max-height:85vh;
-  overflow:auto;
-  border-radius:20px;
-  padding:20px;
+.calc-grid button{
+  padding:15px 5px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--text);
 }
-
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
-
-.close{
-  border:0;
-  background:#fee2e2;
-  color:#dc2626;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-}
-
-/* NAV */
-.bottom-nav{
+.bottom{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  background:white;
-  border-top:1px solid #e2e8f0;
+  height:68px;
+  z-index:30;
+  background:var(--card);
+  border-top:1px solid var(--border);
   display:flex;
-  justify-content:center;
-  z-index:80;
-  box-shadow:0 -3px 15px #0001;
+  justify-content:space-around;
 }
-
-.nav-inner{
-  width:100%;
-  max-width:700px;
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-}
-
-.nav-btn{
+.nav{
+  flex:1;
   border:0;
-  background:none;
-  padding:10px 4px;
-  color:#64748b;
-  font-size:12px;
+  background:transparent;
+  color:var(--muted);
+  font-size:11px;
 }
-
-.nav-btn b{
+.nav b{display:block;font-size:20px;margin-bottom:2px}
+.nav.active{color:var(--primary);font-weight:700}
+.story{
+  background:linear-gradient(135deg,var(--soft),var(--card));
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:17px;
+  margin-bottom:12px;
+}
+.story h3{margin-top:0}
+.story p{line-height:1.7}
+.riddle{
+  border-left:4px solid var(--primary);
+  padding-left:13px;
+}
+.progressbar{
+  height:10px;
+  background:var(--border);
+  border-radius:10px;
+  overflow:hidden;
+}
+.progressbar span{
   display:block;
-  font-size:20px;
-  margin-bottom:2px;
+  height:100%;
+  background:var(--primary);
+  width:0;
 }
-
-.nav-btn.active{
-  color:#2563eb;
+.todo-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:11px;
+  margin-top:8px;
 }
-
-/* EMPTY */
-.empty{
-  text-align:center;
-  padding:30px 10px;
-  color:#64748b;
-}
-
-/* DARK MODE */
-body.dark{
-  background:#0f172a;
-  color:#e5e7eb;
-}
-
-body.dark .card,
-body.dark .detail-box,
-body.dark .form,
-body.dark .modal-box{
-  background:#172033;
-  border-color:#263247;
-}
-
-body.dark .card p,
-body.dark .hero p{
-  color:#aab6c8;
-}
-
-body.dark .hero{
-  background:linear-gradient(135deg,#172554,#1e1b4b);
-}
-
-body.dark .search-box input,
-body.dark .form-group input,
-body.dark .form-group select,
-body.dark .form-group textarea,
-body.dark .todo-row input,
-body.dark .quiz-option{
-  background:#0f172a;
-  color:white;
-  border-color:#334155;
-}
-
-body.dark .paper{
-  background:#172554;
-}
-
-body.dark .bottom-nav{
-  background:#172033;
-  border-color:#263247;
-}
-
-body.dark .nav-btn{
-  color:#94a3b8;
-}
-
-body.dark .todo-item{
-  background:#0f172a;
-}
-
-body.dark .back{
-  background:#1e3a8a;
-  color:#bfdbfe;
-}
-
-/* DESKTOP */
+.todo-item.done{text-decoration:line-through;opacity:.55}
 @media(min-width:700px){
-  .action-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-}
-
-/* SMALL */
-@media(max-width:420px){
-  .hero h1{
-    font-size:27px;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .card{
-    padding:14px;
-  }
-
-  .action-grid{
-    grid-template-columns:1fr 1fr;
-  }
+  .grid{grid-template-columns:repeat(4,1fr)}
+  .tool-grid{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <header class="header">
-  <div class="header-top">
-    <div class="logo">Study<span>Nest</span> 📚</div>
-
+  <div class="top">
+    <div class="logo">Study<span>Nest</span></div>
     <div class="header-actions">
-      <button class="icon-btn" data-action="search">🔎</button>
-      <button class="icon-btn" data-action="theme">🌙</button>
+      <button class="icon-btn" data-action="toggle-theme">🌙</button>
+      <button class="icon-btn" data-route="home">⌂</button>
     </div>
+  </div>
+
+  <div class="search">
+    <input id="searchInput" placeholder="🔎 Subject, chapter, note খুঁজুন...">
   </div>
 </header>
 
-<main id="app"></main>
+<main id="app" class="container"></main>
 
-</div>
-
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-  <div class="nav-inner">
-
-    <button class="nav-btn" data-route="home">
-      <b>🏠</b>Home
-    </button>
-
-    <button class="nav-btn" data-route="explore">
-      <b>📚</b>Explore
-    </button>
-
-    <button class="nav-btn" data-route="notes">
-      <b>📝</b>Notes
-    </button>
-
-    <button class="nav-btn" data-route="tools">
-      <b>🧰</b>Tools
-    </button>
-
-    <button class="nav-btn" data-route="more">
-      <b>☰</b>More
-    </button>
-
-  </div>
+<nav class="bottom">
+  <button class="nav active" data-route="home"><b>⌂</b>Home</button>
+  <button class="nav" data-route="explore"><b>📚</b>Explore</button>
+  <button class="nav" data-route="notes"><b>📝</b>Notes</button>
+  <button class="nav" data-route="tools"><b>🛠️</b>Tools</button>
+  <button class="nav" data-route="more"><b>☰</b>More</button>
 </nav>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <div class="modal-head">
-      <h2 id="modalTitle">StudyNest</h2>
-      <button class="close" data-action="closeModal">✕</button>
-    </div>
-    <div id="modalContent"></div>
-  </div>
+<div id="modal" class="modal">
+  <div class="modal-box" id="modalContent"></div>
 </div>
 
-
 <script>
-
-/* =====================================================
+/* =========================
    STUDYNEST DATA
-===================================================== */
+========================= */
 
 const subjects = {
-
-  Physics:{
-    emoji:"⚛️",
-    bn:"পদার্থবিজ্ঞান",
+  physics:{
+    name:"Physics", icon:"⚛️",
     papers:{
       "1st Paper":[
-        "ভৌত জগৎ ও পরিমাপ",
-        "ভেক্টর",
-        "গতিবিদ্যা",
-        "নিউটনের গতিসূত্র",
-        "কাজ, শক্তি ও ক্ষমতা",
-        "মহাকর্ষ ও অভিকর্ষ",
-        "পদার্থের গাঠনিক ধর্ম",
-        "পর্যাবৃত্ত গতি",
-        "তরঙ্গ",
-        "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"
+        "ভৌত জগৎ ও পরিমাপ","ভেক্টর","গতিবিদ্যা","নিউটনের গতিসূত্র",
+        "কাজ, শক্তি ও ক্ষমতা","মহাকর্ষ ও অভিকর্ষ","পদার্থের গাঠনিক ধর্ম",
+        "পর্যায়বৃত্ত গতি","আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"
       ],
       "2nd Paper":[
-        "তাপগতিবিদ্যা",
-        "স্থির তড়িৎ",
-        "চল তড়িৎ",
-        "তড়িৎ প্রবাহের চৌম্বক ক্রিয়া",
-        "তড়িৎ চৌম্বকীয় আবেশ",
-        "জ্যামিতিক আলোকবিজ্ঞান",
-        "ভৌত আলোকবিজ্ঞান",
-        "আধুনিক পদার্থবিজ্ঞান",
-        "পরমাণু ও নিউক্লিয়ার পদার্থবিজ্ঞান",
+        "তাপগতিবিদ্যা","স্থির তড়িৎ","চল তড়িৎ","তড়িৎ প্রবাহের চৌম্বক ক্রিয়া",
+        "তড়িৎচৌম্বকীয় আবেশ ও পরিবর্তী প্রবাহ","জ্যামিতিক আলোকবিজ্ঞান",
+        "ভৌত আলোকবিজ্ঞান","আধুনিক পদার্থবিজ্ঞান","পরমাণু ও নিউক্লিয়ার পদার্থবিজ্ঞান",
         "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স"
       ]
     }
   },
-
-  Chemistry:{
-    emoji:"🧪",
-    bn:"রসায়ন",
+  chemistry:{
+    name:"Chemistry", icon:"🧪",
     papers:{
       "1st Paper":[
-        "ল্যাবরেটরির নিরাপদ ব্যবহার",
-        "গুণগত রসায়ন",
-        "মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন",
-        "রাসায়নিক পরিবর্তন",
-        "কর্মমুখী রসায়ন"
+        "ল্যাবরেটরির নিরাপদ ব্যবহার","গুণগত রসায়ন","মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন",
+        "রাসায়নিক পরিবর্তন","কর্মমুখী রসায়ন"
       ],
       "2nd Paper":[
-        "পরিবেশ রসায়ন",
-        "জৈব রসায়ন",
-        "পরিমাণগত রসায়ন",
-        "তড়িৎ রসায়ন",
-        "অর্থনৈতিক রসায়ন"
+        "পরিবেশ রসায়ন","জৈব রসায়ন","পরিমাণগত রসায়ন",
+        "তড়িৎ রসায়ন","অর্থনৈতিক রসায়ন"
       ]
     }
   },
-
-  "Higher Mathematics":{
-    emoji:"📐",
-    bn:"উচ্চতর গণিত",
+  math:{
+    name:"Higher Mathematics", icon:"📐",
     papers:{
       "1st Paper":[
-        "ম্যাট্রিক্স ও নির্ণায়ক",
-        "ভেক্টর",
-        "সরলরেখা",
-        "বৃত্ত",
-        "বিন্যাস ও সমাবেশ",
-        "ত্রিকোণমিতিক অনুপাত",
-        "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত",
-        "ফাংশন",
-        "অন্তরীকরণ",
-        "যোগজীকরণ"
+        "ম্যাট্রিক্স ও নির্ণায়ক","ভেক্টর","সরলরেখা","বৃত্ত",
+        "বিন্যাস ও সমাবেশ","ত্রিকোণমিতিক অনুপাত","সংযুক্ত কোণ",
+        "ফাংশন ও গ্রাফ","অন্তরীকরণ","যোগজীকরণ"
       ],
       "2nd Paper":[
-        "বাস্তব সংখ্যা ও অসমতা",
-        "যোগাশ্রয়ী প্রোগ্রাম",
-        "জটিল সংখ্যা",
-        "বহুপদী ও সমীকরণ",
-        "দ্বিপদী বিস্তৃতি",
-        "কনিক",
-        "বিপরীত ত্রিকোণমিতিক ফাংশন",
-        "স্থিতিবিদ্যা",
-        "সমতলীয় বস্তুর গতি",
-        "বিস্তার পরিমাপ ও সম্ভাবনা"
+        "বাস্তব সংখ্যা ও অসমতা","যোগাশ্রয়ী প্রোগ্রাম","জটিল সংখ্যা",
+        "বহুপদী সমীকরণ","দ্বিপদী বিস্তৃতি","কনিক","বিপরীত ত্রিকোণমিতিক ফাংশন",
+        "স্থিতিবিদ্যা","সমতলীয় কণার গতি","বিস্তার ও পরিমাপ"
       ]
     }
   },
-
-  Biology:{
-    emoji:"🧬",
-    bn:"জীববিজ্ঞান",
+  biology:{
+    name:"Biology", icon:"🧬",
     papers:{
       "1st Paper":[
-        "কোষ ও এর গঠন",
-        "কোষ বিভাজন",
-        "কোষ রসায়ন",
-        "অণুজীব",
-        "শৈবাল ও ছত্রাক",
-        "ব্রায়োফাইটা ও টেরিডোফাইটা",
-        "নগ্নবীজী ও আবৃতবীজী",
-        "টিস্যু ও টিস্যুতন্ত্র",
-        "উদ্ভিদ শারীরতত্ত্ব",
-        "উদ্ভিদের প্রজনন"
+        "কোষ ও এর গঠন","কোষ বিভাজন","কোষ রসায়ন","অণুজীব",
+        "শৈবাল ও ছত্রাক","ব্রায়োফাইটা ও টেরিডোফাইটা",
+        "নগ্নবীজী ও আবৃতবীজী উদ্ভিদ","টিস্যু ও টিস্যুতন্ত্র",
+        "উদ্ভিদ প্রজনন","জীবপ্রযুক্তি"
       ],
       "2nd Paper":[
-        "প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস",
-        "প্রাণীর পরিচিতি",
-        "পরিপাক ও শোষণ",
-        "রক্ত ও সঞ্চালন",
-        "শ্বাসক্রিয়া ও শ্বসন",
-        "বর্জ্য ও নিষ্কাশন",
-        "চলন ও অঙ্গচালনা",
-        "সমন্বয় ও নিয়ন্ত্রণ",
-        "প্রজনন",
-        "জিনতত্ত্ব ও বিবর্তন"
+        "প্রাণীর শ্রেণিবিন্যাস","হাইড্রা","ঘাসফড়িং","রুই মাছ",
+        "মানব শারীরতত্ত্ব","রক্ত ও সঞ্চালন","শ্বাসক্রিয়া",
+        "বর্জ্য নিষ্কাশন","চলন ও অঙ্গচালনা","সমন্বয় ও নিয়ন্ত্রণ",
+        "মানব প্রজনন","জেনেটিক্স ও বিবর্তন"
       ]
     }
   },
-
-  ICT:{
-    emoji:"💻",
-    bn:"তথ্য ও যোগাযোগ প্রযুক্তি",
+  ict:{
+    name:"ICT", icon:"💻",
     papers:{
       "1st Paper":[
-        "তথ্য ও যোগাযোগ প্রযুক্তি",
-        "কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং",
-        "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস",
-        "ওয়েব ডিজাইন ও HTML",
-        "প্রোগ্রামিং ভাষা",
-        "ডেটাবেজ ম্যানেজমেন্ট"
+        "তথ্য ও যোগাযোগ প্রযুক্তি","কমিউনিকেশন সিস্টেম ও নেটওয়ার্কিং",
+        "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস","ওয়েব ডিজাইন ও HTML",
+        "প্রোগ্রামিং","ডেটাবেজ"
+      ],
+      "2nd Paper":[]
+    }
+  },
+  bangla:{
+    name:"Bangla", icon:"📖",
+    papers:{
+      "1st Paper":[
+        "অপরিচিতা","বিলাসী","সাহিত্যে খেলা","অর্ধাঙ্গী",
+        "যৌবনের গান","জীবন ও বৃক্ষ","গন্তব্য কাবুল","নেকলেস"
       ],
       "2nd Paper":[
-        "প্রোগ্রামিং",
-        "ডেটাবেজ",
-        "ওয়েব ডিজাইন",
-        "ডিজিটাল ডিভাইস"
+        "বাংলা উচ্চারণ","বাংলা বানান","শব্দশ্রেণি","শব্দ গঠন",
+        "বাক্যতত্ত্ব","বাংলা ভাষা ও ব্যাকরণ","রচনা"
       ]
     }
   },
-
-  Bangla:{
-    emoji:"📖",
-    bn:"বাংলা",
+  english:{
+    name:"English", icon:"🔤",
     papers:{
       "1st Paper":[
-        "লালসালু",
-        "সিরাজউদ্দৌলা",
-        "তাহারী পরে মনে",
-        "নেকলেস",
-        "গন্তব্য কাবুল"
+        "People or Institutions Making History","Traffic Education",
+        "Food Adulteration","Dreams","Youthful Achievers",
+        "Relationships","Adolescence","Lifestyle","Arriving in Bangkok"
       ],
       "2nd Paper":[
-        "ব্যাকরণ",
-        "বাংলা ভাষা",
-        "রচনা",
-        "সারাংশ ও সারমর্ম",
-        "আবেদনপত্র"
-      ]
-    }
-  },
-
-  English:{
-    emoji:"🔤",
-    bn:"ইংরেজি",
-    papers:{
-      "1st Paper":[
-        "Reading",
-        "Writing",
-        "Graphs and Charts",
-        "Summary",
-        "Story Writing"
-      ],
-      "2nd Paper":[
-        "Grammar",
-        "Composition",
-        "Formal Letter",
-        "Paragraph",
-        "Essay"
+        "Grammar","Parts of Speech","Right Form of Verbs",
+        "Transformation","Narration","Completing Sentences",
+        "Composition","Formal Letters & Emails"
       ]
     }
   }
-
 };
 
+const stories=[
+  {
+    title:"📚 ছাত্রের শেষ মুহূর্তের পড়া",
+    text:"পরীক্ষার আগের রাতে ছাত্র বলল—‘আজ থেকে জীবন বদলে দেব!’ তারপর ১০ মিনিট পড়ে ঘুমিয়ে গেল। সকালে উঠে বলল—‘জীবন বদলেছে ঠিকই, কিন্তু সিলেবাস বদলায়নি!’ 😆"
+  },
+  {
+    title:"🧪 Chemistry-এর ভয়",
+    text:"বন্ধু: Chemistry কেমন লাগছে? ছাত্র: খুব ভালো। বন্ধু: সত্যি? ছাত্র: হ্যাঁ, প্রশ্ন দেখলেই আমার শরীরের Chemistry বদলে যায়! 😂"
+  },
+  {
+    title:"📐 Math-এর সাথে সম্পর্ক",
+    text:"ছাত্র Math-কে বলল—‘তুই আমার জীবনে এত সমস্যা কেন?’ Math বলল—‘কারণ আমি তোকে solution খুঁজতে শেখাই!’ 😄"
+  },
+  {
+    title:"💻 ICT ক্লাস",
+    text:"স্যার: Computer-এর brain কোনটা? ছাত্র: Sir, যেটা exam-এর আগে আমাদের মাথা থেকে পালিয়ে যায়! 🤣"
+  },
+  {
+    title:"⚛️ Physics-এর সূত্র",
+    text:"বন্ধু: Physics-এর সূত্র মুখস্থ করেছিস? ছাত্র: হ্যাঁ। বন্ধু: কয়টা? ছাত্র: প্রশ্নে আসবে না—এমন প্রায় সবগুলো! 😭😂"
+  },
+  {
+    title:"🧬 Biology",
+    text:"স্যার: মানুষের শরীরে সবচেয়ে বড় অঙ্গ কোনটি? ছাত্র: Sir, Exam-এর সময় আমার চিন্তা! 😆"
+  },
+  {
+    title:"😴 পড়াশোনার Motivation",
+    text:"রাতে বই খুলে ছাত্র বলল—‘আজকে অনেক পড়ব।’ পাঁচ মিনিট পর বই বলল—‘ভাই, আমাকে বন্ধ কর। তোর ঘুম পেয়ে গেছে!’ 😂"
+  },
+  {
+    title:"📝 Exam Hall",
+    text:"প্রশ্নপত্র দেখে ছাত্র: ‘এগুলো তো আমি পড়িনি!’ পাশের ছাত্র: ‘আমিও না।’ দুজন একসাথে: ‘চলো, আজকে ভাগ্যের উপর পরীক্ষা দিই!’ 🤣"
+  }
+];
 
-/* =====================================================
-   APP STATE
-===================================================== */
+const riddles=[
+  ["যত বেশি শুকায়, তত বেশি ভিজে—এটা কী?","তোয়ালে!"],
+  ["দাঁত আছে কিন্তু কামড়াতে পারে না—কী?","চিরুনি!"],
+  ["চোখ আছে কিন্তু দেখতে পারে না—কী?","আলু!"],
+  ["যার পা নেই, তবু চলে—কী?","ঘড়ি!"],
+  ["দিনে একবার আসে, রাতে একবার আসে—কী?","অক্ষর ‘ে’ নয়—এই ধাঁধাটি শব্দভেদে বদলাতে পারে 😄"]
+];
 
-let state={
-  page:"home",
-  subject:null,
-  paper:null,
-  chapter:null,
-  search:"",
-  quizIndex:0,
-  quizScore:0,
-  quizFinished:false,
-  timerSeconds:1500,
-  timerRunning:false
-};
+const quiz=[
+  {
+    q:"পানির রাসায়নিক সংকেত কোনটি?",
+    options:["CO₂","H₂O","O₂","NaCl"],
+    ans:1
+  },
+  {
+    q:"আলোর বেগ প্রায় কত?",
+    options:["3×10⁸ m/s","3×10⁶ m/s","3×10⁴ m/s","3×10² m/s"],
+    ans:0
+  },
+  {
+    q:"HTML কী কাজে ব্যবহৃত হয়?",
+    options:["Web page তৈরি","শুধু হিসাব","ভিডিও editing","Antivirus"],
+    ans:0
+  },
+  {
+    q:"DNA-এর পূর্ণরূপ কী?",
+    options:["Deoxyribonucleic Acid","Dynamic Network Array","Digital Nuclear Acid","None"],
+    ans:0
+  },
+  {
+    q:"π-এর আনুমানিক মান কত?",
+    options:["2.14","3.14","4.14","1.14"],
+    ans:1
+  }
+];
 
-let timerInterval=null;
+/* =========================
+   STATE
+========================= */
 
-
-/* =====================================================
-   LOCAL DATA
-===================================================== */
+let page="home";
+let selectedSubject=null;
+let selectedPaper=null;
+let selectedChapter=null;
 
 let completed=JSON.parse(localStorage.getItem("sn_completed")||"[]");
 let bookmarks=JSON.parse(localStorage.getItem("sn_bookmarks")||"[]");
+let notes=JSON.parse(localStorage.getItem("sn_notes")||"[]");
 let todos=JSON.parse(localStorage.getItem("sn_todos")||"[]");
 
+let timerSeconds=25*60;
+let timerRunning=false;
+let timerInterval=null;
+let quizIndex=0;
+let quizScore=0;
+let currentStory=0;
 
-/* =====================================================
-   HELPER
-===================================================== */
+/* =========================
+   HELPERS
+========================= */
 
-function saveData(){
+function save(){
   localStorage.setItem("sn_completed",JSON.stringify(completed));
   localStorage.setItem("sn_bookmarks",JSON.stringify(bookmarks));
+  localStorage.setItem("sn_notes",JSON.stringify(notes));
   localStorage.setItem("sn_todos",JSON.stringify(todos));
 }
 
-function esc(text){
-  return String(text)
+function esc(str){
+  return String(str??"")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;");
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
-function allChapters(){
-
+function getAllChapters(){
   let arr=[];
-
-  for(const subject in subjects){
-
-    for(const paper in subjects[subject].papers){
-
-      subjects[subject].papers[paper].forEach(chapter=>{
-
-        arr.push({
-          subject,
-          paper,
-          chapter
-        });
-
-      });
-
-    }
-
-  }
-
+  Object.entries(subjects).forEach(([id,s])=>{
+    Object.entries(s.papers).forEach(([paper,chs])=>{
+      chs.forEach(ch=>arr.push({
+        subject:id,
+        subjectName:s.name,
+        paper,
+        chapter:ch
+      }));
+    });
+  });
   return arr;
 }
 
+function isComplete(key){
+  return completed.includes(key);
+}
+
 function chapterKey(){
-  return `${state.subject}|${state.paper}|${state.chapter}`;
+  return selectedSubject+"|"+selectedPaper+"|"+selectedChapter;
+}
+
+function toggleComplete(){
+  const key=chapterKey();
+  if(isComplete(key)){
+    completed=completed.filter(x=>x!==key);
+  }else{
+    completed.push(key);
+  }
+  save();
+  render();
+}
+
+function toggleBookmark(){
+  const key=chapterKey();
+  if(bookmarks.includes(key)){
+    bookmarks=bookmarks.filter(x=>x!==key);
+  }else{
+    bookmarks.push(key);
+  }
+  save();
+  render();
+}
+
+function go(route){
+  page=route;
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =========================
+   RENDER
+========================= */
+
+function render(){
+  const app=document.getElementById("app");
+
+  if(page==="home") app.innerHTML=homePage();
+  else if(page==="explore") app.innerHTML=explorePage();
+  else if(page==="subject") app.innerHTML=subjectPage();
+  else if(page==="papers") app.innerHTML=papersPage();
+  else if(page==="chapters") app.innerHTML=chaptersPage();
+  else if(page==="chapter") app.innerHTML=chapterPage();
+  else if(page==="notes") app.innerHTML=notesPage();
+  else if(page==="upload") app.innerHTML=uploadPage();
+  else if(page==="search") app.innerHTML=searchPage();
+  else if(page==="tools") app.innerHTML=toolsPage();
+  else if(page==="timer") app.innerHTML=timerPage();
+  else if(page==="calculator") app.innerHTML=calculatorPage();
+  else if(page==="todo") app.innerHTML=todoPage();
+  else if(page==="converter") app.innerHTML=converterPage();
+  else if(page==="progress") app.innerHTML=progressPage();
+  else if(page==="quiz") app.innerHTML=quizPage();
+  else if(page==="result") app.innerHTML=resultPage();
+  else if(page==="fun") app.innerHTML=funPage();
+  else if(page==="more") app.innerHTML=morePage();
+  else app.innerHTML=homePage();
+
+  updateNav();
 }
 
 function updateNav(){
-
-  document.querySelectorAll(".nav-btn").forEach(btn=>{
-    btn.classList.toggle(
-      "active",
-      btn.dataset.route===state.page
-    );
+  document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
+  document.querySelectorAll(".nav").forEach(n=>{
+    const r=n.dataset.route;
+    if(
+      (r==="home" && page==="home") ||
+      (r==="explore" && ["explore","subject","papers","chapters","chapter"].includes(page)) ||
+      (r==="notes" && ["notes","upload"].includes(page)) ||
+      (r==="tools" && ["tools","timer","calculator","todo","converter","progress","quiz"].includes(page)) ||
+      (r==="more" && ["more","result","fun","search"].includes(page))
+    ) n.classList.add("active");
   });
-
 }
 
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function go(page,extra={}){
-
-  state.page=page;
-
-  Object.assign(state,extra);
-
-  render();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-function back(){
-
-  if(state.page==="chapter"){
-    go("chapters");
-  }
-  else if(state.page==="chapters"){
-    go("papers");
-  }
-  else if(state.page==="papers"){
-    go("explore");
-  }
-  else{
-    go("home");
-  }
-
-}
-
-
-/* =====================================================
+/* =========================
    HOME
-===================================================== */
+========================= */
 
 function homePage(){
-
   return `
+    <section class="hero">
+      <h1>StudyNest 📚</h1>
+      <p>তোমার HSC Science পড়াশোনার smart study companion.</p>
+      <p>Learn • Practice • Track • Improve</p>
+      <div class="author">Created with ❤️ by Ahmed Sami</div>
+    </section>
 
-  <section class="hero">
-
-    <h1>StudyNest 📚</h1>
-
-    <p>
-      তোমার HSC Science পড়াশোনার জন্য একটি সহজ,
-      সুন্দর ও student-friendly learning hub.
-    </p>
-
-    <div class="author">
-      ✨ Created by Ahmed Sami
+    <div class="section-title">
+      <h2>Quick Access</h2>
     </div>
 
-  </section>
+    <div class="grid">
+      <div class="card click" data-route="explore">
+        <div class="subject-icon">📚</div>
+        <h3>Explore Subjects</h3>
+        <p>সব subject ও chapter</p>
+      </div>
 
+      <div class="card click" data-route="notes">
+        <div class="subject-icon">📝</div>
+        <h3>Notes Library</h3>
+        <p>নিজের notes save করো</p>
+      </div>
 
-  <div class="grid">
+      <div class="card click" data-route="quiz">
+        <div class="subject-icon">🧠</div>
+        <h3>Quick Quiz</h3>
+        <p>নিজেকে test করো</p>
+      </div>
 
-    <div class="card click-card" data-route="explore">
-      <div class="card-icon">📚</div>
-      <h3>Explore Subjects</h3>
-      <p>সব subject ও chapter দেখো</p>
+      <div class="card click" data-route="fun">
+        <div class="subject-icon">😂</div>
+        <h3>Fun Site</h3>
+        <p>Study-এর মাঝে একটু fun</p>
+      </div>
     </div>
 
-    <div class="card click-card" data-route="notes">
-      <div class="card-icon">📝</div>
-      <h3>Notes Library</h3>
-      <p>নিজের notes খুঁজে দেখো</p>
+    <div class="section-title">
+      <h2>Subjects</h2>
+      <button class="btn secondary" data-route="explore">See All</button>
     </div>
 
-    <div class="card click-card" data-route="upload">
-      <div class="card-icon">📤</div>
-      <h3>Upload Note</h3>
-      <p>নিজের note save করো</p>
+    <div class="grid">
+      ${Object.entries(subjects).map(([id,s])=>`
+        <div class="card click" data-subject="${id}" data-action="open-subject">
+          <div class="subject-icon">${s.icon}</div>
+          <h3>${s.name}</h3>
+          <p>${Object.values(s.papers).flat().length} Chapters</p>
+        </div>
+      `).join("")}
     </div>
 
-    <div class="card click-card" data-route="result">
-      <div class="card-icon">🎓</div>
-      <h3>Result Check</h3>
-      <p>Board result portal</p>
+    <div class="section-title"><h2>Daily Motivation ✨</h2></div>
+    <div class="card">
+      <p style="font-size:16px;line-height:1.7">
+        “আজ একটু পড়া, কালকের বড় সাফল্যের জন্য ছোট একটা step.”
+      </p>
     </div>
-
-  </div>
-
-
-  <div class="section-title">
-    <h2>⚡ Quick Study</h2>
-  </div>
-
-  <div class="grid">
-
-    <div class="card click-card" data-route="quiz">
-      <div class="card-icon">🧠</div>
-      <h3>Quiz</h3>
-      <p>নিজেকে পরীক্ষা করো</p>
-    </div>
-
-    <div class="card click-card" data-route="tools">
-      <div class="card-icon">🧰</div>
-      <h3>Student Tools</h3>
-      <p>Timer, Calculator, To-do</p>
-    </div>
-
-    <div class="card click-card" data-route="progress">
-      <div class="card-icon">📊</div>
-      <h3>Progress</h3>
-      <p>তোমার পড়ার অগ্রগতি</p>
-    </div>
-
-    <div class="card click-card" data-route="fun">
-      <div class="card-icon">🎮</div>
-      <h3>Fun Zone</h3>
-      <p>Brain teaser ও riddle</p>
-    </div>
-
-  </div>
-
-
-  <div class="section-title">
-    <h2>💡 Daily Motivation</h2>
-  </div>
-
-  <div class="card">
-    <h3>“Small progress every day becomes big success.” 🚀</h3>
-    <p style="margin-top:8px">
-      প্রতিদিন অল্প অল্প করে পড়লেও নিয়মিত থাকাই সবচেয়ে গুরুত্বপূর্ণ।
-    </p>
-  </div>
-
-
-  <div class="section-title">
-    <h2>🌟 StudyNest</h2>
-  </div>
-
-  <div class="card">
-    <p>
-      HSC Science students-এর জন্য Notes, MCQ, CQ,
-      Quiz এবং প্রয়োজনীয় Study Tools এক জায়গায়।
-    </p>
-
-    <p style="margin-top:10px;font-weight:bold">
-      Created by Ahmed Sami ❤️
-    </p>
-  </div>
-
   `;
-
 }
 
-
-/* =====================================================
+/* =========================
    EXPLORE
-===================================================== */
+========================= */
 
 function explorePage(){
-
-  let html=`
-
-    <button class="back" data-action="back">← Back</button>
-
+  return `
     <div class="section-title">
       <h2>📚 Explore Subjects</h2>
     </div>
-
     <div class="grid">
+      ${Object.entries(subjects).map(([id,s])=>`
+        <div class="card click" data-subject="${id}" data-action="open-subject">
+          <div class="subject-icon">${s.icon}</div>
+          <h3>${s.name}</h3>
+          <p>1st & 2nd Paper</p>
+          <span class="badge">${Object.values(s.papers).flat().length} Chapters</span>
+        </div>
+      `).join("")}
+    </div>
   `;
-
-  for(const name in subjects){
-
-    const s=subjects[name];
-
-    html+=`
-
-      <div class="card click-card subject-card"
-           data-action="subject"
-           data-subject="${esc(name)}">
-
-        <div class="emoji">${s.emoji}</div>
-
-        <h3>${esc(s.bn)}</h3>
-
-        <p>${Object.values(s.papers).flat().length} Chapters</p>
-
-      </div>
-
-    `;
-
-  }
-
-  html+=`</div>`;
-
-  return html;
-
 }
 
+/* =========================
+   SUBJECT
+========================= */
 
-/* =====================================================
+function subjectPage(){
+  const s=subjects[selectedSubject];
+  return `
+    <button class="back" data-route="explore">← Back</button>
+    <div class="hero">
+      <h1>${s.icon} ${s.name}</h1>
+      <p>Paper select করে chapter গুলো দেখো।</p>
+    </div>
+
+    <div class="section-title"><h2>Choose Paper</h2></div>
+    <div class="grid">
+      ${Object.entries(s.papers).map(([paper,chs])=>`
+        <div class="card click" data-paper="${esc(paper)}" data-action="open-paper">
+          <div class="subject-icon">📘</div>
+          <h3>${paper}</h3>
+          <p>${chs.length} Chapters</p>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+/* =========================
    PAPERS
-===================================================== */
+========================= */
 
 function papersPage(){
-
-  const s=subjects[state.subject];
-
-  return `
-
-    <button class="back" data-action="back">← Back</button>
-
-    <div class="detail-box">
-
-      <div style="font-size:45px">${s.emoji}</div>
-
-      <h2>${esc(s.bn)}</h2>
-
-      <p>Paper নির্বাচন করো</p>
-
-    </div>
-
-
-    <div class="grid">
-
-      ${Object.keys(s.papers).map(paper=>`
-
-        <div class="card click-card paper"
-             data-action="paper"
-             data-paper="${esc(paper)}">
-
-          <div class="card-icon">
-            ${paper==="1st Paper"?"📘":"📕"}
-          </div>
-
-          <h3>${paper}</h3>
-
-          <p>${s.papers[paper].length} Chapters</p>
-
-        </div>
-
-      `).join("")}
-
-    </div>
-
-  `;
-
+  return subjectPage();
 }
 
-
-/* =====================================================
+/* =========================
    CHAPTERS
-===================================================== */
+========================= */
 
 function chaptersPage(){
-
-  const list=subjects[state.subject].papers[state.paper];
+  const s=subjects[selectedSubject];
+  const chapters=s.papers[selectedPaper]||[];
 
   return `
-
-    <button class="back" data-action="back">← Back</button>
-
-    <div class="detail-box">
-
-      <h2>
-        ${subjects[state.subject].emoji}
-        ${esc(subjects[state.subject].bn)}
-      </h2>
-
-      <p>${esc(state.paper)} — ${list.length} Chapters</p>
-
+    <button class="back" data-action="back-subject">← Back</button>
+    <div class="section-title">
+      <h2>${s.icon} ${s.name} — ${selectedPaper}</h2>
     </div>
 
-
-    <div>
-
-      ${list.map((chapter,i)=>`
-
-        <div class="card click-card chapter"
-             style="margin-bottom:10px"
-             data-action="chapter"
-             data-chapter="${esc(chapter)}">
-
-          <div class="chapter-number">${i+1}</div>
-
+    <div class="chapter-list">
+      ${chapters.map((ch,i)=>{
+        const key=selectedSubject+"|"+selectedPaper+"|"+ch;
+        return `
+        <div class="chapter click"
+             data-chapter="${esc(ch)}"
+             data-action="open-chapter">
           <div>
-            <h3>${esc(chapter)}</h3>
-            <p>Notes • MCQ • CQ • Important</p>
+            <b>${i+1}. ${esc(ch)}</b><br>
+            <small>${isComplete(key)?"✅ Completed":"📖 Start studying"}</small>
           </div>
-
+          <span>›</span>
         </div>
-
-      `).join("")}
-
+        `;
+      }).join("")}
     </div>
-
   `;
-
 }
 
-
-/* =====================================================
+/* =========================
    CHAPTER DETAIL
-===================================================== */
+========================= */
 
 function chapterPage(){
-
-  const key=chapterKey();
-
-  const done=completed.includes(key);
-
-  const saved=bookmarks.includes(key);
+  const done=isComplete(chapterKey());
+  const marked=bookmarks.includes(chapterKey());
 
   return `
+    <button class="back" data-action="back-chapters">← Back</button>
 
-    <button class="back" data-action="back">← Back</button>
-
-    <div class="detail-box">
-
-      <div style="font-size:40px">
-        ${subjects[state.subject].emoji}
-      </div>
-
-      <p style="color:#64748b;margin:8px 0">
-        ${esc(subjects[state.subject].bn)} • ${esc(state.paper)}
-      </p>
-
-      <h2>${esc(state.chapter)}</h2>
-
-      <p style="margin-top:10px">
-        এই chapter-এর Notes, MCQ, CQ এবং গুরুত্বপূর্ণ বিষয়গুলো এখানে দেখো।
-      </p>
-
-      <div class="action-grid">
-
-        <button class="btn" data-action="chapterContent" data-type="notes">
-          📝 Notes
-        </button>
-
-        <button class="btn secondary" data-action="chapterContent" data-type="mcq">
-          ❓ MCQ
-        </button>
-
-        <button class="btn secondary" data-action="chapterContent" data-type="cq">
-          ✍️ CQ
-        </button>
-
-        <button class="btn secondary" data-action="chapterContent" data-type="important">
-          ⭐ Important
-        </button>
-
-      </div>
-
-      <div class="action-grid">
-
-        <button
-          class="btn ${saved?"success":"dark"}"
-          data-action="bookmark">
-
-          ${saved?"★ Bookmarked":"☆ Bookmark"}
-
-        </button>
-
-        <button
-          class="btn ${done?"success":""}"
-          data-action="complete">
-
-          ${done?"✓ Completed":"✓ Mark Completed"}
-
-        </button>
-
-      </div>
-
+    <div class="hero">
+      <h1>${esc(selectedChapter)}</h1>
+      <p>${subjects[selectedSubject].name} • ${selectedPaper}</p>
     </div>
 
-
-    <div class="detail-box">
-
-      <h3>📚 Chapter Resources</h3>
-
-      <p style="margin-top:8px">
-        Notes Library থেকে এই chapter-এর uploaded notes
-        থাকলে সেগুলোও দেখতে পারবে।
-      </p>
-
-      <button
-        class="btn secondary"
-        style="margin-top:12px"
-        data-action="chapterNotes">
-
-        🔎 Find Chapter Notes
-
+    <div class="row" style="margin:14px 0">
+      <button class="btn ${done?"success":"secondary"}" data-action="complete">
+        ${done?"✅ Completed":"☑️ Mark Complete"}
       </button>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-function searchPage(){
-
-  const q=state.search.toLowerCase();
-
-  let results=[];
-
-  for(const item of allChapters()){
-
-    if(
-      item.chapter.toLowerCase().includes(q) ||
-      item.subject.toLowerCase().includes(q) ||
-      subjects[item.subject].bn.toLowerCase().includes(q)
-    ){
-      results.push(item);
-    }
-
-  }
-
-  return `
-
-    <button class="back" data-action="back">← Back</button>
-
-    <div class="section-title">
-      <h2>🔎 Search StudyNest</h2>
-    </div>
-
-    <div class="search-box">
-
-      <input
-        id="searchInput"
-        value="${esc(state.search)}"
-        placeholder="Chapter / Subject search...">
-
-      <button class="btn" data-action="doSearch">
-        Search
+      <button class="btn secondary" data-action="bookmark">
+        ${marked?"⭐ Bookmarked":"☆ Bookmark"}
       </button>
-
-    </div>
-
-
-    ${
-      state.search
-      ?
-      results.length
-      ?
-      `<div>
-        ${results.map(item=>`
-
-          <div class="card click-card"
-               style="margin-bottom:10px"
-               data-action="openSearch"
-               data-subject="${esc(item.subject)}"
-               data-paper="${esc(item.paper)}"
-               data-chapter="${esc(item.chapter)}">
-
-            <h3>
-              ${subjects[item.subject].emoji}
-              ${esc(item.chapter)}
-            </h3>
-
-            <p>
-              ${esc(subjects[item.subject].bn)} • ${esc(item.paper)}
-            </p>
-
-          </div>
-
-        `).join("")}
-      </div>`
-      :
-      `<div class="empty">কোনো result পাওয়া যায়নি 😕</div>`
-      :
-      `<div class="empty">Search করতে chapter বা subject লিখো 🔎</div>`
-    }
-
-  `;
-
-}
-
-
-/* =====================================================
-   NOTES
-===================================================== */
-
-function getNotes(){
-
-  return JSON.parse(localStorage.getItem("sn_notes")||"[]");
-
-}
-
-function saveNotes(notes){
-
-  localStorage.setItem("sn_notes",JSON.stringify(notes));
-
-}
-
-function notesPage(){
-
-  const notes=getNotes();
-
-  return `
-
-    <div class="section-title">
-
-      <h2>📝 Notes Library</h2>
-
-      <button class="btn" data-route="upload">
-        + Upload
-      </button>
-
-    </div>
-
-
-    <div class="search-box">
-
-      <input
-        id="noteSearch"
-        placeholder="Note search..."
-        value="${esc(state.search)}">
-
-      <button class="btn" data-action="noteSearch">
-        🔎
-      </button>
-
-    </div>
-
-
-    <div id="notesList">
-
-      ${renderNotes(notes)}
-
-    </div>
-
-  `;
-
-}
-
-function renderNotes(notes){
-
-  let q=state.search.toLowerCase();
-
-  let filtered=notes.filter(n=>
-    !q ||
-    n.title.toLowerCase().includes(q) ||
-    n.subject.toLowerCase().includes(q) ||
-    n.chapter.toLowerCase().includes(q)
-  );
-
-  if(!filtered.length){
-
-    return `
-      <div class="empty">
-        কোনো note পাওয়া যায়নি।
-        <br><br>
-        <button class="btn" data-route="upload">
-          প্রথম Note Upload করো
-        </button>
-      </div>
-    `;
-
-  }
-
-  return filtered.map(n=>`
-
-    <div class="card" style="margin-bottom:12px">
-
-      <h3>📝 ${esc(n.title)}</h3>
-
-      <p style="margin-top:7px">
-        ${esc(n.subject)} • ${esc(n.chapter)}
-      </p>
-
-      <p style="margin-top:5px">
-        Uploaded: ${new Date(n.date).toLocaleDateString()}
-      </p>
-
-      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-
-        <button
-          class="btn"
-          data-action="viewNote"
-          data-id="${n.id}">
-          👁 View
-        </button>
-
-        <button
-          class="btn danger"
-          data-action="deleteNote"
-          data-id="${n.id}">
-          Delete
-        </button>
-
-      </div>
-
-    </div>
-
-  `).join("");
-
-}
-
-
-/* =====================================================
-   UPLOAD
-===================================================== */
-
-function uploadPage(){
-
-  return `
-
-    <button class="back" data-action="back">← Back</button>
-
-    <div class="section-title">
-      <h2>📤 Upload Note</h2>
-    </div>
-
-    <div class="form">
-
-      <div class="form-group">
-
-        <label>Note Title</label>
-
-        <input
-          id="noteTitle"
-          placeholder="যেমন: Physics Vector Short Note">
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Subject</label>
-
-        <select id="noteSubject">
-
-          <option value="">Select Subject</option>
-
-          ${Object.keys(subjects).map(s=>
-            `<option value="${esc(s)}">${esc(subjects[s].bn)}</option>`
-          ).join("")}
-
-        </select>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Chapter</label>
-
-        <input
-          id="noteChapter"
-          placeholder="Chapter name">
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Note Content</label>
-
-        <textarea
-          id="noteContent"
-          placeholder="তোমার note এখানে লিখতে পারো..."></textarea>
-
-      </div>
-
-
-      <button class="btn" data-action="saveNote">
-        💾 Save Note
-      </button>
-
-      <p style="margin-top:12px;color:#64748b;font-size:13px">
-        এই version-এ note browser-এর local storage-এ save হবে।
-        তাই একই device/browser-এ থাকবে।
-      </p>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =====================================================
-   RESULT
-===================================================== */
-
-function resultPage(){
-
-  return `
-
-    <button class="back" data-action="back">← Back</button>
-
-    <div class="detail-box">
-
-      <div style="font-size:45px">🎓</div>
-
-      <h2>Board Result Check</h2>
-
-      <p style="margin-top:8px">
-        Roll এবং Registration Number দিয়ে official
-        Education Board result portal-এ result check করতে পারবে।
-      </p>
-
-    </div>
-
-
-    <div class="form">
-
-      <div class="form-group">
-
-        <label>Roll Number</label>
-
-        <input id="roll" type="number" placeholder="Enter Roll">
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Registration Number</label>
-
-        <input id="reg" type="number" placeholder="Enter Registration">
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Exam</label>
-
-        <select id="exam">
-
-          <option>HSC / Alim</option>
-          <option>SSC / Dakhil</option>
-
-        </select>
-
-      </div>
-
-
-      <button class="btn" data-action="result">
-        🎓 Check Official Result
-      </button>
-
-      <p style="margin-top:12px;color:#64748b;font-size:13px">
-        Result সরাসরি official education board portal-এ
-        check হবে। StudyNest কোনো fake result তৈরি করে না।
-      </p>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =====================================================
-   TOOLS
-===================================================== */
-
-function toolsPage(){
-
-  return `
-
-    <div class="section-title">
-      <h2>🧰 Student Tools</h2>
     </div>
 
     <div class="grid">
-
-      <div class="card click-card" data-tool="timer">
-        <div class="card-icon">⏱️</div>
-        <h3>Study Timer</h3>
-        <p>Focus করে পড়াশোনা করো</p>
+      <div class="card click" data-action="chapter-notes">
+        <div class="subject-icon">📝</div>
+        <h3>Notes</h3>
+        <p>Chapter-এর গুরুত্বপূর্ণ ধারণা</p>
       </div>
 
-      <div class="card click-card" data-tool="calculator">
-        <div class="card-icon">🧮</div>
-        <h3>Calculator</h3>
+      <div class="card click" data-action="chapter-mcq">
+        <div class="subject-icon">🧠</div>
+        <h3>MCQ</h3>
+        <p>Practice questions</p>
+      </div>
+
+      <div class="card click" data-action="chapter-cq">
+        <div class="subject-icon">✍️</div>
+        <h3>CQ</h3>
+        <p>Creative question</p>
+      </div>
+
+      <div class="card click" data-action="chapter-important">
+        <div class="subject-icon">⭐</div>
+        <h3>Important</h3>
+        <p>Exam focus points</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      💡 এই chapter-এর জন্য নিজের note রাখতে চাইলে Notes → Upload ব্যবহার করতে পারো।
+    </div>
+  `;
+}
+
+/* =========================
+   NOTES
+========================= */
+
+function notesPage(){
+  return `
+    <div class="section-title">
+      <h2>📝 Notes Library</h2>
+      <button class="btn" data-route="upload">+ Add Note</button>
+    </div>
+
+    <div class="notice">
+      এখানে তোমার নিজের text notes save থাকবে। Browser-এর local storage ব্যবহার হচ্ছে।
+    </div>
+
+    ${notes.length===0
+      ? `<div class="card empty">এখনো কোনো note নেই।<br><br>
+          <button class="btn" data-route="upload">প্রথম Note তৈরি করো</button>
+         </div>`
+      : notes.map((n,i)=>`
+        <div class="card note" style="margin-bottom:10px">
+          <button class="delete" data-note="${i}" data-action="delete-note">×</button>
+          <h3>${esc(n.title)}</h3>
+          <div class="note-meta">${esc(n.subject)} • ${esc(n.chapter||"General")}</div>
+          <p style="white-space:pre-wrap;line-height:1.6">${esc(n.content)}</p>
+        </div>
+      `).join("")
+    }
+  `;
+}
+
+function uploadPage(){
+  return `
+    <button class="back" data-route="notes">← Back</button>
+
+    <div class="section-title"><h2>📝 Add New Note</h2></div>
+
+    <div class="card">
+      <div class="form-group">
+        <label>Note Title</label>
+        <input id="noteTitle" placeholder="যেমন: Physics Chapter 1 Short Note">
+      </div>
+
+      <div class="form-group">
+        <label>Subject</label>
+        <select id="noteSubject">
+          ${Object.entries(subjects).map(([id,s])=>
+            `<option value="${id}">${s.name}</option>`
+          ).join("")}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Chapter</label>
+        <input id="noteChapter" placeholder="Chapter name">
+      </div>
+
+      <div class="form-group">
+        <label>Note Content</label>
+        <textarea id="noteContent" placeholder="এখানে তোমার note লিখো..."></textarea>
+      </div>
+
+      <button class="btn full" data-action="save-note">💾 Save Note</button>
+    </div>
+
+    <div class="notice">
+      📌 এই version-এ note browser-এ save হবে। Firebase/online shared upload এখন যোগ করা হয়নি।
+    </div>
+  `;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchPage(){
+  const q=(document.getElementById("searchInput")?.value||"").trim().toLowerCase();
+
+  if(!q){
+    return `
+      <div class="section-title"><h2>🔎 Search</h2></div>
+      <div class="card empty">উপরে search box-এ Subject বা Chapter লিখে খুঁজুন।</div>
+    `;
+  }
+
+  const results=getAllChapters().filter(x=>
+    x.chapter.toLowerCase().includes(q) ||
+    x.subjectName.toLowerCase().includes(q) ||
+    x.paper.toLowerCase().includes(q)
+  );
+
+  return `
+    <div class="section-title">
+      <h2>🔎 Search Results</h2>
+      <span class="badge">${results.length} found</span>
+    </div>
+
+    ${results.length===0
+      ? `<div class="card empty">কিছু পাওয়া যায়নি 😕</div>`
+      : `<div class="chapter-list">
+          ${results.map(x=>`
+            <div class="chapter click"
+                 data-subject="${x.subject}"
+                 data-paper="${esc(x.paper)}"
+                 data-chapter="${esc(x.chapter)}"
+                 data-action="search-open">
+              <div>
+                <b>${esc(x.chapter)}</b><br>
+                <small>${esc(x.subjectName)} • ${esc(x.paper)}</small>
+              </div>
+              <span>›</span>
+            </div>
+          `).join("")}
+        </div>`
+    }
+  `;
+}
+
+/* =========================
+   TOOLS
+========================= */
+
+function toolsPage(){
+  return `
+    <div class="section-title"><h2>🛠️ Student Tools</h2></div>
+
+    <div class="tool-grid">
+      <div class="tool click" data-route="timer">
+        <div class="big">⏱️</div><b>Study Timer</b>
+        <p>Focus session</p>
+      </div>
+
+      <div class="tool click" data-route="calculator">
+        <div class="big">🧮</div><b>Calculator</b>
         <p>Quick calculation</p>
       </div>
 
-      <div class="card click-card" data-tool="todo">
-        <div class="card-icon">✅</div>
-        <h3>To-do List</h3>
-        <p>আজকের কাজ লিখে রাখো</p>
+      <div class="tool click" data-route="todo">
+        <div class="big">📋</div><b>To-Do List</b>
+        <p>Daily tasks</p>
       </div>
 
-      <div class="card click-card" data-tool="converter">
-        <div class="card-icon">🔄</div>
-        <h3>Unit Converter</h3>
-        <p>Unit convert করো</p>
+      <div class="tool click" data-route="converter">
+        <div class="big">🔄</div><b>Unit Converter</b>
+        <p>Common conversions</p>
       </div>
 
-      <div class="card click-card" data-route="progress">
-        <div class="card-icon">📊</div>
-        <h3>Progress</h3>
-        <p>Chapter completion</p>
+      <div class="tool click" data-route="progress">
+        <div class="big">📊</div><b>Progress</b>
+        <p>Track chapters</p>
       </div>
 
-      <div class="card click-card" data-route="quiz">
-        <div class="card-icon">🧠</div>
-        <h3>Quiz</h3>
-        <p>Practice quiz</p>
+      <div class="tool click" data-route="quiz">
+        <div class="big">🧠</div><b>Quiz</b>
+        <p>Test yourself</p>
       </div>
-
     </div>
-
   `;
-
 }
 
-
-/* =====================================================
+/* =========================
    TIMER
-===================================================== */
-
-function timerHTML(){
-
-  return `
-
-    <div class="detail-box">
-
-      <h2>⏱️ Study Timer</h2>
-
-      <div class="timer" id="timerDisplay">
-        ${formatTime(state.timerSeconds)}
-      </div>
-
-      <div class="timer-buttons">
-
-        <button class="btn" data-action="startTimer">
-          ▶ Start
-        </button>
-
-        <button class="btn secondary" data-action="pauseTimer">
-          ⏸ Pause
-        </button>
-
-        <button class="btn danger" data-action="resetTimer">
-          ↻ Reset
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
+========================= */
 
 function formatTime(sec){
+  const m=Math.floor(sec/60);
+  const s=sec%60;
+  return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
 
-  let m=Math.floor(sec/60);
-  let s=sec%60;
+function timerPage(){
+  return `
+    <button class="back" data-route="tools">← Back</button>
+    <div class="section-title"><h2>⏱️ Study Timer</h2></div>
 
-  return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+    <div class="card">
+      <div class="timer" id="timerDisplay">${formatTime(timerSeconds)}</div>
 
+      <div class="row" style="justify-content:center">
+        <button class="btn" data-action="timer-toggle">
+          ${timerRunning?"⏸️ Pause":"▶️ Start"}
+        </button>
+        <button class="btn secondary" data-action="timer-reset">↻ Reset</button>
+      </div>
+    </div>
+
+    <div class="notice">
+      💡 25 মিনিট Focus + 5 মিনিট Break দিয়ে পড়তে পারো।
+    </div>
+  `;
 }
 
 function startTimer(){
-
-  if(timerInterval) return;
-
-  state.timerRunning=true;
-
+  if(timerRunning)return;
+  timerRunning=true;
   timerInterval=setInterval(()=>{
-
-    if(state.timerSeconds>0){
-
-      state.timerSeconds--;
-
+    if(timerSeconds>0){
+      timerSeconds--;
       const el=document.getElementById("timerDisplay");
-
-      if(el) el.textContent=formatTime(state.timerSeconds);
-
-    }
-    else{
-
+      if(el)el.textContent=formatTime(timerSeconds);
+    }else{
       clearInterval(timerInterval);
-      timerInterval=null;
-      state.timerRunning=false;
-
-      alert("🎉 Study session complete!");
-
+      timerRunning=false;
+      alert("🎉 Focus session complete!");
     }
-
   },1000);
-
 }
 
-function pauseTimer(){
-
-  clearInterval(timerInterval);
-  timerInterval=null;
-  state.timerRunning=false;
-
-}
-
-function resetTimer(){
-
-  pauseTimer();
-
-  state.timerSeconds=1500;
-
-  const el=document.getElementById("timerDisplay");
-
-  if(el) el.textContent=formatTime(1500);
-
-}
-
-
-/* =====================================================
+/* =========================
    CALCULATOR
-===================================================== */
+========================= */
 
-function calculatorHTML(){
-
+function calculatorPage(){
   return `
+    <button class="back" data-route="tools">← Back</button>
+    <div class="section-title"><h2>🧮 Calculator</h2></div>
 
-    <div class="form">
+    <div class="card">
+      <input class="calc-display" id="calc" readonly value="">
 
-      <h2>🧮 Calculator</h2>
-
-      <div class="form-group" style="margin-top:15px">
-
-        <input
-          id="calcInput"
-          placeholder="Example: 25*4+10">
-
+      <div class="calc-grid">
+        ${["7","8","9","÷","4","5","6","×","1","2","3","-","0",".","(",")",
+           "C","+","⌫","="].map(x=>`
+           <button data-calc="${x}">${x}</button>
+        `).join("")}
       </div>
-
-      <button class="btn" data-action="calculate">
-        = Calculate
-      </button>
-
-      <div id="calcResult"
-           style="font-size:25px;font-weight:bold;margin-top:15px">
-      </div>
-
     </div>
-
   `;
-
 }
 
+function calcPress(v){
+  const input=document.getElementById("calc");
+  if(!input)return;
 
-/* =====================================================
-   TODO
-===================================================== */
-
-function todoHTML(){
-
-  return `
-
-    <div class="form">
-
-      <h2>✅ To-do List</h2>
-
-      <div class="todo-row" style="margin-top:15px">
-
-        <input id="todoInput" placeholder="আজ কী পড়বে?">
-
-        <button class="btn" data-action="addTodo">
-          Add
-        </button>
-
-      </div>
-
-      <div id="todoList">
-        ${renderTodos()}
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-function renderTodos(){
-
-  if(!todos.length){
-
-    return `<div class="empty">আজকের কোনো task নেই।</div>`;
-
+  if(v==="C"){input.value="";return}
+  if(v==="⌫"){input.value=input.value.slice(0,-1);return}
+  if(v==="="){
+    try{
+      let exp=input.value.replaceAll("×","*").replaceAll("÷","/");
+      if(!/^[0-9+\-*/().\s]+$/.test(exp))throw Error();
+      input.value=String(Function('"use strict";return ('+exp+')')());
+    }catch{
+      input.value="Error";
+    }
+    return;
   }
-
-  return todos.map((t,i)=>`
-
-    <div class="todo-item ${t.done?"done":""}">
-
-      <span
-        data-action="toggleTodo"
-        data-index="${i}"
-        style="cursor:pointer">
-        ${esc(t.text)}
-      </span>
-
-      <button
-        class="btn danger"
-        style="padding:7px 10px"
-        data-action="removeTodo"
-        data-index="${i}">
-        ✕
-      </button>
-
-    </div>
-
-  `).join("");
-
+  input.value+=v;
 }
 
+/* =========================
+   TODO
+========================= */
 
-/* =====================================================
-   CONVERTER
-===================================================== */
-
-function converterHTML(){
-
+function todoPage(){
   return `
+    <button class="back" data-route="tools">← Back</button>
+    <div class="section-title"><h2>📋 To-Do List</h2></div>
 
-    <div class="form">
-
-      <h2>🔄 Unit Converter</h2>
-
-      <div class="form-group" style="margin-top:15px">
-
-        <label>Value</label>
-
-        <input id="convertValue" type="number" placeholder="100">
-
+    <div class="card">
+      <div class="row">
+        <input id="todoInput" placeholder="আজ কী পড়বে?">
+        <button class="btn" data-action="add-todo">Add</button>
       </div>
+    </div>
 
+    <div style="margin-top:12px">
+      ${todos.length===0
+        ? `<div class="card empty">কোনো task নেই।</div>`
+        : todos.map((t,i)=>`
+          <div class="todo-item ${t.done?"done":""}">
+            <input type="checkbox" style="width:auto" data-todo="${i}" data-action="todo-check" ${t.done?"checked":""}>
+            <span style="flex:1">${esc(t.text)}</span>
+            <button class="btn danger" data-todo="${i}" data-action="delete-todo">×</button>
+          </div>
+        `).join("")
+      }
+    </div>
+  `;
+}
+
+/* =========================
+   CONVERTER
+========================= */
+
+function converterPage(){
+  return `
+    <button class="back" data-route="tools">← Back</button>
+    <div class="section-title"><h2>🔄 Unit Converter</h2></div>
+
+    <div class="card">
+      <div class="form-group">
+        <label>Value</label>
+        <input id="convValue" type="number" placeholder="100">
+      </div>
 
       <div class="form-group">
-
-        <label>Convert</label>
-
-        <select id="convertType">
-
+        <label>Conversion</label>
+        <select id="convType">
           <option value="km-m">Kilometer → Meter</option>
           <option value="m-km">Meter → Kilometer</option>
+          <option value="m-cm">Meter → Centimeter</option>
+          <option value="cm-m">Centimeter → Meter</option>
           <option value="kg-g">Kilogram → Gram</option>
           <option value="g-kg">Gram → Kilogram</option>
           <option value="c-f">Celsius → Fahrenheit</option>
           <option value="f-c">Fahrenheit → Celsius</option>
-
         </select>
-
       </div>
 
-
-      <button class="btn" data-action="convert">
-        Convert
-      </button>
-
-
-      <div id="convertResult"
-           style="font-size:24px;font-weight:bold;margin-top:15px">
-      </div>
-
+      <button class="btn full" data-action="convert">Convert</button>
+      <div id="convResult" class="notice" style="display:none"></div>
     </div>
-
   `;
-
 }
 
+function convert(){
+  const v=parseFloat(document.getElementById("convValue").value);
+  const type=document.getElementById("convType").value;
+  const out=document.getElementById("convResult");
 
-/* =====================================================
+  if(isNaN(v)){
+    out.style.display="block";
+    out.textContent="একটি value দাও।";
+    return;
+  }
+
+  let r=0;
+  const names={
+    "km-m":"m",
+    "m-km":"km",
+    "m-cm":"cm",
+    "cm-m":"m",
+    "kg-g":"g",
+    "g-kg":"kg",
+    "c-f":"°F",
+    "f-c":"°C"
+  };
+
+  if(type==="km-m")r=v*1000;
+  if(type==="m-km")r=v/1000;
+  if(type==="m-cm")r=v*100;
+  if(type==="cm-m")r=v/100;
+  if(type==="kg-g")r=v*1000;
+  if(type==="g-kg")r=v/1000;
+  if(type==="c-f")r=(v*9/5)+32;
+  if(type==="f-c")r=(v-32)*5/9;
+
+  out.style.display="block";
+  out.innerHTML=`<b>Result:</b> ${r} ${names[type]}`;
+}
+
+/* =========================
    PROGRESS
-===================================================== */
+========================= */
 
 function progressPage(){
+  const all=getAllChapters();
+  const done=all.filter(x=>completed.includes(
+    x.subject+"|"+x.paper+"|"+x.chapter
+  )).length;
 
-  const total=allChapters().length;
-
-  const percent=total?
-    Math.round((completed.length/total)*100):0;
+  const percent=all.length?Math.round(done/all.length*100):0;
 
   return `
+    <button class="back" data-route="tools">← Back</button>
+    <div class="section-title"><h2>📊 Study Progress</h2></div>
 
-    <button class="back" data-action="back">← Back</button>
-
-    <div class="detail-box">
-
-      <h2>📊 Study Progress</h2>
-
-      <p style="margin-top:8px">
-        Completed ${completed.length} / ${total} chapters
-      </p>
-
-      <div class="progress-bar">
-        <div class="progress-fill"
-             style="width:${percent}%"></div>
-      </div>
-
+    <div class="card">
       <h2>${percent}%</h2>
-
+      <div class="progressbar"><span style="width:${percent}%"></span></div>
+      <p>${done} / ${all.length} chapters completed</p>
     </div>
 
+    <div class="section-title"><h2>Subject Progress</h2></div>
 
-    <div class="grid">
+    ${Object.entries(subjects).map(([id,s])=>{
+      const chapters=Object.values(s.papers).flat();
+      const d=chapters.filter(ch=>completed.includes(
+        id+"|"+Object.keys(s.papers).find(p=>s.papers[p].includes(ch))+"|"+ch
+      )).length;
+      const p=chapters.length?Math.round(d/chapters.length*100):0;
 
-      <div class="card">
-        <div class="card-icon">📚</div>
-        <h3>${total}</h3>
-        <p>Total Chapters</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">✅</div>
-        <h3>${completed.length}</h3>
-        <p>Completed</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">⭐</div>
-        <h3>${bookmarks.length}</h3>
-        <p>Bookmarks</p>
-      </div>
-
-    </div>
-
+      return `
+        <div class="card" style="margin-bottom:9px">
+          <b>${s.icon} ${s.name}</b>
+          <p>${d}/${chapters.length} completed</p>
+          <div class="progressbar"><span style="width:${p}%"></span></div>
+        </div>
+      `;
+    }).join("")}
   `;
-
 }
 
-
-/* =====================================================
+/* =========================
    QUIZ
-===================================================== */
-
-const quizQuestions=[
-
-  {
-    q:"HCl + NaOH বিক্রিয়ায় কোন লবণ তৈরি হয়?",
-    options:["NaCl","KCl","CaCl₂","Na₂CO₃"],
-    answer:0
-  },
-
-  {
-    q:"Velocity-এর SI unit কোনটি?",
-    options:["m/s","kg","N","J"],
-    answer:0
-  },
-
-  {
-    q:"DNA-এর পূর্ণরূপ কী?",
-    options:[
-      "Deoxyribonucleic Acid",
-      "Dynamic Nuclear Acid",
-      "Double Nitrogen Acid",
-      "None"
-    ],
-    answer:0
-  },
-
-  {
-    q:"HTML-এর পূর্ণরূপ কী?",
-    options:[
-      "Hyper Text Markup Language",
-      "High Text Machine Language",
-      "Hyper Tool Mark Language",
-      "None"
-    ],
-    answer:0
-  },
-
-  {
-    q:"Matrix-এর determinant সাধারণত কোন symbol দিয়ে প্রকাশ করা হয়?",
-    options:["|A|","A²","∑A","∆A"],
-    answer:0
-  },
-
-  {
-    q:"মানুষের রক্তের প্রধান তরল অংশ কোনটি?",
-    options:["Plasma","Platelet","RBC","WBC"],
-    answer:0
-  },
-
-  {
-    q:"CO₂ একটি—",
-    options:["Greenhouse gas","Noble gas","Metal","Halogen"],
-    answer:0
-  },
-
-  {
-    q:"বাংলা সাহিত্যের উপন্যাস 'লালসালু' এর লেখক কে?",
-    options:[
-      "সৈয়দ ওয়ালীউল্লাহ",
-      "শরৎচন্দ্র",
-      "রবীন্দ্রনাথ",
-      "জসীমউদ্দীন"
-    ],
-    answer:0
-  }
-
-];
+========================= */
 
 function quizPage(){
+  const q=quiz[quizIndex];
 
-  if(state.quizFinished){
-
+  if(quizIndex>=quiz.length){
     return `
-
-      <div class="detail-box">
-
-        <h2>🎉 Quiz Complete!</h2>
-
-        <div class="quiz-score">
-          ${state.quizScore} / ${quizQuestions.length}
-        </div>
-
-        <p style="text-align:center">
-          আবার চেষ্টা করো এবং score improve করো।
-        </p>
-
-        <div style="text-align:center;margin-top:15px">
-
-          <button class="btn" data-action="restartQuiz">
-            🔄 Try Again
-          </button>
-
-        </div>
-
+      <button class="back" data-route="tools">← Back</button>
+      <div class="card" style="text-align:center">
+        <div style="font-size:50px">🎉</div>
+        <h2>Quiz Complete!</h2>
+        <p style="font-size:20px">Score: <b>${quizScore}/${quiz.length}</b></p>
+        <button class="btn" data-action="restart-quiz">Try Again</button>
       </div>
-
     `;
-
   }
 
-  const q=quizQuestions[state.quizIndex];
-
   return `
-
-    <div class="detail-box">
-
-      <p style="color:#64748b">
-        Question ${state.quizIndex+1} / ${quizQuestions.length}
-      </p>
-
-      <h2 style="margin-top:10px">
-        ${esc(q.q)}
-      </h2>
-
-
-      <div style="margin-top:15px">
-
-        ${q.options.map((op,i)=>`
-
-          <button
-            class="quiz-option"
-            data-action="answer"
-            data-answer="${i}">
-
-            ${String.fromCharCode(65+i)}.
-            ${esc(op)}
-
-          </button>
-
-        `).join("")}
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =====================================================
-   FUN
-===================================================== */
-
-function funPage(){
-
-  return `
+    <button class="back" data-route="tools">← Back</button>
 
     <div class="section-title">
-      <h2>🎮 Fun Zone</h2>
+      <h2>🧠 Quick Quiz</h2>
+      <span class="badge">${quizIndex+1}/${quiz.length}</span>
     </div>
 
     <div class="card">
-
-      <div style="font-size:45px">🧠</div>
-
-      <h2>Brain Teaser</h2>
-
-      <p style="margin-top:12px">
-        কোন জিনিস যত বেশি শুকায়, তত বেশি ভিজে?
-      </p>
-
-      <button
-        class="btn"
-        style="margin-top:15px"
-        data-action="riddleAnswer">
-
-        Answer দেখো
-
-      </button>
-
+      <h3>${esc(q.q)}</h3>
+      ${q.options.map((o,i)=>`
+        <button class="quiz-option"
+                data-answer="${i}"
+                data-action="quiz-answer">
+          ${String.fromCharCode(65+i)}. ${esc(o)}
+        </button>
+      `).join("")}
     </div>
-
-
-    <div class="card" style="margin-top:15px">
-
-      <div style="font-size:40px">😂</div>
-
-      <h3>Study Joke</h3>
-
-      <p style="margin-top:10px">
-        Teacher: পড়া শিখেছ?
-        <br>
-        Student: Sir, পড়া আমাকে দেখে পালিয়ে গেছে! 😭😂
-      </p>
-
-    </div>
-
   `;
-
 }
 
+/* =========================
+   RESULT
+========================= */
 
-/* =====================================================
-   MORE
-===================================================== */
+function resultPage(){
+  return `
+    <div class="section-title"><h2>📊 Result Checker</h2></div>
 
-function morePage(){
+    <div class="card">
+      <p>SSC/HSC result দেখতে official result website ব্যবহার করো।</p>
+
+      <div class="form-group">
+        <label>Exam</label>
+        <select id="resultExam">
+          <option>SSC / Dakhil</option>
+          <option>HSC / Alim</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Roll</label>
+        <input id="roll" placeholder="Roll number">
+      </div>
+
+      <div class="form-group">
+        <label>Registration</label>
+        <input id="reg" placeholder="Registration number">
+      </div>
+
+      <button class="btn full" data-action="official-result">
+        🌐 Open Official Result Website
+      </button>
+    </div>
+
+    <div class="notice">
+      নিরাপত্তা ও নির্ভুলতার জন্য StudyNest নিজে result তৈরি বা অনুমান করে না।
+    </div>
+  `;
+}
+
+/* =========================
+   FUN SITE
+========================= */
+
+function funPage(){
+  const s=stories[currentStory];
 
   return `
-
     <div class="section-title">
-      <h2>☰ More</h2>
+      <h2>😂 StudyNest Fun Site</h2>
     </div>
+
+    <div class="hero">
+      <h1>Study করো, হাসতেও ভুলবে না! 😄</h1>
+      <p>একটু break নাও, তারপর আবার পড়ায় ফিরে যাও।</p>
+    </div>
+
+    <div class="section-title"><h2>🤣 Funny Stories</h2></div>
+
+    <div class="story">
+      <h3>${s.title}</h3>
+      <p>${s.text}</p>
+      <button class="btn" data-action="next-story">Next Story ➜</button>
+      <button class="btn secondary" data-action="random-story">🎲 Random</button>
+    </div>
+
+    <div class="section-title"><h2>😆 আরও কিছু Stories</h2></div>
+
+    ${stories.slice(0,6).map(x=>`
+      <div class="story">
+        <h3>${x.title}</h3>
+        <p>${x.text}</p>
+      </div>
+    `).join("")}
+
+    <div class="section-title"><h2>🧩 Brain Teasers</h2></div>
+
+    ${riddles.map((r,i)=>`
+      <div class="card riddle" style="margin-bottom:10px">
+        <b>${i+1}. ${r[0]}</b>
+        <div style="margin-top:9px">
+          <button class="btn secondary"
+                  data-riddle="${i}"
+                  data-action="show-riddle">
+            Answer দেখাও
+          </button>
+        </div>
+      </div>
+    `).join("")}
+
+    <div class="section-title"><h2>😂 Study Jokes</h2></div>
+
+    <div class="card">
+      <p>📖 বই খুললেই ঘুম আসে। বই বন্ধ করলেই মনে হয়—‘আহা, পড়া দরকার!’ 😴</p>
+      <p>🧠 Brain: পড়ি? Heart: একটু পরে। Mobile: আমাকে আগে দেখ! 😂</p>
+      <p>⏰ Alarm: উঠে পড়ো। Student: আর ৫ মিনিট। সেই ৫ মিনিটের বয়স এখন ২ ঘণ্টা। 🤣</p>
+    </div>
+
+    <div class="notice">
+      💡 ভবিষ্যতে তুমি চাইলে এই Fun Site-এ আরও গল্প, joke, riddle ও quiz যোগ করতে পারবে।
+    </div>
+  `;
+}
+
+/* =========================
+   MORE
+========================= */
+
+function morePage(){
+  return `
+    <div class="section-title"><h2>☰ More</h2></div>
 
     <div class="grid">
-
-      <div class="card click-card" data-route="upload">
-        <div class="card-icon">📤</div>
-        <h3>Upload Note</h3>
+      <div class="card click" data-route="upload">
+        <div class="subject-icon">📝</div>
+        <h3>Add Note</h3>
+        <p>নিজের note তৈরি করো</p>
       </div>
 
-      <div class="card click-card" data-route="result">
-        <div class="card-icon">🎓</div>
-        <h3>Result Check</h3>
+      <div class="card click" data-route="result">
+        <div class="subject-icon">📊</div>
+        <h3>Result</h3>
+        <p>Official result portal</p>
       </div>
 
-      <div class="card click-card" data-route="fun">
-        <div class="card-icon">🎮</div>
-        <h3>Fun Zone</h3>
+      <div class="card click" data-route="fun">
+        <div class="subject-icon">😂</div>
+        <h3>Fun Site</h3>
+        <p>Stories & riddles</p>
       </div>
 
-      <div class="card click-card" data-action="theme">
-        <div class="card-icon">🌙</div>
+      <div class="card click" data-action="toggle-theme">
+        <div class="subject-icon">🌙</div>
         <h3>Dark / Light</h3>
+        <p>Theme পরিবর্তন করো</p>
       </div>
-
     </div>
 
+    <div class="section-title"><h2>About StudyNest</h2></div>
 
-    <div class="detail-box" style="margin-top:18px">
-
-      <h2>👨‍💻 About StudyNest</h2>
-
-      <p style="margin-top:10px">
-        StudyNest একটি student-focused educational website.
+    <div class="card">
+      <h3>📚 StudyNest</h3>
+      <p style="line-height:1.7">
+        HSC Science students-এর জন্য তৈরি একটি simple study website।
+        এখানে subject, chapter, notes, quiz, tools এবং fun section আছে।
       </p>
-
-      <p style="margin-top:10px;font-weight:bold">
-        Created by Ahmed Sami
-      </p>
-
+      <p><b>Created by Ahmed Sami</b></p>
     </div>
-
   `;
-
 }
 
-
-/* =====================================================
-   RENDER
-===================================================== */
-
-function render(){
-
-  const app=document.getElementById("app");
-
-  let html="";
-
-  switch(state.page){
-
-    case "home":
-      html=homePage();
-      break;
-
-    case "explore":
-      html=explorePage();
-      break;
-
-    case "papers":
-      html=papersPage();
-      break;
-
-    case "chapters":
-      html=chaptersPage();
-      break;
-
-    case "chapter":
-      html=chapterPage();
-      break;
-
-    case "search":
-      html=searchPage();
-      break;
-
-    case "notes":
-      html=notesPage();
-      break;
-
-    case "upload":
-      html=uploadPage();
-      break;
-
-    case "result":
-      html=resultPage();
-      break;
-
-    case "tools":
-      html=toolsPage();
-      break;
-
-    case "progress":
-      html=progressPage();
-      break;
-
-    case "quiz":
-      html=quizPage();
-      break;
-
-    case "fun":
-      html=funPage();
-      break;
-
-    case "more":
-      html=morePage();
-      break;
-
-    default:
-      html=homePage();
-
-  }
-
-  app.innerHTML=html;
-
-  updateNav();
-
-}
-
-
-/* =====================================================
-   TOOL MODAL
-===================================================== */
-
-function openTool(tool){
-
-  let title="";
-  let content="";
-
-  if(tool==="timer"){
-    title="⏱️ Study Timer";
-    content=timerHTML();
-  }
-
-  if(tool==="calculator"){
-    title="🧮 Calculator";
-    content=calculatorHTML();
-  }
-
-  if(tool==="todo"){
-    title="✅ To-do List";
-    content=todoHTML();
-  }
-
-  if(tool==="converter"){
-    title="🔄 Unit Converter";
-    content=converterHTML();
-  }
-
-  openModal(title,content);
-
-}
-
-
-/* =====================================================
+/* =========================
    MODAL
-===================================================== */
+========================= */
 
-function openModal(title,content){
-
-  document.getElementById("modalTitle").textContent=title;
-
-  document.getElementById("modalContent").innerHTML=content;
-
+function showModal(html){
+  document.getElementById("modalContent").innerHTML=html;
   document.getElementById("modal").classList.add("show");
-
 }
 
 function closeModal(){
-
   document.getElementById("modal").classList.remove("show");
-
 }
 
+function chapterModal(type){
+  const title={
+    notes:"📝 Chapter Notes",
+    cq:"✍️ Creative Question",
+    important:"⭐ Important Points"
+  }[type];
 
-/* =====================================================
-   EVENT DELEGATION
-   IMPORTANT — সব button এখান থেকে কাজ করবে
-===================================================== */
+  const text={
+    notes:`<p><b>${esc(selectedChapter)}</b> chapter-এর জন্য এখানে নিজের short notes লিখে practice করতে পারো।</p>
+           <ul><li>সংজ্ঞাগুলো আলাদা করে পড়ো</li><li>মূল সূত্রগুলো লিখে রাখো</li><li>Concept বুঝে তারপর MCQ practice করো</li></ul>`,
+    cq:`<p><b>Practice CQ:</b> ${esc(selectedChapter)} বিষয়টি ব্যাখ্যা করো এবং প্রয়োজনীয় সূত্র/ধারণা প্রয়োগ করে সমস্যার সমাধান দেখাও।</p>`,
+    important:`<ul><li>Chapter-এর গুরুত্বপূর্ণ সংজ্ঞা</li><li>মূল সূত্র ও একক</li><li>Common MCQ concepts</li><li>CQ-এর গুরুত্বপূর্ণ অংশ</li></ul>`
+  }[type];
 
-document.addEventListener("click",function(e){
+  showModal(`
+    <div class="modal-head">
+      <h2>${title}</h2>
+      <button class="close" data-action="close-modal">×</button>
+    </div>
+    ${text}
+  `);
+}
 
-  const route=e.target.closest("[data-route]");
+function chapterMCQ(){
+  showModal(`
+    <div class="modal-head">
+      <h2>🧠 MCQ Practice</h2>
+      <button class="close" data-action="close-modal">×</button>
+    </div>
+    <p><b>Question:</b> ${esc(selectedChapter)} পড়ার সময় সবচেয়ে গুরুত্বপূর্ণ কোনটি?</p>
+    <button class="quiz-option" data-action="mcq-correct">A. Concept বুঝে পড়া</button>
+    <button class="quiz-option" data-action="mcq-wrong">B. শুধু না বুঝে মুখস্থ করা</button>
+    <button class="quiz-option" data-action="mcq-wrong">C. বই না খোলা</button>
+    <button class="quiz-option" data-action="mcq-wrong">D. শুধু পরীক্ষার আগের রাতে পড়া</button>
+  `);
+}
 
-  if(route){
+/* =========================
+   EVENTS
+========================= */
 
-    go(route.dataset.route);
-
+document.addEventListener("click",e=>{
+  const routeEl=e.target.closest("[data-route]");
+  if(routeEl){
+    const r=routeEl.dataset.route;
+    go(r);
     return;
-
   }
 
+  const actionEl=e.target.closest("[data-action]");
+  if(!actionEl)return;
 
-  const action=e.target.closest("[data-action]");
+  const action=actionEl.dataset.action;
 
-  if(action){
+  if(action==="toggle-theme"){
+    document.body.classList.toggle("dark");
+    localStorage.setItem("sn_dark",
+      document.body.classList.contains("dark")?"1":"0");
+    render();
+  }
 
-    const a=action.dataset.action;
+  if(action==="open-subject"){
+    selectedSubject=actionEl.dataset.subject;
+    page="subject";
+    render();
+  }
 
+  if(action==="open-paper"){
+    selectedPaper=actionEl.dataset.paper;
+    page="chapters";
+    render();
+  }
 
-    if(a==="back"){
-      back();
+  if(action==="open-chapter"){
+    selectedChapter=actionEl.dataset.chapter;
+    page="chapter";
+    render();
+  }
+
+  if(action==="back-subject"){
+    page="subject";
+    render();
+  }
+
+  if(action==="back-chapters"){
+    page="chapters";
+    render();
+  }
+
+  if(action==="complete")toggleComplete();
+  if(action==="bookmark")toggleBookmark();
+
+  if(action==="chapter-notes")chapterModal("notes");
+  if(action==="chapter-cq")chapterModal("cq");
+  if(action==="chapter-important")chapterModal("important");
+  if(action==="chapter-mcq")chapterMCQ();
+
+  if(action==="close-modal")closeModal();
+
+  if(action==="mcq-correct"){
+    alert("✅ Correct! Concept বুঝে পড়া সবচেয়ে ভালো।");
+    closeModal();
+  }
+
+  if(action==="mcq-wrong"){
+    alert("❌ Try again!");
+  }
+
+  if(action==="save-note"){
+    const title=document.getElementById("noteTitle").value.trim();
+    const subject=document.getElementById("noteSubject");
+    const chapter=document.getElementById("noteChapter").value.trim();
+    const content=document.getElementById("noteContent").value.trim();
+
+    if(!title||!content){
+      alert("Note title এবং content দাও।");
+      return;
     }
 
+    notes.unshift({
+      title,
+      subject:subject.options[subject.selectedIndex].text,
+      chapter,
+      content,
+      date:new Date().toLocaleDateString()
+    });
 
-    else if(a==="theme"){
+    save();
+    alert("✅ Note saved!");
+    page="notes";
+    render();
+  }
 
-      document.body.classList.toggle("dark");
-
-      localStorage.setItem(
-        "sn_dark",
-        document.body.classList.contains("dark")
-      );
-
-    }
-
-
-    else if(a==="search"){
-
-      state.search="";
-
-      go("search");
-
-    }
-
-
-    else if(a==="subject"){
-
-      go("papers",{
-        subject:action.dataset.subject
-      });
-
-    }
-
-
-    else if(a==="paper"){
-
-      go("chapters",{
-        paper:action.dataset.paper
-      });
-
-    }
-
-
-    else if(a==="chapter"){
-
-      go("chapter",{
-        chapter:action.dataset.chapter
-      });
-
-    }
-
-
-    else if(a==="openSearch"){
-
-      go("chapter",{
-        subject:action.dataset.subject,
-        paper:action.dataset.paper,
-        chapter:action.dataset.chapter
-      });
-
-    }
-
-
-    else if(a==="doSearch"){
-
-      const input=document.getElementById("searchInput");
-
-      state.search=input ? input.value.trim() : "";
-
+  if(action==="delete-note"){
+    const i=Number(actionEl.dataset.note);
+    if(confirm("এই note delete করবে?")){
+      notes.splice(i,1);
+      save();
       render();
-
     }
+  }
 
-
-    else if(a==="noteSearch"){
-
-      const input=document.getElementById("noteSearch");
-
-      state.search=input ? input.value.trim() : "";
-
+  if(action==="timer-toggle"){
+    if(timerRunning){
+      clearInterval(timerInterval);
+      timerRunning=false;
       render();
-
-    }
-
-
-    else if(a==="saveNote"){
-
-      saveNewNote();
-
-    }
-
-
-    else if(a==="viewNote"){
-
-      viewNote(action.dataset.id);
-
-    }
-
-
-    else if(a==="deleteNote"){
-
-      deleteNote(action.dataset.id);
-
-    }
-
-
-    else if(a==="result"){
-
-      openResult();
-
-    }
-
-
-    else if(a==="startTimer"){
-
+    }else{
       startTimer();
-
-    }
-
-
-    else if(a==="pauseTimer"){
-
-      pauseTimer();
-
-    }
-
-
-    else if(a==="resetTimer"){
-
-      resetTimer();
-
-    }
-
-
-    else if(a==="calculate"){
-
-      calculate();
-
-    }
-
-
-    else if(a==="addTodo"){
-
-      addTodo();
-
-    }
-
-
-    else if(a==="toggleTodo"){
-
-      toggleTodo(Number(action.dataset.index));
-
-    }
-
-
-    else if(a==="removeTodo"){
-
-      todos.splice(Number(action.dataset.index),1);
-
-      saveData();
-
-      document.getElementById("todoList").innerHTML=renderTodos();
-
-    }
-
-
-    else if(a==="convert"){
-
-      convertUnit();
-
-    }
-
-
-    else if(a==="complete"){
-
-      toggleComplete();
-
-    }
-
-
-    else if(a==="bookmark"){
-
-      toggleBookmark();
-
-    }
-
-
-    else if(a==="chapterContent"){
-
-      showChapterContent(action.dataset.type);
-
-    }
-
-
-    else if(a==="chapterNotes"){
-
-      state.search=state.chapter;
-
-      go("notes");
-
-    }
-
-
-    else if(a==="answer"){
-
-      answerQuiz(Number(action.dataset.answer));
-
-    }
-
-
-    else if(a==="restartQuiz"){
-
-      state.quizIndex=0;
-      state.quizScore=0;
-      state.quizFinished=false;
-
       render();
-
     }
-
-
-    else if(a==="riddleAnswer"){
-
-      openModal(
-        "🧠 Answer",
-        `<h3>তোয়ালে! 🧻</h3>
-         <p style="margin-top:10px">
-         তোয়ালে অন্য জিনিসকে শুকাতে গিয়ে নিজেই ভিজে যায়। 😄
-         </p>`
-      );
-
-    }
-
-
-    else if(a==="closeModal"){
-
-      closeModal();
-
-    }
-
   }
 
+  if(action==="timer-reset"){
+    clearInterval(timerInterval);
+    timerRunning=false;
+    timerSeconds=25*60;
+    render();
+  }
+
+  if(action==="add-todo"){
+    const input=document.getElementById("todoInput");
+    const text=input.value.trim();
+    if(!text)return;
+    todos.push({text,done:false});
+    save();
+    render();
+  }
+
+  if(action==="todo-check"){
+    const i=Number(actionEl.dataset.todo);
+    todos[i].done=!todos[i].done;
+    save();
+    render();
+  }
+
+  if(action==="delete-todo"){
+    const i=Number(actionEl.dataset.todo);
+    todos.splice(i,1);
+    save();
+    render();
+  }
+
+  if(action==="convert")convert();
+
+  if(action==="restart-quiz"){
+    quizIndex=0;
+    quizScore=0;
+    render();
+  }
+
+  if(action==="quiz-answer"){
+    const answer=Number(actionEl.dataset.answer);
+    if(answer===quiz[quizIndex].ans)quizScore++;
+    quizIndex++;
+    render();
+  }
+
+  if(action==="official-result"){
+    window.open("https://www.educationboardresults.gov.bd/","_blank");
+  }
+
+  if(action==="next-story"){
+    currentStory=(currentStory+1)%stories.length;
+    render();
+  }
+
+  if(action==="random-story"){
+    currentStory=Math.floor(Math.random()*stories.length);
+    render();
+  }
+
+  if(action==="show-riddle"){
+    const i=Number(actionEl.dataset.riddle);
+    showModal(`
+      <div class="modal-head">
+        <h2>🧩 Answer</h2>
+        <button class="close" data-action="close-modal">×</button>
+      </div>
+      <p><b>${esc(riddles[i][0])}</b></p>
+      <div class="notice">💡 ${esc(riddles[i][1])}</div>
+    `);
+  }
+
+  if(action==="search-open"){
+    selectedSubject=actionEl.dataset.subject;
+    selectedPaper=actionEl.dataset.paper;
+    selectedChapter=actionEl.dataset.chapter;
+    page="chapter";
+    render();
+  }
 });
 
+document.addEventListener("click",e=>{
+  const c=e.target.closest("[data-calc]");
+  if(c)calcPress(c.dataset.calc);
+});
 
-/* =====================================================
-   SUBJECT / PAPER
-===================================================== */
-
-function showChapterContent(type){
-
-  let title="";
-  let content="";
-
-  if(type==="notes"){
-
-    title="📝 Notes";
-
-    content=`
-      <h3>${esc(state.chapter)}</h3>
-
-      <p style="margin-top:12px">
-        এই chapter-এর মূল ধারণাগুলো বুঝে পড়ো এবং
-        textbook-এর গুরুত্বপূর্ণ সংজ্ঞা, সূত্র ও উদাহরণ
-        আলাদা করে note করে রাখো।
-      </p>
-
-      <p style="margin-top:12px">
-        📌 প্রথমে concept → তারপর formula → তারপর
-        example → শেষে MCQ/CQ practice করো।
-      </p>
-    `;
-
+document.getElementById("searchInput").addEventListener("input",()=>{
+  const q=document.getElementById("searchInput").value.trim();
+  if(q){
+    page="search";
+    render();
+    const input=document.getElementById("searchInput");
+    input.value=q;
+    input.focus();
   }
+});
 
+/* =========================
+   INITIAL
+========================= */
 
-  if(type==="mcq"){
-
-    title="❓ MCQ";
-
-    content=`
-
-      <h3>${esc(state.chapter)}</h3>
-
-      <p style="margin-top:12px">
-        ১. এই chapter-এর প্রধান বিষয় কোনটি?
-      </p>
-
-      <button class="quiz-option"
-              style="margin-top:10px"
-              onclick="this.style.background='#dcfce7'">
-        A. Chapter-এর মূল concept
-      </button>
-
-      <button class="quiz-option"
-              onclick="this.style.background='#fee2e2'">
-        B. অন্য বিষয়
-      </button>
-
-      <p style="margin-top:15px;color:#64748b">
-        আরও MCQ যোগ করা যাবে।
-      </p>
-
-    `;
-
-  }
-
-
-  if(type==="cq"){
-
-    title="✍️ CQ";
-
-    content=`
-
-      <h3>${esc(state.chapter)}</h3>
-
-      <p style="margin-top:12px">
-        <b>সৃজনশীল প্রশ্ন:</b>
-      </p>
-
-      <p style="margin-top:8px">
-        ${esc(state.chapter)}-এর মূল ধারণা ব্যাখ্যা করো
-        এবং প্রয়োজনীয় সূত্র/উদাহরণসহ উত্তর দাও।
-      </p>
-
-      <p style="margin-top:12px">
-        ক) সংজ্ঞা লেখো।
-        <br>
-        খ) মূল বৈশিষ্ট্য ব্যাখ্যা করো।
-        <br>
-        গ) প্রয়োগ দেখাও।
-        <br>
-        ঘ) বিশ্লেষণ করো।
-      </p>
-
-    `;
-
-  }
-
-
-  if(type==="important"){
-
-    title="⭐ Important";
-
-    content=`
-
-      <h3>Important Topics</h3>
-
-      <ul style="margin-top:12px;line-height:2">
-
-        <li>📌 সংজ্ঞা ও মূল ধারণা</li>
-        <li>📌 গুরুত্বপূর্ণ সূত্র</li>
-        <li>📌 Diagram / Graph</li>
-        <li>📌 Board প্রশ্ন</li>
-        <li>📌 MCQ practice</li>
-        <li>📌 CQ practice</li>
-
-      </ul>
-
-    `;
-
-  }
-
-  openModal(title,content);
-
-}
-
-
-/* =====================================================
-   BOOKMARK / COMPLETE
-===================================================== */
-
-function toggleComplete(){
-
-  const key=chapterKey();
-
-  if(completed.includes(key)){
-
-    completed=completed.filter(x=>x!==key);
-
-  }
-  else{
-
-    completed.push(key);
-
-  }
-
-  saveData();
-
-  render();
-
-}
-
-
-function toggleBookmark(){
-
-  const key=chapterKey();
-
-  if(bookmarks.includes(key)){
-
-    bookmarks=bookmarks.filter(x=>x!==key);
-
-  }
-  else{
-
-    bookmarks.push(key);
-
-  }
-
-  saveData();
-
-  render();
-
-}
-
-
-/* =====================================================
-   NOTES
-===================================================== */
-
-function saveNewNote(){
-
-  const title=document.getElementById("noteTitle").value.trim();
-
-  const subject=document.getElementById("noteSubject").value;
-
-  const chapter=document.getElementById("noteChapter").value.trim();
-
-  const content=document.getElementById("noteContent").value.trim();
-
-
-  if(!title || !subject || !chapter || !content){
-
-    alert("সব তথ্য পূরণ করো 🙂");
-
-    return;
-
-  }
-
-
-  const notes=getNotes();
-
-  notes.unshift({
-
-    id:Date.now().toString(),
-
-    title,
-
-    subject,
-
-    chapter,
-
-    content,
-
-    date:new Date().toISOString()
-
-  });
-
-
-  saveNotes(notes);
-
-  alert("✅ Note successfully saved!");
-
-  state.search="";
-
-  go("notes");
-
-}
-
-
-function viewNote(id){
-
-  const note=getNotes().find(n=>n.id===id);
-
-  if(!note) return;
-
-  openModal(
-
-    "📝 "+note.title,
-
-    `
-
-      <p>
-        <b>Subject:</b> ${esc(note.subject)}
-      </p>
-
-      <p style="margin-top:5px">
-        <b>Chapter:</b> ${esc(note.chapter)}
-      </p>
-
-      <hr style="margin:15px 0">
-
-      <div style="white-space:pre-wrap;line-height:1.7">
-        ${esc(note.content)}
-      </div>
-
-    `
-
-  );
-
-}
-
-
-function deleteNote(id){
-
-  if(!confirm("এই note delete করবে?")) return;
-
-  let notes=getNotes();
-
-  notes=notes.filter(n=>n.id!==id);
-
-  saveNotes(notes);
-
-  render();
-
-}
-
-
-/* =====================================================
-   RESULT
-===================================================== */
-
-function openResult(){
-
-  const roll=document.getElementById("roll").value.trim();
-
-  const reg=document.getElementById("reg").value.trim();
-
-  if(!roll || !reg){
-
-    alert("Roll এবং Registration Number দাও।");
-
-    return;
-
-  }
-
-  window.open(
-    "https://www.educationboardresults.gov.bd/",
-    "_blank"
-  );
-
-}
-
-
-/* =====================================================
-   CALCULATOR
-===================================================== */
-
-function calculate(){
-
-  const input=document.getElementById("calcInput");
-
-  const result=document.getElementById("calcResult");
-
-  if(!input || !result) return;
-
-  const expression=input.value.trim();
-
-  if(!expression){
-
-    result.textContent="Enter calculation";
-
-    return;
-
-  }
-
-  if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
-
-    result.textContent="Invalid expression";
-
-    return;
-
-  }
-
-  try{
-
-    const value=Function(
-      `"use strict"; return (${expression})`
-    )();
-
-    result.textContent="= "+value;
-
-  }
-  catch{
-
-    result.textContent="Invalid calculation";
-
-  }
-
-}
-
-
-/* =====================================================
-   TODO
-===================================================== */
-
-function addTodo(){
-
-  const input=document.getElementById("todoInput");
-
-  if(!input) return;
-
-  const text=input.value.trim();
-
-  if(!text) return;
-
-  todos.push({
-    text,
-    done:false
-  });
-
-  saveData();
-
-  input.value="";
-
-  document.getElementById("todoList").innerHTML=
-    renderTodos();
-
-}
-
-
-function toggleTodo(index){
-
-  todos[index].done=!todos[index].done;
-
-  saveData();
-
-  document.getElementById("todoList").innerHTML=
-    renderTodos();
-
-}
-
-
-/* =====================================================
-   CONVERTER
-===================================================== */
-
-function convertUnit(){
-
-  const value=parseFloat(
-    document.getElementById("convertValue").value
-  );
-
-  const type=document.getElementById("convertType").value;
-
-  const result=document.getElementById("convertResult");
-
-  if(isNaN(value)){
-
-    result.textContent="Enter a number";
-
-    return;
-
-  }
-
-  let output=0;
-
-  switch(type){
-
-    case "km-m":
-      output=value*1000;
-      break;
-
-    case "m-km":
-      output=value/1000;
-      break;
-
-    case "kg-g":
-      output=value*1000;
-      break;
-
-    case "g-kg":
-      output=value/1000;
-      break;
-
-    case "c-f":
-      output=(value*9/5)+32;
-      break;
-
-    case "f-c":
-      output=(value-32)*5/9;
-      break;
-
-  }
-
-  result.textContent=output;
-
-}
-
-
-/* =====================================================
-   QUIZ
-===================================================== */
-
-function answerQuiz(answer){
-
-  const q=quizQuestions[state.quizIndex];
-
-  if(answer===q.answer){
-
-    state.quizScore++;
-
-    alert("✅ Correct!");
-
-  }
-  else{
-
-    alert(
-      "❌ Wrong!\nCorrect answer: "+
-      q.options[q.answer]
-    );
-
-  }
-
-  state.quizIndex++;
-
-  if(state.quizIndex>=quizQuestions.length){
-
-    state.quizFinished=true;
-
-  }
-
-  render();
-
-}
-
-
-/* =====================================================
-   DARK MODE LOAD
-===================================================== */
-
-if(localStorage.getItem("sn_dark")==="true"){
-
+if(localStorage.getItem("sn_dark")==="1"){
   document.body.classList.add("dark");
-
 }
-
-
-/* =====================================================
-   START APP
-===================================================== */
 
 render();
-
-
-/* =====================================================
-   CLOSE MODAL WHEN OUTSIDE CLICK
-===================================================== */
-
-document.getElementById("modal").addEventListener(
-  "click",
-  function(e){
-
-    if(e.target===this){
-
-      closeModal();
-
-    }
-
-  }
-);
-
 </script>
 
 </body>
