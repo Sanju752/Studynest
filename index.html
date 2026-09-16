@@ -3,392 +3,549 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2563eb">
-<meta name="description" content="StudyNest - HSC Science Student Learning Hub">
-
-<link rel="manifest" href="manifest.json">
-
-<title>StudyNest 📚</title>
+<meta name="theme-color" content="#4f46e5">
+<title>StudyNest — HSC Student Hub</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
   font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:#f4f7fb;
-  color:#172033;
-  line-height:1.6;
 }
-
+:root{
+  --bg:#f5f7ff;
+  --card:#fff;
+  --text:#172033;
+  --muted:#687086;
+  --primary:#4f46e5;
+  --primary2:#7c3aed;
+  --border:#e6e8f0;
+  --shadow:0 8px 25px rgba(30,35,70,.08);
+}
 body.dark{
-  background:#101827;
-  color:#f1f5f9;
+  --bg:#10131d;
+  --card:#191e2b;
+  --text:#f3f5ff;
+  --muted:#aeb5c7;
+  --border:#2a3040;
+  --shadow:0 8px 25px rgba(0,0,0,.25);
 }
-
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+button,input,select,textarea{
+  font:inherit;
+}
+button{
+  cursor:pointer;
+  border:0;
+}
+.app{
+  max-width:1100px;
+  margin:auto;
+  padding-bottom:90px;
+}
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #e5e7eb;
-  padding:12px 5%;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+  padding:18px 18px 30px;
+  border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);
+}
+.topbar{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+  gap:10px;
 }
-
-.dark header{
-  background:rgba(16,24,39,.95);
-  border-color:#263244;
-}
-
 .logo{
   font-size:24px;
   font-weight:800;
-  color:#2563eb;
 }
-
-.header-buttons{
-  display:flex;
-  gap:8px;
+.logo span{
+  opacity:.8;
 }
-
-button{
-  border:none;
-  cursor:pointer;
-  border-radius:12px;
-  padding:10px 15px;
-  font-weight:700;
-}
-
-.theme-btn{
-  background:#eef2ff;
-  color:#1d4ed8;
-}
-
-.dark .theme-btn{
-  background:#1e293b;
-  color:#fff;
-}
-
-.back-btn{
-  background:#111827;
+.icon-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
   color:white;
+  font-size:19px;
 }
-
-.dark .back-btn{
-  background:#334155;
+.hero{
+  margin-top:28px;
 }
-
+.hero h1{
+  font-size:31px;
+  margin-bottom:8px;
+}
+.hero p{
+  opacity:.9;
+  line-height:1.6;
+}
+.searchbox{
+  margin-top:20px;
+  background:white;
+  border-radius:15px;
+  padding:5px;
+  display:flex;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+.searchbox input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:13px;
+  background:transparent;
+  color:#222;
+}
+.searchbox button{
+  background:var(--primary);
+  color:white;
+  padding:0 17px;
+  border-radius:11px;
+}
 main{
-  max-width:1200px;
-  margin:auto;
-  padding:25px 5%;
+  padding:20px 15px;
 }
-
 .page{
   display:none;
+  animation:fade .2s ease;
 }
-
 .page.active{
   display:block;
 }
-
-.hero{
-  min-height:420px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:
-  radial-gradient(circle at top,#dbeafe,transparent 45%),
-  linear-gradient(135deg,#eff6ff,#f8fafc);
-  border-radius:25px;
-  padding:50px 20px;
-  margin-bottom:30px;
+@keyframes fade{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
 }
-
-.dark .hero{
-  background:
-  radial-gradient(circle at top,#172554,transparent 45%),
-  linear-gradient(135deg,#111827,#0f172a);
-}
-
-.hero h1{
-  font-size:clamp(38px,7vw,70px);
-  color:#2563eb;
-  margin-bottom:12px;
-}
-
-.hero p{
-  font-size:18px;
-  max-width:700px;
-  margin:auto;
-  color:#64748b;
-}
-
-.dark .hero p{
-  color:#cbd5e1;
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:12px;
-  margin-top:25px;
-}
-
-.primary{
-  background:#2563eb;
-  color:white;
-}
-
-.secondary{
-  background:#e2e8f0;
-  color:#172033;
-}
-
-.dark .secondary{
-  background:#334155;
-  color:white;
-}
-
 .section-title{
-  margin:25px 0 15px;
-  font-size:30px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
-}
-
-.card{
-  background:white;
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 8px 25px rgba(15,23,42,.07);
-  border:1px solid #e5e7eb;
-}
-
-.dark .card{
-  background:#172033;
-  border-color:#293548;
-}
-
-.card h3{
-  margin-bottom:8px;
-}
-
-.subject-card{
-  cursor:pointer;
-  transition:.2s;
-}
-
-.subject-card:hover{
-  transform:translateY(-4px);
-}
-
-.icon{
-  font-size:38px;
-  margin-bottom:8px;
-}
-
-input,select,textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #cbd5e1;
-  border-radius:12px;
-  margin:6px 0 12px;
-  font-size:15px;
-  background:white;
-  color:#111827;
-}
-
-.dark input,
-.dark select,
-.dark textarea{
-  background:#0f172a;
-  color:white;
-  border-color:#475569;
-}
-
-label{
-  font-weight:700;
-}
-
-.search-box{
-  margin-bottom:20px;
-}
-
-.chapter{
-  padding:15px;
-  border-radius:14px;
-  background:#eff6ff;
-  margin:8px 0;
-  cursor:pointer;
-  font-weight:700;
-}
-
-.dark .chapter{
-  background:#1e293b;
-}
-
-.chapter:hover{
-  background:#dbeafe;
-}
-
-.tools{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:18px;
-}
-
-.timer{
-  font-size:48px;
-  font-weight:800;
-  text-align:center;
-  margin:15px;
-  color:#2563eb;
-}
-
-.todo-item{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:10px;
-  border-bottom:1px solid #e5e7eb;
+  gap:10px;
+  margin:10px 0 15px;
 }
-
-.dark .todo-item{
-  border-color:#334155;
+.section-title h2{
+  font-size:22px;
 }
-
-.quiz-option{
-  display:block;
-  padding:12px;
-  margin:8px 0;
-  background:#f1f5f9;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.dark .quiz-option{
-  background:#1e293b;
-}
-
-.result-box{
-  margin-top:20px;
-  padding:20px;
-  border-radius:15px;
-  background:#eff6ff;
-}
-
-.dark .result-box{
-  background:#172554;
-}
-
-.note-card{
-  position:relative;
-}
-
-.note-meta{
-  color:#64748b;
+.muted{
+  color:var(--muted);
   font-size:14px;
 }
-
-.dark .note-meta{
-  color:#94a3b8;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
 }
-
-.badge{
-  display:inline-block;
-  padding:5px 10px;
-  background:#dbeafe;
-  color:#1d4ed8;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:17px;
+  box-shadow:var(--shadow);
 }
-
-.dark .badge{
-  background:#1e3a8a;
-  color:#dbeafe;
+.click{
+  cursor:pointer;
+  transition:.2s;
 }
-
-footer{
-  margin-top:50px;
-  padding:30px;
+.click:hover{
+  transform:translateY(-3px);
+}
+.subject-card{
+  min-height:135px;
+}
+.subject-icon{
+  font-size:31px;
+  margin-bottom:10px;
+}
+.subject-card h3{
+  margin-bottom:6px;
+}
+.subject-card p{
+  color:var(--muted);
+  font-size:13px;
+}
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.quick .card{
   text-align:center;
-  background:#111827;
+  padding:18px 10px;
+}
+.quick-icon{
+  font-size:27px;
+  margin-bottom:8px;
+}
+.btn{
+  padding:11px 15px;
+  border-radius:11px;
+  background:var(--primary);
+  color:white;
+  font-weight:700;
+}
+.btn.secondary{
+  background:#eef0ff;
+  color:var(--primary);
+}
+body.dark .btn.secondary{
+  background:#252b42;
+  color:#b8b9ff;
+}
+.btn.danger{
+  background:#dc2626;
+}
+.btn.success{
+  background:#059669;
+}
+.btn.small{
+  padding:8px 11px;
+  font-size:13px;
+}
+.backbar{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-bottom:17px;
+}
+.back{
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:9px 13px;
+  border-radius:10px;
+}
+.paper-tabs{
+  display:flex;
+  gap:8px;
+  margin:15px 0;
+  overflow:auto;
+}
+.paper-tab{
+  white-space:nowrap;
+  padding:10px 15px;
+  border-radius:10px;
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+}
+.paper-tab.active{
+  background:var(--primary);
   color:white;
 }
-
-.notice{
+.chapter-list{
+  display:grid;
+  gap:10px;
+}
+.chapter{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
   padding:15px;
-  border-radius:15px;
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  margin-bottom:20px;
+  border-radius:14px;
 }
-
-.dark .notice{
-  background:#431407;
-  border-color:#7c2d12;
+.chapter-num{
+  min-width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#eef0ff;
+  color:var(--primary);
+  font-weight:800;
 }
-
-.small{
+body.dark .chapter-num{
+  background:#252b42;
+}
+.chapter h3{
+  font-size:15px;
+}
+.chapter p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+}
+.form-card{
+  max-width:700px;
+  margin:auto;
+}
+label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin:12px 0 6px;
+}
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:12px;
+  outline:none;
+  background:var(--card);
+  color:var(--text);
+}
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--primary);
+}
+.form-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+.note-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+.note-card h3{
+  font-size:16px;
+  margin-bottom:7px;
+}
+.note-meta{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+  margin-bottom:12px;
+}
+.tag{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:7px;
+  background:#eef0ff;
+  color:var(--primary);
+  font-size:11px;
+  font-weight:bold;
+}
+body.dark .tag{
+  background:#252b42;
+}
+.tool-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+.tool-card h3{
+  margin-bottom:8px;
+}
+.calculator{
+  max-width:360px;
+  margin:auto;
+}
+.calc-display{
+  font-size:28px;
+  text-align:right;
+  margin-bottom:10px;
+}
+.calc-buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+.calc-buttons button{
+  padding:15px 5px;
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+.calc-buttons button.op{
+  background:var(--primary);
+  color:white;
+}
+.timer{
+  text-align:center;
+}
+.timer-display{
+  font-size:55px;
+  font-weight:800;
+  margin:15px 0;
+}
+.todo-row{
+  display:flex;
+  gap:7px;
+}
+.todo-list{
+  list-style:none;
+  margin-top:12px;
+}
+.todo-list li{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  padding:10px;
+  margin-bottom:7px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--card);
+}
+.progress-box{
+  margin-top:10px;
+}
+.progress-bar{
+  height:10px;
+  border-radius:20px;
+  background:var(--bg);
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--primary),var(--primary2));
+}
+.quiz-option{
+  width:100%;
+  text-align:left;
+  margin:7px 0;
+  padding:13px;
+  border-radius:11px;
+  background:var(--bg);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+.quiz-option.correct{
+  background:#d1fae5;
+  color:#065f46;
+}
+.quiz-option.wrong{
+  background:#fee2e2;
+  color:#991b1b;
+}
+body.dark .quiz-option.correct{
+  background:#123d31;
+  color:#7ff0c2;
+}
+body.dark .quiz-option.wrong{
+  background:#452020;
+  color:#ffaaaa;
+}
+.quote{
+  background:linear-gradient(135deg,#111827,#3730a3);
+  color:white;
+  border-radius:18px;
+  padding:20px;
+  margin:18px 0;
+}
+.empty{
+  text-align:center;
+  padding:35px 15px;
+  color:var(--muted);
+}
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:30px 15px;
   font-size:13px;
-  color:#64748b;
 }
-
-.dark .small{
-  color:#94a3b8;
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  max-width:1100px;
+  margin:auto;
+  background:var(--card);
+  border:1px solid var(--border);
+  box-shadow:0 -5px 20px rgba(0,0,0,.08);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  padding:7px;
+  z-index:50;
 }
-
-@media(max-width:600px){
-  header{
-    padding:10px 4%;
-  }
-
-  .logo{
-    font-size:20px;
-  }
-
-  main{
-    padding:18px 4%;
-  }
-
-  .hero{
-    min-height:360px;
-  }
-
-  .section-title{
-    font-size:25px;
-  }
+.nav-btn{
+  background:transparent;
+  color:var(--muted);
+  padding:7px 2px;
+  border-radius:10px;
+  font-size:11px;
+}
+.nav-btn.active{
+  color:var(--primary);
+  font-weight:800;
+  background:#eef0ff;
+}
+body.dark .nav-btn.active{
+  background:#252b42;
+}
+.notice{
+  padding:13px;
+  border-radius:12px;
+  background:#fff7ed;
+  color:#9a3412;
+  margin:12px 0;
+  font-size:13px;
+  line-height:1.6;
+}
+body.dark .notice{
+  background:#3b271b;
+  color:#fdba74;
+}
+.feature-row{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:13px;
+}
+.stat{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.stat-item{
+  text-align:center;
+  padding:15px 5px;
+  border:1px solid var(--border);
+  border-radius:13px;
+}
+.stat-item strong{
+  display:block;
+  font-size:22px;
+  color:var(--primary);
+}
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .quick{grid-template-columns:repeat(2,1fr)}
+  .note-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .hero h1{font-size:26px}
+  .grid,.note-grid,.tool-grid{grid-template-columns:1fr}
+  .feature-row{grid-template-columns:1fr}
+  .stat{grid-template-columns:repeat(3,1fr)}
+  main{padding:17px 12px}
 }
 </style>
 </head>
 
 <body>
+<div class="app">
 
-<header>
-  <div class="logo">📚 StudyNest</div>
+<header id="header">
+  <div class="topbar">
+    <div class="logo">Study<span>Nest</span> 📚</div>
+    <button class="icon-btn" onclick="toggleDark()" id="themeBtn">🌙</button>
+  </div>
 
-  <div class="header-buttons">
-    <button class="back-btn" onclick="goBack()">← Back</button>
-    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+  <div class="hero">
+    <h1>Study smarter. Grow better. 🚀</h1>
+    <p>HSC Science students-এর জন্য Notes, MCQ, Quiz, Tools ও Study Resources এক জায়গায়।</p>
+
+    <div class="searchbox">
+      <input id="globalSearch" placeholder="Subject বা chapter search করো..." onkeydown="if(event.key==='Enter') globalSearch()">
+      <button onclick="globalSearch()">Search</button>
+    </div>
   </div>
 </header>
 
@@ -397,449 +554,60 @@ footer{
 <!-- HOME -->
 <section id="home" class="page active">
 
-<div class="hero">
-<div>
-<h1>StudyNest 📚</h1>
+  <div class="quote">
+    <b>✨ Today's Focus</b>
+    <p id="dailyQuote" style="margin-top:8px;line-height:1.6"></p>
+  </div>
 
-<p>
-HSC Science students-এর জন্য Notes, Chapters, Quiz,
-Study Tools এবং Offline Learning-এর একটি সুন্দর জায়গা।
-</p>
+  <div class="section-title">
+    <h2>Quick Access</h2>
+  </div>
 
-<div class="actions">
-<button class="primary" onclick="showPage('subjects')">📚 Subjects</button>
-<button class="primary" onclick="showPage('notes')">📝 Notes</button>
-<button class="secondary" onclick="showPage('upload')">📤 Upload Note</button>
-<button class="secondary" onclick="showPage('result')">🎓 Result Check</button>
-<button class="secondary" onclick="showPage('tools')">🛠️ Study Tools</button>
-<button class="secondary" onclick="showPage('fun')">😂 Have Fun</button>
-</div>
-</div>
-</div>
+  <div class="quick">
+    <div class="card click" onclick="showPage('explore')">
+      <div class="quick-icon">📚</div>
+      <b>Explore</b>
+    </div>
+    <div class="card click" onclick="showPage('notes')">
+      <div class="quick-icon">📝</div>
+      <b>Notes</b>
+    </div>
+    <div class="card click" onclick="showPage('quiz')">
+      <div class="quick-icon">🧠</div>
+      <b>Quiz</b>
+    </div>
+    <div class="card click" onclick="showPage('tools')">
+      <div class="quick-icon">🧮</div>
+      <b>Student Tools</b>
+    </div>
+  </div>
 
-<div class="grid">
+  <div class="section-title" style="margin-top:25px">
+    <h2>Subjects</h2>
+    <button class="btn small" onclick="showPage('explore')">See All</button>
+  </div>
 
-<div class="card">
-<div class="icon">📖</div>
-<h3>Chapter Wise Study</h3>
-<p>Subject অনুযায়ী chapter সাজানো থাকবে।</p>
-</div>
+  <div class="grid" id="homeSubjects"></div>
 
-<div class="card">
-<div class="icon">📝</div>
-<h3>Notes Library</h3>
-<p>নিজের notes locally save ও open করতে পারবে।</p>
-</div>
+  <div class="feature-row" style="margin-top:20px">
+    <div class="card">
+      <h3>📈 My Study Progress</h3>
+      <p class="muted" style="margin-top:6px">তোমার completed chapter-এর progress</p>
+      <div class="progress-box">
+        <div class="progress-bar"><div class="progress-fill" id="homeProgress"></div></div>
+        <p class="muted" id="progressText" style="margin-top:7px"></p>
+      </div>
+    </div>
 
-<div class="card">
-<div class="icon">🧠</div>
-<h3>Quiz & MCQ</h3>
-<p>নিজের knowledge পরীক্ষা করো।</p>
-</div>
-
-<div class="card">
-<div class="icon">⏱️</div>
-<h3>Study Timer</h3>
-<p>Focus করে পড়াশোনা করার জন্য timer।</p>
-</div>
-
-</div>
-
+    <div class="card">
+      <h3>🎯 Study Goal</h3>
+      <p class="muted" style="margin-top:6px">আজকের পড়াশোনার target ঠিক রাখো।</p>
+      <button class="btn small" style="margin-top:12px" onclick="showPage('tools')">Open Tools</button>
+    </div>
+  </div>
 </section>
 
-
-<!-- SUBJECTS -->
-<section id="subjects" class="page">
-
-<h2 class="section-title">📚 HSC Science Subjects</h2>
-
-<input class="search-box" id="subjectSearch"
-placeholder="🔍 Subject খুঁজুন..."
-oninput="renderSubjects()">
-
-<div id="subjectGrid" class="grid"></div>
-
-</section>
-
-
-<!-- CHAPTERS -->
-<section id="chapters" class="page">
-
-<h2 id="chapterTitle" class="section-title"></h2>
-
-<div id="chapterList"></div>
-
-</section>
-
-
-<!-- CHAPTER DETAIL -->
-<section id="chapterDetail" class="page">
-
-<h2 id="detailTitle" class="section-title"></h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>📝 Notes</h3>
-<p>এই chapter-এর notes দেখুন।</p>
-<button class="primary" onclick="openChapterNotes()">Open Notes</button>
-</div>
-
-<div class="card">
-<h3>❓ MCQ</h3>
-<p>MCQ practice করুন।</p>
-<button class="primary" onclick="showPage('quiz')">Start Quiz</button>
-</div>
-
-<div class="card">
-<h3>⭐ Important</h3>
-<p>Important topics আলাদা করে পড়ুন।</p>
-</div>
-
-<div class="card">
-<h3>📄 PDF</h3>
-<p>নিজের uploaded PDF থাকলে Notes থেকে খুলতে পারবেন।</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- NOTES -->
-<section id="notes" class="page">
-
-<h2 class="section-title">📝 Notes Library</h2>
-
-<input id="noteSearch"
-placeholder="🔍 Note title / subject / chapter খুঁজুন..."
-oninput="renderNotes()">
-
-<div class="actions" style="justify-content:flex-start">
-<button class="primary" onclick="showPage('upload')">📤 Upload New Note</button>
-</div>
-
-<div id="notesList" class="grid" style="margin-top:20px"></div>
-
-</section>
-
-
-<!-- UPLOAD -->
-<section id="upload" class="page">
-
-<h2 class="section-title">📤 Upload Your Note</h2>
-
-<div class="notice">
-<strong>📌 Important:</strong><br>
-এই version-এ uploaded note তোমার এই device/browser-এ
-offline-ভাবে save হবে। অন্য user-এর ফোনে automatically দেখা যাবে না।
-সবার জন্য shared online upload system করতে Firebase/Supabase-এর মতো
-online database/storage লাগবে।
-</div>
-
-<div class="card">
-
-<label>Note Title</label>
-<input id="uploadTitle" placeholder="যেমন: Physics Chapter 1 Note">
-
-<label>Subject</label>
-<select id="uploadSubject" onchange="updateUploadChapters()"></select>
-
-<label>Paper</label>
-<select id="uploadPaper" onchange="updateUploadChapters()">
-<option value="1st Paper">1st Paper</option>
-<option value="2nd Paper">2nd Paper</option>
-</select>
-
-<label>Chapter</label>
-<select id="uploadChapter"></select>
-
-<label>Description</label>
-<textarea id="uploadDescription"
-placeholder="Note সম্পর্কে কিছু লিখুন..."></textarea>
-
-<label>File</label>
-<input
-type="file"
-id="uploadFile"
-accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png">
-
-<p class="small">
-PDF, Word, TXT বা Image file ব্যবহার করতে পারবে।
-File size browser storage-এর উপর নির্ভর করবে।
-</p>
-
-<button class="primary" onclick="saveUploadedNote()">
-💾 Save Note
-</button>
-
-</div>
-
-</section>
-
-
-<!-- RESULT -->
-<section id="result" class="page">
-
-<h2 class="section-title">🎓 Board Exam Result</h2>
-
-<div class="notice">
-Official result দেখতে Internet connection প্রয়োজন।
-StudyNest তোমার Roll ও Registration সংরক্ষণ করবে না।
-</div>
-
-<div class="card">
-
-<label>Exam</label>
-<select id="exam">
-<option>HSC</option>
-</select>
-
-<label>Year</label>
-<select id="resultYear">
-<option>2026</option>
-<option>2025</option>
-<option>2024</option>
-<option>2023</option>
-</select>
-
-<label>Board</label>
-<select id="board">
-<option>Dhaka</option>
-<option>Chattogram</option>
-<option>Rajshahi</option>
-<option>Cumilla</option>
-<option>Jashore</option>
-<option>Barishal</option>
-<option>Sylhet</option>
-<option>Dinajpur</option>
-<option>Mymensingh</option>
-</select>
-
-<label>Roll Number</label>
-<input id="roll" type="number" placeholder="Enter Roll">
-
-<label>Registration Number</label>
-<input id="registration" type="number" placeholder="Enter Registration">
-
-<button class="primary" onclick="checkResult()">
-🎓 Check Official Result
-</button>
-
-<div id="resultMessage"></div>
-
-</div>
-
-</section>
-
-
-<!-- TOOLS -->
-<section id="tools" class="page">
-
-<h2 class="section-title">🛠️ Student Tools</h2>
-
-<div class="tools">
-
-<div class="card">
-
-<h3>⏱️ Study Timer</h3>
-
-<div id="timer" class="timer">25:00</div>
-
-<div class="actions">
-<button class="primary" onclick="startTimer()">Start</button>
-<button class="secondary" onclick="pauseTimer()">Pause</button>
-<button class="secondary" onclick="resetTimer()">Reset</button>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h3>✅ To-Do List</h3>
-
-<input id="todoInput" placeholder="আজ কী পড়বে?">
-
-<button class="primary" onclick="addTodo()">Add</button>
-
-<div id="todoList"></div>
-
-</div>
-
-
-<div class="card">
-
-<h3>🧮 Calculator</h3>
-
-<input id="calcInput" placeholder="যেমন: 25*4+10">
-
-<button class="primary" onclick="calculate()">Calculate</button>
-
-<h3 id="calcResult" style="margin-top:15px"></h3>
-
-</div>
-
-
-<div class="card">
-
-<h3>📏 Unit Converter</h3>
-
-<input id="kmInput" type="number" placeholder="Kilometer">
-
-<button class="primary" onclick="convertKM()">Convert</button>
-
-<h3 id="meterResult" style="margin-top:15px"></h3>
-
-</div>
-
-
-<div class="card">
-
-<h3>🧠 Brain Teaser</h3>
-
-<p id="brainQuestion"></p>
-
-<button class="primary" onclick="newBrain()">New Teaser</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- QUIZ -->
-<section id="quiz" class="page">
-
-<h2 class="section-title">🧠 Quick MCQ Quiz</h2>
-
-<div id="quizBox" class="card"></div>
-
-</section>
-
-
-<!-- FUN -->
-<section id="fun" class="page">
-
-<h2 class="section-title">😂 StudyNest Fun Zone</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>😂 পরীক্ষার আগের রাত</h3>
-<p>
-সারা বছর বই দেখে মনে হতো—অনেক সময় আছে।
-পরীক্ষার আগের রাতে বই খুলে মনে হলো—
-“এই বই এত বড় কেন?” 😭
-</p>
-</div>
-
-<div class="card">
-<h3>😂 স্যারের কঠিন প্রশ্ন</h3>
-<p>
-স্যার: এটা খুব সহজ প্রশ্ন।<br>
-Student: তাহলে আমার মাথায় কেন ঢুকছে না? 🥲
-</p>
-</div>
-
-<div class="card">
-<h3>😂 পড়ার টেবিলে ঘুম</h3>
-<p>
-বিছানায় গেলে ঘুম আসে না,
-পড়তে বসলে চোখ বলে—
-“চলো, একটু বিশ্রাম করি।” 😴
-</p>
-</div>
-
-<div class="card">
-<h3>😂 ICT-এর রহস্য</h3>
-<p>
-ICT পড়তে বসে প্রথম ৫ মিনিট:
-“সব বুঝেছি।”<br>
-১০ মিনিট পরে:
-“আমি কোথায়?” 🤯
-</p>
-</div>
-
-<div class="card">
-<h3>😂 খাতার শেষ পৃষ্ঠা</h3>
-<p>
-শেষ পৃষ্ঠায় লেখা:
-“আগামীকাল থেকে নিয়মিত পড়ব।” 😎
-</p>
-</div>
-
-<div class="card">
-<h3>😂 শেষবার ফোন দেখব</h3>
-<p>
-“শুধু ২ মিনিট ফোন দেখব।”
-তারপর দেখি—
-এক ঘণ্টা শেষ। 📱😂
-</p>
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<footer>
-<h3>📚 StudyNest</h3>
-<p>Learn • Practice • Grow</p>
-<p style="margin-top:10px">Created by <strong>Ahmed Sami</strong> ❤️</p>
-<p class="small" style="margin-top:8px">
-HSC Science Student Learning Hub
-</p>
-</footer>
-
-
-<script>
-
-/* =========================
-   SUBJECT DATA
-========================= */
-
-const subjects = [
-
-{
-name:"Physics",
-icon:"⚛️",
-papers:{
-"1st Paper":[
-"ভৌত জগৎ ও পরিমাপ",
-"ভেক্টর",
-"গতিবিদ্যা",
-"নিউটনের গতিসূত্র",
-"কাজ, শক্তি ও ক্ষমতা",
-"মহাকর্ষ ও অভিকর্ষ",
-"পদার্থের গাঠনিক ধর্ম",
-"পর্যাবৃত্ত গতি",
-"তরঙ্গ",
-"আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"
-],
-"2nd Paper":[
-"তাপগতিবিদ্যা",
-"স্থির তড়িৎ",
-"চল তড়িৎ",
-"তড়িৎ প্রবাহের চৌম্বক ক্রিয়া",
-"তড়িৎ চৌম্বকীয় আবেশ ও পরিবর্তী প্রবাহ",
-"জ্যামিতিক আলোকবিজ্ঞান",
-"ভৌত আলোকবিজ্ঞান",
-"আধুনিক পদার্থবিজ্ঞানের সূচনা",
-"পরমাণুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান",
-"সেমিকন্ডাক্টর ও ইলেকট্রনিক্স"
-]
-}
-},
-
-{
-name:"Chemistry",
-icon:"🧪",
-papers:{
-"1st Paper":[
-"ল্যাবরেটরির নিরাপদ ব্যবহার",
-"গুণগত রসায়ন",
-"মৌলের পর্যায়বৃত্ত ধর্ম ও
+<!-- EXPLORE -->
+<section id="explore" class="page">
+  <div class="backbar">
+    <button class="
