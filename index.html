@@ -244,4 +244,1256 @@ button{
   background:white;
   border-radius:20px;
   padding:22px;
-  border:1px solid #d
+  border:1px solid #dce7f5;
+  text-align:center;
+}
+
+.toolIcon{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.tool button{
+  background:#2563eb;
+  color:white;
+  padding:10px 18px;
+  border-radius:10px;
+  margin-top:12px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:999;
+}
+
+.modalBox{
+  background:white;
+  width:100%;
+  max-width:600px;
+  max-height:85vh;
+  overflow:auto;
+  border-radius:25px;
+  padding:25px;
+}
+
+.close{
+  float:right;
+  background:#eef2f7;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:20px;
+}
+
+.note{
+  background:#f6faff;
+  border-left:5px solid #2563eb;
+  padding:17px;
+  border-radius:10px;
+  margin:15px 0;
+  line-height:1.8;
+}
+
+.quizOption{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:14px;
+  margin:10px 0;
+  border:1px solid #d7e2ef;
+  border-radius:12px;
+  background:#fff;
+}
+
+.quizOption:hover{
+  background:#eef6ff;
+}
+
+.timer{
+  font-size:48px;
+  font-weight:bold;
+  text-align:center;
+  margin:20px;
+  color:#2563eb;
+}
+
+.todoInput{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
+}
+
+.todoInput input{
+  flex:1;
+  padding:13px;
+  border:1px solid #d7e2ef;
+  border-radius:10px;
+}
+
+.todoInput button{
+  background:#2563eb;
+  color:white;
+  padding:12px 18px;
+  border-radius:10px;
+}
+
+.todoItem{
+  background:#f7fbff;
+  padding:13px;
+  border-radius:10px;
+  margin-top:9px;
+  display:flex;
+  justify-content:space-between;
+}
+
+footer{
+  text-align:center;
+  padding:35px 15px;
+  margin-top:50px;
+  color:#718096;
+}
+
+.dark{
+  background:#101827;
+  color:#edf2f7;
+}
+
+.dark header,
+.dark .card,
+.dark .paperBox,
+.dark .tool,
+.dark .modalBox{
+  background:#172235;
+  color:#edf2f7;
+  border-color:#293a52;
+}
+
+.dark .chapter,
+.dark .note,
+.dark .todoItem{
+  background:#1d2a3d;
+  border-color:#33465f;
+}
+
+.dark .secondary{
+  background:#172235;
+  color:#60a5fa;
+  border-color:#33465f;
+}
+
+.dark .searchBox,
+.dark .todoInput input{
+  background:#172235;
+  color:white;
+  border-color:#3a4c64;
+}
+
+.dark .hero p,
+.dark .subjectCard p{
+  color:#aebdce;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .subjectCard{
+    padding:18px 10px;
+  }
+
+  .subjectIcon{
+    font-size:36px;
+  }
+
+  .subjectCard h3{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    Study<span>Nest</span> 📚
+  </div>
+
+  <button class="themeBtn" onclick="toggleDark()">🌙</button>
+</header>
+
+<main class="container">
+
+<!-- HOME -->
+<section id="home">
+
+  <div class="hero">
+    <h1>
+      Learn Better.<br>
+      <span>Study Smarter.</span>
+    </h1>
+
+    <p>
+      Welcome to StudyNest — HSC Science students-এর জন্য
+      একটি সুন্দর ও সহজ Digital Study Space.
+    </p>
+
+    <div class="heroButtons">
+      <button class="primary" onclick="showSubjects()">
+        📚 Explore Notes
+      </button>
+
+      <button class="secondary" onclick="showFun()">
+        😂 আর হাসো
+      </button>
+    </div>
+  </div>
+
+  <div class="card" style="text-align:center;padding:45px 20px;">
+    <div style="font-size:70px;">📚</div>
+    <h2 style="margin:15px 0;">Your Digital Study Space</h2>
+    <p style="color:#718096;font-size:17px;">
+      Notes • Knowledge • Quiz • Progress
+    </p>
+  </div>
+
+</section>
+
+
+<!-- SUBJECTS -->
+<section id="subjects" class="section hidden">
+
+  <button class="backBtn" onclick="goHome()">← Home</button>
+
+  <h2 class="sectionTitle">📚 HSC Science Subjects</h2>
+
+  <input
+    class="searchBox"
+    id="subjectSearch"
+    placeholder="🔍 Subject খুঁজুন..."
+    oninput="searchSubjects()"
+  >
+
+  <div class="grid" id="subjectGrid"></div>
+
+</section>
+
+
+<!-- CHAPTERS -->
+<section id="chapters" class="section hidden">
+
+  <button class="backBtn" onclick="showSubjects()">← Subjects</button>
+
+  <div id="chapterContent"></div>
+
+</section>
+
+
+<!-- CHAPTER DETAIL -->
+<section id="chapterDetail" class="section hidden">
+
+  <button class="backBtn" onclick="backToChapters()">← Chapters</button>
+
+  <div id="detailContent"></div>
+
+</section>
+
+
+<!-- TOOLS -->
+<section id="tools" class="section">
+
+  <h2 class="sectionTitle">🛠️ Student Tools</h2>
+
+  <div class="toolsGrid">
+
+    <div class="tool">
+      <div class="toolIcon">⏱️</div>
+      <h3>Study Timer</h3>
+      <p>25 মিনিট Focus Session</p>
+      <button onclick="startTimer()">Start</button>
+      <div class="timer" id="timer">25:00</div>
+      <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <div class="tool">
+      <div class="toolIcon">✅</div>
+      <h3>To-Do List</h3>
+      <div class="todoInput">
+        <input id="todoText" placeholder="আজ কী পড়বে?">
+        <button onclick="addTodo()">+</button>
+      </div>
+      <div id="todoList"></div>
+    </div>
+
+    <div class="tool">
+      <div class="toolIcon">🧠</div>
+      <h3>Brain Teaser</h3>
+      <p style="margin-top:10px;">
+        কোন জিনিস যত বেশি শুকায়,
+        তত বেশি ভিজে?
+      </p>
+      <button onclick="alert('উত্তর: তোয়ালে 😄')">
+        Answer
+      </button>
+    </div>
+
+    <div class="tool">
+      <div class="toolIcon">🧮</div>
+      <h3>Quick Calculator</h3>
+      <input
+        id="calc"
+        class="searchBox"
+        placeholder="যেমন: 25*4+10"
+      >
+      <button onclick="calculate()">Calculate</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FUN -->
+<section id="fun" class="section hidden">
+
+  <button class="backBtn" onclick="goHome()">← Home</button>
+
+  <h2 class="sectionTitle">😂 আর হাসো</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>📚 পরীক্ষার আগের রাত</h3>
+      <p style="margin-top:10px;line-height:1.7;">
+        রাত ১০টা: আজ অনেক পড়ব।<br>
+        রাত ১০:৩০: একটু ফোন দেখি।<br>
+        রাত ১২টা: কাল থেকে সিরিয়াস হব! 😂
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🧑‍🏫 স্যারের কঠিন প্রশ্ন</h3>
+      <p style="margin-top:10px;line-height:1.7;">
+        স্যার: এই প্রশ্নটা খুব সহজ।<br>
+        Student: স্যার, আপনার কাছে সহজ! 😭
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>😴 পড়ার টেবিলে ঘুম</h3>
+      <p style="margin-top:10px;line-height:1.7;">
+        বই খুলে ৫ মিনিট পড়লাম।
+        তারপর চোখ নিজে থেকেই
+        Sleep Mode চালু করে দিল। 😂
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>📱 শেষবার ফোন দেখব</h3>
+      <p style="margin-top:10px;line-height:1.7;">
+        "শুধু ৫ মিনিট ফোন দেখব।"
+        এই ৫ মিনিট কখন ২ ঘণ্টা হয়,
+        কেউ জানে না! 😂
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>💻 ICT-এর রহস্য</h3>
+      <p style="margin-top:10px;line-height:1.7;">
+        HTML বুঝেছি। CSS বুঝেছি।
+        JavaScript আসতেই মাথা বলল—
+        আমি বাসায় যাচ্ছি। 😂
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>✍️ খাতার শেষ পৃষ্ঠা</h3>
+      <p style="margin-top:10px;line-height:1.7;">
+        পরীক্ষায় উত্তর না জানলেও
+        শেষ পৃষ্ঠা পর্যন্ত লিখে যাওয়ার
+        আত্মবিশ্বাস আলাদা! 😎
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUIZ -->
+<section class="section">
+
+  <h2 class="sectionTitle">📝 Quick Quiz</h2>
+
+  <div class="card" id="quizBox">
+
+    <h3 id="question"></h3>
+
+    <div id="options"></div>
+
+    <button class="primary" onclick="nextQuestion()">
+      Next →
+    </button>
+
+    <p id="score" style="margin-top:15px;"></p>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <b>StudyNest 📚</b>
+  <br><br>
+  Learn Better • Study Smarter • Grow Together
+  <br><br>
+  Made for Students ❤️
+</footer>
+
+
+<!-- DATA + JAVASCRIPT -->
+
+<script>
+
+const subjects = [
+
+{
+name:"Physics",
+icon:"⚛️",
+papers:[
+{
+name:"Physics 1st Paper",
+chapters:[
+"ভৌত জগৎ ও পরিমাপ",
+"ভেক্টর",
+"গতিবিদ্যা",
+"নিউটনিয়ান বলবিদ্যা",
+"কাজ, শক্তি ও ক্ষমতা",
+"মহাকর্ষ ও অভিকর্ষ",
+"পদার্থের গাঠনিক ধর্ম",
+"পর্যায়বৃত্ত গতি",
+"তরঙ্গ",
+"আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"
+]},
+{
+name:"Physics 2nd Paper",
+chapters:[
+"তাপগতিবিদ্যা",
+"স্থির তড়িৎ",
+"চল তড়িৎ",
+"তড়িৎ প্রবাহের চৌম্বক ক্রিয়া",
+"তড়িৎচৌম্বকীয় আবেশ ও পরিবর্তী প্রবাহ",
+"জ্যামিতিক আলোকবিজ্ঞান",
+"ভৌত আলোকবিজ্ঞান",
+"আধুনিক পদার্থবিজ্ঞানের সূচনা",
+"পরমাণু মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান",
+"সেমিকন্ডাক্টর ও ইলেকট্রনিক্স",
+"জ্যোতির্বিজ্ঞান"
+]}
+]},
+
+{
+name:"Chemistry",
+icon:"🧪",
+papers:[
+{
+name:"Chemistry 1st Paper",
+chapters:[
+"ল্যাবরেটরির নিরাপদ ব্যবহার",
+"গুণগত রসায়ন",
+"মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন",
+"রাসায়নিক পরিবর্তন",
+"কর্মমুখী রসায়ন"
+]},
+{
+name:"Chemistry 2nd Paper",
+chapters:[
+"পরিবেশ রসায়ন",
+"জৈব রসায়ন",
+"পরিমাণগত রসায়ন",
+"তড়িৎ রসায়ন",
+"অর্থনৈতিক রসায়ন"
+]}
+]},
+
+{
+name:"Higher Mathematics",
+icon:"📐",
+papers:[
+{
+name:"Higher Math 1st Paper",
+chapters:[
+"ম্যাট্রিক্স ও নির্ণায়ক",
+"ভেক্টর",
+"সরলরেখা",
+"বৃত্ত",
+"বিন্যাস ও সমাবেশ",
+"ত্রিকোণমিতিক অনুপাত",
+"সংযুক্ত কোণ",
+"ফাংশন ও গ্রাফ",
+"অন্তরীকরণ",
+"যোগজীকরণ"
+]},
+{
+name:"Higher Math 2nd Paper",
+chapters:[
+"বাস্তব সংখ্যা ও অসমতা",
+"যোগাশ্রয়ী প্রোগ্রাম",
+"জটিল সংখ্যা",
+"বহুপদী ও বহুপদী সমীকরণ",
+"দ্বিপদী বিস্তৃতি",
+"কনিক",
+"বিপরীত ত্রিকোণমিতিক ফাংশন",
+"স্থিতিবিদ্যা",
+"সমতলীয় কণার গতি",
+"সম্ভাবনা"
+]}
+]},
+
+{
+name:"Biology",
+icon:"🧬",
+papers:[
+{
+name:"Biology 1st Paper",
+chapters:[
+"কোষ ও এর গঠন",
+"কোষ বিভাজন",
+"কোষ রসায়ন",
+"অণুজীব",
+"শৈবাল ও ছত্রাক",
+"ব্রায়োফাইটা ও টেরিডোফাইটা",
+"নগ্নবীজী ও আবৃতবীজী উদ্ভিদ",
+"টিস্যু ও টিস্যুতন্ত্র",
+"উদ্ভিদ শারীরতত্ত্ব",
+"উদ্ভিদের প্রজনন",
+"জীবপ্রযুক্তি",
+"জীবের পরিবেশ, বিস্তার ও সংরক্ষণ"
+]},
+{
+name:"Biology 2nd Paper",
+chapters:[
+"প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস",
+"প্রাণীর পরিচিতি",
+"মানব শারীরতত্ত্ব: পরিপাক ও শোষণ",
+"রক্ত ও সঞ্চালন",
+"শ্বাসক্রিয়া ও শ্বসন",
+"বর্জ্য নিষ্কাশন",
+"চলন ও অঙ্গচালনা",
+"সমন্বয় ও নিয়ন্ত্রণ",
+"মানব জীবনের ধারাবাহিকতা",
+"মানবদেহের প্রতিরক্ষা",
+"জিনতত্ত্ব ও বিবর্তন",
+"প্রাণীর আচরণ"
+]}
+]},
+
+{
+name:"ICT",
+icon:"💻",
+papers:[
+{
+name:"ICT",
+chapters:[
+"তথ্য ও যোগাযোগ প্রযুক্তি: বিশ্ব ও বাংলাদেশ",
+"কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং",
+"সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস",
+"ওয়েব ডিজাইন পরিচিতি এবং HTML",
+"প্রোগ্রামিং ভাষা",
+"ডেটাবেজ ম্যানেজমেন্ট সিস্টেম"
+]}
+]},
+
+{
+name:"Bangla",
+icon:"📖",
+papers:[
+{
+name:"বাংলা ১ম পত্র",
+chapters:[
+"গদ্য",
+"কবিতা",
+"সহপাঠ: উপন্যাস",
+"সহপাঠ: নাটক"
+]},
+{
+name:"বাংলা ২য় পত্র",
+chapters:[
+"ব্যাকরণ",
+"ধ্বনি ও বর্ণ",
+"শব্দ ও শব্দগঠন",
+"সন্ধি",
+"সমাস",
+"কারক ও বিভক্তি",
+"বাক্য",
+"বানান",
+"প্রতিশব্দ ও বিপরীত শব্দ",
+"অনুচ্ছেদ",
+"সারাংশ ও সারমর্ম",
+"ভাবসম্প্রসারণ",
+"প্রবন্ধ",
+"আবেদনপত্র ও চিঠি"
+]}
+]},
+
+{
+name:"English",
+icon:"🇬🇧",
+papers:[
+{
+name:"English 1st Paper",
+chapters:[
+"Unit 1: People or Institutions Making History",
+"Unit 2: Dreams",
+"Unit 3: Lifestyle",
+"Unit 4: Adolescence",
+"Unit 5: Dreams and Success",
+"Unit 6: Art and Craft",
+"Unit 7: Myths and Literature",
+"Unit 8: Roots",
+"Unit 9: Exploring the Arts",
+"Unit 10: Dreams and Reality",
+"Unit 11: Reading and Writing"
+]},
+{
+name:"English 2nd Paper",
+chapters:[
+"Parts of Speech",
+"Articles",
+"Prepositions",
+"Special Uses",
+"Completing Sentences",
+"Right Form of Verbs",
+"Subject-Verb Agreement",
+"Changing Sentences",
+"Tag Questions",
+"Connectors",
+"Modifiers",
+"Conditional Sentences",
+"Voice",
+"Narration",
+"Composition"
+]}
+]}
+
+];
+
+
+let currentSubject=null;
+let currentPaper=null;
+
+
+/* SUBJECT PAGE */
+
+function showSubjects(){
+
+  hideAll();
+
+  document.getElementById("subjects").classList.remove("hidden");
+
+  renderSubjects(subjects);
+}
+
+function renderSubjects(list){
+
+  const grid=document.getElementById("subjectGrid");
+
+  grid.innerHTML="";
+
+  list.forEach((s,index)=>{
+
+    grid.innerHTML += `
+      <div class="card subjectCard"
+           onclick="openSubject(${index})">
+
+        <div class="subjectIcon">${s.icon}</div>
+
+        <h3>${s.name}</h3>
+
+        <p>${s.papers.length} Paper</p>
+
+      </div>
+    `;
+  });
+}
+
+
+function searchSubjects(){
+
+  const text=document
+    .getElementById("subjectSearch")
+    .value
+    .toLowerCase();
+
+  const filtered=subjects.filter(s =>
+    s.name.toLowerCase().includes(text)
+  );
+
+  renderSubjects(filtered);
+}
+
+
+/* SUBJECT → CHAPTER */
+
+function openSubject(index){
+
+  currentSubject=subjects[index];
+
+  hideAll();
+
+  document
+    .getElementById("chapters")
+    .classList.remove("hidden");
+
+  let html=`
+    <h2 class="sectionTitle">
+      ${currentSubject.icon} ${currentSubject.name}
+    </h2>
+  `;
+
+  currentSubject.papers.forEach((paper,paperIndex)=>{
+
+    html += `
+      <div class="paperBox">
+
+        <div class="paperTitle">
+          📘 ${paper.name}
+        </div>
+    `;
+
+    paper.chapters.forEach((chapter,i)=>{
+
+      html += `
+        <div class="chapter"
+             onclick="openChapter(${paperIndex},${i})">
+
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="chapterNum">${i+1}</div>
+
+            <div class="chapterName">
+              ${chapter}
+            </div>
+          </div>
+
+          <div>→</div>
+
+        </div>
+      `;
+
+    });
+
+    html += `</div>`;
+
+  });
+
+  document.getElementById("chapterContent").innerHTML=html;
+}
+
+
+/* CHAPTER DETAIL */
+
+function openChapter(paperIndex,chapterIndex){
+
+  currentPaper=currentSubject.papers[paperIndex];
+
+  const chapter=currentPaper.chapters[chapterIndex];
+
+  hideAll();
+
+  document
+    .getElementById("chapterDetail")
+    .classList.remove("hidden");
+
+  document.getElementById("detailContent").innerHTML=`
+
+    <div class="card">
+
+      <div style="font-size:45px;">📚</div>
+
+      <h2 style="margin:15px 0;">
+        ${chapter}
+      </h2>
+
+      <p style="color:#718096;">
+        ${currentSubject.name} • ${currentPaper.name}
+      </p>
+
+    </div>
+
+    <div class="grid" style="margin-top:20px;">
+
+      <div class="card subjectCard"
+           onclick="showNote('${chapter}')">
+
+        <div class="subjectIcon">📖</div>
+        <h3>Notes</h3>
+        <p>Chapter Notes</p>
+
+      </div>
+
+      <div class="card subjectCard"
+           onclick="showComing('MCQ')">
+
+        <div class="subjectIcon">📝</div>
+        <h3>MCQ</h3>
+        <p>Practice MCQ</p>
+
+      </div>
+
+      <div class="card subjectCard"
+           onclick="showComing('CQ')">
+
+        <div class="subjectIcon">✍️</div>
+        <h3>CQ</h3>
+        <p>Creative Questions</p>
+
+      </div>
+
+      <div class="card subjectCard"
+           onclick="showComing('Important Questions')">
+
+        <div class="subjectIcon">⭐</div>
+        <h3>Important</h3>
+        <p>Important Questions</p>
+
+      </div>
+
+      <div class="card subjectCard"
+           onclick="showComing('Quiz')">
+
+        <div class="subjectIcon">🧠</div>
+        <h3>Quiz</h3>
+        <p>Test Yourself</p>
+
+      </div>
+
+      <div class="card subjectCard"
+           onclick="showComing('PDF')">
+
+        <div class="subjectIcon">📄</div>
+        <h3>PDF</h3>
+        <p>Study Materials</p>
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+/* NOTE */
+
+function showNote(chapter){
+
+  document.getElementById("modal").classList.remove("hidden");
+
+  document.getElementById("modalContent").innerHTML=`
+
+    <button class="close"
+      onclick="closeModal()">×</button>
+
+    <h2>📖 ${chapter}</h2>
+
+    <div class="note">
+      <b>StudyNest Notes</b><br><br>
+
+      এই Chapter-এর বিস্তারিত Notes এখানে
+      যোগ করা যাবে।
+
+      <br><br>
+
+      📌 সংজ্ঞা<br>
+      📌 গুরুত্বপূর্ণ সূত্র<br>
+      📌 গুরুত্বপূর্ণ তথ্য<br>
+      📌 পরীক্ষার প্রস্তুতি<br>
+      📌 MCQ Practice
+
+    </div>
+
+    <p style="line-height:1.8;">
+      পরবর্তীতে এই জায়গায় তোমার নিজের
+      তৈরি Notes অথবা PDF যুক্ত করা যাবে।
+    </p>
+
+  `;
+}
+
+
+function showComing(name){
+
+  alert(
+    "🚧 " + name +
+    " section-এর content পরবর্তী update-এ যোগ করা যাবে।"
+  );
+
+}
+
+
+/* NAVIGATION */
+
+function hideAll(){
+
+  document
+    .querySelectorAll("main > section")
+    .forEach(s=>s.classList.add("hidden"));
+
+}
+
+function goHome(){
+
+  hideAll();
+
+  document
+    .getElementById("home")
+    .classList.remove("hidden");
+
+}
+
+function backToChapters(){
+
+  hideAll();
+
+  document
+    .getElementById("chapters")
+    .classList.remove("hidden");
+
+}
+
+function showFun(){
+
+  hideAll();
+
+  document
+    .getElementById("fun")
+    .classList.remove("hidden");
+
+}
+
+
+/* DARK MODE */
+
+function toggleDark(){
+
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "darkMode",
+    document.body.classList.contains("dark")
+  );
+
+}
+
+if(localStorage.getItem("darkMode")==="true"){
+  document.body.classList.add("dark");
+}
+
+
+/* TIMER */
+
+let time=1500;
+let timerInterval=null;
+
+function updateTimer(){
+
+  let min=Math.floor(time/60);
+  let sec=time%60;
+
+  document.getElementById("timer").textContent =
+    String(min).padStart(2,"0") + ":" +
+    String(sec).padStart(2,"0");
+
+}
+
+function startTimer(){
+
+  if(timerInterval) return;
+
+  timerInterval=setInterval(()=>{
+
+    if(time>0){
+
+      time--;
+      updateTimer();
+
+    }else{
+
+      clearInterval(timerInterval);
+      timerInterval=null;
+
+      alert("🎉 25 মিনিট Study Session শেষ!");
+
+    }
+
+  },1000);
+
+}
+
+function resetTimer(){
+
+  clearInterval(timerInterval);
+
+  timerInterval=null;
+  time=1500;
+
+  updateTimer();
+
+}
+
+
+/* TODO */
+
+let todos =
+  JSON.parse(localStorage.getItem("studynestTodos") || "[]");
+
+function renderTodos(){
+
+  const box=document.getElementById("todoList");
+
+  box.innerHTML="";
+
+  todos.forEach((todo,index)=>{
+
+    box.innerHTML += `
+
+      <div class="todoItem">
+
+        <span>${todo}</span>
+
+        <button
+          onclick="deleteTodo(${index})">
+          ❌
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+function addTodo(){
+
+  const input=document.getElementById("todoText");
+
+  if(!input.value.trim()) return;
+
+  todos.push(input.value.trim());
+
+  localStorage.setItem(
+    "studynestTodos",
+    JSON.stringify(todos)
+  );
+
+  input.value="";
+
+  renderTodos();
+
+}
+
+function deleteTodo(index){
+
+  todos.splice(index,1);
+
+  localStorage.setItem(
+    "studynestTodos",
+    JSON.stringify(todos)
+  );
+
+  renderTodos();
+
+}
+
+renderTodos();
+
+
+/* CALCULATOR */
+
+function calculate(){
+
+  const value=document.getElementById("calc").value;
+
+  try{
+
+    const result=Function(
+      '"use strict";return (' + value + ')'
+    )();
+
+    alert("Answer = " + result);
+
+  }catch{
+
+    alert("❌ ভুল হিসাব!");
+
+  }
+
+}
+
+
+/* QUIZ */
+
+const quiz=[
+
+{
+q:"HSC Physics-এ Vector কোন বিষয়?",
+a:["Physics","Biology","ICT","English"],
+c:0
+},
+
+{
+q:"HTML-এর পূর্ণরূপ কী?",
+a:[
+"Hyper Text Markup Language",
+"High Text Machine Language",
+"Hyper Tool Mark Language",
+"Home Text Markup Language"
+],
+c:0
+},
+
+{
+q:"DNA-এর পূর্ণরূপ কী?",
+a:[
+"Deoxyribonucleic Acid",
+"Dynamic Nuclear Acid",
+"Double Nitrogen Acid",
+"Deoxy Nitric Acid"
+],
+c:0
+},
+
+{
+q:"NaOH কী ধরনের পদার্থ?",
+a:["অম্ল","ক্ষার","লবণ","গ্যাস"],
+c:1
+},
+
+{
+q:"2 + 2 × 3 = ?",
+a:["12","10","8","6"],
+c:1
+}
+
+];
+
+let qIndex=0;
+let qScore=0;
+
+function loadQuiz(){
+
+  const q=quiz[qIndex];
+
+  document.getElementById("question").textContent =
+    (qIndex+1)+". "+q.q;
+
+  document.getElementById("options").innerHTML="";
+
+  q.a.forEach((option,index)=>{
+
+    const btn=document.createElement("button");
+
+    btn.className="quizOption";
+
+    btn.textContent=option;
+
+    btn.onclick=()=>{
+
+      if(index===q.c){
+
+        qScore++;
+
+        alert("✅ Correct!");
+
+      }else{
+
+        alert(
+          "❌ Wrong!\nCorrect Answer: "
+          + q.a[q.c]
+        );
+
+      }
+
+    };
+
+    document
+      .getElementById("options")
+      .appendChild(btn);
+
+  });
+
+  document.getElementById("score").textContent =
+    "Score: "+qScore;
+
+}
+
+function nextQuestion(){
+
+  qIndex++;
+
+  if(qIndex>=quiz.length){
+
+    alert(
+      "🎉 Quiz Finished!\nYour Score: "
+      + qScore + "/" + quiz.length
+    );
+
+    qIndex=0;
+    qScore=0;
+
+  }
+
+  loadQuiz();
+
+}
+
+loadQuiz();
+
+
+/* MODAL */
+
+function closeModal(){
+
+  document
+    .getElementById("modal")
+    .classList.add("hidden");
+
+}
+
+</script>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal hidden">
+
+  <div class="modalBox">
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
