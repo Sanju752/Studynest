@@ -3,611 +3,3212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#4f46e5">
-<title>StudyNest — HSC Student Hub</title>
+<meta name="theme-color" content="#2563eb">
+<title>StudyNest — Student Learning Hub</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
 }
-:root{
-  --bg:#f5f7ff;
-  --card:#fff;
-  --text:#172033;
-  --muted:#687086;
-  --primary:#4f46e5;
-  --primary2:#7c3aed;
-  --border:#e6e8f0;
-  --shadow:0 8px 25px rgba(30,35,70,.08);
-}
-body.dark{
-  --bg:#10131d;
-  --card:#191e2b;
-  --text:#f3f5ff;
-  --muted:#aeb5c7;
-  --border:#2a3040;
-  --shadow:0 8px 25px rgba(0,0,0,.25);
-}
+
 body{
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+  transition:.3s;
 }
+
 button,input,select,textarea{
   font:inherit;
 }
+
 button{
   cursor:pointer;
-  border:0;
 }
+
 .app{
-  max-width:1100px;
-  margin:auto;
-  padding-bottom:90px;
+  min-height:100vh;
+  padding-bottom:80px;
 }
-header{
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
+
+/* HEADER */
+.header{
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
   color:white;
-  padding:18px 18px 30px;
-  border-radius:0 0 28px 28px;
-  box-shadow:var(--shadow);
+  padding:18px 16px 25px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 4px 15px #0002;
 }
-.topbar{
+
+.header-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  max-width:1100px;
+  margin:auto;
 }
+
 .logo{
   font-size:24px;
   font-weight:800;
 }
+
 .logo span{
-  opacity:.8;
+  color:#bfdbfe;
 }
-.icon-btn{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:rgba(255,255,255,.18);
-  color:white;
-  font-size:19px;
-}
-.hero{
-  margin-top:28px;
-}
-.hero h1{
-  font-size:31px;
-  margin-bottom:8px;
-}
-.hero p{
-  opacity:.9;
-  line-height:1.6;
-}
-.searchbox{
-  margin-top:20px;
-  background:white;
-  border-radius:15px;
-  padding:5px;
+
+.header-actions{
   display:flex;
-  box-shadow:0 8px 20px rgba(0,0,0,.12);
+  gap:8px;
 }
-.searchbox input{
-  flex:1;
+
+.icon-btn{
   border:0;
-  outline:0;
-  padding:13px;
-  background:transparent;
-  color:#222;
-}
-.searchbox button{
-  background:var(--primary);
+  background:#ffffff22;
   color:white;
-  padding:0 17px;
-  border-radius:11px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  font-size:18px;
 }
+
+/* MAIN */
 main{
+  max-width:1100px;
+  margin:auto;
   padding:20px 15px;
 }
-.page{
-  display:none;
-  animation:fade .2s ease;
+
+.hero{
+  background:linear-gradient(135deg,#dbeafe,#eef2ff);
+  border-radius:25px;
+  padding:28px 20px;
+  margin-bottom:20px;
 }
-.page.active{
-  display:block;
-}
-@keyframes fade{
-  from{opacity:0;transform:translateY(5px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin:10px 0 15px;
-}
-.section-title h2{
-  font-size:22px;
-}
-.muted{
-  color:var(--muted);
-  font-size:14px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
-}
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:17px;
-  box-shadow:var(--shadow);
-}
-.click{
-  cursor:pointer;
-  transition:.2s;
-}
-.click:hover{
-  transform:translateY(-3px);
-}
-.subject-card{
-  min-height:135px;
-}
-.subject-icon{
-  font-size:31px;
+
+.hero h1{
+  font-size:32px;
   margin-bottom:10px;
 }
-.subject-card h3{
+
+.hero p{
+  color:#475569;
+  line-height:1.6;
+}
+
+.author{
+  display:inline-block;
+  margin-top:15px;
+  background:white;
+  padding:9px 14px;
+  border-radius:30px;
+  color:#2563eb;
+  font-weight:bold;
+  box-shadow:0 3px 10px #0001;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+  gap:14px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 5px 18px #0000000b;
+  border:1px solid #e8edf5;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 9px 25px #0002;
+}
+
+.click-card{
+  cursor:pointer;
+}
+
+.card-icon{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.card h3{
   margin-bottom:6px;
 }
-.subject-card p{
-  color:var(--muted);
-  font-size:13px;
+
+.card p{
+  color:#64748b;
+  font-size:14px;
+  line-height:1.5;
 }
-.quick{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+
+/* SECTION */
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:24px 0 13px;
 }
-.quick .card{
-  text-align:center;
-  padding:18px 10px;
+
+.section-title h2{
+  font-size:21px;
 }
-.quick-icon{
-  font-size:27px;
-  margin-bottom:8px;
-}
+
+/* BUTTON */
 .btn{
-  padding:11px 15px;
-  border-radius:11px;
-  background:var(--primary);
+  border:0;
+  background:#2563eb;
   color:white;
-  font-weight:700;
+  padding:11px 16px;
+  border-radius:12px;
+  font-weight:bold;
 }
+
+.btn:hover{
+  opacity:.9;
+}
+
 .btn.secondary{
-  background:#eef0ff;
-  color:var(--primary);
+  background:#e8eefc;
+  color:#2563eb;
 }
-body.dark .btn.secondary{
-  background:#252b42;
-  color:#b8b9ff;
+
+.btn.success{
+  background:#16a34a;
 }
+
 .btn.danger{
   background:#dc2626;
 }
-.btn.success{
-  background:#059669;
+
+.btn.dark{
+  background:#172033;
 }
-.btn.small{
-  padding:8px 11px;
-  font-size:13px;
-}
-.backbar{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  margin-bottom:17px;
-}
+
+/* BACK */
 .back{
-  background:var(--card);
-  border:1px solid var(--border);
-  color:var(--text);
-  padding:9px 13px;
-  border-radius:10px;
-}
-.paper-tabs{
-  display:flex;
-  gap:8px;
-  margin:15px 0;
-  overflow:auto;
-}
-.paper-tab{
-  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:16px;
+  border:0;
+  background:#e8eefc;
+  color:#2563eb;
   padding:10px 15px;
-  border-radius:10px;
-  background:var(--card);
-  border:1px solid var(--border);
-  color:var(--text);
+  border-radius:12px;
+  font-weight:bold;
 }
-.paper-tab.active{
-  background:var(--primary);
-  color:white;
+
+/* SUBJECT */
+.subject-card{
+  min-height:145px;
 }
-.chapter-list{
-  display:grid;
-  gap:10px;
+
+.subject-card .emoji{
+  font-size:38px;
 }
+
+/* PAPER */
+.paper{
+  background:linear-gradient(135deg,#eff6ff,#eef2ff);
+}
+
+/* CHAPTER */
 .chapter{
   display:flex;
   align-items:center;
   gap:12px;
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:15px;
-  border-radius:14px;
 }
-.chapter-num{
-  min-width:40px;
-  height:40px;
-  display:grid;
-  place-items:center;
-  border-radius:12px;
-  background:#eef0ff;
-  color:var(--primary);
-  font-weight:800;
-}
-body.dark .chapter-num{
-  background:#252b42;
-}
-.chapter h3{
-  font-size:15px;
-}
-.chapter p{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:4px;
-}
-.form-card{
-  max-width:700px;
-  margin:auto;
-}
-label{
-  display:block;
-  font-size:14px;
-  font-weight:700;
-  margin:12px 0 6px;
-}
-input,select,textarea{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:12px;
-  outline:none;
-  background:var(--card);
-  color:var(--text);
-}
-textarea{
-  min-height:110px;
-  resize:vertical;
-}
-input:focus,select:focus,textarea:focus{
-  border-color:var(--primary);
-}
-.form-actions{
+
+.chapter-number{
+  min-width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#2563eb;
+  color:white;
   display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-.note-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:13px;
-}
-.note-card h3{
-  font-size:16px;
-  margin-bottom:7px;
-}
-.note-meta{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.6;
-  margin-bottom:12px;
-}
-.tag{
-  display:inline-block;
-  padding:5px 8px;
-  border-radius:7px;
-  background:#eef0ff;
-  color:var(--primary);
-  font-size:11px;
+  justify-content:center;
+  align-items:center;
   font-weight:bold;
 }
-body.dark .tag{
-  background:#252b42;
+
+/* DETAIL */
+.detail-box{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 5px 20px #0001;
+  margin-bottom:15px;
 }
-.tool-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:13px;
-}
-.tool-card h3{
-  margin-bottom:8px;
-}
-.calculator{
-  max-width:360px;
-  margin:auto;
-}
-.calc-display{
-  font-size:28px;
-  text-align:right;
+
+.detail-box h2{
   margin-bottom:10px;
 }
-.calc-buttons{
+
+.action-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:15px;
 }
-.calc-buttons button{
-  padding:15px 5px;
-  border-radius:10px;
-  background:var(--bg);
-  color:var(--text);
-  border:1px solid var(--border);
+
+/* SEARCH */
+.search-box{
+  display:flex;
+  gap:8px;
+  margin-bottom:18px;
 }
-.calc-buttons button.op{
-  background:var(--primary);
-  color:white;
+
+.search-box input{
+  flex:1;
+  padding:13px;
+  border:1px solid #d8dee9;
+  border-radius:13px;
+  outline:none;
+  background:white;
 }
+
+/* FORMS */
+.form{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 5px 20px #0001;
+}
+
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d7deea;
+  border-radius:11px;
+  outline:none;
+  background:white;
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+/* TIMER */
 .timer{
   text-align:center;
-}
-.timer-display{
-  font-size:55px;
+  font-size:45px;
   font-weight:800;
-  margin:15px 0;
+  padding:20px;
 }
+
+.timer-buttons{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* TODO */
 .todo-row{
   display:flex;
-  gap:7px;
+  gap:8px;
+  margin-bottom:15px;
 }
-.todo-list{
-  list-style:none;
-  margin-top:12px;
+
+.todo-row input{
+  flex:1;
+  padding:12px;
+  border:1px solid #d7deea;
+  border-radius:11px;
 }
-.todo-list li{
+
+.todo-item{
   display:flex;
   justify-content:space-between;
-  gap:8px;
-  padding:10px;
-  margin-bottom:7px;
-  border:1px solid var(--border);
+  align-items:center;
+  background:#f8fafc;
+  padding:12px;
   border-radius:10px;
-  background:var(--card);
+  margin-bottom:8px;
 }
-.progress-box{
-  margin-top:10px;
+
+.todo-item.done span{
+  text-decoration:line-through;
+  opacity:.5;
 }
-.progress-bar{
-  height:10px;
-  border-radius:20px;
-  background:var(--bg);
-  overflow:hidden;
-}
-.progress-fill{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--primary),var(--primary2));
-}
+
+/* QUIZ */
 .quiz-option{
   width:100%;
   text-align:left;
-  margin:7px 0;
   padding:13px;
+  border:1px solid #dbe2ef;
+  background:white;
   border-radius:11px;
-  background:var(--bg);
-  color:var(--text);
-  border:1px solid var(--border);
+  margin-top:8px;
 }
-.quiz-option.correct{
-  background:#d1fae5;
-  color:#065f46;
+
+.quiz-option:hover{
+  background:#eff6ff;
 }
-.quiz-option.wrong{
-  background:#fee2e2;
-  color:#991b1b;
+
+.quiz-score{
+  font-size:30px;
+  text-align:center;
+  font-weight:bold;
+  margin:20px;
 }
-body.dark .quiz-option.correct{
-  background:#123d31;
-  color:#7ff0c2;
+
+/* PROGRESS */
+.progress-bar{
+  height:15px;
+  background:#e2e8f0;
+  border-radius:20px;
+  overflow:hidden;
+  margin:12px 0;
 }
-body.dark .quiz-option.wrong{
-  background:#452020;
-  color:#ffaaaa;
+
+.progress-fill{
+  height:100%;
+  background:#2563eb;
+  width:0%;
+  transition:.3s;
 }
-.quote{
-  background:linear-gradient(135deg,#111827,#3730a3);
-  color:white;
-  border-radius:18px;
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  z-index:100;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  background:white;
+  width:100%;
+  max-width:600px;
+  max-height:85vh;
+  overflow:auto;
+  border-radius:20px;
   padding:20px;
-  margin:18px 0;
 }
-.empty{
-  text-align:center;
-  padding:35px 15px;
-  color:var(--muted);
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
 }
-footer{
-  text-align:center;
-  color:var(--muted);
-  padding:30px 15px;
-  font-size:13px;
+
+.close{
+  border:0;
+  background:#fee2e2;
+  color:#dc2626;
+  width:35px;
+  height:35px;
+  border-radius:50%;
 }
+
+/* NAV */
 .bottom-nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  max-width:1100px;
-  margin:auto;
-  background:var(--card);
-  border:1px solid var(--border);
-  box-shadow:0 -5px 20px rgba(0,0,0,.08);
+  background:white;
+  border-top:1px solid #e2e8f0;
+  display:flex;
+  justify-content:center;
+  z-index:80;
+  box-shadow:0 -3px 15px #0001;
+}
+
+.nav-inner{
+  width:100%;
+  max-width:700px;
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  padding:7px;
-  z-index:50;
 }
+
 .nav-btn{
-  background:transparent;
-  color:var(--muted);
-  padding:7px 2px;
-  border-radius:10px;
-  font-size:11px;
+  border:0;
+  background:none;
+  padding:10px 4px;
+  color:#64748b;
+  font-size:12px;
 }
-.nav-btn.active{
-  color:var(--primary);
-  font-weight:800;
-  background:#eef0ff;
-}
-body.dark .nav-btn.active{
-  background:#252b42;
-}
-.notice{
-  padding:13px;
-  border-radius:12px;
-  background:#fff7ed;
-  color:#9a3412;
-  margin:12px 0;
-  font-size:13px;
-  line-height:1.6;
-}
-body.dark .notice{
-  background:#3b271b;
-  color:#fdba74;
-}
-.feature-row{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:13px;
-}
-.stat{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-.stat-item{
-  text-align:center;
-  padding:15px 5px;
-  border:1px solid var(--border);
-  border-radius:13px;
-}
-.stat-item strong{
+
+.nav-btn b{
   display:block;
-  font-size:22px;
-  color:var(--primary);
+  font-size:20px;
+  margin-bottom:2px;
 }
-@media(max-width:800px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .quick{grid-template-columns:repeat(2,1fr)}
-  .note-grid{grid-template-columns:repeat(2,1fr)}
-  .tool-grid{grid-template-columns:repeat(2,1fr)}
+
+.nav-btn.active{
+  color:#2563eb;
 }
-@media(max-width:520px){
-  .hero h1{font-size:26px}
-  .grid,.note-grid,.tool-grid{grid-template-columns:1fr}
-  .feature-row{grid-template-columns:1fr}
-  .stat{grid-template-columns:repeat(3,1fr)}
-  main{padding:17px 12px}
+
+/* EMPTY */
+.empty{
+  text-align:center;
+  padding:30px 10px;
+  color:#64748b;
+}
+
+/* DARK MODE */
+body.dark{
+  background:#0f172a;
+  color:#e5e7eb;
+}
+
+body.dark .card,
+body.dark .detail-box,
+body.dark .form,
+body.dark .modal-box{
+  background:#172033;
+  border-color:#263247;
+}
+
+body.dark .card p,
+body.dark .hero p{
+  color:#aab6c8;
+}
+
+body.dark .hero{
+  background:linear-gradient(135deg,#172554,#1e1b4b);
+}
+
+body.dark .search-box input,
+body.dark .form-group input,
+body.dark .form-group select,
+body.dark .form-group textarea,
+body.dark .todo-row input,
+body.dark .quiz-option{
+  background:#0f172a;
+  color:white;
+  border-color:#334155;
+}
+
+body.dark .paper{
+  background:#172554;
+}
+
+body.dark .bottom-nav{
+  background:#172033;
+  border-color:#263247;
+}
+
+body.dark .nav-btn{
+  color:#94a3b8;
+}
+
+body.dark .todo-item{
+  background:#0f172a;
+}
+
+body.dark .back{
+  background:#1e3a8a;
+  color:#bfdbfe;
+}
+
+/* DESKTOP */
+@media(min-width:700px){
+  .action-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
+/* SMALL */
+@media(max-width:420px){
+  .hero h1{
+    font-size:27px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  .action-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div class="app">
 
-<header id="header">
-  <div class="topbar">
+<header class="header">
+  <div class="header-top">
     <div class="logo">Study<span>Nest</span> 📚</div>
-    <button class="icon-btn" onclick="toggleDark()" id="themeBtn">🌙</button>
-  </div>
 
-  <div class="hero">
-    <h1>Study smarter. Grow better. 🚀</h1>
-    <p>HSC Science students-এর জন্য Notes, MCQ, Quiz, Tools ও Study Resources এক জায়গায়।</p>
-
-    <div class="searchbox">
-      <input id="globalSearch" placeholder="Subject বা chapter search করো..." onkeydown="if(event.key==='Enter') globalSearch()">
-      <button onclick="globalSearch()">Search</button>
+    <div class="header-actions">
+      <button class="icon-btn" data-action="search">🔎</button>
+      <button class="icon-btn" data-action="theme">🌙</button>
     </div>
   </div>
 </header>
 
-<main>
+<main id="app"></main>
 
-<!-- HOME -->
-<section id="home" class="page active">
+</div>
 
-  <div class="quote">
-    <b>✨ Today's Focus</b>
-    <p id="dailyQuote" style="margin-top:8px;line-height:1.6"></p>
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <div class="nav-inner">
+
+    <button class="nav-btn" data-route="home">
+      <b>🏠</b>Home
+    </button>
+
+    <button class="nav-btn" data-route="explore">
+      <b>📚</b>Explore
+    </button>
+
+    <button class="nav-btn" data-route="notes">
+      <b>📝</b>Notes
+    </button>
+
+    <button class="nav-btn" data-route="tools">
+      <b>🧰</b>Tools
+    </button>
+
+    <button class="nav-btn" data-route="more">
+      <b>☰</b>More
+    </button>
+
   </div>
+</nav>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="modalTitle">StudyNest</h2>
+      <button class="close" data-action="closeModal">✕</button>
+    </div>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+
+<script>
+
+/* =====================================================
+   STUDYNEST DATA
+===================================================== */
+
+const subjects = {
+
+  Physics:{
+    emoji:"⚛️",
+    bn:"পদার্থবিজ্ঞান",
+    papers:{
+      "1st Paper":[
+        "ভৌত জগৎ ও পরিমাপ",
+        "ভেক্টর",
+        "গতিবিদ্যা",
+        "নিউটনের গতিসূত্র",
+        "কাজ, শক্তি ও ক্ষমতা",
+        "মহাকর্ষ ও অভিকর্ষ",
+        "পদার্থের গাঠনিক ধর্ম",
+        "পর্যাবৃত্ত গতি",
+        "তরঙ্গ",
+        "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"
+      ],
+      "2nd Paper":[
+        "তাপগতিবিদ্যা",
+        "স্থির তড়িৎ",
+        "চল তড়িৎ",
+        "তড়িৎ প্রবাহের চৌম্বক ক্রিয়া",
+        "তড়িৎ চৌম্বকীয় আবেশ",
+        "জ্যামিতিক আলোকবিজ্ঞান",
+        "ভৌত আলোকবিজ্ঞান",
+        "আধুনিক পদার্থবিজ্ঞান",
+        "পরমাণু ও নিউক্লিয়ার পদার্থবিজ্ঞান",
+        "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স"
+      ]
+    }
+  },
+
+  Chemistry:{
+    emoji:"🧪",
+    bn:"রসায়ন",
+    papers:{
+      "1st Paper":[
+        "ল্যাবরেটরির নিরাপদ ব্যবহার",
+        "গুণগত রসায়ন",
+        "মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন",
+        "রাসায়নিক পরিবর্তন",
+        "কর্মমুখী রসায়ন"
+      ],
+      "2nd Paper":[
+        "পরিবেশ রসায়ন",
+        "জৈব রসায়ন",
+        "পরিমাণগত রসায়ন",
+        "তড়িৎ রসায়ন",
+        "অর্থনৈতিক রসায়ন"
+      ]
+    }
+  },
+
+  "Higher Mathematics":{
+    emoji:"📐",
+    bn:"উচ্চতর গণিত",
+    papers:{
+      "1st Paper":[
+        "ম্যাট্রিক্স ও নির্ণায়ক",
+        "ভেক্টর",
+        "সরলরেখা",
+        "বৃত্ত",
+        "বিন্যাস ও সমাবেশ",
+        "ত্রিকোণমিতিক অনুপাত",
+        "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত",
+        "ফাংশন",
+        "অন্তরীকরণ",
+        "যোগজীকরণ"
+      ],
+      "2nd Paper":[
+        "বাস্তব সংখ্যা ও অসমতা",
+        "যোগাশ্রয়ী প্রোগ্রাম",
+        "জটিল সংখ্যা",
+        "বহুপদী ও সমীকরণ",
+        "দ্বিপদী বিস্তৃতি",
+        "কনিক",
+        "বিপরীত ত্রিকোণমিতিক ফাংশন",
+        "স্থিতিবিদ্যা",
+        "সমতলীয় বস্তুর গতি",
+        "বিস্তার পরিমাপ ও সম্ভাবনা"
+      ]
+    }
+  },
+
+  Biology:{
+    emoji:"🧬",
+    bn:"জীববিজ্ঞান",
+    papers:{
+      "1st Paper":[
+        "কোষ ও এর গঠন",
+        "কোষ বিভাজন",
+        "কোষ রসায়ন",
+        "অণুজীব",
+        "শৈবাল ও ছত্রাক",
+        "ব্রায়োফাইটা ও টেরিডোফাইটা",
+        "নগ্নবীজী ও আবৃতবীজী",
+        "টিস্যু ও টিস্যুতন্ত্র",
+        "উদ্ভিদ শারীরতত্ত্ব",
+        "উদ্ভিদের প্রজনন"
+      ],
+      "2nd Paper":[
+        "প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস",
+        "প্রাণীর পরিচিতি",
+        "পরিপাক ও শোষণ",
+        "রক্ত ও সঞ্চালন",
+        "শ্বাসক্রিয়া ও শ্বসন",
+        "বর্জ্য ও নিষ্কাশন",
+        "চলন ও অঙ্গচালনা",
+        "সমন্বয় ও নিয়ন্ত্রণ",
+        "প্রজনন",
+        "জিনতত্ত্ব ও বিবর্তন"
+      ]
+    }
+  },
+
+  ICT:{
+    emoji:"💻",
+    bn:"তথ্য ও যোগাযোগ প্রযুক্তি",
+    papers:{
+      "1st Paper":[
+        "তথ্য ও যোগাযোগ প্রযুক্তি",
+        "কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং",
+        "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস",
+        "ওয়েব ডিজাইন ও HTML",
+        "প্রোগ্রামিং ভাষা",
+        "ডেটাবেজ ম্যানেজমেন্ট"
+      ],
+      "2nd Paper":[
+        "প্রোগ্রামিং",
+        "ডেটাবেজ",
+        "ওয়েব ডিজাইন",
+        "ডিজিটাল ডিভাইস"
+      ]
+    }
+  },
+
+  Bangla:{
+    emoji:"📖",
+    bn:"বাংলা",
+    papers:{
+      "1st Paper":[
+        "লালসালু",
+        "সিরাজউদ্দৌলা",
+        "তাহারী পরে মনে",
+        "নেকলেস",
+        "গন্তব্য কাবুল"
+      ],
+      "2nd Paper":[
+        "ব্যাকরণ",
+        "বাংলা ভাষা",
+        "রচনা",
+        "সারাংশ ও সারমর্ম",
+        "আবেদনপত্র"
+      ]
+    }
+  },
+
+  English:{
+    emoji:"🔤",
+    bn:"ইংরেজি",
+    papers:{
+      "1st Paper":[
+        "Reading",
+        "Writing",
+        "Graphs and Charts",
+        "Summary",
+        "Story Writing"
+      ],
+      "2nd Paper":[
+        "Grammar",
+        "Composition",
+        "Formal Letter",
+        "Paragraph",
+        "Essay"
+      ]
+    }
+  }
+
+};
+
+
+/* =====================================================
+   APP STATE
+===================================================== */
+
+let state={
+  page:"home",
+  subject:null,
+  paper:null,
+  chapter:null,
+  search:"",
+  quizIndex:0,
+  quizScore:0,
+  quizFinished:false,
+  timerSeconds:1500,
+  timerRunning:false
+};
+
+let timerInterval=null;
+
+
+/* =====================================================
+   LOCAL DATA
+===================================================== */
+
+let completed=JSON.parse(localStorage.getItem("sn_completed")||"[]");
+let bookmarks=JSON.parse(localStorage.getItem("sn_bookmarks")||"[]");
+let todos=JSON.parse(localStorage.getItem("sn_todos")||"[]");
+
+
+/* =====================================================
+   HELPER
+===================================================== */
+
+function saveData(){
+  localStorage.setItem("sn_completed",JSON.stringify(completed));
+  localStorage.setItem("sn_bookmarks",JSON.stringify(bookmarks));
+  localStorage.setItem("sn_todos",JSON.stringify(todos));
+}
+
+function esc(text){
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;");
+}
+
+function allChapters(){
+
+  let arr=[];
+
+  for(const subject in subjects){
+
+    for(const paper in subjects[subject].papers){
+
+      subjects[subject].papers[paper].forEach(chapter=>{
+
+        arr.push({
+          subject,
+          paper,
+          chapter
+        });
+
+      });
+
+    }
+
+  }
+
+  return arr;
+}
+
+function chapterKey(){
+  return `${state.subject}|${state.paper}|${state.chapter}`;
+}
+
+function updateNav(){
+
+  document.querySelectorAll(".nav-btn").forEach(btn=>{
+    btn.classList.toggle(
+      "active",
+      btn.dataset.route===state.page
+    );
+  });
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function go(page,extra={}){
+
+  state.page=page;
+
+  Object.assign(state,extra);
+
+  render();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+function back(){
+
+  if(state.page==="chapter"){
+    go("chapters");
+  }
+  else if(state.page==="chapters"){
+    go("papers");
+  }
+  else if(state.page==="papers"){
+    go("explore");
+  }
+  else{
+    go("home");
+  }
+
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function homePage(){
+
+  return `
+
+  <section class="hero">
+
+    <h1>StudyNest 📚</h1>
+
+    <p>
+      তোমার HSC Science পড়াশোনার জন্য একটি সহজ,
+      সুন্দর ও student-friendly learning hub.
+    </p>
+
+    <div class="author">
+      ✨ Created by Ahmed Sami
+    </div>
+
+  </section>
+
+
+  <div class="grid">
+
+    <div class="card click-card" data-route="explore">
+      <div class="card-icon">📚</div>
+      <h3>Explore Subjects</h3>
+      <p>সব subject ও chapter দেখো</p>
+    </div>
+
+    <div class="card click-card" data-route="notes">
+      <div class="card-icon">📝</div>
+      <h3>Notes Library</h3>
+      <p>নিজের notes খুঁজে দেখো</p>
+    </div>
+
+    <div class="card click-card" data-route="upload">
+      <div class="card-icon">📤</div>
+      <h3>Upload Note</h3>
+      <p>নিজের note save করো</p>
+    </div>
+
+    <div class="card click-card" data-route="result">
+      <div class="card-icon">🎓</div>
+      <h3>Result Check</h3>
+      <p>Board result portal</p>
+    </div>
+
+  </div>
+
 
   <div class="section-title">
-    <h2>Quick Access</h2>
+    <h2>⚡ Quick Study</h2>
   </div>
 
-  <div class="quick">
-    <div class="card click" onclick="showPage('explore')">
-      <div class="quick-icon">📚</div>
-      <b>Explore</b>
+  <div class="grid">
+
+    <div class="card click-card" data-route="quiz">
+      <div class="card-icon">🧠</div>
+      <h3>Quiz</h3>
+      <p>নিজেকে পরীক্ষা করো</p>
     </div>
-    <div class="card click" onclick="showPage('notes')">
-      <div class="quick-icon">📝</div>
-      <b>Notes</b>
+
+    <div class="card click-card" data-route="tools">
+      <div class="card-icon">🧰</div>
+      <h3>Student Tools</h3>
+      <p>Timer, Calculator, To-do</p>
     </div>
-    <div class="card click" onclick="showPage('quiz')">
-      <div class="quick-icon">🧠</div>
-      <b>Quiz</b>
+
+    <div class="card click-card" data-route="progress">
+      <div class="card-icon">📊</div>
+      <h3>Progress</h3>
+      <p>তোমার পড়ার অগ্রগতি</p>
     </div>
-    <div class="card click" onclick="showPage('tools')">
-      <div class="quick-icon">🧮</div>
-      <b>Student Tools</b>
+
+    <div class="card click-card" data-route="fun">
+      <div class="card-icon">🎮</div>
+      <h3>Fun Zone</h3>
+      <p>Brain teaser ও riddle</p>
     </div>
+
   </div>
 
-  <div class="section-title" style="margin-top:25px">
-    <h2>Subjects</h2>
-    <button class="btn small" onclick="showPage('explore')">See All</button>
+
+  <div class="section-title">
+    <h2>💡 Daily Motivation</h2>
   </div>
 
-  <div class="grid" id="homeSubjects"></div>
+  <div class="card">
+    <h3>“Small progress every day becomes big success.” 🚀</h3>
+    <p style="margin-top:8px">
+      প্রতিদিন অল্প অল্প করে পড়লেও নিয়মিত থাকাই সবচেয়ে গুরুত্বপূর্ণ।
+    </p>
+  </div>
 
-  <div class="feature-row" style="margin-top:20px">
-    <div class="card">
-      <h3>📈 My Study Progress</h3>
-      <p class="muted" style="margin-top:6px">তোমার completed chapter-এর progress</p>
-      <div class="progress-box">
-        <div class="progress-bar"><div class="progress-fill" id="homeProgress"></div></div>
-        <p class="muted" id="progressText" style="margin-top:7px"></p>
+
+  <div class="section-title">
+    <h2>🌟 StudyNest</h2>
+  </div>
+
+  <div class="card">
+    <p>
+      HSC Science students-এর জন্য Notes, MCQ, CQ,
+      Quiz এবং প্রয়োজনীয় Study Tools এক জায়গায়।
+    </p>
+
+    <p style="margin-top:10px;font-weight:bold">
+      Created by Ahmed Sami ❤️
+    </p>
+  </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   EXPLORE
+===================================================== */
+
+function explorePage(){
+
+  let html=`
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="section-title">
+      <h2>📚 Explore Subjects</h2>
+    </div>
+
+    <div class="grid">
+  `;
+
+  for(const name in subjects){
+
+    const s=subjects[name];
+
+    html+=`
+
+      <div class="card click-card subject-card"
+           data-action="subject"
+           data-subject="${esc(name)}">
+
+        <div class="emoji">${s.emoji}</div>
+
+        <h3>${esc(s.bn)}</h3>
+
+        <p>${Object.values(s.papers).flat().length} Chapters</p>
+
       </div>
+
+    `;
+
+  }
+
+  html+=`</div>`;
+
+  return html;
+
+}
+
+
+/* =====================================================
+   PAPERS
+===================================================== */
+
+function papersPage(){
+
+  const s=subjects[state.subject];
+
+  return `
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="detail-box">
+
+      <div style="font-size:45px">${s.emoji}</div>
+
+      <h2>${esc(s.bn)}</h2>
+
+      <p>Paper নির্বাচন করো</p>
+
+    </div>
+
+
+    <div class="grid">
+
+      ${Object.keys(s.papers).map(paper=>`
+
+        <div class="card click-card paper"
+             data-action="paper"
+             data-paper="${esc(paper)}">
+
+          <div class="card-icon">
+            ${paper==="1st Paper"?"📘":"📕"}
+          </div>
+
+          <h3>${paper}</h3>
+
+          <p>${s.papers[paper].length} Chapters</p>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   CHAPTERS
+===================================================== */
+
+function chaptersPage(){
+
+  const list=subjects[state.subject].papers[state.paper];
+
+  return `
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="detail-box">
+
+      <h2>
+        ${subjects[state.subject].emoji}
+        ${esc(subjects[state.subject].bn)}
+      </h2>
+
+      <p>${esc(state.paper)} — ${list.length} Chapters</p>
+
+    </div>
+
+
+    <div>
+
+      ${list.map((chapter,i)=>`
+
+        <div class="card click-card chapter"
+             style="margin-bottom:10px"
+             data-action="chapter"
+             data-chapter="${esc(chapter)}">
+
+          <div class="chapter-number">${i+1}</div>
+
+          <div>
+            <h3>${esc(chapter)}</h3>
+            <p>Notes • MCQ • CQ • Important</p>
+          </div>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   CHAPTER DETAIL
+===================================================== */
+
+function chapterPage(){
+
+  const key=chapterKey();
+
+  const done=completed.includes(key);
+
+  const saved=bookmarks.includes(key);
+
+  return `
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="detail-box">
+
+      <div style="font-size:40px">
+        ${subjects[state.subject].emoji}
+      </div>
+
+      <p style="color:#64748b;margin:8px 0">
+        ${esc(subjects[state.subject].bn)} • ${esc(state.paper)}
+      </p>
+
+      <h2>${esc(state.chapter)}</h2>
+
+      <p style="margin-top:10px">
+        এই chapter-এর Notes, MCQ, CQ এবং গুরুত্বপূর্ণ বিষয়গুলো এখানে দেখো।
+      </p>
+
+      <div class="action-grid">
+
+        <button class="btn" data-action="chapterContent" data-type="notes">
+          📝 Notes
+        </button>
+
+        <button class="btn secondary" data-action="chapterContent" data-type="mcq">
+          ❓ MCQ
+        </button>
+
+        <button class="btn secondary" data-action="chapterContent" data-type="cq">
+          ✍️ CQ
+        </button>
+
+        <button class="btn secondary" data-action="chapterContent" data-type="important">
+          ⭐ Important
+        </button>
+
+      </div>
+
+      <div class="action-grid">
+
+        <button
+          class="btn ${saved?"success":"dark"}"
+          data-action="bookmark">
+
+          ${saved?"★ Bookmarked":"☆ Bookmark"}
+
+        </button>
+
+        <button
+          class="btn ${done?"success":""}"
+          data-action="complete">
+
+          ${done?"✓ Completed":"✓ Mark Completed"}
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="detail-box">
+
+      <h3>📚 Chapter Resources</h3>
+
+      <p style="margin-top:8px">
+        Notes Library থেকে এই chapter-এর uploaded notes
+        থাকলে সেগুলোও দেখতে পারবে।
+      </p>
+
+      <button
+        class="btn secondary"
+        style="margin-top:12px"
+        data-action="chapterNotes">
+
+        🔎 Find Chapter Notes
+
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function searchPage(){
+
+  const q=state.search.toLowerCase();
+
+  let results=[];
+
+  for(const item of allChapters()){
+
+    if(
+      item.chapter.toLowerCase().includes(q) ||
+      item.subject.toLowerCase().includes(q) ||
+      subjects[item.subject].bn.toLowerCase().includes(q)
+    ){
+      results.push(item);
+    }
+
+  }
+
+  return `
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="section-title">
+      <h2>🔎 Search StudyNest</h2>
+    </div>
+
+    <div class="search-box">
+
+      <input
+        id="searchInput"
+        value="${esc(state.search)}"
+        placeholder="Chapter / Subject search...">
+
+      <button class="btn" data-action="doSearch">
+        Search
+      </button>
+
+    </div>
+
+
+    ${
+      state.search
+      ?
+      results.length
+      ?
+      `<div>
+        ${results.map(item=>`
+
+          <div class="card click-card"
+               style="margin-bottom:10px"
+               data-action="openSearch"
+               data-subject="${esc(item.subject)}"
+               data-paper="${esc(item.paper)}"
+               data-chapter="${esc(item.chapter)}">
+
+            <h3>
+              ${subjects[item.subject].emoji}
+              ${esc(item.chapter)}
+            </h3>
+
+            <p>
+              ${esc(subjects[item.subject].bn)} • ${esc(item.paper)}
+            </p>
+
+          </div>
+
+        `).join("")}
+      </div>`
+      :
+      `<div class="empty">কোনো result পাওয়া যায়নি 😕</div>`
+      :
+      `<div class="empty">Search করতে chapter বা subject লিখো 🔎</div>`
+    }
+
+  `;
+
+}
+
+
+/* =====================================================
+   NOTES
+===================================================== */
+
+function getNotes(){
+
+  return JSON.parse(localStorage.getItem("sn_notes")||"[]");
+
+}
+
+function saveNotes(notes){
+
+  localStorage.setItem("sn_notes",JSON.stringify(notes));
+
+}
+
+function notesPage(){
+
+  const notes=getNotes();
+
+  return `
+
+    <div class="section-title">
+
+      <h2>📝 Notes Library</h2>
+
+      <button class="btn" data-route="upload">
+        + Upload
+      </button>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        id="noteSearch"
+        placeholder="Note search..."
+        value="${esc(state.search)}">
+
+      <button class="btn" data-action="noteSearch">
+        🔎
+      </button>
+
+    </div>
+
+
+    <div id="notesList">
+
+      ${renderNotes(notes)}
+
+    </div>
+
+  `;
+
+}
+
+function renderNotes(notes){
+
+  let q=state.search.toLowerCase();
+
+  let filtered=notes.filter(n=>
+    !q ||
+    n.title.toLowerCase().includes(q) ||
+    n.subject.toLowerCase().includes(q) ||
+    n.chapter.toLowerCase().includes(q)
+  );
+
+  if(!filtered.length){
+
+    return `
+      <div class="empty">
+        কোনো note পাওয়া যায়নি।
+        <br><br>
+        <button class="btn" data-route="upload">
+          প্রথম Note Upload করো
+        </button>
+      </div>
+    `;
+
+  }
+
+  return filtered.map(n=>`
+
+    <div class="card" style="margin-bottom:12px">
+
+      <h3>📝 ${esc(n.title)}</h3>
+
+      <p style="margin-top:7px">
+        ${esc(n.subject)} • ${esc(n.chapter)}
+      </p>
+
+      <p style="margin-top:5px">
+        Uploaded: ${new Date(n.date).toLocaleDateString()}
+      </p>
+
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+
+        <button
+          class="btn"
+          data-action="viewNote"
+          data-id="${n.id}">
+          👁 View
+        </button>
+
+        <button
+          class="btn danger"
+          data-action="deleteNote"
+          data-id="${n.id}">
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+/* =====================================================
+   UPLOAD
+===================================================== */
+
+function uploadPage(){
+
+  return `
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="section-title">
+      <h2>📤 Upload Note</h2>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+
+        <label>Note Title</label>
+
+        <input
+          id="noteTitle"
+          placeholder="যেমন: Physics Vector Short Note">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Subject</label>
+
+        <select id="noteSubject">
+
+          <option value="">Select Subject</option>
+
+          ${Object.keys(subjects).map(s=>
+            `<option value="${esc(s)}">${esc(subjects[s].bn)}</option>`
+          ).join("")}
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Chapter</label>
+
+        <input
+          id="noteChapter"
+          placeholder="Chapter name">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Note Content</label>
+
+        <textarea
+          id="noteContent"
+          placeholder="তোমার note এখানে লিখতে পারো..."></textarea>
+
+      </div>
+
+
+      <button class="btn" data-action="saveNote">
+        💾 Save Note
+      </button>
+
+      <p style="margin-top:12px;color:#64748b;font-size:13px">
+        এই version-এ note browser-এর local storage-এ save হবে।
+        তাই একই device/browser-এ থাকবে।
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+function resultPage(){
+
+  return `
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="detail-box">
+
+      <div style="font-size:45px">🎓</div>
+
+      <h2>Board Result Check</h2>
+
+      <p style="margin-top:8px">
+        Roll এবং Registration Number দিয়ে official
+        Education Board result portal-এ result check করতে পারবে।
+      </p>
+
+    </div>
+
+
+    <div class="form">
+
+      <div class="form-group">
+
+        <label>Roll Number</label>
+
+        <input id="roll" type="number" placeholder="Enter Roll">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Registration Number</label>
+
+        <input id="reg" type="number" placeholder="Enter Registration">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Exam</label>
+
+        <select id="exam">
+
+          <option>HSC / Alim</option>
+          <option>SSC / Dakhil</option>
+
+        </select>
+
+      </div>
+
+
+      <button class="btn" data-action="result">
+        🎓 Check Official Result
+      </button>
+
+      <p style="margin-top:12px;color:#64748b;font-size:13px">
+        Result সরাসরি official education board portal-এ
+        check হবে। StudyNest কোনো fake result তৈরি করে না।
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   TOOLS
+===================================================== */
+
+function toolsPage(){
+
+  return `
+
+    <div class="section-title">
+      <h2>🧰 Student Tools</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card click-card" data-tool="timer">
+        <div class="card-icon">⏱️</div>
+        <h3>Study Timer</h3>
+        <p>Focus করে পড়াশোনা করো</p>
+      </div>
+
+      <div class="card click-card" data-tool="calculator">
+        <div class="card-icon">🧮</div>
+        <h3>Calculator</h3>
+        <p>Quick calculation</p>
+      </div>
+
+      <div class="card click-card" data-tool="todo">
+        <div class="card-icon">✅</div>
+        <h3>To-do List</h3>
+        <p>আজকের কাজ লিখে রাখো</p>
+      </div>
+
+      <div class="card click-card" data-tool="converter">
+        <div class="card-icon">🔄</div>
+        <h3>Unit Converter</h3>
+        <p>Unit convert করো</p>
+      </div>
+
+      <div class="card click-card" data-route="progress">
+        <div class="card-icon">📊</div>
+        <h3>Progress</h3>
+        <p>Chapter completion</p>
+      </div>
+
+      <div class="card click-card" data-route="quiz">
+        <div class="card-icon">🧠</div>
+        <h3>Quiz</h3>
+        <p>Practice quiz</p>
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function timerHTML(){
+
+  return `
+
+    <div class="detail-box">
+
+      <h2>⏱️ Study Timer</h2>
+
+      <div class="timer" id="timerDisplay">
+        ${formatTime(state.timerSeconds)}
+      </div>
+
+      <div class="timer-buttons">
+
+        <button class="btn" data-action="startTimer">
+          ▶ Start
+        </button>
+
+        <button class="btn secondary" data-action="pauseTimer">
+          ⏸ Pause
+        </button>
+
+        <button class="btn danger" data-action="resetTimer">
+          ↻ Reset
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+function formatTime(sec){
+
+  let m=Math.floor(sec/60);
+  let s=sec%60;
+
+  return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+
+}
+
+function startTimer(){
+
+  if(timerInterval) return;
+
+  state.timerRunning=true;
+
+  timerInterval=setInterval(()=>{
+
+    if(state.timerSeconds>0){
+
+      state.timerSeconds--;
+
+      const el=document.getElementById("timerDisplay");
+
+      if(el) el.textContent=formatTime(state.timerSeconds);
+
+    }
+    else{
+
+      clearInterval(timerInterval);
+      timerInterval=null;
+      state.timerRunning=false;
+
+      alert("🎉 Study session complete!");
+
+    }
+
+  },1000);
+
+}
+
+function pauseTimer(){
+
+  clearInterval(timerInterval);
+  timerInterval=null;
+  state.timerRunning=false;
+
+}
+
+function resetTimer(){
+
+  pauseTimer();
+
+  state.timerSeconds=1500;
+
+  const el=document.getElementById("timerDisplay");
+
+  if(el) el.textContent=formatTime(1500);
+
+}
+
+
+/* =====================================================
+   CALCULATOR
+===================================================== */
+
+function calculatorHTML(){
+
+  return `
+
+    <div class="form">
+
+      <h2>🧮 Calculator</h2>
+
+      <div class="form-group" style="margin-top:15px">
+
+        <input
+          id="calcInput"
+          placeholder="Example: 25*4+10">
+
+      </div>
+
+      <button class="btn" data-action="calculate">
+        = Calculate
+      </button>
+
+      <div id="calcResult"
+           style="font-size:25px;font-weight:bold;margin-top:15px">
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   TODO
+===================================================== */
+
+function todoHTML(){
+
+  return `
+
+    <div class="form">
+
+      <h2>✅ To-do List</h2>
+
+      <div class="todo-row" style="margin-top:15px">
+
+        <input id="todoInput" placeholder="আজ কী পড়বে?">
+
+        <button class="btn" data-action="addTodo">
+          Add
+        </button>
+
+      </div>
+
+      <div id="todoList">
+        ${renderTodos()}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+function renderTodos(){
+
+  if(!todos.length){
+
+    return `<div class="empty">আজকের কোনো task নেই।</div>`;
+
+  }
+
+  return todos.map((t,i)=>`
+
+    <div class="todo-item ${t.done?"done":""}">
+
+      <span
+        data-action="toggleTodo"
+        data-index="${i}"
+        style="cursor:pointer">
+        ${esc(t.text)}
+      </span>
+
+      <button
+        class="btn danger"
+        style="padding:7px 10px"
+        data-action="removeTodo"
+        data-index="${i}">
+        ✕
+      </button>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+/* =====================================================
+   CONVERTER
+===================================================== */
+
+function converterHTML(){
+
+  return `
+
+    <div class="form">
+
+      <h2>🔄 Unit Converter</h2>
+
+      <div class="form-group" style="margin-top:15px">
+
+        <label>Value</label>
+
+        <input id="convertValue" type="number" placeholder="100">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Convert</label>
+
+        <select id="convertType">
+
+          <option value="km-m">Kilometer → Meter</option>
+          <option value="m-km">Meter → Kilometer</option>
+          <option value="kg-g">Kilogram → Gram</option>
+          <option value="g-kg">Gram → Kilogram</option>
+          <option value="c-f">Celsius → Fahrenheit</option>
+          <option value="f-c">Fahrenheit → Celsius</option>
+
+        </select>
+
+      </div>
+
+
+      <button class="btn" data-action="convert">
+        Convert
+      </button>
+
+
+      <div id="convertResult"
+           style="font-size:24px;font-weight:bold;margin-top:15px">
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function progressPage(){
+
+  const total=allChapters().length;
+
+  const percent=total?
+    Math.round((completed.length/total)*100):0;
+
+  return `
+
+    <button class="back" data-action="back">← Back</button>
+
+    <div class="detail-box">
+
+      <h2>📊 Study Progress</h2>
+
+      <p style="margin-top:8px">
+        Completed ${completed.length} / ${total} chapters
+      </p>
+
+      <div class="progress-bar">
+        <div class="progress-fill"
+             style="width:${percent}%"></div>
+      </div>
+
+      <h2>${percent}%</h2>
+
+    </div>
+
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>${total}</h3>
+        <p>Total Chapters</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>${completed.length}</h3>
+        <p>Completed</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <h3>${bookmarks.length}</h3>
+        <p>Bookmarks</p>
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const quizQuestions=[
+
+  {
+    q:"HCl + NaOH বিক্রিয়ায় কোন লবণ তৈরি হয়?",
+    options:["NaCl","KCl","CaCl₂","Na₂CO₃"],
+    answer:0
+  },
+
+  {
+    q:"Velocity-এর SI unit কোনটি?",
+    options:["m/s","kg","N","J"],
+    answer:0
+  },
+
+  {
+    q:"DNA-এর পূর্ণরূপ কী?",
+    options:[
+      "Deoxyribonucleic Acid",
+      "Dynamic Nuclear Acid",
+      "Double Nitrogen Acid",
+      "None"
+    ],
+    answer:0
+  },
+
+  {
+    q:"HTML-এর পূর্ণরূপ কী?",
+    options:[
+      "Hyper Text Markup Language",
+      "High Text Machine Language",
+      "Hyper Tool Mark Language",
+      "None"
+    ],
+    answer:0
+  },
+
+  {
+    q:"Matrix-এর determinant সাধারণত কোন symbol দিয়ে প্রকাশ করা হয়?",
+    options:["|A|","A²","∑A","∆A"],
+    answer:0
+  },
+
+  {
+    q:"মানুষের রক্তের প্রধান তরল অংশ কোনটি?",
+    options:["Plasma","Platelet","RBC","WBC"],
+    answer:0
+  },
+
+  {
+    q:"CO₂ একটি—",
+    options:["Greenhouse gas","Noble gas","Metal","Halogen"],
+    answer:0
+  },
+
+  {
+    q:"বাংলা সাহিত্যের উপন্যাস 'লালসালু' এর লেখক কে?",
+    options:[
+      "সৈয়দ ওয়ালীউল্লাহ",
+      "শরৎচন্দ্র",
+      "রবীন্দ্রনাথ",
+      "জসীমউদ্দীন"
+    ],
+    answer:0
+  }
+
+];
+
+function quizPage(){
+
+  if(state.quizFinished){
+
+    return `
+
+      <div class="detail-box">
+
+        <h2>🎉 Quiz Complete!</h2>
+
+        <div class="quiz-score">
+          ${state.quizScore} / ${quizQuestions.length}
+        </div>
+
+        <p style="text-align:center">
+          আবার চেষ্টা করো এবং score improve করো।
+        </p>
+
+        <div style="text-align:center;margin-top:15px">
+
+          <button class="btn" data-action="restartQuiz">
+            🔄 Try Again
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+  const q=quizQuestions[state.quizIndex];
+
+  return `
+
+    <div class="detail-box">
+
+      <p style="color:#64748b">
+        Question ${state.quizIndex+1} / ${quizQuestions.length}
+      </p>
+
+      <h2 style="margin-top:10px">
+        ${esc(q.q)}
+      </h2>
+
+
+      <div style="margin-top:15px">
+
+        ${q.options.map((op,i)=>`
+
+          <button
+            class="quiz-option"
+            data-action="answer"
+            data-answer="${i}">
+
+            ${String.fromCharCode(65+i)}.
+            ${esc(op)}
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   FUN
+===================================================== */
+
+function funPage(){
+
+  return `
+
+    <div class="section-title">
+      <h2>🎮 Fun Zone</h2>
     </div>
 
     <div class="card">
-      <h3>🎯 Study Goal</h3>
-      <p class="muted" style="margin-top:6px">আজকের পড়াশোনার target ঠিক রাখো।</p>
-      <button class="btn small" style="margin-top:12px" onclick="showPage('tools')">Open Tools</button>
-    </div>
-  </div>
-</section>
 
-<!-- EXPLORE -->
-<section id="explore" class="page">
-  <div class="backbar">
-    <button class="
+      <div style="font-size:45px">🧠</div>
+
+      <h2>Brain Teaser</h2>
+
+      <p style="margin-top:12px">
+        কোন জিনিস যত বেশি শুকায়, তত বেশি ভিজে?
+      </p>
+
+      <button
+        class="btn"
+        style="margin-top:15px"
+        data-action="riddleAnswer">
+
+        Answer দেখো
+
+      </button>
+
+    </div>
+
+
+    <div class="card" style="margin-top:15px">
+
+      <div style="font-size:40px">😂</div>
+
+      <h3>Study Joke</h3>
+
+      <p style="margin-top:10px">
+        Teacher: পড়া শিখেছ?
+        <br>
+        Student: Sir, পড়া আমাকে দেখে পালিয়ে গেছে! 😭😂
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   MORE
+===================================================== */
+
+function morePage(){
+
+  return `
+
+    <div class="section-title">
+      <h2>☰ More</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card click-card" data-route="upload">
+        <div class="card-icon">📤</div>
+        <h3>Upload Note</h3>
+      </div>
+
+      <div class="card click-card" data-route="result">
+        <div class="card-icon">🎓</div>
+        <h3>Result Check</h3>
+      </div>
+
+      <div class="card click-card" data-route="fun">
+        <div class="card-icon">🎮</div>
+        <h3>Fun Zone</h3>
+      </div>
+
+      <div class="card click-card" data-action="theme">
+        <div class="card-icon">🌙</div>
+        <h3>Dark / Light</h3>
+      </div>
+
+    </div>
+
+
+    <div class="detail-box" style="margin-top:18px">
+
+      <h2>👨‍💻 About StudyNest</h2>
+
+      <p style="margin-top:10px">
+        StudyNest একটি student-focused educational website.
+      </p>
+
+      <p style="margin-top:10px;font-weight:bold">
+        Created by Ahmed Sami
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function render(){
+
+  const app=document.getElementById("app");
+
+  let html="";
+
+  switch(state.page){
+
+    case "home":
+      html=homePage();
+      break;
+
+    case "explore":
+      html=explorePage();
+      break;
+
+    case "papers":
+      html=papersPage();
+      break;
+
+    case "chapters":
+      html=chaptersPage();
+      break;
+
+    case "chapter":
+      html=chapterPage();
+      break;
+
+    case "search":
+      html=searchPage();
+      break;
+
+    case "notes":
+      html=notesPage();
+      break;
+
+    case "upload":
+      html=uploadPage();
+      break;
+
+    case "result":
+      html=resultPage();
+      break;
+
+    case "tools":
+      html=toolsPage();
+      break;
+
+    case "progress":
+      html=progressPage();
+      break;
+
+    case "quiz":
+      html=quizPage();
+      break;
+
+    case "fun":
+      html=funPage();
+      break;
+
+    case "more":
+      html=morePage();
+      break;
+
+    default:
+      html=homePage();
+
+  }
+
+  app.innerHTML=html;
+
+  updateNav();
+
+}
+
+
+/* =====================================================
+   TOOL MODAL
+===================================================== */
+
+function openTool(tool){
+
+  let title="";
+  let content="";
+
+  if(tool==="timer"){
+    title="⏱️ Study Timer";
+    content=timerHTML();
+  }
+
+  if(tool==="calculator"){
+    title="🧮 Calculator";
+    content=calculatorHTML();
+  }
+
+  if(tool==="todo"){
+    title="✅ To-do List";
+    content=todoHTML();
+  }
+
+  if(tool==="converter"){
+    title="🔄 Unit Converter";
+    content=converterHTML();
+  }
+
+  openModal(title,content);
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(title,content){
+
+  document.getElementById("modalTitle").textContent=title;
+
+  document.getElementById("modalContent").innerHTML=content;
+
+  document.getElementById("modal").classList.add("show");
+
+}
+
+function closeModal(){
+
+  document.getElementById("modal").classList.remove("show");
+
+}
+
+
+/* =====================================================
+   EVENT DELEGATION
+   IMPORTANT — সব button এখান থেকে কাজ করবে
+===================================================== */
+
+document.addEventListener("click",function(e){
+
+  const route=e.target.closest("[data-route]");
+
+  if(route){
+
+    go(route.dataset.route);
+
+    return;
+
+  }
+
+
+  const action=e.target.closest("[data-action]");
+
+  if(action){
+
+    const a=action.dataset.action;
+
+
+    if(a==="back"){
+      back();
+    }
+
+
+    else if(a==="theme"){
+
+      document.body.classList.toggle("dark");
+
+      localStorage.setItem(
+        "sn_dark",
+        document.body.classList.contains("dark")
+      );
+
+    }
+
+
+    else if(a==="search"){
+
+      state.search="";
+
+      go("search");
+
+    }
+
+
+    else if(a==="subject"){
+
+      go("papers",{
+        subject:action.dataset.subject
+      });
+
+    }
+
+
+    else if(a==="paper"){
+
+      go("chapters",{
+        paper:action.dataset.paper
+      });
+
+    }
+
+
+    else if(a==="chapter"){
+
+      go("chapter",{
+        chapter:action.dataset.chapter
+      });
+
+    }
+
+
+    else if(a==="openSearch"){
+
+      go("chapter",{
+        subject:action.dataset.subject,
+        paper:action.dataset.paper,
+        chapter:action.dataset.chapter
+      });
+
+    }
+
+
+    else if(a==="doSearch"){
+
+      const input=document.getElementById("searchInput");
+
+      state.search=input ? input.value.trim() : "";
+
+      render();
+
+    }
+
+
+    else if(a==="noteSearch"){
+
+      const input=document.getElementById("noteSearch");
+
+      state.search=input ? input.value.trim() : "";
+
+      render();
+
+    }
+
+
+    else if(a==="saveNote"){
+
+      saveNewNote();
+
+    }
+
+
+    else if(a==="viewNote"){
+
+      viewNote(action.dataset.id);
+
+    }
+
+
+    else if(a==="deleteNote"){
+
+      deleteNote(action.dataset.id);
+
+    }
+
+
+    else if(a==="result"){
+
+      openResult();
+
+    }
+
+
+    else if(a==="startTimer"){
+
+      startTimer();
+
+    }
+
+
+    else if(a==="pauseTimer"){
+
+      pauseTimer();
+
+    }
+
+
+    else if(a==="resetTimer"){
+
+      resetTimer();
+
+    }
+
+
+    else if(a==="calculate"){
+
+      calculate();
+
+    }
+
+
+    else if(a==="addTodo"){
+
+      addTodo();
+
+    }
+
+
+    else if(a==="toggleTodo"){
+
+      toggleTodo(Number(action.dataset.index));
+
+    }
+
+
+    else if(a==="removeTodo"){
+
+      todos.splice(Number(action.dataset.index),1);
+
+      saveData();
+
+      document.getElementById("todoList").innerHTML=renderTodos();
+
+    }
+
+
+    else if(a==="convert"){
+
+      convertUnit();
+
+    }
+
+
+    else if(a==="complete"){
+
+      toggleComplete();
+
+    }
+
+
+    else if(a==="bookmark"){
+
+      toggleBookmark();
+
+    }
+
+
+    else if(a==="chapterContent"){
+
+      showChapterContent(action.dataset.type);
+
+    }
+
+
+    else if(a==="chapterNotes"){
+
+      state.search=state.chapter;
+
+      go("notes");
+
+    }
+
+
+    else if(a==="answer"){
+
+      answerQuiz(Number(action.dataset.answer));
+
+    }
+
+
+    else if(a==="restartQuiz"){
+
+      state.quizIndex=0;
+      state.quizScore=0;
+      state.quizFinished=false;
+
+      render();
+
+    }
+
+
+    else if(a==="riddleAnswer"){
+
+      openModal(
+        "🧠 Answer",
+        `<h3>তোয়ালে! 🧻</h3>
+         <p style="margin-top:10px">
+         তোয়ালে অন্য জিনিসকে শুকাতে গিয়ে নিজেই ভিজে যায়। 😄
+         </p>`
+      );
+
+    }
+
+
+    else if(a==="closeModal"){
+
+      closeModal();
+
+    }
+
+  }
+
+});
+
+
+/* =====================================================
+   SUBJECT / PAPER
+===================================================== */
+
+function showChapterContent(type){
+
+  let title="";
+  let content="";
+
+  if(type==="notes"){
+
+    title="📝 Notes";
+
+    content=`
+      <h3>${esc(state.chapter)}</h3>
+
+      <p style="margin-top:12px">
+        এই chapter-এর মূল ধারণাগুলো বুঝে পড়ো এবং
+        textbook-এর গুরুত্বপূর্ণ সংজ্ঞা, সূত্র ও উদাহরণ
+        আলাদা করে note করে রাখো।
+      </p>
+
+      <p style="margin-top:12px">
+        📌 প্রথমে concept → তারপর formula → তারপর
+        example → শেষে MCQ/CQ practice করো।
+      </p>
+    `;
+
+  }
+
+
+  if(type==="mcq"){
+
+    title="❓ MCQ";
+
+    content=`
+
+      <h3>${esc(state.chapter)}</h3>
+
+      <p style="margin-top:12px">
+        ১. এই chapter-এর প্রধান বিষয় কোনটি?
+      </p>
+
+      <button class="quiz-option"
+              style="margin-top:10px"
+              onclick="this.style.background='#dcfce7'">
+        A. Chapter-এর মূল concept
+      </button>
+
+      <button class="quiz-option"
+              onclick="this.style.background='#fee2e2'">
+        B. অন্য বিষয়
+      </button>
+
+      <p style="margin-top:15px;color:#64748b">
+        আরও MCQ যোগ করা যাবে।
+      </p>
+
+    `;
+
+  }
+
+
+  if(type==="cq"){
+
+    title="✍️ CQ";
+
+    content=`
+
+      <h3>${esc(state.chapter)}</h3>
+
+      <p style="margin-top:12px">
+        <b>সৃজনশীল প্রশ্ন:</b>
+      </p>
+
+      <p style="margin-top:8px">
+        ${esc(state.chapter)}-এর মূল ধারণা ব্যাখ্যা করো
+        এবং প্রয়োজনীয় সূত্র/উদাহরণসহ উত্তর দাও।
+      </p>
+
+      <p style="margin-top:12px">
+        ক) সংজ্ঞা লেখো।
+        <br>
+        খ) মূল বৈশিষ্ট্য ব্যাখ্যা করো।
+        <br>
+        গ) প্রয়োগ দেখাও।
+        <br>
+        ঘ) বিশ্লেষণ করো।
+      </p>
+
+    `;
+
+  }
+
+
+  if(type==="important"){
+
+    title="⭐ Important";
+
+    content=`
+
+      <h3>Important Topics</h3>
+
+      <ul style="margin-top:12px;line-height:2">
+
+        <li>📌 সংজ্ঞা ও মূল ধারণা</li>
+        <li>📌 গুরুত্বপূর্ণ সূত্র</li>
+        <li>📌 Diagram / Graph</li>
+        <li>📌 Board প্রশ্ন</li>
+        <li>📌 MCQ practice</li>
+        <li>📌 CQ practice</li>
+
+      </ul>
+
+    `;
+
+  }
+
+  openModal(title,content);
+
+}
+
+
+/* =====================================================
+   BOOKMARK / COMPLETE
+===================================================== */
+
+function toggleComplete(){
+
+  const key=chapterKey();
+
+  if(completed.includes(key)){
+
+    completed=completed.filter(x=>x!==key);
+
+  }
+  else{
+
+    completed.push(key);
+
+  }
+
+  saveData();
+
+  render();
+
+}
+
+
+function toggleBookmark(){
+
+  const key=chapterKey();
+
+  if(bookmarks.includes(key)){
+
+    bookmarks=bookmarks.filter(x=>x!==key);
+
+  }
+  else{
+
+    bookmarks.push(key);
+
+  }
+
+  saveData();
+
+  render();
+
+}
+
+
+/* =====================================================
+   NOTES
+===================================================== */
+
+function saveNewNote(){
+
+  const title=document.getElementById("noteTitle").value.trim();
+
+  const subject=document.getElementById("noteSubject").value;
+
+  const chapter=document.getElementById("noteChapter").value.trim();
+
+  const content=document.getElementById("noteContent").value.trim();
+
+
+  if(!title || !subject || !chapter || !content){
+
+    alert("সব তথ্য পূরণ করো 🙂");
+
+    return;
+
+  }
+
+
+  const notes=getNotes();
+
+  notes.unshift({
+
+    id:Date.now().toString(),
+
+    title,
+
+    subject,
+
+    chapter,
+
+    content,
+
+    date:new Date().toISOString()
+
+  });
+
+
+  saveNotes(notes);
+
+  alert("✅ Note successfully saved!");
+
+  state.search="";
+
+  go("notes");
+
+}
+
+
+function viewNote(id){
+
+  const note=getNotes().find(n=>n.id===id);
+
+  if(!note) return;
+
+  openModal(
+
+    "📝 "+note.title,
+
+    `
+
+      <p>
+        <b>Subject:</b> ${esc(note.subject)}
+      </p>
+
+      <p style="margin-top:5px">
+        <b>Chapter:</b> ${esc(note.chapter)}
+      </p>
+
+      <hr style="margin:15px 0">
+
+      <div style="white-space:pre-wrap;line-height:1.7">
+        ${esc(note.content)}
+      </div>
+
+    `
+
+  );
+
+}
+
+
+function deleteNote(id){
+
+  if(!confirm("এই note delete করবে?")) return;
+
+  let notes=getNotes();
+
+  notes=notes.filter(n=>n.id!==id);
+
+  saveNotes(notes);
+
+  render();
+
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+function openResult(){
+
+  const roll=document.getElementById("roll").value.trim();
+
+  const reg=document.getElementById("reg").value.trim();
+
+  if(!roll || !reg){
+
+    alert("Roll এবং Registration Number দাও।");
+
+    return;
+
+  }
+
+  window.open(
+    "https://www.educationboardresults.gov.bd/",
+    "_blank"
+  );
+
+}
+
+
+/* =====================================================
+   CALCULATOR
+===================================================== */
+
+function calculate(){
+
+  const input=document.getElementById("calcInput");
+
+  const result=document.getElementById("calcResult");
+
+  if(!input || !result) return;
+
+  const expression=input.value.trim();
+
+  if(!expression){
+
+    result.textContent="Enter calculation";
+
+    return;
+
+  }
+
+  if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
+
+    result.textContent="Invalid expression";
+
+    return;
+
+  }
+
+  try{
+
+    const value=Function(
+      `"use strict"; return (${expression})`
+    )();
+
+    result.textContent="= "+value;
+
+  }
+  catch{
+
+    result.textContent="Invalid calculation";
+
+  }
+
+}
+
+
+/* =====================================================
+   TODO
+===================================================== */
+
+function addTodo(){
+
+  const input=document.getElementById("todoInput");
+
+  if(!input) return;
+
+  const text=input.value.trim();
+
+  if(!text) return;
+
+  todos.push({
+    text,
+    done:false
+  });
+
+  saveData();
+
+  input.value="";
+
+  document.getElementById("todoList").innerHTML=
+    renderTodos();
+
+}
+
+
+function toggleTodo(index){
+
+  todos[index].done=!todos[index].done;
+
+  saveData();
+
+  document.getElementById("todoList").innerHTML=
+    renderTodos();
+
+}
+
+
+/* =====================================================
+   CONVERTER
+===================================================== */
+
+function convertUnit(){
+
+  const value=parseFloat(
+    document.getElementById("convertValue").value
+  );
+
+  const type=document.getElementById("convertType").value;
+
+  const result=document.getElementById("convertResult");
+
+  if(isNaN(value)){
+
+    result.textContent="Enter a number";
+
+    return;
+
+  }
+
+  let output=0;
+
+  switch(type){
+
+    case "km-m":
+      output=value*1000;
+      break;
+
+    case "m-km":
+      output=value/1000;
+      break;
+
+    case "kg-g":
+      output=value*1000;
+      break;
+
+    case "g-kg":
+      output=value/1000;
+      break;
+
+    case "c-f":
+      output=(value*9/5)+32;
+      break;
+
+    case "f-c":
+      output=(value-32)*5/9;
+      break;
+
+  }
+
+  result.textContent=output;
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function answerQuiz(answer){
+
+  const q=quizQuestions[state.quizIndex];
+
+  if(answer===q.answer){
+
+    state.quizScore++;
+
+    alert("✅ Correct!");
+
+  }
+  else{
+
+    alert(
+      "❌ Wrong!\nCorrect answer: "+
+      q.options[q.answer]
+    );
+
+  }
+
+  state.quizIndex++;
+
+  if(state.quizIndex>=quizQuestions.length){
+
+    state.quizFinished=true;
+
+  }
+
+  render();
+
+}
+
+
+/* =====================================================
+   DARK MODE LOAD
+===================================================== */
+
+if(localStorage.getItem("sn_dark")==="true"){
+
+  document.body.classList.add("dark");
+
+}
+
+
+/* =====================================================
+   START APP
+===================================================== */
+
+render();
+
+
+/* =====================================================
+   CLOSE MODAL WHEN OUTSIDE CLICK
+===================================================== */
+
+document.getElementById("modal").addEventListener(
+  "click",
+  function(e){
+
+    if(e.target===this){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
