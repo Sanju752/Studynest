@@ -1,1789 +1,245 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StudyNest — HSC Science</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>StudyNest — Student Super Hub</title>
 <style>
-:root{
-  --bg:#f5f7fb;
-  --card:#fff;
-  --text:#172033;
-  --muted:#6b7280;
-  --primary:#2563eb;
-  --primary2:#7c3aed;
-  --border:#e5e7eb;
-  --soft:#eef4ff;
-  --danger:#ef4444;
-  --success:#16a34a;
-  --shadow:0 8px 25px rgba(20,30,60,.08);
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  padding-bottom:78px;
-}
-body.dark{
-  --bg:#0f172a;
-  --card:#172033;
-  --text:#f3f4f6;
-  --muted:#aab3c2;
-  --border:#263247;
-  --soft:#1d2b46;
-}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.header{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  padding:12px 15px;
-}
-.top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-.logo{
-  font-size:21px;
-  font-weight:800;
-  color:var(--primary);
-}
-.logo span{color:var(--primary2)}
-.header-actions{display:flex;gap:7px}
-.icon-btn{
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  width:40px;height:40px;
-  border-radius:12px;
-}
-.search{
-  margin-top:10px;
-  display:flex;
-  gap:8px;
-}
-.search input{
-  width:100%;
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  padding:12px 14px;
-  border-radius:13px;
-  outline:none;
-}
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:16px;
-}
-.hero{
-  background:linear-gradient(135deg,#2563eb,#7c3aed);
-  color:white;
-  border-radius:24px;
-  padding:25px 20px;
-  box-shadow:var(--shadow);
-}
-.hero h1{margin:0 0 7px;font-size:29px}
-.hero p{margin:5px 0;opacity:.92}
-.author{
-  margin-top:17px;
-  font-size:13px;
-  opacity:.9;
-}
-.section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin:23px 2px 12px;
-}
-.section-title h2{font-size:20px;margin:0}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:17px;
-  padding:16px;
-  box-shadow:var(--shadow);
-}
-.click{cursor:pointer;transition:.18s}
-.click:active{transform:scale(.98)}
-.subject-icon{
-  font-size:30px;
-  margin-bottom:8px;
-}
-.card h3{margin:5px 0;font-size:16px}
-.card p{margin:4px 0;color:var(--muted);font-size:13px}
-.btn{
-  border:0;
-  border-radius:12px;
-  padding:11px 15px;
-  background:var(--primary);
-  color:white;
-  font-weight:700;
-}
-.btn.secondary{
-  background:var(--soft);
-  color:var(--primary);
-}
-.btn.danger{background:var(--danger)}
-.btn.success{background:var(--success)}
-.btn.full{width:100%}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.back{
-  margin-bottom:13px;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:var(--card);
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:9px 13px;
-}
-.paper{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-.chapter-list{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-.chapter{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-.chapter small{color:var(--muted)}
-.badge{
-  display:inline-block;
-  padding:4px 8px;
-  background:var(--soft);
-  color:var(--primary);
-  border-radius:20px;
-  font-size:11px;
-  font-weight:700;
-}
-.tool-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.tool{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:15px;
-}
-.tool .big{font-size:27px}
-input,textarea,select{
-  width:100%;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:var(--bg);
-  color:var(--text);
-  outline:none;
-}
-textarea{min-height:130px;resize:vertical}
-.form-group{margin-bottom:12px}
-.form-group label{
-  display:block;
-  margin-bottom:6px;
-  font-size:13px;
-  font-weight:700;
-}
-.notice{
-  background:var(--soft);
-  border-radius:14px;
-  padding:13px;
-  margin:12px 0;
-  font-size:13px;
-}
-.empty{
-  text-align:center;
-  padding:30px 15px;
-  color:var(--muted);
-}
-.note{
-  position:relative;
-}
-.note h3{padding-right:25px}
-.note-meta{font-size:12px;color:var(--muted)}
-.delete{
-  position:absolute;
-  top:10px;
-  right:10px;
-  border:0;
-  background:transparent;
-  color:var(--danger);
-  font-size:18px;
-}
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:50;
-  padding:18px;
-}
-.modal.show{display:flex}
-.modal-box{
-  width:100%;
-  max-width:560px;
-  max-height:85vh;
-  overflow:auto;
-  background:var(--card);
-  border-radius:20px;
-  padding:20px;
-}
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-.close{
-  border:0;
-  background:var(--bg);
-  color:var(--text);
-  border-radius:10px;
-  width:35px;height:35px;
-}
-.quiz-option{
-  display:block;
-  width:100%;
-  text-align:left;
-  margin:8px 0;
-  padding:12px;
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  border-radius:12px;
-}
-.timer{
-  text-align:center;
-  font-size:45px;
-  font-weight:800;
-  padding:20px;
-}
-.calc-display{
-  font-size:26px;
-  text-align:right;
-  padding:15px;
-  margin-bottom:9px;
-}
-.calc-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-}
-.calc-grid button{
-  padding:15px 5px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--bg);
-  color:var(--text);
-}
-.bottom{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:68px;
-  z-index:30;
-  background:var(--card);
-  border-top:1px solid var(--border);
-  display:flex;
-  justify-content:space-around;
-}
-.nav{
-  flex:1;
-  border:0;
-  background:transparent;
-  color:var(--muted);
-  font-size:11px;
-}
-.nav b{display:block;font-size:20px;margin-bottom:2px}
-.nav.active{color:var(--primary);font-weight:700}
-.story{
-  background:linear-gradient(135deg,var(--soft),var(--card));
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:17px;
-  margin-bottom:12px;
-}
-.story h3{margin-top:0}
-.story p{line-height:1.7}
-.riddle{
-  border-left:4px solid var(--primary);
-  padding-left:13px;
-}
-.progressbar{
-  height:10px;
-  background:var(--border);
-  border-radius:10px;
-  overflow:hidden;
-}
-.progressbar span{
-  display:block;
-  height:100%;
-  background:var(--primary);
-  width:0;
-}
-.todo-item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:11px;
-  margin-top:8px;
-}
-.todo-item.done{text-decoration:line-through;opacity:.55}
-@media(min-width:700px){
-  .grid{grid-template-columns:repeat(4,1fr)}
-  .tool-grid{grid-template-columns:repeat(3,1fr)}
-}
+:root{--bg:#f5f7fb;--card:#fff;--text:#101828;--muted:#667085;--line:#e7eaf0;--brand:#6d5dfc;--brand2:#20c997;--soft:#eef0ff;--danger:#ef4444;--shadow:0 12px 35px rgba(16,24,40,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.app{min-height:100vh}.top{position:sticky;top:0;z-index:30;background:rgba(245,247,251,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;white-space:nowrap}.logoMark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),#8d7cff)}.search{flex:1;position:relative}.search input{width:100%;padding:13px 16px 13px 44px;border:1px solid var(--line);background:var(--card);border-radius:15px;outline:none}.search span{position:absolute;left:15px;top:12px}.iconBtn{width:43px;height:43px;border-radius:13px;background:var(--card);border:1px solid var(--line)}.main{max-width:1180px;margin:auto;padding:25px 18px 100px}.hero{border-radius:28px;padding:30px;background:linear-gradient(135deg,#111827,#202b54 55%,#5c4ff4);color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-80px;top:-100px;background:rgba(255,255,255,.09)}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1;margin:8px 0 12px;max-width:700px}.hero p{color:#dbe2ff;max-width:650px;line-height:1.65}.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.primary,.ghost{padding:12px 17px;border-radius:13px;font-weight:800}.primary{background:#fff;color:#17142e}.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}.section{margin-top:28px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.sectionHead h2{margin:0;font-size:23px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px rgba(16,24,40,.04)}.feature{min-height:145px;transition:.2s}.feature:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.emoji{font-size:27px}.feature h3{margin:10px 0 5px}.feature p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}.page{display:none}.page.active{display:block}.back{margin-bottom:16px;background:transparent;color:var(--muted);font-weight:800}.two{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.list{display:grid;gap:10px}.item{padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--card);display:flex;justify-content:space-between;align-items:center;gap:10px}.pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--soft);color:#4d40c9;font-size:12px;font-weight:800}.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.tool{padding:20px;border-radius:20px;background:var(--card);border:1px solid var(--line)}.tool button,.fullBtn{width:100%;margin-top:12px;padding:11px;border-radius:12px;background:var(--soft);color:#4d40c9;font-weight:800}.input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;outline:none;background:var(--card);color:var(--text)}textarea.input{min-height:110px;resize:vertical}.resultBox{padding:18px;background:#f8fafc;border-radius:15px;border:1px dashed #ccd2dd;margin-top:12px;line-height:1.7}.chat{height:58vh;min-height:420px;display:flex;flex-direction:column}.messages{flex:1;overflow:auto;padding:8px}.msg{max-width:82%;padding:13px 15px;border-radius:17px;margin:8px 0;line-height:1.65;white-space:pre-wrap}.user{margin-left:auto;background:#6d5dfc;color:#fff;border-bottom-right-radius:5px}.ai{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:5px}.chatbar{display:flex;gap:8px;padding-top:10px}.chatbar textarea{min-height:50px;max-height:120px}.send{width:54px;border-radius:14px;background:var(--brand);color:#fff;font-weight:900}.quick{display:flex;gap:8px;overflow:auto;padding:10px 0}.quick button{white-space:nowrap;padding:8px 11px;border-radius:999px;background:var(--soft);color:#4d40c9}.creator{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}.creator img{width:220px;height:260px;object-fit:cover;border-radius:28px;border:6px solid var(--card);box-shadow:var(--shadow)}.quote{font-size:20px;line-height:1.6;font-weight:700}.bottom{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center}.bottomInner{max-width:650px;width:100%;display:grid;grid-template-columns:repeat(5,1fr)}.bottom button{padding:10px 5px;background:transparent;color:var(--muted);font-size:11px}.bottom b{display:block;font-size:19px;margin-bottom:2px}.notice{padding:14px 16px;border-radius:15px;background:#eefcf7;border:1px solid #c7f2e4;color:#116149}.dark{--bg:#080d18;--card:#101827;--text:#f5f7fb;--muted:#98a2b3;--line:#202b3d;--soft:#1b2040}.dark .top{background:rgba(8,13,24,.88)}.dark .bottom{background:rgba(16,24,39,.94)}.dark .resultBox{background:#0c1422}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#111827;color:#fff;padding:12px 16px;border-radius:13px;z-index:100;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toggle{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.toolgrid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.creator{grid-template-columns:140px 1fr}.creator img{width:140px;height:170px}}@media(max-width:560px){.nav{padding:10px 12px}.logoText{display:none}.search input{padding-left:40px}.main{padding:17px 12px 90px}.hero{padding:23px 19px;border-radius:23px}.grid,.toolgrid{grid-template-columns:1fr 1fr;gap:9px}.card{padding:14px;border-radius:17px}.feature{min-height:125px}.feature h3{font-size:15px}.feature p{font-size:12px}.creator{grid-template-columns:1fr;text-align:center}.creator img{margin:auto;width:170px;height:200px}.msg{max-width:90%}.bottom button{font-size:10px}.bottom b{font-size:17px}}
 </style>
 </head>
-
 <body>
+<div class="app" id="app">
+<header class="top"><nav class="nav">
+  <div class="logo"><div class="logoMark">SN</div><span class="logoText">StudyNest</span></div>
+  <div class="search"><span>🔎</span><input id="globalSearch" placeholder="Search StudyNest..."></div>
+  <button class="iconBtn" id="themeBtn" title="Theme">🌙</button>
+</nav></header>
 
-<header class="header">
-  <div class="top">
-    <div class="logo">Study<span>Nest</span></div>
-    <div class="header-actions">
-      <button class="icon-btn" data-action="toggle-theme">🌙</button>
-      <button class="icon-btn" data-route="home">⌂</button>
+<main class="main">
+<section id="home" class="page active">
+  <div class="hero">
+    <span class="pill" style="background:rgba(255,255,255,.14);color:#fff">STUDYNEST 2.0</span>
+    <h1>Everything a student needs, in one place.</h1>
+    <p>Learn, practice, plan, calculate, translate, check results and ask AI—সবকিছু এক জায়গায়।</p>
+    <div class="heroActions">
+      <button class="primary" data-page="ai">🤖 Ask AI</button>
+      <button class="ghost" data-page="result">🎓 Board Result</button>
     </div>
   </div>
 
-  <div class="search">
-    <input id="searchInput" placeholder="🔎 Subject, chapter, note খুঁজুন...">
+  <div class="section"><div class="sectionHead"><h2>Quick Access</h2></div>
+    <div class="grid">
+      <button class="card feature" data-page="ai"><div class="emoji">🤖</div><h3>Ask AI</h3><p>Study or general questions—ask naturally.</p></button>
+      <button class="card feature" data-page="result"><div class="emoji">🎓</div><h3>Board Result</h3><p>Official result portal quickly open করুন।</p></button>
+      <button class="card feature" data-page="translator"><div class="emoji">🌐</div><h3>Translator</h3><p>Word, sentence, meaning and examples.</p></button>
+      <button class="card feature" data-page="tools"><div class="emoji">🧰</div><h3>Student Tools</h3><p>Calculator, GPA, timer, converter and more.</p></button>
+    </div>
   </div>
-</header>
 
-<main id="app" class="container"></main>
+  <div class="section"><div class="sectionHead"><h2>Student Hub</h2></div>
+    <div class="grid">
+      <button class="card feature" data-page="learn"><div class="emoji">📚</div><h3>Learn</h3><p>Subjects, concepts, formulas and practice.</p></button>
+      <button class="card feature" data-page="practice"><div class="emoji">📝</div><h3>Practice</h3><p>MCQ and quick quiz practice.</p></button>
+      <button class="card feature" data-page="planner"><div class="emoji">📅</div><h3>Study Planner</h3><p>Tasks, goals and study sessions.</p></button>
+      <button class="card feature" data-page="progress"><div class="emoji">🎯</div><h3>Progress</h3><p>Track tasks, quizzes and streak.</p></button>
+      <button class="card feature" data-page="brain"><div class="emoji">🧠</div><h3>Brain Zone</h3><p>Riddles, logic and quick challenges.</p></button>
+      <button class="card feature" data-page="notifications"><div class="emoji">🔔</div><h3>Notifications</h3><p>Daily tips, reminders and updates.</p></button>
+    </div>
+  </div>
 
-<nav class="bottom">
-  <button class="nav active" data-route="home"><b>⌂</b>Home</button>
-  <button class="nav" data-route="explore"><b>📚</b>Explore</button>
-  <button class="nav" data-route="notes"><b>📝</b>Notes</button>
-  <button class="nav" data-route="tools"><b>🛠️</b>Tools</button>
-  <button class="nav" data-route="more"><b>☰</b>More</button>
-</nav>
+  <div class="section"><div class="notice"><b>💡 Daily Student Tip</b><br>আজকের কাজ ছোট ছোট ভাগে ভাগ করে শুরু করো। Consistency perfection-এর চেয়ে বেশি গুরুত্বপূর্ণ।</div></div>
 
-<div id="modal" class="modal">
-  <div class="modal-box" id="modalContent"></div>
+  <div class="section card creator">
+    <img src="creator.jpg" alt="Ahmed Sami" onerror="this.style.display='none'">
+    <div><span class="pill">ABOUT THE CREATOR</span><h2>Ahmed Sami</h2><p class="muted">Founder & Creator of StudyNest</p><p class="quote">“আমি StudyNest তৈরি করেছি এমন শিক্ষার্থীদের জন্য, যারা নিজেদের পড়াশোনা ও ভবিষ্যৎ নিয়ে সত্যিই serious.”</p><p class="muted">আমার উদ্দেশ্য—শিক্ষার্থীদের শেখা, practice, planning এবং প্রয়োজনীয় tools এক জায়গায় সহজভাবে দেওয়া।</p></div>
+  </div>
+</section>
+
+<section id="ai" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card"><span class="pill">🤖 STUDYNEST AI</span><h2>Ask anything.</h2><p class="muted">পড়াশোনা হোক বা everyday question—স্বাভাবিকভাবে জিজ্ঞেস করো।</p>
+    <div class="quick">
+      <button data-prompt="এই বিষয়টা সহজ করে বুঝিয়ে দাও।">সহজ করে বুঝাও</button>
+      <button data-prompt="এই প্রশ্নটা step-by-step solve করো।">Step-by-step</button>
+      <button data-prompt="এই topic থেকে ৫টা MCQ দাও।">MCQ</button>
+      <button data-prompt="এই বিষয়টার short summary দাও।">Summary</button>
+    </div>
+    <div class="chat"><div class="messages" id="messages">
+      <div class="msg ai">হাই! আমি StudyNest AI। 🤖<br><br>তুমি পড়াশোনা, technology, general knowledge, writing, translation বা যেকোনো সাধারণ প্রশ্ন করতে পারো।</div>
+    </div>
+    <div class="chatbar"><textarea class="input" id="aiInput" placeholder="Ask anything..."></textarea><button class="send" id="sendAI">➤</button></div></div>
+    <small class="muted">AI answers can be imperfect. গুরুত্বপূর্ণ তথ্য হলে source/official information verify করো।</small>
+  </div>
+</section>
+
+<section id="result" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card"><span class="pill">🎓 BOARD RESULT</span><h2>SSC / HSC Result</h2><p class="muted">Official Education Board result portal খুলে result দেখুন।</p>
+    <div class="notice">StudyNest নিজে result বানিয়ে দেখাবে না; official source ব্যবহার করা হবে।</div>
+    <button class="fullBtn" onclick="window.open('https://www.educationboardresults.gov.bd/','_blank','noopener')">🎓 Open Official Result Portal</button>
+  </div>
+</section>
+
+<section id="translator" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card"><span class="pill">🌐 WORD TRANSLATOR</span><h2>Translate anything</h2><p class="muted">Word বা sentence লিখো। Real AI endpoint থাকলে rich translation পাওয়া যাবে।</p>
+    <textarea id="transInput" class="input" placeholder="Example: Resilient / আমি আজ স্কুলে যাব"></textarea>
+    <div class="two" style="margin-top:10px"><select id="fromLang" class="input"><option>Auto Detect</option><option>English</option><option>বাংলা</option></select><select id="toLang" class="input"><option>বাংলা</option><option>English</option></select></div>
+    <button class="fullBtn" id="translateBtn">Translate</button><div id="transOut" class="resultBox">Translation এখানে দেখা যাবে।</div>
+  </div>
+</section>
+
+<section id="learn" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card"><span class="pill">📚 LEARN</span><h2>Learn smarter</h2><p class="muted">HSC/SSC science-oriented starter topics; content পরে expand করা যাবে।</p></div>
+  <div class="section grid">
+    <div class="card"><h3>⚛️ Physics</h3><p class="muted">Mechanics, waves, electricity, optics.</p><button class="fullBtn" onclick="ask('Physics-এর একটি topic সহজ করে বুঝাও')">Ask AI</button></div>
+    <div class="card"><h3>🧪 Chemistry</h3><p class="muted">Concepts, reactions, calculations.</p><button class="fullBtn" onclick="ask('Chemistry-এর একটি important concept বুঝাও')">Ask AI</button></div>
+    <div class="card"><h3>📐 Higher Math</h3><p class="muted">Formula, algebra, calculus practice.</p><button class="fullBtn" onclick="ask('Higher Math-এর একটি problem step-by-step বুঝাও')">Ask AI</button></div>
+    <div class="card"><h3>🧬 Biology</h3><p class="muted">Concept explanations and revision.</p><button class="fullBtn" onclick="ask('Biology-এর একটি topic short note আকারে বুঝাও')">Ask AI</button></div>
+    <div class="card"><h3>💻 ICT</h3><p class="muted">Programming, networking and digital concepts.</p><button class="fullBtn" onclick="ask('ICT-এর একটি important topic বুঝাও')">Ask AI</button></div>
+    <div class="card"><h3>🗣️ English & Bangla</h3><p class="muted">Grammar, writing, vocabulary and literature help.</p><button class="fullBtn" onclick="ask('English grammar-এর একটি topic সহজ করে বুঝাও')">Ask AI</button></div>
+  </div>
+</section>
+
+<section id="practice" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card"><span class="pill">📝 PRACTICE ARENA</span><h2>Quick Quiz</h2><p class="muted">Demo questions—AI/backend connected হলে unlimited dynamic quiz করা যাবে।</p>
+    <div id="quizBox"></div><button class="fullBtn" id="newQuiz">New Question</button>
+  </div>
+</section>
+
+<section id="tools" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="toolgrid">
+    <div class="tool"><h3>🧮 Calculator</h3><input id="calcIn" class="input" placeholder="e.g. (25*4)/5"><button onclick="calc()">Calculate</button><div id="calcOut" class="resultBox">—</div></div>
+    <div class="tool"><h3>📊 Percentage</h3><input id="p1" class="input" placeholder="Part" type="number"><input id="p2" class="input" style="margin-top:7px" placeholder="Total" type="number"><button onclick="percent()">Calculate</button><div id="pOut" class="resultBox">—</div></div>
+    <div class="tool"><h3>🎓 GPA</h3><input id="gpa" class="input" placeholder="Grades e.g. 5,4,4,3.5"><button onclick="gpaCalc()">Average</button><div id="gpaOut" class="resultBox">—</div></div>
+    <div class="tool"><h3>⏱️ Study Timer</h3><div id="timer" style="font-size:34px;font-weight:900;text-align:center;margin:12px">25:00</div><button onclick="startTimer()">Start</button><button onclick="resetTimer()">Reset</button></div>
+    <div class="tool"><h3>🔄 Unit Converter</h3><input id="unitIn" class="input" type="number" placeholder="Kilometers"><button onclick="kmToM()">km → m</button><div id="unitOut" class="resultBox">—</div></div>
+    <div class="tool"><h3>📅 Exam Countdown</h3><input id="examDate" class="input" type="date"><button onclick="countdown()">Calculate</button><div id="countOut" class="resultBox">—</div></div>
+  </div>
+</section>
+
+<section id="planner" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="two">
+    <div class="card"><span class="pill">📅 PLANNER</span><h2>Today's Tasks</h2><div style="display:flex;gap:8px"><input id="taskIn" class="input" placeholder="Add a task"><button class="send" id="addTask">+</button></div><div id="taskList" class="list" style="margin-top:12px"></div></div>
+    <div class="card"><h3>🎯 Goal</h3><textarea id="goal" class="input" placeholder="My goal for today..."></textarea><button class="fullBtn" onclick="saveGoal()">Save Goal</button><div id="goalOut" class="resultBox"></div></div>
+  </div>
+</section>
+
+<section id="progress" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="grid">
+    <div class="card"><div class="emoji">✅</div><h2 id="doneCount">0</h2><p class="muted">Completed tasks</p></div>
+    <div class="card"><div class="emoji">📋</div><h2 id="totalCount">0</h2><p class="muted">Total tasks</p></div>
+    <div class="card"><div class="emoji">🔥</div><h2 id="streak">0</h2><p class="muted">Study streak</p></div>
+    <div class="card"><div class="emoji">⭐</div><h2 id="score">0</h2><p class="muted">Quiz points</p></div>
+  </div>
+</section>
+
+<section id="brain" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card"><span class="pill">🧠 BRAIN ZONE</span><h2>Quick Challenge</h2><div id="brainQ" class="resultBox"></div><button class="fullBtn" onclick="newBrain()">Next Challenge</button></div>
+</section>
+
+<section id="notifications" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card"><span class="pill">🔔 NOTIFICATIONS</span><h2>Stay connected</h2><p class="muted">Useful reminders, daily tips, quiz alerts and new updates পেতে notification permission চালু করতে পারো।</p>
+    <div class="toggle"><span>🔔 Browser notification permission</span><button class="fullBtn" style="width:auto;margin:0" id="notifyBtn">Turn On</button></div>
+    <div class="toggle"><span>📚 Study tips</span><input type="checkbox" checked></div>
+    <div class="toggle"><span>🧠 Daily quiz</span><input type="checkbox" checked></div>
+    <div class="toggle"><span>🎓 Exam reminders</span><input type="checkbox" checked></div>
+    <div class="notice" style="margin-top:14px">Automatic daily push notifications require a secure push backend + service worker. This page provides the frontend permission/settings UI.</div>
+  </div>
+</section>
+
+<section id="about" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card creator"><img src="creator.jpg" alt="Ahmed Sami" onerror="this.style.display='none'"><div><span class="pill">ABOUT STUDYNEST</span><h2>Ahmed Sami</h2><p><b>Founder & Creator</b></p><p class="quote">“আমি StudyNest তৈরি করেছি এমন শিক্ষার্থীদের জন্য, যারা নিজেদের পড়াশোনা ও ভবিষ্যৎ নিয়ে সত্যিই serious.”</p><p class="muted">StudyNest-এর লক্ষ্য হলো learning, practice, planning, useful tools এবং AI assistance—একটি সহজ platform-এ দেওয়া।</p></div></div>
+</section>
+</main>
+
+<footer class="main" style="padding-top:0"><div class="card" style="text-align:center"><b>StudyNest</b><p class="muted">Learn • Practice • Plan • Grow</p><small class="muted">Created by Ahmed Sami</small></div></footer>
+
+<div class="bottom"><div class="bottomInner">
+<button data-page="home"><b>🏠</b>Home</button><button data-page="ai"><b>🤖</b>AI</button><button data-page="learn"><b>📚</b>Learn</button><button data-page="tools"><b>🧰</b>Tools</button><button data-page="about"><b>👤</b>About</button>
+</div></div><div id="toast" class="toast"></div>
 </div>
 
 <script>
-/* =========================
-   STUDYNEST DATA
-========================= */
+const AI_ENDPOINT="/api/chat"; // Secure backend endpoint. Never put a private API key in this HTML.
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+function page(id){$$(".page").forEach(x=>x.classList.remove("active"));$("#"+id)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+$$("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));
 
-const subjects = {
-  physics:{
-    name:"Physics", icon:"⚛️",
-    papers:{
-      "1st Paper":[
-        "ভৌত জগৎ ও পরিমাপ","ভেক্টর","গতিবিদ্যা","নিউটনের গতিসূত্র",
-        "কাজ, শক্তি ও ক্ষমতা","মহাকর্ষ ও অভিকর্ষ","পদার্থের গাঠনিক ধর্ম",
-        "পর্যায়বৃত্ত গতি","আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"
-      ],
-      "2nd Paper":[
-        "তাপগতিবিদ্যা","স্থির তড়িৎ","চল তড়িৎ","তড়িৎ প্রবাহের চৌম্বক ক্রিয়া",
-        "তড়িৎচৌম্বকীয় আবেশ ও পরিবর্তী প্রবাহ","জ্যামিতিক আলোকবিজ্ঞান",
-        "ভৌত আলোকবিজ্ঞান","আধুনিক পদার্থবিজ্ঞান","পরমাণু ও নিউক্লিয়ার পদার্থবিজ্ঞান",
-        "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স"
-      ]
-    }
-  },
-  chemistry:{
-    name:"Chemistry", icon:"🧪",
-    papers:{
-      "1st Paper":[
-        "ল্যাবরেটরির নিরাপদ ব্যবহার","গুণগত রসায়ন","মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন",
-        "রাসায়নিক পরিবর্তন","কর্মমুখী রসায়ন"
-      ],
-      "2nd Paper":[
-        "পরিবেশ রসায়ন","জৈব রসায়ন","পরিমাণগত রসায়ন",
-        "তড়িৎ রসায়ন","অর্থনৈতিক রসায়ন"
-      ]
-    }
-  },
-  math:{
-    name:"Higher Mathematics", icon:"📐",
-    papers:{
-      "1st Paper":[
-        "ম্যাট্রিক্স ও নির্ণায়ক","ভেক্টর","সরলরেখা","বৃত্ত",
-        "বিন্যাস ও সমাবেশ","ত্রিকোণমিতিক অনুপাত","সংযুক্ত কোণ",
-        "ফাংশন ও গ্রাফ","অন্তরীকরণ","যোগজীকরণ"
-      ],
-      "2nd Paper":[
-        "বাস্তব সংখ্যা ও অসমতা","যোগাশ্রয়ী প্রোগ্রাম","জটিল সংখ্যা",
-        "বহুপদী সমীকরণ","দ্বিপদী বিস্তৃতি","কনিক","বিপরীত ত্রিকোণমিতিক ফাংশন",
-        "স্থিতিবিদ্যা","সমতলীয় কণার গতি","বিস্তার ও পরিমাপ"
-      ]
-    }
-  },
-  biology:{
-    name:"Biology", icon:"🧬",
-    papers:{
-      "1st Paper":[
-        "কোষ ও এর গঠন","কোষ বিভাজন","কোষ রসায়ন","অণুজীব",
-        "শৈবাল ও ছত্রাক","ব্রায়োফাইটা ও টেরিডোফাইটা",
-        "নগ্নবীজী ও আবৃতবীজী উদ্ভিদ","টিস্যু ও টিস্যুতন্ত্র",
-        "উদ্ভিদ প্রজনন","জীবপ্রযুক্তি"
-      ],
-      "2nd Paper":[
-        "প্রাণীর শ্রেণিবিন্যাস","হাইড্রা","ঘাসফড়িং","রুই মাছ",
-        "মানব শারীরতত্ত্ব","রক্ত ও সঞ্চালন","শ্বাসক্রিয়া",
-        "বর্জ্য নিষ্কাশন","চলন ও অঙ্গচালনা","সমন্বয় ও নিয়ন্ত্রণ",
-        "মানব প্রজনন","জেনেটিক্স ও বিবর্তন"
-      ]
-    }
-  },
-  ict:{
-    name:"ICT", icon:"💻",
-    papers:{
-      "1st Paper":[
-        "তথ্য ও যোগাযোগ প্রযুক্তি","কমিউনিকেশন সিস্টেম ও নেটওয়ার্কিং",
-        "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস","ওয়েব ডিজাইন ও HTML",
-        "প্রোগ্রামিং","ডেটাবেজ"
-      ],
-      "2nd Paper":[]
-    }
-  },
-  bangla:{
-    name:"Bangla", icon:"📖",
-    papers:{
-      "1st Paper":[
-        "অপরিচিতা","বিলাসী","সাহিত্যে খেলা","অর্ধাঙ্গী",
-        "যৌবনের গান","জীবন ও বৃক্ষ","গন্তব্য কাবুল","নেকলেস"
-      ],
-      "2nd Paper":[
-        "বাংলা উচ্চারণ","বাংলা বানান","শব্দশ্রেণি","শব্দ গঠন",
-        "বাক্যতত্ত্ব","বাংলা ভাষা ও ব্যাকরণ","রচনা"
-      ]
-    }
-  },
-  english:{
-    name:"English", icon:"🔤",
-    papers:{
-      "1st Paper":[
-        "People or Institutions Making History","Traffic Education",
-        "Food Adulteration","Dreams","Youthful Achievers",
-        "Relationships","Adolescence","Lifestyle","Arriving in Bangkok"
-      ],
-      "2nd Paper":[
-        "Grammar","Parts of Speech","Right Form of Verbs",
-        "Transformation","Narration","Completing Sentences",
-        "Composition","Formal Letters & Emails"
-      ]
-    }
-  }
+const savedTheme=localStorage.getItem("sn_theme"); if(savedTheme==="dark")document.body.classList.add("dark");
+$("#themeBtn").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("sn_theme",document.body.classList.contains("dark")?"dark":"light");};
+
+function toast(t){const x=$("#toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2200)}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function renderText(s){return escapeHtml(s).replace(/\*\*(.*?)\*\*/g,"<b>$1</b>").replace(/\n/g,"<br>")}
+
+function addMsg(text,who){const d=document.createElement("div");d.className="msg "+who;d.innerHTML=renderText(text);$("#messages").appendChild(d);$("#messages").scrollTop=$("#messages").scrollHeight;return d}
+async function sendAI(){
+ const input=$("#aiInput"), q=input.value.trim(); if(!q)return;
+ addMsg(q,"user"); input.value="";
+ const loading=addMsg("Thinking…","ai");
+ try{
+   const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,system:"You are StudyNest AI. Answer clearly, accurately and naturally. You can answer academic and general questions. Never invent facts; say when uncertain. For calculations verify carefully. Use headings, bullets and examples when useful. Respond in the user's language/style."})});
+   if(!r.ok)throw new Error();
+   const data=await r.json(); loading.innerHTML=renderText(data.answer||data.message||"No answer returned.");
+ }catch(e){
+   loading.innerHTML="⚠️ Real AI backend এখনো connected হয়নি।<br><br>Frontend প্রস্তুত আছে। `AI_ENDPOINT`-এ তোমার secure backend/API endpoint বসালে এই chat real AI-এর উত্তর দেখাবে।";
+ }
+}
+$("#sendAI").onclick=sendAI;$("#aiInput").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendAI()}});
+$$("[data-prompt]").forEach(b=>b.onclick=()=>{$("#aiInput").value=b.dataset.prompt;page("ai");$("#aiInput").focus()});
+function ask(q){page("ai");$("#aiInput").value=q;sendAI()}
+
+$("#translateBtn").onclick=async()=>{
+ const q=$("#transInput").value.trim();if(!q)return;
+ const out=$("#transOut");out.textContent="Translating…";
+ try{
+   const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:`Translate this into ${$("#toLang").value}. If it is a single word, also give meaning, pronunciation, example sentence, synonym and antonym when appropriate:\n${q}`})});
+   const d=await r.json();if(!r.ok)throw 0;out.innerHTML=renderText(d.answer||d.message||"");
+ }catch(e){out.textContent="AI backend connect করলে full translation, meaning, pronunciation ও example এখানে আসবে।"}
 };
 
-const stories=[
-  {
-    title:"📚 ছাত্রের শেষ মুহূর্তের পড়া",
-    text:"পরীক্ষার আগের রাতে ছাত্র বলল—‘আজ থেকে জীবন বদলে দেব!’ তারপর ১০ মিনিট পড়ে ঘুমিয়ে গেল। সকালে উঠে বলল—‘জীবন বদলেছে ঠিকই, কিন্তু সিলেবাস বদলায়নি!’ 😆"
-  },
-  {
-    title:"🧪 Chemistry-এর ভয়",
-    text:"বন্ধু: Chemistry কেমন লাগছে? ছাত্র: খুব ভালো। বন্ধু: সত্যি? ছাত্র: হ্যাঁ, প্রশ্ন দেখলেই আমার শরীরের Chemistry বদলে যায়! 😂"
-  },
-  {
-    title:"📐 Math-এর সাথে সম্পর্ক",
-    text:"ছাত্র Math-কে বলল—‘তুই আমার জীবনে এত সমস্যা কেন?’ Math বলল—‘কারণ আমি তোকে solution খুঁজতে শেখাই!’ 😄"
-  },
-  {
-    title:"💻 ICT ক্লাস",
-    text:"স্যার: Computer-এর brain কোনটা? ছাত্র: Sir, যেটা exam-এর আগে আমাদের মাথা থেকে পালিয়ে যায়! 🤣"
-  },
-  {
-    title:"⚛️ Physics-এর সূত্র",
-    text:"বন্ধু: Physics-এর সূত্র মুখস্থ করেছিস? ছাত্র: হ্যাঁ। বন্ধু: কয়টা? ছাত্র: প্রশ্নে আসবে না—এমন প্রায় সবগুলো! 😭😂"
-  },
-  {
-    title:"🧬 Biology",
-    text:"স্যার: মানুষের শরীরে সবচেয়ে বড় অঙ্গ কোনটি? ছাত্র: Sir, Exam-এর সময় আমার চিন্তা! 😆"
-  },
-  {
-    title:"😴 পড়াশোনার Motivation",
-    text:"রাতে বই খুলে ছাত্র বলল—‘আজকে অনেক পড়ব।’ পাঁচ মিনিট পর বই বলল—‘ভাই, আমাকে বন্ধ কর। তোর ঘুম পেয়ে গেছে!’ 😂"
-  },
-  {
-    title:"📝 Exam Hall",
-    text:"প্রশ্নপত্র দেখে ছাত্র: ‘এগুলো তো আমি পড়িনি!’ পাশের ছাত্র: ‘আমিও না।’ দুজন একসাথে: ‘চলো, আজকে ভাগ্যের উপর পরীক্ষা দিই!’ 🤣"
-  }
-];
-
-const riddles=[
-  ["যত বেশি শুকায়, তত বেশি ভিজে—এটা কী?","তোয়ালে!"],
-  ["দাঁত আছে কিন্তু কামড়াতে পারে না—কী?","চিরুনি!"],
-  ["চোখ আছে কিন্তু দেখতে পারে না—কী?","আলু!"],
-  ["যার পা নেই, তবু চলে—কী?","ঘড়ি!"],
-  ["দিনে একবার আসে, রাতে একবার আসে—কী?","অক্ষর ‘ে’ নয়—এই ধাঁধাটি শব্দভেদে বদলাতে পারে 😄"]
-];
-
-const quiz=[
-  {
-    q:"পানির রাসায়নিক সংকেত কোনটি?",
-    options:["CO₂","H₂O","O₂","NaCl"],
-    ans:1
-  },
-  {
-    q:"আলোর বেগ প্রায় কত?",
-    options:["3×10⁸ m/s","3×10⁶ m/s","3×10⁴ m/s","3×10² m/s"],
-    ans:0
-  },
-  {
-    q:"HTML কী কাজে ব্যবহৃত হয়?",
-    options:["Web page তৈরি","শুধু হিসাব","ভিডিও editing","Antivirus"],
-    ans:0
-  },
-  {
-    q:"DNA-এর পূর্ণরূপ কী?",
-    options:["Deoxyribonucleic Acid","Dynamic Network Array","Digital Nuclear Acid","None"],
-    ans:0
-  },
-  {
-    q:"π-এর আনুমানিক মান কত?",
-    options:["2.14","3.14","4.14","1.14"],
-    ans:1
-  }
-];
-
-/* =========================
-   STATE
-========================= */
-
-let page="home";
-let selectedSubject=null;
-let selectedPaper=null;
-let selectedChapter=null;
-
-let completed=JSON.parse(localStorage.getItem("sn_completed")||"[]");
-let bookmarks=JSON.parse(localStorage.getItem("sn_bookmarks")||"[]");
-let notes=JSON.parse(localStorage.getItem("sn_notes")||"[]");
-let todos=JSON.parse(localStorage.getItem("sn_todos")||"[]");
-
-let timerSeconds=25*60;
-let timerRunning=false;
-let timerInterval=null;
-let quizIndex=0;
-let quizScore=0;
-let currentStory=0;
-
-/* =========================
-   HELPERS
-========================= */
-
-function save(){
-  localStorage.setItem("sn_completed",JSON.stringify(completed));
-  localStorage.setItem("sn_bookmarks",JSON.stringify(bookmarks));
-  localStorage.setItem("sn_notes",JSON.stringify(notes));
-  localStorage.setItem("sn_todos",JSON.stringify(todos));
-}
-
-function esc(str){
-  return String(str??"")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-function getAllChapters(){
-  let arr=[];
-  Object.entries(subjects).forEach(([id,s])=>{
-    Object.entries(s.papers).forEach(([paper,chs])=>{
-      chs.forEach(ch=>arr.push({
-        subject:id,
-        subjectName:s.name,
-        paper,
-        chapter:ch
-      }));
-    });
-  });
-  return arr;
-}
-
-function isComplete(key){
-  return completed.includes(key);
-}
-
-function chapterKey(){
-  return selectedSubject+"|"+selectedPaper+"|"+selectedChapter;
-}
-
-function toggleComplete(){
-  const key=chapterKey();
-  if(isComplete(key)){
-    completed=completed.filter(x=>x!==key);
-  }else{
-    completed.push(key);
-  }
-  save();
-  render();
-}
-
-function toggleBookmark(){
-  const key=chapterKey();
-  if(bookmarks.includes(key)){
-    bookmarks=bookmarks.filter(x=>x!==key);
-  }else{
-    bookmarks.push(key);
-  }
-  save();
-  render();
-}
-
-function go(route){
-  page=route;
-  render();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-/* =========================
-   RENDER
-========================= */
-
-function render(){
-  const app=document.getElementById("app");
-
-  if(page==="home") app.innerHTML=homePage();
-  else if(page==="explore") app.innerHTML=explorePage();
-  else if(page==="subject") app.innerHTML=subjectPage();
-  else if(page==="papers") app.innerHTML=papersPage();
-  else if(page==="chapters") app.innerHTML=chaptersPage();
-  else if(page==="chapter") app.innerHTML=chapterPage();
-  else if(page==="notes") app.innerHTML=notesPage();
-  else if(page==="upload") app.innerHTML=uploadPage();
-  else if(page==="search") app.innerHTML=searchPage();
-  else if(page==="tools") app.innerHTML=toolsPage();
-  else if(page==="timer") app.innerHTML=timerPage();
-  else if(page==="calculator") app.innerHTML=calculatorPage();
-  else if(page==="todo") app.innerHTML=todoPage();
-  else if(page==="converter") app.innerHTML=converterPage();
-  else if(page==="progress") app.innerHTML=progressPage();
-  else if(page==="quiz") app.innerHTML=quizPage();
-  else if(page==="result") app.innerHTML=resultPage();
-  else if(page==="fun") app.innerHTML=funPage();
-  else if(page==="more") app.innerHTML=morePage();
-  else app.innerHTML=homePage();
-
-  updateNav();
-}
-
-function updateNav(){
-  document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
-  document.querySelectorAll(".nav").forEach(n=>{
-    const r=n.dataset.route;
-    if(
-      (r==="home" && page==="home") ||
-      (r==="explore" && ["explore","subject","papers","chapters","chapter"].includes(page)) ||
-      (r==="notes" && ["notes","upload"].includes(page)) ||
-      (r==="tools" && ["tools","timer","calculator","todo","converter","progress","quiz"].includes(page)) ||
-      (r==="more" && ["more","result","fun","search"].includes(page))
-    ) n.classList.add("active");
-  });
-}
-
-/* =========================
-   HOME
-========================= */
-
-function homePage(){
-  return `
-    <section class="hero">
-      <h1>StudyNest 📚</h1>
-      <p>তোমার HSC Science পড়াশোনার smart study companion.</p>
-      <p>Learn • Practice • Track • Improve</p>
-      <div class="author">Created with ❤️ by Ahmed Sami</div>
-    </section>
-
-    <div class="section-title">
-      <h2>Quick Access</h2>
-    </div>
-
-    <div class="grid">
-      <div class="card click" data-route="explore">
-        <div class="subject-icon">📚</div>
-        <h3>Explore Subjects</h3>
-        <p>সব subject ও chapter</p>
-      </div>
-
-      <div class="card click" data-route="notes">
-        <div class="subject-icon">📝</div>
-        <h3>Notes Library</h3>
-        <p>নিজের notes save করো</p>
-      </div>
-
-      <div class="card click" data-route="quiz">
-        <div class="subject-icon">🧠</div>
-        <h3>Quick Quiz</h3>
-        <p>নিজেকে test করো</p>
-      </div>
-
-      <div class="card click" data-route="fun">
-        <div class="subject-icon">😂</div>
-        <h3>Fun Site</h3>
-        <p>Study-এর মাঝে একটু fun</p>
-      </div>
-    </div>
-
-    <div class="section-title">
-      <h2>Subjects</h2>
-      <button class="btn secondary" data-route="explore">See All</button>
-    </div>
-
-    <div class="grid">
-      ${Object.entries(subjects).map(([id,s])=>`
-        <div class="card click" data-subject="${id}" data-action="open-subject">
-          <div class="subject-icon">${s.icon}</div>
-          <h3>${s.name}</h3>
-          <p>${Object.values(s.papers).flat().length} Chapters</p>
-        </div>
-      `).join("")}
-    </div>
-
-    <div class="section-title"><h2>Daily Motivation ✨</h2></div>
-    <div class="card">
-      <p style="font-size:16px;line-height:1.7">
-        “আজ একটু পড়া, কালকের বড় সাফল্যের জন্য ছোট একটা step.”
-      </p>
-    </div>
-  `;
-}
-
-/* =========================
-   EXPLORE
-========================= */
-
-function explorePage(){
-  return `
-    <div class="section-title">
-      <h2>📚 Explore Subjects</h2>
-    </div>
-    <div class="grid">
-      ${Object.entries(subjects).map(([id,s])=>`
-        <div class="card click" data-subject="${id}" data-action="open-subject">
-          <div class="subject-icon">${s.icon}</div>
-          <h3>${s.name}</h3>
-          <p>1st & 2nd Paper</p>
-          <span class="badge">${Object.values(s.papers).flat().length} Chapters</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
-}
-
-/* =========================
-   SUBJECT
-========================= */
-
-function subjectPage(){
-  const s=subjects[selectedSubject];
-  return `
-    <button class="back" data-route="explore">← Back</button>
-    <div class="hero">
-      <h1>${s.icon} ${s.name}</h1>
-      <p>Paper select করে chapter গুলো দেখো।</p>
-    </div>
-
-    <div class="section-title"><h2>Choose Paper</h2></div>
-    <div class="grid">
-      ${Object.entries(s.papers).map(([paper,chs])=>`
-        <div class="card click" data-paper="${esc(paper)}" data-action="open-paper">
-          <div class="subject-icon">📘</div>
-          <h3>${paper}</h3>
-          <p>${chs.length} Chapters</p>
-        </div>
-      `).join("")}
-    </div>
-  `;
-}
-
-/* =========================
-   PAPERS
-========================= */
-
-function papersPage(){
-  return subjectPage();
-}
-
-/* =========================
-   CHAPTERS
-========================= */
-
-function chaptersPage(){
-  const s=subjects[selectedSubject];
-  const chapters=s.papers[selectedPaper]||[];
-
-  return `
-    <button class="back" data-action="back-subject">← Back</button>
-    <div class="section-title">
-      <h2>${s.icon} ${s.name} — ${selectedPaper}</h2>
-    </div>
-
-    <div class="chapter-list">
-      ${chapters.map((ch,i)=>{
-        const key=selectedSubject+"|"+selectedPaper+"|"+ch;
-        return `
-        <div class="chapter click"
-             data-chapter="${esc(ch)}"
-             data-action="open-chapter">
-          <div>
-            <b>${i+1}. ${esc(ch)}</b><br>
-            <small>${isComplete(key)?"✅ Completed":"📖 Start studying"}</small>
-          </div>
-          <span>›</span>
-        </div>
-        `;
-      }).join("")}
-    </div>
-  `;
-}
-
-/* =========================
-   CHAPTER DETAIL
-========================= */
-
-function chapterPage(){
-  const done=isComplete(chapterKey());
-  const marked=bookmarks.includes(chapterKey());
-
-  return `
-    <button class="back" data-action="back-chapters">← Back</button>
-
-    <div class="hero">
-      <h1>${esc(selectedChapter)}</h1>
-      <p>${subjects[selectedSubject].name} • ${selectedPaper}</p>
-    </div>
-
-    <div class="row" style="margin:14px 0">
-      <button class="btn ${done?"success":"secondary"}" data-action="complete">
-        ${done?"✅ Completed":"☑️ Mark Complete"}
-      </button>
-      <button class="btn secondary" data-action="bookmark">
-        ${marked?"⭐ Bookmarked":"☆ Bookmark"}
-      </button>
-    </div>
-
-    <div class="grid">
-      <div class="card click" data-action="chapter-notes">
-        <div class="subject-icon">📝</div>
-        <h3>Notes</h3>
-        <p>Chapter-এর গুরুত্বপূর্ণ ধারণা</p>
-      </div>
-
-      <div class="card click" data-action="chapter-mcq">
-        <div class="subject-icon">🧠</div>
-        <h3>MCQ</h3>
-        <p>Practice questions</p>
-      </div>
-
-      <div class="card click" data-action="chapter-cq">
-        <div class="subject-icon">✍️</div>
-        <h3>CQ</h3>
-        <p>Creative question</p>
-      </div>
-
-      <div class="card click" data-action="chapter-important">
-        <div class="subject-icon">⭐</div>
-        <h3>Important</h3>
-        <p>Exam focus points</p>
-      </div>
-    </div>
-
-    <div class="notice">
-      💡 এই chapter-এর জন্য নিজের note রাখতে চাইলে Notes → Upload ব্যবহার করতে পারো।
-    </div>
-  `;
-}
-
-/* =========================
-   NOTES
-========================= */
-
-function notesPage(){
-  return `
-    <div class="section-title">
-      <h2>📝 Notes Library</h2>
-      <button class="btn" data-route="upload">+ Add Note</button>
-    </div>
-
-    <div class="notice">
-      এখানে তোমার নিজের text notes save থাকবে। Browser-এর local storage ব্যবহার হচ্ছে।
-    </div>
-
-    ${notes.length===0
-      ? `<div class="card empty">এখনো কোনো note নেই।<br><br>
-          <button class="btn" data-route="upload">প্রথম Note তৈরি করো</button>
-         </div>`
-      : notes.map((n,i)=>`
-        <div class="card note" style="margin-bottom:10px">
-          <button class="delete" data-note="${i}" data-action="delete-note">×</button>
-          <h3>${esc(n.title)}</h3>
-          <div class="note-meta">${esc(n.subject)} • ${esc(n.chapter||"General")}</div>
-          <p style="white-space:pre-wrap;line-height:1.6">${esc(n.content)}</p>
-        </div>
-      `).join("")
-    }
-  `;
-}
-
-function uploadPage(){
-  return `
-    <button class="back" data-route="notes">← Back</button>
-
-    <div class="section-title"><h2>📝 Add New Note</h2></div>
-
-    <div class="card">
-      <div class="form-group">
-        <label>Note Title</label>
-        <input id="noteTitle" placeholder="যেমন: Physics Chapter 1 Short Note">
-      </div>
-
-      <div class="form-group">
-        <label>Subject</label>
-        <select id="noteSubject">
-          ${Object.entries(subjects).map(([id,s])=>
-            `<option value="${id}">${s.name}</option>`
-          ).join("")}
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Chapter</label>
-        <input id="noteChapter" placeholder="Chapter name">
-      </div>
-
-      <div class="form-group">
-        <label>Note Content</label>
-        <textarea id="noteContent" placeholder="এখানে তোমার note লিখো..."></textarea>
-      </div>
-
-      <button class="btn full" data-action="save-note">💾 Save Note</button>
-    </div>
-
-    <div class="notice">
-      📌 এই version-এ note browser-এ save হবে। Firebase/online shared upload এখন যোগ করা হয়নি।
-    </div>
-  `;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-function searchPage(){
-  const q=(document.getElementById("searchInput")?.value||"").trim().toLowerCase();
-
-  if(!q){
-    return `
-      <div class="section-title"><h2>🔎 Search</h2></div>
-      <div class="card empty">উপরে search box-এ Subject বা Chapter লিখে খুঁজুন।</div>
-    `;
-  }
-
-  const results=getAllChapters().filter(x=>
-    x.chapter.toLowerCase().includes(q) ||
-    x.subjectName.toLowerCase().includes(q) ||
-    x.paper.toLowerCase().includes(q)
-  );
-
-  return `
-    <div class="section-title">
-      <h2>🔎 Search Results</h2>
-      <span class="badge">${results.length} found</span>
-    </div>
-
-    ${results.length===0
-      ? `<div class="card empty">কিছু পাওয়া যায়নি 😕</div>`
-      : `<div class="chapter-list">
-          ${results.map(x=>`
-            <div class="chapter click"
-                 data-subject="${x.subject}"
-                 data-paper="${esc(x.paper)}"
-                 data-chapter="${esc(x.chapter)}"
-                 data-action="search-open">
-              <div>
-                <b>${esc(x.chapter)}</b><br>
-                <small>${esc(x.subjectName)} • ${esc(x.paper)}</small>
-              </div>
-              <span>›</span>
-            </div>
-          `).join("")}
-        </div>`
-    }
-  `;
-}
-
-/* =========================
-   TOOLS
-========================= */
-
-function toolsPage(){
-  return `
-    <div class="section-title"><h2>🛠️ Student Tools</h2></div>
-
-    <div class="tool-grid">
-      <div class="tool click" data-route="timer">
-        <div class="big">⏱️</div><b>Study Timer</b>
-        <p>Focus session</p>
-      </div>
-
-      <div class="tool click" data-route="calculator">
-        <div class="big">🧮</div><b>Calculator</b>
-        <p>Quick calculation</p>
-      </div>
-
-      <div class="tool click" data-route="todo">
-        <div class="big">📋</div><b>To-Do List</b>
-        <p>Daily tasks</p>
-      </div>
-
-      <div class="tool click" data-route="converter">
-        <div class="big">🔄</div><b>Unit Converter</b>
-        <p>Common conversions</p>
-      </div>
-
-      <div class="tool click" data-route="progress">
-        <div class="big">📊</div><b>Progress</b>
-        <p>Track chapters</p>
-      </div>
-
-      <div class="tool click" data-route="quiz">
-        <div class="big">🧠</div><b>Quiz</b>
-        <p>Test yourself</p>
-      </div>
-    </div>
-  `;
-}
-
-/* =========================
-   TIMER
-========================= */
-
-function formatTime(sec){
-  const m=Math.floor(sec/60);
-  const s=sec%60;
-  return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
-}
-
-function timerPage(){
-  return `
-    <button class="back" data-route="tools">← Back</button>
-    <div class="section-title"><h2>⏱️ Study Timer</h2></div>
-
-    <div class="card">
-      <div class="timer" id="timerDisplay">${formatTime(timerSeconds)}</div>
-
-      <div class="row" style="justify-content:center">
-        <button class="btn" data-action="timer-toggle">
-          ${timerRunning?"⏸️ Pause":"▶️ Start"}
-        </button>
-        <button class="btn secondary" data-action="timer-reset">↻ Reset</button>
-      </div>
-    </div>
-
-    <div class="notice">
-      💡 25 মিনিট Focus + 5 মিনিট Break দিয়ে পড়তে পারো।
-    </div>
-  `;
-}
-
-function startTimer(){
-  if(timerRunning)return;
-  timerRunning=true;
-  timerInterval=setInterval(()=>{
-    if(timerSeconds>0){
-      timerSeconds--;
-      const el=document.getElementById("timerDisplay");
-      if(el)el.textContent=formatTime(timerSeconds);
-    }else{
-      clearInterval(timerInterval);
-      timerRunning=false;
-      alert("🎉 Focus session complete!");
-    }
-  },1000);
-}
-
-/* =========================
-   CALCULATOR
-========================= */
-
-function calculatorPage(){
-  return `
-    <button class="back" data-route="tools">← Back</button>
-    <div class="section-title"><h2>🧮 Calculator</h2></div>
-
-    <div class="card">
-      <input class="calc-display" id="calc" readonly value="">
-
-      <div class="calc-grid">
-        ${["7","8","9","÷","4","5","6","×","1","2","3","-","0",".","(",")",
-           "C","+","⌫","="].map(x=>`
-           <button data-calc="${x}">${x}</button>
-        `).join("")}
-      </div>
-    </div>
-  `;
-}
-
-function calcPress(v){
-  const input=document.getElementById("calc");
-  if(!input)return;
-
-  if(v==="C"){input.value="";return}
-  if(v==="⌫"){input.value=input.value.slice(0,-1);return}
-  if(v==="="){
-    try{
-      let exp=input.value.replaceAll("×","*").replaceAll("÷","/");
-      if(!/^[0-9+\-*/().\s]+$/.test(exp))throw Error();
-      input.value=String(Function('"use strict";return ('+exp+')')());
-    }catch{
-      input.value="Error";
-    }
-    return;
-  }
-  input.value+=v;
-}
-
-/* =========================
-   TODO
-========================= */
-
-function todoPage(){
-  return `
-    <button class="back" data-route="tools">← Back</button>
-    <div class="section-title"><h2>📋 To-Do List</h2></div>
-
-    <div class="card">
-      <div class="row">
-        <input id="todoInput" placeholder="আজ কী পড়বে?">
-        <button class="btn" data-action="add-todo">Add</button>
-      </div>
-    </div>
-
-    <div style="margin-top:12px">
-      ${todos.length===0
-        ? `<div class="card empty">কোনো task নেই।</div>`
-        : todos.map((t,i)=>`
-          <div class="todo-item ${t.done?"done":""}">
-            <input type="checkbox" style="width:auto" data-todo="${i}" data-action="todo-check" ${t.done?"checked":""}>
-            <span style="flex:1">${esc(t.text)}</span>
-            <button class="btn danger" data-todo="${i}" data-action="delete-todo">×</button>
-          </div>
-        `).join("")
-      }
-    </div>
-  `;
-}
-
-/* =========================
-   CONVERTER
-========================= */
-
-function converterPage(){
-  return `
-    <button class="back" data-route="tools">← Back</button>
-    <div class="section-title"><h2>🔄 Unit Converter</h2></div>
-
-    <div class="card">
-      <div class="form-group">
-        <label>Value</label>
-        <input id="convValue" type="number" placeholder="100">
-      </div>
-
-      <div class="form-group">
-        <label>Conversion</label>
-        <select id="convType">
-          <option value="km-m">Kilometer → Meter</option>
-          <option value="m-km">Meter → Kilometer</option>
-          <option value="m-cm">Meter → Centimeter</option>
-          <option value="cm-m">Centimeter → Meter</option>
-          <option value="kg-g">Kilogram → Gram</option>
-          <option value="g-kg">Gram → Kilogram</option>
-          <option value="c-f">Celsius → Fahrenheit</option>
-          <option value="f-c">Fahrenheit → Celsius</option>
-        </select>
-      </div>
-
-      <button class="btn full" data-action="convert">Convert</button>
-      <div id="convResult" class="notice" style="display:none"></div>
-    </div>
-  `;
-}
-
-function convert(){
-  const v=parseFloat(document.getElementById("convValue").value);
-  const type=document.getElementById("convType").value;
-  const out=document.getElementById("convResult");
-
-  if(isNaN(v)){
-    out.style.display="block";
-    out.textContent="একটি value দাও।";
-    return;
-  }
-
-  let r=0;
-  const names={
-    "km-m":"m",
-    "m-km":"km",
-    "m-cm":"cm",
-    "cm-m":"m",
-    "kg-g":"g",
-    "g-kg":"kg",
-    "c-f":"°F",
-    "f-c":"°C"
-  };
-
-  if(type==="km-m")r=v*1000;
-  if(type==="m-km")r=v/1000;
-  if(type==="m-cm")r=v*100;
-  if(type==="cm-m")r=v/100;
-  if(type==="kg-g")r=v*1000;
-  if(type==="g-kg")r=v/1000;
-  if(type==="c-f")r=(v*9/5)+32;
-  if(type==="f-c")r=(v-32)*5/9;
-
-  out.style.display="block";
-  out.innerHTML=`<b>Result:</b> ${r} ${names[type]}`;
-}
-
-/* =========================
-   PROGRESS
-========================= */
-
-function progressPage(){
-  const all=getAllChapters();
-  const done=all.filter(x=>completed.includes(
-    x.subject+"|"+x.paper+"|"+x.chapter
-  )).length;
-
-  const percent=all.length?Math.round(done/all.length*100):0;
-
-  return `
-    <button class="back" data-route="tools">← Back</button>
-    <div class="section-title"><h2>📊 Study Progress</h2></div>
-
-    <div class="card">
-      <h2>${percent}%</h2>
-      <div class="progressbar"><span style="width:${percent}%"></span></div>
-      <p>${done} / ${all.length} chapters completed</p>
-    </div>
-
-    <div class="section-title"><h2>Subject Progress</h2></div>
-
-    ${Object.entries(subjects).map(([id,s])=>{
-      const chapters=Object.values(s.papers).flat();
-      const d=chapters.filter(ch=>completed.includes(
-        id+"|"+Object.keys(s.papers).find(p=>s.papers[p].includes(ch))+"|"+ch
-      )).length;
-      const p=chapters.length?Math.round(d/chapters.length*100):0;
-
-      return `
-        <div class="card" style="margin-bottom:9px">
-          <b>${s.icon} ${s.name}</b>
-          <p>${d}/${chapters.length} completed</p>
-          <div class="progressbar"><span style="width:${p}%"></span></div>
-        </div>
-      `;
-    }).join("")}
-  `;
-}
-
-/* =========================
-   QUIZ
-========================= */
-
-function quizPage(){
-  const q=quiz[quizIndex];
-
-  if(quizIndex>=quiz.length){
-    return `
-      <button class="back" data-route="tools">← Back</button>
-      <div class="card" style="text-align:center">
-        <div style="font-size:50px">🎉</div>
-        <h2>Quiz Complete!</h2>
-        <p style="font-size:20px">Score: <b>${quizScore}/${quiz.length}</b></p>
-        <button class="btn" data-action="restart-quiz">Try Again</button>
-      </div>
-    `;
-  }
-
-  return `
-    <button class="back" data-route="tools">← Back</button>
-
-    <div class="section-title">
-      <h2>🧠 Quick Quiz</h2>
-      <span class="badge">${quizIndex+1}/${quiz.length}</span>
-    </div>
-
-    <div class="card">
-      <h3>${esc(q.q)}</h3>
-      ${q.options.map((o,i)=>`
-        <button class="quiz-option"
-                data-answer="${i}"
-                data-action="quiz-answer">
-          ${String.fromCharCode(65+i)}. ${esc(o)}
-        </button>
-      `).join("")}
-    </div>
-  `;
-}
-
-/* =========================
-   RESULT
-========================= */
-
-function resultPage(){
-  return `
-    <div class="section-title"><h2>📊 Result Checker</h2></div>
-
-    <div class="card">
-      <p>SSC/HSC result দেখতে official result website ব্যবহার করো।</p>
-
-      <div class="form-group">
-        <label>Exam</label>
-        <select id="resultExam">
-          <option>SSC / Dakhil</option>
-          <option>HSC / Alim</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Roll</label>
-        <input id="roll" placeholder="Roll number">
-      </div>
-
-      <div class="form-group">
-        <label>Registration</label>
-        <input id="reg" placeholder="Registration number">
-      </div>
-
-      <button class="btn full" data-action="official-result">
-        🌐 Open Official Result Website
-      </button>
-    </div>
-
-    <div class="notice">
-      নিরাপত্তা ও নির্ভুলতার জন্য StudyNest নিজে result তৈরি বা অনুমান করে না।
-    </div>
-  `;
-}
-
-/* =========================
-   FUN SITE
-========================= */
-
-function funPage(){
-  const s=stories[currentStory];
-
-  return `
-    <div class="section-title">
-      <h2>😂 StudyNest Fun Site</h2>
-    </div>
-
-    <div class="hero">
-      <h1>Study করো, হাসতেও ভুলবে না! 😄</h1>
-      <p>একটু break নাও, তারপর আবার পড়ায় ফিরে যাও।</p>
-    </div>
-
-    <div class="section-title"><h2>🤣 Funny Stories</h2></div>
-
-    <div class="story">
-      <h3>${s.title}</h3>
-      <p>${s.text}</p>
-      <button class="btn" data-action="next-story">Next Story ➜</button>
-      <button class="btn secondary" data-action="random-story">🎲 Random</button>
-    </div>
-
-    <div class="section-title"><h2>😆 আরও কিছু Stories</h2></div>
-
-    ${stories.slice(0,6).map(x=>`
-      <div class="story">
-        <h3>${x.title}</h3>
-        <p>${x.text}</p>
-      </div>
-    `).join("")}
-
-    <div class="section-title"><h2>🧩 Brain Teasers</h2></div>
-
-    ${riddles.map((r,i)=>`
-      <div class="card riddle" style="margin-bottom:10px">
-        <b>${i+1}. ${r[0]}</b>
-        <div style="margin-top:9px">
-          <button class="btn secondary"
-                  data-riddle="${i}"
-                  data-action="show-riddle">
-            Answer দেখাও
-          </button>
-        </div>
-      </div>
-    `).join("")}
-
-    <div class="section-title"><h2>😂 Study Jokes</h2></div>
-
-    <div class="card">
-      <p>📖 বই খুললেই ঘুম আসে। বই বন্ধ করলেই মনে হয়—‘আহা, পড়া দরকার!’ 😴</p>
-      <p>🧠 Brain: পড়ি? Heart: একটু পরে। Mobile: আমাকে আগে দেখ! 😂</p>
-      <p>⏰ Alarm: উঠে পড়ো। Student: আর ৫ মিনিট। সেই ৫ মিনিটের বয়স এখন ২ ঘণ্টা। 🤣</p>
-    </div>
-
-    <div class="notice">
-      💡 ভবিষ্যতে তুমি চাইলে এই Fun Site-এ আরও গল্প, joke, riddle ও quiz যোগ করতে পারবে।
-    </div>
-  `;
-}
-
-/* =========================
-   MORE
-========================= */
-
-function morePage(){
-  return `
-    <div class="section-title"><h2>☰ More</h2></div>
-
-    <div class="grid">
-      <div class="card click" data-route="upload">
-        <div class="subject-icon">📝</div>
-        <h3>Add Note</h3>
-        <p>নিজের note তৈরি করো</p>
-      </div>
-
-      <div class="card click" data-route="result">
-        <div class="subject-icon">📊</div>
-        <h3>Result</h3>
-        <p>Official result portal</p>
-      </div>
-
-      <div class="card click" data-route="fun">
-        <div class="subject-icon">😂</div>
-        <h3>Fun Site</h3>
-        <p>Stories & riddles</p>
-      </div>
-
-      <div class="card click" data-action="toggle-theme">
-        <div class="subject-icon">🌙</div>
-        <h3>Dark / Light</h3>
-        <p>Theme পরিবর্তন করো</p>
-      </div>
-    </div>
-
-    <div class="section-title"><h2>About StudyNest</h2></div>
-
-    <div class="card">
-      <h3>📚 StudyNest</h3>
-      <p style="line-height:1.7">
-        HSC Science students-এর জন্য তৈরি একটি simple study website।
-        এখানে subject, chapter, notes, quiz, tools এবং fun section আছে।
-      </p>
-      <p><b>Created by Ahmed Sami</b></p>
-    </div>
-  `;
-}
-
-/* =========================
-   MODAL
-========================= */
-
-function showModal(html){
-  document.getElementById("modalContent").innerHTML=html;
-  document.getElementById("modal").classList.add("show");
-}
-
-function closeModal(){
-  document.getElementById("modal").classList.remove("show");
-}
-
-function chapterModal(type){
-  const title={
-    notes:"📝 Chapter Notes",
-    cq:"✍️ Creative Question",
-    important:"⭐ Important Points"
-  }[type];
-
-  const text={
-    notes:`<p><b>${esc(selectedChapter)}</b> chapter-এর জন্য এখানে নিজের short notes লিখে practice করতে পারো।</p>
-           <ul><li>সংজ্ঞাগুলো আলাদা করে পড়ো</li><li>মূল সূত্রগুলো লিখে রাখো</li><li>Concept বুঝে তারপর MCQ practice করো</li></ul>`,
-    cq:`<p><b>Practice CQ:</b> ${esc(selectedChapter)} বিষয়টি ব্যাখ্যা করো এবং প্রয়োজনীয় সূত্র/ধারণা প্রয়োগ করে সমস্যার সমাধান দেখাও।</p>`,
-    important:`<ul><li>Chapter-এর গুরুত্বপূর্ণ সংজ্ঞা</li><li>মূল সূত্র ও একক</li><li>Common MCQ concepts</li><li>CQ-এর গুরুত্বপূর্ণ অংশ</li></ul>`
-  }[type];
-
-  showModal(`
-    <div class="modal-head">
-      <h2>${title}</h2>
-      <button class="close" data-action="close-modal">×</button>
-    </div>
-    ${text}
-  `);
-}
-
-function chapterMCQ(){
-  showModal(`
-    <div class="modal-head">
-      <h2>🧠 MCQ Practice</h2>
-      <button class="close" data-action="close-modal">×</button>
-    </div>
-    <p><b>Question:</b> ${esc(selectedChapter)} পড়ার সময় সবচেয়ে গুরুত্বপূর্ণ কোনটি?</p>
-    <button class="quiz-option" data-action="mcq-correct">A. Concept বুঝে পড়া</button>
-    <button class="quiz-option" data-action="mcq-wrong">B. শুধু না বুঝে মুখস্থ করা</button>
-    <button class="quiz-option" data-action="mcq-wrong">C. বই না খোলা</button>
-    <button class="quiz-option" data-action="mcq-wrong">D. শুধু পরীক্ষার আগের রাতে পড়া</button>
-  `);
-}
-
-/* =========================
-   EVENTS
-========================= */
-
-document.addEventListener("click",e=>{
-  const routeEl=e.target.closest("[data-route]");
-  if(routeEl){
-    const r=routeEl.dataset.route;
-    go(r);
-    return;
-  }
-
-  const actionEl=e.target.closest("[data-action]");
-  if(!actionEl)return;
-
-  const action=actionEl.dataset.action;
-
-  if(action==="toggle-theme"){
-    document.body.classList.toggle("dark");
-    localStorage.setItem("sn_dark",
-      document.body.classList.contains("dark")?"1":"0");
-    render();
-  }
-
-  if(action==="open-subject"){
-    selectedSubject=actionEl.dataset.subject;
-    page="subject";
-    render();
-  }
-
-  if(action==="open-paper"){
-    selectedPaper=actionEl.dataset.paper;
-    page="chapters";
-    render();
-  }
-
-  if(action==="open-chapter"){
-    selectedChapter=actionEl.dataset.chapter;
-    page="chapter";
-    render();
-  }
-
-  if(action==="back-subject"){
-    page="subject";
-    render();
-  }
-
-  if(action==="back-chapters"){
-    page="chapters";
-    render();
-  }
-
-  if(action==="complete")toggleComplete();
-  if(action==="bookmark")toggleBookmark();
-
-  if(action==="chapter-notes")chapterModal("notes");
-  if(action==="chapter-cq")chapterModal("cq");
-  if(action==="chapter-important")chapterModal("important");
-  if(action==="chapter-mcq")chapterMCQ();
-
-  if(action==="close-modal")closeModal();
-
-  if(action==="mcq-correct"){
-    alert("✅ Correct! Concept বুঝে পড়া সবচেয়ে ভালো।");
-    closeModal();
-  }
-
-  if(action==="mcq-wrong"){
-    alert("❌ Try again!");
-  }
-
-  if(action==="save-note"){
-    const title=document.getElementById("noteTitle").value.trim();
-    const subject=document.getElementById("noteSubject");
-    const chapter=document.getElementById("noteChapter").value.trim();
-    const content=document.getElementById("noteContent").value.trim();
-
-    if(!title||!content){
-      alert("Note title এবং content দাও।");
-      return;
-    }
-
-    notes.unshift({
-      title,
-      subject:subject.options[subject.selectedIndex].text,
-      chapter,
-      content,
-      date:new Date().toLocaleDateString()
-    });
-
-    save();
-    alert("✅ Note saved!");
-    page="notes";
-    render();
-  }
-
-  if(action==="delete-note"){
-    const i=Number(actionEl.dataset.note);
-    if(confirm("এই note delete করবে?")){
-      notes.splice(i,1);
-      save();
-      render();
-    }
-  }
-
-  if(action==="timer-toggle"){
-    if(timerRunning){
-      clearInterval(timerInterval);
-      timerRunning=false;
-      render();
-    }else{
-      startTimer();
-      render();
-    }
-  }
-
-  if(action==="timer-reset"){
-    clearInterval(timerInterval);
-    timerRunning=false;
-    timerSeconds=25*60;
-    render();
-  }
-
-  if(action==="add-todo"){
-    const input=document.getElementById("todoInput");
-    const text=input.value.trim();
-    if(!text)return;
-    todos.push({text,done:false});
-    save();
-    render();
-  }
-
-  if(action==="todo-check"){
-    const i=Number(actionEl.dataset.todo);
-    todos[i].done=!todos[i].done;
-    save();
-    render();
-  }
-
-  if(action==="delete-todo"){
-    const i=Number(actionEl.dataset.todo);
-    todos.splice(i,1);
-    save();
-    render();
-  }
-
-  if(action==="convert")convert();
-
-  if(action==="restart-quiz"){
-    quizIndex=0;
-    quizScore=0;
-    render();
-  }
-
-  if(action==="quiz-answer"){
-    const answer=Number(actionEl.dataset.answer);
-    if(answer===quiz[quizIndex].ans)quizScore++;
-    quizIndex++;
-    render();
-  }
-
-  if(action==="official-result"){
-    window.open("https://www.educationboardresults.gov.bd/","_blank");
-  }
-
-  if(action==="next-story"){
-    currentStory=(currentStory+1)%stories.length;
-    render();
-  }
-
-  if(action==="random-story"){
-    currentStory=Math.floor(Math.random()*stories.length);
-    render();
-  }
-
-  if(action==="show-riddle"){
-    const i=Number(actionEl.dataset.riddle);
-    showModal(`
-      <div class="modal-head">
-        <h2>🧩 Answer</h2>
-        <button class="close" data-action="close-modal">×</button>
-      </div>
-      <p><b>${esc(riddles[i][0])}</b></p>
-      <div class="notice">💡 ${esc(riddles[i][1])}</div>
-    `);
-  }
-
-  if(action==="search-open"){
-    selectedSubject=actionEl.dataset.subject;
-    selectedPaper=actionEl.dataset.paper;
-    selectedChapter=actionEl.dataset.chapter;
-    page="chapter";
-    render();
-  }
-});
-
-document.addEventListener("click",e=>{
-  const c=e.target.closest("[data-calc]");
-  if(c)calcPress(c.dataset.calc);
-});
-
-document.getElementById("searchInput").addEventListener("input",()=>{
-  const q=document.getElementById("searchInput").value.trim();
-  if(q){
-    page="search";
-    render();
-    const input=document.getElementById("searchInput");
-    input.value=q;
-    input.focus();
-  }
-});
-
-/* =========================
-   INITIAL
-========================= */
-
-if(localStorage.getItem("sn_dark")==="1"){
-  document.body.classList.add("dark");
-}
-
-render();
+function calc(){try{const v=$("#calcIn").value.replace(/[^0-9+\-*/().%\s]/g,"");$("#calcOut").textContent=Function('"use strict";return('+v+')')()}catch{$("#calcOut").textContent="Invalid calculation"}}
+function percent(){const a=+$("#p1").value,b=+$("#p2").value;$("#pOut").textContent=b?(a/b*100).toFixed(2)+"%":"Enter valid numbers"}
+function gpaCalc(){const a=$("#gpa").value.split(",").map(Number).filter(Number.isFinite);$("#gpaOut").textContent=a.length?(a.reduce((x,y)=>x+y,0)/a.length).toFixed(2):"Enter grades separated by commas"}
+function kmToM(){const n=+$("#unitIn").value;$("#unitOut").textContent=Number.isFinite(n)?n*1000+" m":"Enter a number"}
+function countdown(){const d=new Date($("#examDate").value);if(isNaN(d))return $("#countOut").textContent="Choose a date";const days=Math.ceil((d-new Date())/86400000);$("#countOut").textContent=days>=0?days+" day(s) remaining":Math.abs(days)+" day(s) ago"}
+let seconds=1500,timerId=null;function tick(){seconds--;if(seconds<0){clearInterval(timerId);timerId=null;toast("⏰ Study session complete!");seconds=1500}showTimer()}function showTimer(){const m=Math.floor(seconds/60),s=seconds%60;$("#timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")}function startTimer(){if(!timerId)timerId=setInterval(tick,1000)}function resetTimer(){clearInterval(timerId);timerId=null;seconds=1500;showTimer()}
+
+let tasks=JSON.parse(localStorage.getItem("sn_tasks")||"[]");
+function saveTasks(){localStorage.setItem("sn_tasks",JSON.stringify(tasks));renderTasks();renderProgress()}
+function renderTasks(){const box=$("#taskList");if(!box)return;box.innerHTML=tasks.length?tasks.map((t,i)=>`<div class="item"><label><input type="checkbox" ${t.done?"checked":""} onchange="tasks[${i}].done=this.checked;saveTasks()"> ${escapeHtml(t.text)}</label><button onclick="tasks.splice(${i},1);saveTasks()">✕</button></div>`).join(""):"<p class='muted'>No tasks yet.</p>"}
+$("#addTask").onclick=()=>{const x=$("#taskIn").value.trim();if(x){tasks.push({text:x,done:false});$("#taskIn").value="";saveTasks()}}
+function saveGoal(){localStorage.setItem("sn_goal",$("#goal").value);$("#goalOut").textContent="Saved ✓"}
+$("#goal").value=localStorage.getItem("sn_goal")||"";
+function renderProgress(){const done=tasks.filter(x=>x.done).length;$("#doneCount").textContent=done;$("#totalCount").textContent=tasks.length;$("#streak").textContent=localStorage.getItem("sn_streak")||"0";$("#score").textContent=localStorage.getItem("sn_score")||"0"}
+renderTasks();renderProgress();
+
+const questions=[
+ {q:"Photosynthesis-এ উদ্ভিদ প্রধানত কোন gas ব্যবহার করে?",a:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],c:1},
+ {q:"Newton-এর দ্বিতীয় সূত্রের সাধারণ সমীকরণ কোনটি?",a:["F=ma","E=mc²","V=IR","P=VI"],c:0},
+ {q:"H₂O-এর সাধারণ নাম কী?",a:["Salt","Water","Oxygen","Hydrogen"],c:1}
+];let qi=0;
+function showQuiz(){const x=questions[qi%questions.length];$("#quizBox").innerHTML=`<h3>${x.q}</h3>`+x.a.map((a,i)=>`<button class="fullBtn" onclick="answerQuiz(${i},${x.c})">${String.fromCharCode(65+i)}. ${a}</button>`).join("")}
+function answerQuiz(i,c){if(i===c){let s=+(localStorage.getItem("sn_score")||0)+1;localStorage.setItem("sn_score",s);toast("✅ Correct!")}else toast("❌ Try again");renderProgress();qi++;setTimeout(showQuiz,500)}
+$("#newQuiz").onclick=()=>{qi++;showQuiz()};showQuiz();
+
+const brains=["একটি জিনিস যত বেশি শুকায়, তত বেশি ভিজে—সেটা কী?","What has keys but cannot open locks?","তিনটি বাক্সের একটিতে prize আছে—logic দিয়ে কীভাবে খুঁজবে?"];let bi=0;function newBrain(){$("#brainQ").textContent=brains[bi++%brains.length]}newBrain();
+
+$("#notifyBtn").onclick=async()=>{if(!("Notification"in window)){toast("এই browser notification support করে না");return}const p=await Notification.requestPermission();toast(p==="granted"?"🔔 Notifications enabled":"Notification permission not granted");if(p==="granted")new Notification("StudyNest",{body:"আজকের study session শুরু করো! 📚"})};
+
+$("#globalSearch").addEventListener("keydown",e=>{if(e.key!=="Enter")return;const q=e.target.value.trim().toLowerCase();if(!q)return;const map=[["ai",["ai","ask","question"]],["translator",["translate","meaning","word"]],["result",["result","ssc","hsc"]],["tools",["calculator","gpa","timer","tool"]],["learn",["learn","physics","chemistry","biology","ict"]],["practice",["mcq","quiz","practice"]],["planner",["plan","task","routine"]],["brain",["riddle","brain"]]];const hit=map.find(x=>x[1].some(k=>q.includes(k)));page(hit?hit[0]:"ai");if(!hit){$("#aiInput").value=e.target.value;sendAI()}});
 </script>
-
 </body>
 </html>
