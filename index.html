@@ -172,7 +172,7 @@
 </div>
 
 <script>
-const AI_ENDPOINT="/api/chat"; // Secure backend endpoint. Never put a private API key in this HTML.
+const AI_ENDPOINT="PASTE_YOUR_CLOUDFLARE_WORKER_URL_HERE"; // Example: https://studynest-ai.yourname.workers.dev
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 function page(id){$$(".page").forEach(x=>x.classList.remove("active"));$("#"+id)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 $$("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));
@@ -185,16 +185,49 @@ function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;","
 function renderText(s){return escapeHtml(s).replace(/\*\*(.*?)\*\*/g,"<b>$1</b>").replace(/\n/g,"<br>")}
 
 function addMsg(text,who){const d=document.createElement("div");d.className="msg "+who;d.innerHTML=renderText(text);$("#messages").appendChild(d);$("#messages").scrollTop=$("#messages").scrollHeight;return d}
+let aiHistory=JSON.parse(localStorage.getItem("sn_ai_history")||"[]");
+function saveAIHistory(){localStorage.setItem("sn_ai_history",JSON.stringify(aiHistory.slice(-12)))}
+function showAIHistory(){
+  if(aiHistory.length){
+    $("#messages").innerHTML="";
+    aiHistory.forEach(m=>addMsg(m.content,m.role==="user"?"user":"ai"));
+  }
+}
+async function callStudyNestAI(message, mode="chat"){
+  if(!AI_ENDPOINT || AI_ENDPOINT.includes("PASTE_YOUR_CLOUDFLARE")){
+    throw new Error("BACKEND_NOT_CONFIGURED");
+  }
+  const payload={
+    mode,
+    message,
+    history:aiHistory.slice(-10)
+  };
+  const r=await fetch(AI_ENDPOINT,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(payload)
+  });
+  let data={};
+  try{data=await r.json()}catch{}
+  if(!r.ok)throw new Error(data.error||"Request failed");
+  return data.answer||data.message||"No answer returned.";
+}
 async function sendAI(){
  const input=$("#aiInput"), q=input.value.trim(); if(!q)return;
  addMsg(q,"user"); input.value="";
+ aiHistory.push({role:"user",content:q});
  const loading=addMsg("Thinking…","ai");
  try{
-   const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,system:"You are StudyNest AI. Answer clearly, accurately and naturally. You can answer academic and general questions. Never invent facts; say when uncertain. For calculations verify carefully. Use headings, bullets and examples when useful. Respond in the user's language/style."})});
-   if(!r.ok)throw new Error();
-   const data=await r.json(); loading.innerHTML=renderText(data.answer||data.message||"No answer returned.");
+   const answer=await callStudyNestAI(q,"chat");
+   loading.innerHTML=renderText(answer);
+   aiHistory.push({role:"assistant",content:answer});
+   saveAIHistory();
  }catch(e){
-   loading.innerHTML="⚠️ Real AI backend এখনো connected হয়নি।<br><br>Frontend প্রস্তুত আছে। `AI_ENDPOINT`-এ তোমার secure backend/API endpoint বসালে এই chat real AI-এর উত্তর দেখাবে।";
+   if(e.message==="BACKEND_NOT_CONFIGURED"){
+     loading.innerHTML="⚙️ AI backend এখনো সেট করা হয়নি।<br><br>প্রথমে Cloudflare Worker deploy করে তার URL `AI_ENDPOINT`-এ বসাও। তারপর AI এবং Translator দুটোই কাজ করবে।";
+   }else{
+     loading.innerHTML="⚠️ AI-তে সংযোগ করা যাচ্ছে না। কিছুক্ষণ পর আবার চেষ্টা করো।";
+   }
  }
 }
 $("#sendAI").onclick=sendAI;$("#aiInput").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendAI()}});
@@ -205,10 +238,16 @@ $("#translateBtn").onclick=async()=>{
  const q=$("#transInput").value.trim();if(!q)return;
  const out=$("#transOut");out.textContent="Translating…";
  try{
-   const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:`Translate this into ${$("#toLang").value}. If it is a single word, also give meaning, pronunciation, example sentence, synonym and antonym when appropriate:\n${q}`})});
-   const d=await r.json();if(!r.ok)throw 0;out.innerHTML=renderText(d.answer||d.message||"");
- }catch(e){out.textContent="AI backend connect করলে full translation, meaning, pronunciation ও example এখানে আসবে।"}
+   const answer=await callStudyNestAI(`Translate the following text into ${$("#toLang").value}. If it is a single word, also provide: meaning, pronunciation, one example sentence, synonym and antonym when appropriate. Keep the answer easy to understand.\n\nText:\n${q}`,"translate");
+   out.innerHTML=renderText(answer);
+ }catch(e){
+   out.textContent=e.message==="BACKEND_NOT_CONFIGURED"
+     ?"⚙️ Translator backend এখনো সেট করা হয়নি। Cloudflare Worker-এর URL `AI_ENDPOINT`-এ বসালে Translator কাজ করবে।"
+     :"⚠️ Translation service-এ সংযোগ করা যাচ্ছে না। কিছুক্ষণ পর আবার চেষ্টা করো।";
+ }
 };
+
+showAIHistory();
 
 function calc(){try{const v=$("#calcIn").value.replace(/[^0-9+\-*/().%\s]/g,"");$("#calcOut").textContent=Function('"use strict";return('+v+')')()}catch{$("#calcOut").textContent="Invalid calculation"}}
 function percent(){const a=+$("#p1").value,b=+$("#p2").value;$("#pOut").textContent=b?(a/b*100).toFixed(2)+"%":"Enter valid numbers"}
