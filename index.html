@@ -9,6 +9,13 @@
 :root{--bg:#f5f7fb;--card:#fff;--text:#101828;--muted:#667085;--line:#e7eaf0;--brand:#6d5dfc;--brand2:#20c997;--soft:#eef0ff;--danger:#ef4444;--shadow:0 12px 35px rgba(16,24,40,.08)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.app{min-height:100vh}.top{position:sticky;top:0;z-index:30;background:rgba(245,247,251,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;white-space:nowrap}.logoMark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),#8d7cff)}.search{flex:1;position:relative}.search input{width:100%;padding:13px 16px 13px 44px;border:1px solid var(--line);background:var(--card);border-radius:15px;outline:none}.search span{position:absolute;left:15px;top:12px}.iconBtn{width:43px;height:43px;border-radius:13px;background:var(--card);border:1px solid var(--line)}.main{max-width:1180px;margin:auto;padding:25px 18px 100px}.hero{border-radius:28px;padding:30px;background:linear-gradient(135deg,#111827,#202b54 55%,#5c4ff4);color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-80px;top:-100px;background:rgba(255,255,255,.09)}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1;margin:8px 0 12px;max-width:700px}.hero p{color:#dbe2ff;max-width:650px;line-height:1.65}.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.primary,.ghost{padding:12px 17px;border-radius:13px;font-weight:800}.primary{background:#fff;color:#17142e}.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}.section{margin-top:28px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.sectionHead h2{margin:0;font-size:23px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px rgba(16,24,40,.04)}.feature{min-height:145px;transition:.2s}.feature:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.emoji{font-size:27px}.feature h3{margin:10px 0 5px}.feature p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}.page{display:none}.page.active{display:block}.back{margin-bottom:16px;background:transparent;color:var(--muted);font-weight:800}.two{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.list{display:grid;gap:10px}.item{padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--card);display:flex;justify-content:space-between;align-items:center;gap:10px}.pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--soft);color:#4d40c9;font-size:12px;font-weight:800}.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.tool{padding:20px;border-radius:20px;background:var(--card);border:1px solid var(--line)}.tool button,.fullBtn{width:100%;margin-top:12px;padding:11px;border-radius:12px;background:var(--soft);color:#4d40c9;font-weight:800}.input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;outline:none;background:var(--card);color:var(--text)}textarea.input{min-height:110px;resize:vertical}.resultBox{padding:18px;background:#f8fafc;border-radius:15px;border:1px dashed #ccd2dd;margin-top:12px;line-height:1.7}.chat{height:58vh;min-height:420px;display:flex;flex-direction:column}.messages{flex:1;overflow:auto;padding:8px}.msg{max-width:82%;padding:13px 15px;border-radius:17px;margin:8px 0;line-height:1.65;white-space:pre-wrap}.user{margin-left:auto;background:#6d5dfc;color:#fff;border-bottom-right-radius:5px}.ai{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:5px}.chatbar{display:flex;gap:8px;padding-top:10px}.chatbar textarea{min-height:50px;max-height:120px}.send{width:54px;border-radius:14px;background:var(--brand);color:#fff;font-weight:900}.quick{display:flex;gap:8px;overflow:auto;padding:10px 0}.quick button{white-space:nowrap;padding:8px 11px;border-radius:999px;background:var(--soft);color:#4d40c9}.creator{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}.creator img{width:220px;height:260px;object-fit:cover;border-radius:28px;border:6px solid var(--card);box-shadow:var(--shadow)}.quote{font-size:20px;line-height:1.6;font-weight:700}.bottom{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center}.bottomInner{max-width:650px;width:100%;display:grid;grid-template-columns:repeat(5,1fr)}.bottom button{padding:10px 5px;background:transparent;color:var(--muted);font-size:11px}.bottom b{display:block;font-size:19px;margin-bottom:2px}.notice{padding:14px 16px;border-radius:15px;background:#eefcf7;border:1px solid #c7f2e4;color:#116149}.dark{--bg:#080d18;--card:#101827;--text:#f5f7fb;--muted:#98a2b3;--line:#202b3d;--soft:#1b2040}.dark .top{background:rgba(8,13,24,.88)}.dark .bottom{background:rgba(16,24,39,.94)}.dark .resultBox{background:#0c1422}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#111827;color:#fff;padding:12px 16px;border-radius:13px;z-index:100;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toggle{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.toolgrid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.creator{grid-template-columns:140px 1fr}.creator img{width:140px;height:170px}}@media(max-width:560px){.nav{padding:10px 12px}.logoText{display:none}.search input{padding-left:40px}.main{padding:17px 12px 90px}.hero{padding:23px 19px;border-radius:23px}.grid,.toolgrid{grid-template-columns:1fr 1fr;gap:9px}.card{padding:14px;border-radius:17px}.feature{min-height:125px}.feature h3{font-size:15px}.feature p{font-size:12px}.creator{grid-template-columns:1fr;text-align:center}.creator img{margin:auto;width:170px;height:200px}.msg{max-width:90%}.bottom button{font-size:10px}.bottom b{font-size:17px}}
 </style>
+
+<style>
+.setupBox{margin-top:14px;padding:14px;border:1px dashed #cfd4e2;border-radius:16px;background:var(--soft)}
+.setupRow{display:flex;gap:8px;align-items:stretch;margin-top:10px}.setupRow .input{flex:1;min-width:0}
+.status{font-size:13px;margin-top:8px;color:var(--muted)}
+@media(max-width:560px){.setupRow{flex-direction:column}.setupRow .fullBtn{width:100%}}
+</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -66,6 +73,15 @@
       <button data-prompt="এই প্রশ্নটা step-by-step solve করো।">Step-by-step</button>
       <button data-prompt="এই topic থেকে ৫টা MCQ দাও।">MCQ</button>
       <button data-prompt="এই বিষয়টার short summary দাও।">Summary</button>
+    </div>
+    <div id="aiSetup" class="setupBox">
+      <b>⚙️ AI একবার সেটআপ করো</b>
+      <p class="muted" style="margin:6px 0 0">Cloudflare Worker deploy করার পর তার URL এখানে বসাও। API key এখানে লাগবে না।</p>
+      <div class="setupRow">
+        <input id="endpointInput" class="input" placeholder="https://your-worker.workers.dev">
+        <button class="fullBtn" id="saveEndpoint">Save & Test</button>
+      </div>
+      <div id="endpointStatus" class="status">Backend এখনো সেট করা হয়নি।</div>
     </div>
     <div class="chat"><div class="messages" id="messages">
       <div class="msg ai">হাই! আমি StudyNest AI। 🤖<br><br>তুমি পড়াশোনা, technology, general knowledge, writing, translation বা যেকোনো সাধারণ প্রশ্ন করতে পারো।</div>
@@ -172,8 +188,8 @@
 </div>
 
 <script>
-const AI_ENDPOINT="PASTE_YOUR_CLOUDFLARE_WORKER_URL_HERE"; // Example: https://studynest-ai.yourname.workers.dev
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+let AI_ENDPOINT=(localStorage.getItem("sn_ai_endpoint")||"").trim().replace(/\/$/,"");
 function page(id){$$(".page").forEach(x=>x.classList.remove("active"));$("#"+id)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 $$("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));
 
@@ -194,24 +210,43 @@ function showAIHistory(){
   }
 }
 async function callStudyNestAI(message, mode="chat"){
-  if(!AI_ENDPOINT || AI_ENDPOINT.includes("PASTE_YOUR_CLOUDFLARE")){
-    throw new Error("BACKEND_NOT_CONFIGURED");
-  }
-  const payload={
-    mode,
-    message,
-    history:aiHistory.slice(-10)
-  };
+  if(!AI_ENDPOINT) throw new Error("BACKEND_NOT_CONFIGURED");
+  const prior=mode==="chat" ? aiHistory.slice(0,-1).slice(-10) : [];
   const r=await fetch(AI_ENDPOINT,{
     method:"POST",
     headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(payload)
+    body:JSON.stringify({mode,message,history:prior})
   });
   let data={};
   try{data=await r.json()}catch{}
-  if(!r.ok)throw new Error(data.error||"Request failed");
+  if(!r.ok)throw new Error(data.error||data.detail||"Request failed");
   return data.answer||data.message||"No answer returned.";
 }
+async function testEndpoint(url){
+  const u=(url||"").trim().replace(/\/$/,"");
+  if(!u)return {ok:false,text:"Worker URL দাও।"};
+  try{
+    const r=await fetch(u,{method:"GET"});
+    const d=await r.json().catch(()=>({}));
+    return r.ok && d.ok ? {ok:true,text:"✅ Backend connected. AI + Translator ready."} : {ok:false,text:"❌ Worker পাওয়া গেছে, কিন্তু setup ঠিক হয়নি।"};
+  }catch{return {ok:false,text:"❌ Worker URL-এ connect করা যাচ্ছে না। URL ঠিক আছে কি না দেখো।"};}
+}
+async function updateEndpointUI(){
+  const input=$("#endpointInput"), status=$("#endpointStatus");
+  if(input)input.value=AI_ENDPOINT;
+  if(!AI_ENDPOINT){status.textContent="Backend এখনো সেট করা হয়নি।";return;}
+  status.textContent="Checking backend…";
+  const t=await testEndpoint(AI_ENDPOINT);
+  status.textContent=t.text;
+}
+$("#saveEndpoint").onclick=async()=>{
+  const u=$("#endpointInput").value.trim().replace(/\/$/,"");
+  const status=$("#endpointStatus");
+  status.textContent="Checking backend…";
+  const t=await testEndpoint(u);
+  if(t.ok){AI_ENDPOINT=u;localStorage.setItem("sn_ai_endpoint",u);status.textContent=t.text;toast("✅ AI backend connected");}
+  else status.textContent=t.text;
+};
 async function sendAI(){
  const input=$("#aiInput"), q=input.value.trim(); if(!q)return;
  addMsg(q,"user"); input.value="";
@@ -223,11 +258,8 @@ async function sendAI(){
    aiHistory.push({role:"assistant",content:answer});
    saveAIHistory();
  }catch(e){
-   if(e.message==="BACKEND_NOT_CONFIGURED"){
-     loading.innerHTML="⚙️ AI backend এখনো সেট করা হয়নি।<br><br>প্রথমে Cloudflare Worker deploy করে তার URL `AI_ENDPOINT`-এ বসাও। তারপর AI এবং Translator দুটোই কাজ করবে।";
-   }else{
-     loading.innerHTML="⚠️ AI-তে সংযোগ করা যাচ্ছে না। কিছুক্ষণ পর আবার চেষ্টা করো।";
-   }
+   if(e.message==="BACKEND_NOT_CONFIGURED") loading.innerHTML="⚙️ উপরের AI Setup-এ Worker URL বসিয়ে **Save & Test** করো। তারপর আবার প্রশ্ন পাঠাও।";
+   else loading.innerHTML="⚠️ AI-তে সংযোগ করা যাচ্ছে না। Backend URL, Worker secret এবং API usage ঠিক আছে কি না দেখো।";
  }
 }
 $("#sendAI").onclick=sendAI;$("#aiInput").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendAI()}});
@@ -242,11 +274,13 @@ $("#translateBtn").onclick=async()=>{
    out.innerHTML=renderText(answer);
  }catch(e){
    out.textContent=e.message==="BACKEND_NOT_CONFIGURED"
-     ?"⚙️ Translator backend এখনো সেট করা হয়নি। Cloudflare Worker-এর URL `AI_ENDPOINT`-এ বসালে Translator কাজ করবে।"
-     :"⚠️ Translation service-এ সংযোগ করা যাচ্ছে না। কিছুক্ষণ পর আবার চেষ্টা করো।";
+     ?"⚙️ আগে AI page-এর Setup-এ Cloudflare Worker URL Save & Test করো।"
+     :"⚠️ Translation service-এ সংযোগ করা যাচ্ছে না। Backend setup পরীক্ষা করো।";
  }
 };
 
+showAIHistory();
+updateEndpointUI();
 showAIHistory();
 
 function calc(){try{const v=$("#calcIn").value.replace(/[^0-9+\-*/().%\s]/g,"");$("#calcOut").textContent=Function('"use strict";return('+v+')')()}catch{$("#calcOut").textContent="Invalid calculation"}}
