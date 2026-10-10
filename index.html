@@ -11,10 +11,21 @@
 </style>
 
 <style>
-.setupBox{margin-top:14px;padding:14px;border:1px dashed #cfd4e2;border-radius:16px;background:var(--soft)}
-.setupRow{display:flex;gap:8px;align-items:stretch;margin-top:10px}.setupRow .input{flex:1;min-width:0}
-.status{font-size:13px;margin-top:8px;color:var(--muted)}
-@media(max-width:560px){.setupRow{flex-direction:column}.setupRow .fullBtn{width:100%}}
+/* Mobile-friendly AI setup */
+.setupBox{margin-top:14px;padding:16px;border:1px dashed #aeb7d2;border-radius:18px;background:var(--soft);overflow:hidden}
+.setupTitle{display:flex;align-items:center;gap:7px;font-size:16px}
+.setupHelp{margin:7px 0 0;line-height:1.55;font-size:13px}
+.setupRow{display:grid;grid-template-columns:minmax(0,1fr) 132px;gap:9px;margin-top:12px;width:100%}
+.setupRow .input{width:100%;min-width:0;height:52px;padding:0 14px;font-size:16px;border-radius:13px;display:block}
+.setupRow .fullBtn{width:100%;height:52px;margin:0;padding:0 10px;border-radius:13px;white-space:nowrap}
+.status{font-size:13px;margin-top:9px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:560px){
+  .setupBox{padding:14px;margin-top:12px}
+  .setupRow{grid-template-columns:1fr;gap:9px}
+  .setupRow .input{height:54px}
+  .setupRow .fullBtn{height:50px}
+  .setupHelp{font-size:12.5px}
+}
 </style>
 </head>
 <body>
@@ -30,16 +41,16 @@
   <div class="hero">
     <span class="pill" style="background:rgba(255,255,255,.14);color:#fff">STUDYNEST 2.0</span>
     <h1>Everything a student needs, in one place.</h1>
-    <p>Learn, practice, plan, calculate, translate, check results and ask AI—সবকিছু এক জায়গায়।</p>
+    <p>Learn, practice, plan, calculate, check results and grow—সবকিছু এক জায়গায়।</p>
     <div class="heroActions">
-      <button class="primary" data-page="ai">🤖 Ask AI</button>
+      <button class="primary" data-page="companion">📚 Study Companion</button>
       <button class="ghost" data-page="result">🎓 Board Result</button>
     </div>
   </div>
 
   <div class="section"><div class="sectionHead"><h2>Quick Access</h2></div>
     <div class="grid">
-      <button class="card feature" data-page="ai"><div class="emoji">🤖</div><h3>Ask AI</h3><p>Study or general questions—ask naturally.</p></button>
+      <button class="card feature" data-page="companion"><div class="emoji">📚</div><h3>Study Companion</h3><p>Planner, practice, tools and brain challenges.</p></button>
       <button class="card feature" data-page="result"><div class="emoji">🎓</div><h3>Board Result</h3><p>Official result portal quickly open করুন।</p></button>
       <button class="card feature" data-page="translator"><div class="emoji">🌐</div><h3>Translator</h3><p>Word, sentence, meaning and examples.</p></button>
       <button class="card feature" data-page="tools"><div class="emoji">🧰</div><h3>Student Tools</h3><p>Calculator, GPA, timer, converter and more.</p></button>
@@ -65,30 +76,18 @@
   </div>
 </section>
 
-<section id="ai" class="page">
+<section id="companion" class="page">
   <button class="back" data-page="home">← Home</button>
-  <div class="card"><span class="pill">🤖 STUDYNEST AI</span><h2>Ask anything.</h2><p class="muted">পড়াশোনা হোক বা everyday question—স্বাভাবিকভাবে জিজ্ঞেস করো।</p>
-    <div class="quick">
-      <button data-prompt="এই বিষয়টা সহজ করে বুঝিয়ে দাও।">সহজ করে বুঝাও</button>
-      <button data-prompt="এই প্রশ্নটা step-by-step solve করো।">Step-by-step</button>
-      <button data-prompt="এই topic থেকে ৫টা MCQ দাও।">MCQ</button>
-      <button data-prompt="এই বিষয়টার short summary দাও।">Summary</button>
-    </div>
-    <div id="aiSetup" class="setupBox">
-      <b>⚙️ AI একবার সেটআপ করো</b>
-      <p class="muted" style="margin:6px 0 0">Cloudflare Worker deploy করার পর তার URL এখানে বসাও। API key এখানে লাগবে না।</p>
-      <div class="setupRow">
-        <input id="endpointInput" class="input" placeholder="https://your-worker.workers.dev">
-        <button class="fullBtn" id="saveEndpoint">Save & Test</button>
-      </div>
-      <div id="endpointStatus" class="status">Backend এখনো সেট করা হয়নি।</div>
-    </div>
-    <div class="chat"><div class="messages" id="messages">
-      <div class="msg ai">হাই! আমি StudyNest AI। 🤖<br><br>তুমি পড়াশোনা, technology, general knowledge, writing, translation বা যেকোনো সাধারণ প্রশ্ন করতে পারো।</div>
-    </div>
-    <div class="chatbar"><textarea class="input" id="aiInput" placeholder="Ask anything..."></textarea><button class="send" id="sendAI">➤</button></div></div>
-    <small class="muted">AI answers can be imperfect. গুরুত্বপূর্ণ তথ্য হলে source/official information verify করো।</small>
+  <div class="hero"><span class="pill" style="background:rgba(255,255,255,.14);color:#fff">STUDYNEST STUDY COMPANION</span><h1>Study smarter, one step at a time.</h1><p>AI-এর বদলে দরকারি study tools—সব এক জায়গায়। কোনো API key বা backend লাগবে না।</p></div>
+  <div class="section grid">
+    <button class="card feature" data-page="planner"><div class="emoji">📅</div><h3>Study Planner</h3><p>Daily tasks ও লক্ষ্য লিখে রাখো।</p></button>
+    <button class="card feature" data-page="practice"><div class="emoji">📝</div><h3>Practice Arena</h3><p>MCQ practice করে score বাড়াও।</p></button>
+    <button class="card feature" data-page="tools"><div class="emoji">🧰</div><h3>Student Tools</h3><p>Calculator, GPA, timer ও countdown।</p></button>
+    <button class="card feature" data-page="brain"><div class="emoji">🧠</div><h3>Brain Zone</h3><p>ধাঁধা ও logic challenge সমাধান করো।</p></button>
+    <button class="card feature" data-page="progress"><div class="emoji">🎯</div><h3>Progress</h3><p>কাজ ও quiz score দেখো।</p></button>
+    <button class="card feature" data-page="result"><div class="emoji">🎓</div><h3>Board Result</h3><p>Official result portal খোলো।</p></button>
   </div>
+  <div class="section notice"><b>💡 Quick tip</b><br>আজ ২৫ মিনিট মনোযোগ দিয়ে পড়ো, তারপর ৫ মিনিট বিরতি নাও। ছোট ছোট session নিয়মিত করলে পড়া এগোয়।</div>
 </section>
 
 <section id="result" class="page">
@@ -112,12 +111,12 @@
   <button class="back" data-page="home">← Home</button>
   <div class="card"><span class="pill">📚 LEARN</span><h2>Learn smarter</h2><p class="muted">HSC/SSC science-oriented starter topics; content পরে expand করা যাবে।</p></div>
   <div class="section grid">
-    <div class="card"><h3>⚛️ Physics</h3><p class="muted">Mechanics, waves, electricity, optics.</p><button class="fullBtn" onclick="ask('Physics-এর একটি topic সহজ করে বুঝাও')">Ask AI</button></div>
-    <div class="card"><h3>🧪 Chemistry</h3><p class="muted">Concepts, reactions, calculations.</p><button class="fullBtn" onclick="ask('Chemistry-এর একটি important concept বুঝাও')">Ask AI</button></div>
-    <div class="card"><h3>📐 Higher Math</h3><p class="muted">Formula, algebra, calculus practice.</p><button class="fullBtn" onclick="ask('Higher Math-এর একটি problem step-by-step বুঝাও')">Ask AI</button></div>
-    <div class="card"><h3>🧬 Biology</h3><p class="muted">Concept explanations and revision.</p><button class="fullBtn" onclick="ask('Biology-এর একটি topic short note আকারে বুঝাও')">Ask AI</button></div>
-    <div class="card"><h3>💻 ICT</h3><p class="muted">Programming, networking and digital concepts.</p><button class="fullBtn" onclick="ask('ICT-এর একটি important topic বুঝাও')">Ask AI</button></div>
-    <div class="card"><h3>🗣️ English & Bangla</h3><p class="muted">Grammar, writing, vocabulary and literature help.</p><button class="fullBtn" onclick="ask('English grammar-এর একটি topic সহজ করে বুঝাও')">Ask AI</button></div>
+    <div class="card"><h3>⚛️ Physics</h3><p class="muted">Mechanics, waves, electricity, optics.</p><button class="fullBtn" onclick="page('practice')">Practice Physics</button></div>
+    <div class="card"><h3>🧪 Chemistry</h3><p class="muted">Concepts, reactions, calculations.</p><button class="fullBtn" onclick="page('practice')">Practice Chemistry</button></div>
+    <div class="card"><h3>📐 Higher Math</h3><p class="muted">Formula, algebra, calculus practice.</p><button class="fullBtn" onclick="page('tools')">Open Tools</button></div>
+    <div class="card"><h3>🧬 Biology</h3><p class="muted">Concept explanations and revision.</p><button class="fullBtn" onclick="page('practice')">Practice Biology</button></div>
+    <div class="card"><h3>💻 ICT</h3><p class="muted">Programming, networking and digital concepts.</p><button class="fullBtn" onclick="page('practice')">Practice ICT</button></div>
+    <div class="card"><h3>🗣️ English & Bangla</h3><p class="muted">Grammar, writing, vocabulary and literature help.</p><button class="fullBtn" onclick="page('translator')">Open Language Tools</button></div>
   </div>
 </section>
 
@@ -176,112 +175,29 @@
 
 <section id="about" class="page">
   <button class="back" data-page="home">← Home</button>
-  <div class="card creator"><img src="creator.jpg" alt="Ahmed Sami" onerror="this.style.display='none'"><div><span class="pill">ABOUT STUDYNEST</span><h2>Ahmed Sami</h2><p><b>Founder & Creator</b></p><p class="quote">“আমি StudyNest তৈরি করেছি এমন শিক্ষার্থীদের জন্য, যারা নিজেদের পড়াশোনা ও ভবিষ্যৎ নিয়ে সত্যিই serious.”</p><p class="muted">StudyNest-এর লক্ষ্য হলো learning, practice, planning, useful tools এবং AI assistance—একটি সহজ platform-এ দেওয়া।</p></div></div>
+  <div class="card creator"><img src="creator.jpg" alt="Ahmed Sami" onerror="this.style.display='none'"><div><span class="pill">ABOUT STUDYNEST</span><h2>Ahmed Sami</h2><p><b>Founder & Creator</b></p><p class="quote">“আমি StudyNest তৈরি করেছি এমন শিক্ষার্থীদের জন্য, যারা নিজেদের পড়াশোনা ও ভবিষ্যৎ নিয়ে সত্যিই serious.”</p><p class="muted">StudyNest-এর লক্ষ্য হলো learning, practice, planning এবং useful tools—একটি সহজ platform-এ দেওয়া।</p></div></div>
 </section>
 </main>
 
 <footer class="main" style="padding-top:0"><div class="card" style="text-align:center"><b>StudyNest</b><p class="muted">Learn • Practice • Plan • Grow</p><small class="muted">Created by Ahmed Sami</small></div></footer>
 
 <div class="bottom"><div class="bottomInner">
-<button data-page="home"><b>🏠</b>Home</button><button data-page="ai"><b>🤖</b>AI</button><button data-page="learn"><b>📚</b>Learn</button><button data-page="tools"><b>🧰</b>Tools</button><button data-page="about"><b>👤</b>About</button>
+<button data-page="home"><b>🏠</b>Home</button><button data-page="companion"><b>📚</b>Companion</button><button data-page="learn"><b>📚</b>Learn</button><button data-page="tools"><b>🧰</b>Tools</button><button data-page="about"><b>👤</b>About</button>
 </div></div><div id="toast" class="toast"></div>
 </div>
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
-let AI_ENDPOINT=(localStorage.getItem("sn_ai_endpoint")||"").trim().replace(/\/$/,"");
-function page(id){$$(".page").forEach(x=>x.classList.remove("active"));$("#"+id)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
-$$("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));
-
-const savedTheme=localStorage.getItem("sn_theme"); if(savedTheme==="dark")document.body.classList.add("dark");
-$("#themeBtn").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("sn_theme",document.body.classList.contains("dark")?"dark":"light");};
-
+function page(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));
 function toast(t){const x=$("#toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2200)}
 function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 function renderText(s){return escapeHtml(s).replace(/\*\*(.*?)\*\*/g,"<b>$1</b>").replace(/\n/g,"<br>")}
+const savedTheme=localStorage.getItem("sn_theme"); if(savedTheme==="dark")document.body.classList.add("dark");
+$("#themeBtn").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("sn_theme",document.body.classList.contains("dark")?"dark":"light");};
 
-function addMsg(text,who){const d=document.createElement("div");d.className="msg "+who;d.innerHTML=renderText(text);$("#messages").appendChild(d);$("#messages").scrollTop=$("#messages").scrollHeight;return d}
-let aiHistory=JSON.parse(localStorage.getItem("sn_ai_history")||"[]");
-function saveAIHistory(){localStorage.setItem("sn_ai_history",JSON.stringify(aiHistory.slice(-12)))}
-function showAIHistory(){
-  if(aiHistory.length){
-    $("#messages").innerHTML="";
-    aiHistory.forEach(m=>addMsg(m.content,m.role==="user"?"user":"ai"));
-  }
-}
-async function callStudyNestAI(message, mode="chat"){
-  if(!AI_ENDPOINT) throw new Error("BACKEND_NOT_CONFIGURED");
-  const prior=mode==="chat" ? aiHistory.slice(0,-1).slice(-10) : [];
-  const r=await fetch(AI_ENDPOINT,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({mode,message,history:prior})
-  });
-  let data={};
-  try{data=await r.json()}catch{}
-  if(!r.ok)throw new Error(data.error||data.detail||"Request failed");
-  return data.answer||data.message||"No answer returned.";
-}
-async function testEndpoint(url){
-  const u=(url||"").trim().replace(/\/$/,"");
-  if(!u)return {ok:false,text:"Worker URL দাও।"};
-  try{
-    const r=await fetch(u,{method:"GET"});
-    const d=await r.json().catch(()=>({}));
-    return r.ok && d.ok ? {ok:true,text:"✅ Backend connected. AI + Translator ready."} : {ok:false,text:"❌ Worker পাওয়া গেছে, কিন্তু setup ঠিক হয়নি।"};
-  }catch{return {ok:false,text:"❌ Worker URL-এ connect করা যাচ্ছে না। URL ঠিক আছে কি না দেখো।"};}
-}
-async function updateEndpointUI(){
-  const input=$("#endpointInput"), status=$("#endpointStatus");
-  if(input)input.value=AI_ENDPOINT;
-  if(!AI_ENDPOINT){status.textContent="Backend এখনো সেট করা হয়নি।";return;}
-  status.textContent="Checking backend…";
-  const t=await testEndpoint(AI_ENDPOINT);
-  status.textContent=t.text;
-}
-$("#saveEndpoint").onclick=async()=>{
-  const u=$("#endpointInput").value.trim().replace(/\/$/,"");
-  const status=$("#endpointStatus");
-  status.textContent="Checking backend…";
-  const t=await testEndpoint(u);
-  if(t.ok){AI_ENDPOINT=u;localStorage.setItem("sn_ai_endpoint",u);status.textContent=t.text;toast("✅ AI backend connected");}
-  else status.textContent=t.text;
-};
-async function sendAI(){
- const input=$("#aiInput"), q=input.value.trim(); if(!q)return;
- addMsg(q,"user"); input.value="";
- aiHistory.push({role:"user",content:q});
- const loading=addMsg("Thinking…","ai");
- try{
-   const answer=await callStudyNestAI(q,"chat");
-   loading.innerHTML=renderText(answer);
-   aiHistory.push({role:"assistant",content:answer});
-   saveAIHistory();
- }catch(e){
-   if(e.message==="BACKEND_NOT_CONFIGURED") loading.innerHTML="⚙️ উপরের AI Setup-এ Worker URL বসিয়ে **Save & Test** করো। তারপর আবার প্রশ্ন পাঠাও।";
-   else loading.innerHTML="⚠️ AI-তে সংযোগ করা যাচ্ছে না। Backend URL, Worker secret এবং API usage ঠিক আছে কি না দেখো।";
- }
-}
-$("#sendAI").onclick=sendAI;$("#aiInput").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendAI()}});
-$$("[data-prompt]").forEach(b=>b.onclick=()=>{$("#aiInput").value=b.dataset.prompt;page("ai");$("#aiInput").focus()});
-function ask(q){page("ai");$("#aiInput").value=q;sendAI()}
-
-$("#translateBtn").onclick=async()=>{
- const q=$("#transInput").value.trim();if(!q)return;
- const out=$("#transOut");out.textContent="Translating…";
- try{
-   const answer=await callStudyNestAI(`Translate the following text into ${$("#toLang").value}. If it is a single word, also provide: meaning, pronunciation, one example sentence, synonym and antonym when appropriate. Keep the answer easy to understand.\n\nText:\n${q}`,"translate");
-   out.innerHTML=renderText(answer);
- }catch(e){
-   out.textContent=e.message==="BACKEND_NOT_CONFIGURED"
-     ?"⚙️ আগে AI page-এর Setup-এ Cloudflare Worker URL Save & Test করো।"
-     :"⚠️ Translation service-এ সংযোগ করা যাচ্ছে না। Backend setup পরীক্ষা করো।";
- }
-};
-
-showAIHistory();
-updateEndpointUI();
-showAIHistory();
+const dictionary={hello:"হ্যালো; greeting: অভিবাদন",book:"বই",beautiful:"সুন্দর",resilient:"প্রতিকূলতা কাটিয়ে উঠতে সক্ষম",study:"পড়াশোনা",student:"শিক্ষার্থী",success:"সাফল্য",humble:"বিনয়ী",dream:"স্বপ্ন",knowledge:"জ্ঞান",water:"পানি",education:"শিক্ষা",love:"ভালোবাসা",friend:"বন্ধু",important:"গুরুত্বপূর্ণ",happy:"খুশি",brave:"সাহসী",honest:"সৎ",quick:"দ্রুত",grow:"বৃদ্ধি পাওয়া"};
+$("#translateBtn").onclick=()=>{const q=$("#transInput").value.trim();const out=$("#transOut");if(!q){out.textContent="আগে একটি word বা sentence লিখো।";return;}const to=$("#toLang").value;const key=q.toLowerCase().replace(/[.!?]$/,'');if(to==="বাংলা"){if(dictionary[key])out.textContent=dictionary[key];else if(/[\u0980-\u09FF]/.test(q))out.textContent="লেখাটি বাংলা মনে হচ্ছে। English-এ অর্থ জানতে To language থেকে English বেছে নাও।";else out.textContent="এই শব্দটি built-in mini dictionary-তে নেই। এটি একটি basic offline dictionary; দীর্ঘ বাক্যের নির্ভুল translation-এর জন্য online translator ব্যবহার করতে হবে।";}else{const reverse=Object.entries(dictionary).find(([en,bn])=>bn.split(";")[0].trim()===q);if(reverse)out.textContent=reverse[0];else if(!/[\u0980-\u09FF]/.test(q))out.textContent="Text appears to be English already.";else out.textContent="এই বাক্যের অনুবাদ mini dictionary-তে নেই। এটি basic offline dictionary, full sentence translation নয়।";}};
 
 function calc(){try{const v=$("#calcIn").value.replace(/[^0-9+\-*/().%\s]/g,"");$("#calcOut").textContent=Function('"use strict";return('+v+')')()}catch{$("#calcOut").textContent="Invalid calculation"}}
 function percent(){const a=+$("#p1").value,b=+$("#p2").value;$("#pOut").textContent=b?(a/b*100).toFixed(2)+"%":"Enter valid numbers"}
@@ -312,7 +228,7 @@ const brains=["একটি জিনিস যত বেশি শুকায়,
 
 $("#notifyBtn").onclick=async()=>{if(!("Notification"in window)){toast("এই browser notification support করে না");return}const p=await Notification.requestPermission();toast(p==="granted"?"🔔 Notifications enabled":"Notification permission not granted");if(p==="granted")new Notification("StudyNest",{body:"আজকের study session শুরু করো! 📚"})};
 
-$("#globalSearch").addEventListener("keydown",e=>{if(e.key!=="Enter")return;const q=e.target.value.trim().toLowerCase();if(!q)return;const map=[["ai",["ai","ask","question"]],["translator",["translate","meaning","word"]],["result",["result","ssc","hsc"]],["tools",["calculator","gpa","timer","tool"]],["learn",["learn","physics","chemistry","biology","ict"]],["practice",["mcq","quiz","practice"]],["planner",["plan","task","routine"]],["brain",["riddle","brain"]]];const hit=map.find(x=>x[1].some(k=>q.includes(k)));page(hit?hit[0]:"ai");if(!hit){$("#aiInput").value=e.target.value;sendAI()}});
+$("#globalSearch").addEventListener("keydown",e=>{if(e.key!=="Enter")return;const q=e.target.value.trim().toLowerCase();if(!q)return;const map=[["companion",["companion","study companion","student hub"]],["translator",["translate","meaning","word"]],["result",["result","ssc","hsc"]],["tools",["calculator","gpa","timer","tool"]],["learn",["learn","physics","chemistry","biology","ict"]],["practice",["mcq","quiz","practice"]],["planner",["plan","task","routine"]],["brain",["riddle","brain"]]];const hit=map.find(x=>x[1].some(k=>q.includes(k)));page(hit?hit[0]:"companion");if(!hit)toast("ফিচার খুঁজে পাওয়া যায়নি—Study Companion দেখানো হলো।")});
 </script>
 </body>
 </html>
