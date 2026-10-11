@@ -187,8 +187,25 @@
 
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-function page(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
-document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));
+
+function page(id){
+  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+  const target = document.getElementById(id);
+  if(target){
+    target.classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+    if(id === 'games') loadNewWord();
+  }
+}
+
+// Fixed event listener for all data-page buttons (including bottom nav and grids)
+document.addEventListener("click", e => {
+  const btn = e.target.closest("[data-page]");
+  if(btn){
+    page(btn.dataset.page);
+  }
+});
+
 function toast(t){const x=$("#toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2200)}
 function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 
@@ -262,12 +279,6 @@ $("#checkScramble").onclick = () => {
     out.textContent = "❌ ভুল হয়েছে! আবার চেষ্টা করো।";
   }
 };
-document.querySelectorAll("[data-page='games']").forEach(b => {
-  b.addEventListener("click", () => {
-    loadNewWord();
-    page('games');
-  });
-});
 
 const brains=["একটি জিনিস যত বেশি শুকায়, তত বেশি ভিজে—সেটা কী?","What has keys but cannot open locks?","তিনটি বাক্সের একটিতে prize আছে—logic দিয়ে কীভাবে খুঁজবে?"];let bi=0;function newBrain(){$("#brainQ").textContent=brains[bi++%brains.length]}newBrain();
 
