@@ -7,25 +7,7 @@
 <title>StudyNest — Student Super Hub</title>
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--text:#101828;--muted:#667085;--line:#e7eaf0;--brand:#6d5dfc;--brand2:#20c997;--soft:#eef0ff;--danger:#ef4444;--shadow:0 12px 35px rgba(16,24,40,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.app{min-height:100vh}.top{position:sticky;top:0;z-index:30;background:rgba(245,247,251,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;white-space:nowrap}.logoMark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),#8d7cff)}.search{flex:1;position:relative}.search input{width:100%;padding:13px 16px 13px 44px;border:1px solid var(--line);background:var(--card);border-radius:15px;outline:none}.search span{position:absolute;left:15px;top:12px}.iconBtn{width:43px;height:43px;border-radius:13px;background:var(--card);border:1px solid var(--line)}.main{max-width:1180px;margin:auto;padding:25px 18px 100px}.hero{border-radius:28px;padding:30px;background:linear-gradient(135deg,#111827,#202b54 55%,#5c4ff4);color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-80px;top:-100px;background:rgba(255,255,255,.09)}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1;margin:8px 0 12px;max-width:700px}.hero p{color:#dbe2ff;max-width:650px;line-height:1.65}.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.primary,.ghost{padding:12px 17px;border-radius:13px;font-weight:800}.primary{background:#fff;color:#17142e}.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}.section{margin-top:28px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.sectionHead h2{margin:0;font-size:23px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px rgba(16,24,40,.04)}.feature{min-height:145px;transition:.2s}.feature:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.emoji{font-size:27px}.feature h3{margin:10px 0 5px}.feature p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}.page{display:none}.page.active{display:block}.back{margin-bottom:16px;background:transparent;color:var(--muted);font-weight:800}.two{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.list{display:grid;gap:10px}.item{padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--card);display:flex;justify-content:space-between;align-items:center;gap:10px}.pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--soft);color:#4d40c9;font-size:12px;font-weight:800}.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.tool{padding:20px;border-radius:20px;background:var(--card);border:1px solid var(--line)}.tool button,.fullBtn{width:100%;margin-top:12px;padding:11px;border-radius:12px;background:var(--soft);color:#4d40c9;font-weight:800}.input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;outline:none;background:var(--card);color:var(--text)}textarea.input{min-height:110px;resize:vertical}.resultBox{padding:18px;background:#f8fafc;border-radius:15px;border:1px dashed #ccd2dd;margin-top:12px;line-height:1.7}.chat{height:58vh;min-height:420px;display:flex;flex-direction:column}.messages{flex:1;overflow:auto;padding:8px}.msg{max-width:82%;padding:13px 15px;border-radius:17px;margin:8px 0;line-height:1.65;white-space:pre-wrap}.user{margin-left:auto;background:#6d5dfc;color:#fff;border-bottom-right-radius:5px}.ai{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:5px}.chatbar{display:flex;gap:8px;padding-top:10px}.chatbar textarea{min-height:50px;max-height:120px}.send{width:54px;border-radius:14px;background:var(--brand);color:#fff;font-weight:900}.quick{display:flex;gap:8px;overflow:auto;padding:10px 0}.quick button{white-space:nowrap;padding:8px 11px;border-radius:999px;background:var(--soft);color:#4d40c9}.creator{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}.creator img{width:220px;height:260px;object-fit:cover;border-radius:28px;border:6px solid var(--card);box-shadow:var(--shadow)}.quote{font-size:20px;line-height:1.6;font-weight:700}.bottom{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center}.bottomInner{max-width:650px;width:100%;display:grid;grid-template-columns:repeat(5,1fr)}.bottom button{padding:10px 5px;background:transparent;color:var(--muted);font-size:11px}.bottom b{display:block;font-size:19px;margin-bottom:2px}.notice{padding:14px 16px;border-radius:15px;background:#eefcf7;border:1px solid #c7f2e4;color:#116149}.dark{--bg:#080d18;--card:#101827;--text:#f5f7fb;--muted:#98a2b3;--line:#202b3d;--soft:#1b2040}.dark .top{background:rgba(8,13,24,.88)}.dark .bottom{background:rgba(16,24,39,.94)}.dark .resultBox{background:#0c1422}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#111827;color:#fff;padding:12px 16px;border-radius:13px;z-index:100;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toggle{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.toolgrid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.creator{grid-template-columns:140px 1fr}.creator img{width:140px;height:170px}}@media(max-width:560px){.nav{padding:10px 12px}.logoText{display:none}.search input{padding-left:40px}.main{padding:17px 12px 90px}.hero{padding:23px 19px;border-radius:23px}.grid,.toolgrid{grid-template-columns:1fr 1fr;gap:9px}.card{padding:14px;border-radius:17px}.feature{min-height:125px}.feature h3{font-size:15px}.feature p{font-size:12px}.creator{grid-template-columns:1fr;text-align:center}.creator img{margin:auto;width:170px;height:200px}.msg{max-width:90%}.bottom button{font-size:10px}.bottom b{font-size:17px}}
-</style>
-
-<style>
-/* Mobile-friendly AI setup */
-.setupBox{margin-top:14px;padding:16px;border:1px dashed #aeb7d2;border-radius:18px;background:var(--soft);overflow:hidden}
-.setupTitle{display:flex;align-items:center;gap:7px;font-size:16px}
-.setupHelp{margin:7px 0 0;line-height:1.55;font-size:13px}
-.setupRow{display:grid;grid-template-columns:minmax(0,1fr) 132px;gap:9px;margin-top:12px;width:100%}
-.setupRow .input{width:100%;min-width:0;height:52px;padding:0 14px;font-size:16px;border-radius:13px;display:block}
-.setupRow .fullBtn{width:100%;height:52px;margin:0;padding:0 10px;border-radius:13px;white-space:nowrap}
-.status{font-size:13px;margin-top:9px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
-@media(max-width:560px){
-  .setupBox{padding:14px;margin-top:12px}
-  .setupRow{grid-template-columns:1fr;gap:9px}
-  .setupRow .input{height:54px}
-  .setupRow .fullBtn{height:50px}
-  .setupHelp{font-size:12.5px}
-}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.app{min-height:100vh}.top{position:sticky;top:0;z-index:30;background:rgba(245,247,251,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;white-space:nowrap}.logoMark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),#8d7cff)}.search{flex:1;position:relative}.search input{width:100%;padding:13px 16px 13px 44px;border:1px solid var(--line);background:var(--card);border-radius:15px;outline:none}.search span{position:absolute;left:15px;top:12px}.iconBtn{width:43px;height:43px;border-radius:13px;background:var(--card);border:1px solid var(--line)}.main{max-width:1180px;margin:auto;padding:25px 18px 100px}.hero{border-radius:28px;padding:30px;background:linear-gradient(135deg,#111827,#202b54 55%,#5c4ff4);color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-80px;top:-100px;background:rgba(255,255,255,.09)}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1;margin:8px 0 12px;max-width:700px}.hero p{color:#dbe2ff;max-width:650px;line-height:1.65}.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.primary,.ghost{padding:12px 17px;border-radius:13px;font-weight:800}.primary{background:#fff;color:#17142e}.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}.section{margin-top:28px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.sectionHead h2{margin:0;font-size:23px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px rgba(16,24,40,.04)}.feature{min-height:145px;transition:.2s;text-align:left;width:100%}.feature:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.emoji{font-size:27px}.feature h3{margin:10px 0 5px}.feature p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}.page{display:none}.page.active{display:block}.back{margin-bottom:16px;background:transparent;color:var(--muted);font-weight:800}.two{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.list{display:grid;gap:10px}.item{padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--card);display:flex;justify-content:space-between;align-items:center;gap:10px}.pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--soft);color:#4d40c9;font-size:12px;font-weight:800}.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.tool{padding:20px;border-radius:20px;background:var(--card);border:1px solid var(--line)}.tool button,.fullBtn{width:100%;margin-top:12px;padding:11px;border-radius:12px;background:var(--soft);color:#4d40c9;font-weight:800}.input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;outline:none;background:var(--card);color:var(--text)}textarea.input{min-height:110px;resize:vertical}.resultBox{padding:18px;background:#f8fafc;border-radius:15px;border:1px dashed #ccd2dd;margin-top:12px;line-height:1.7}.creator{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}.creator img{width:220px;height:260px;object-fit:cover;border-radius:28px;border:6px solid var(--card);box-shadow:var(--shadow)}.quote{font-size:20px;line-height:1.6;font-weight:700}.bottom{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center}.bottomInner{max-width:650px;width:100%;display:grid;grid-template-columns:repeat(5,1fr)}.bottom button{padding:10px 5px;background:transparent;color:var(--muted);font-size:11px}.bottom b{display:block;font-size:19px;margin-bottom:2px}.notice{padding:14px 16px;border-radius:15px;background:#eefcf7;border:1px solid #c7f2e4;color:#116149}.dark{--bg:#080d18;--card:#101827;--text:#f5f7fb;--muted:#98a2b3;--line:#202b3d;--soft:#1b2040}.dark .top{background:rgba(8,13,24,.88)}.dark .bottom{background:rgba(16,24,39,.94)}.dark .resultBox{background:#0c1422}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#111827;color:#fff;padding:12px 16px;border-radius:13px;z-index:100;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toggle{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.toolgrid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.creator{grid-template-columns:140px 1fr}.creator img{width:140px;height:170px}}@media(max-width:560px){.nav{padding:10px 12px}.logoText{display:none}.search input{padding-left:40px}.main{padding:17px 12px 90px}.hero{padding:23px 19px;border-radius:23px}.grid,.toolgrid{grid-template-columns:1fr 1fr;gap:9px}.card{padding:14px;border-radius:17px}.feature{min-height:125px}.feature h3{font-size:15px}.feature p{font-size:12px}.creator{grid-template-columns:1fr;text-align:center}.creator img{margin:auto;width:170px;height:200px}.bottom button{font-size:10px}.bottom b{font-size:17px}}
 </style>
 </head>
 <body>
@@ -52,7 +34,7 @@
     <div class="grid">
       <button class="card feature" data-page="companion"><div class="emoji">📚</div><h3>Study Companion</h3><p>Planner, practice, tools and brain challenges.</p></button>
       <button class="card feature" data-page="result"><div class="emoji">🎓</div><h3>Board Result</h3><p>Official result portal quickly open করুন।</p></button>
-      <button class="card feature" data-page="translator"><div class="emoji">🌐</div><h3>Translator</h3><p>Word, sentence, meaning and examples.</p></button>
+      <button class="card feature" data-page="games"><div class="emoji">🎮</div><h3>Mini Game</h3><p>পড়ার ফাঁকে Word Scramble গেম খেলো।</p></button>
       <button class="card feature" data-page="tools"><div class="emoji">🧰</div><h3>Student Tools</h3><p>Calculator, GPA, timer, converter and more.</p></button>
     </div>
   </div>
@@ -64,6 +46,7 @@
       <button class="card feature" data-page="planner"><div class="emoji">📅</div><h3>Study Planner</h3><p>Tasks, goals and study sessions.</p></button>
       <button class="card feature" data-page="progress"><div class="emoji">🎯</div><h3>Progress</h3><p>Track tasks, quizzes and streak.</p></button>
       <button class="card feature" data-page="brain"><div class="emoji">🧠</div><h3>Brain Zone</h3><p>Riddles, logic and quick challenges.</p></button>
+      <button class="card feature" data-page="translator"><div class="emoji">🌐</div><h3>Translator</h3><p>Word, sentence, meaning and examples.</p></button>
       <button class="card feature" data-page="notifications"><div class="emoji">🔔</div><h3>Notifications</h3><p>Daily tips, reminders and updates.</p></button>
     </div>
   </div>
@@ -82,12 +65,29 @@
   <div class="section grid">
     <button class="card feature" data-page="planner"><div class="emoji">📅</div><h3>Study Planner</h3><p>Daily tasks ও লক্ষ্য লিখে রাখো।</p></button>
     <button class="card feature" data-page="practice"><div class="emoji">📝</div><h3>Practice Arena</h3><p>MCQ practice করে score বাড়াও।</p></button>
+    <button class="card feature" data-page="games"><div class="emoji">🎮</div><h3>Mini Game</h3><p>Word Scramble গেম খেলে vocabulary বাড়াও।</p></button>
     <button class="card feature" data-page="tools"><div class="emoji">🧰</div><h3>Student Tools</h3><p>Calculator, GPA, timer ও countdown।</p></button>
     <button class="card feature" data-page="brain"><div class="emoji">🧠</div><h3>Brain Zone</h3><p>ধাঁধা ও logic challenge সমাধান করো।</p></button>
     <button class="card feature" data-page="progress"><div class="emoji">🎯</div><h3>Progress</h3><p>কাজ ও quiz score দেখো।</p></button>
-    <button class="card feature" data-page="result"><div class="emoji">🎓</div><h3>Board Result</h3><p>Official result portal খোলো।</p></button>
   </div>
-  <div class="section notice"><b>💡 Quick tip</b><br>আজ ২৫ মিনিট মনোযোগ দিয়ে পড়ো, তারপর ৫ মিনিট বিরতি নাও। ছোট ছোট session নিয়মিত করলে পড়া এগোয়।</div>
+</section>
+
+<section id="games" class="page">
+  <button class="back" data-page="home">← Home</button>
+  <div class="card">
+    <span class="pill">🎮 MINI GAME</span>
+    <h2>Word Scramble</h2>
+    <p class="muted">এলোমেলো অক্ষরগুলো সাজিয়ে সঠিক ইংরেজি শব্দটি তৈরি করো!</p>
+    
+    <div style="text-align:center; margin: 25px 0;">
+      <h3 id="scrambleWord" style="font-size: 32px; letter-spacing: 5px; color: var(--brand);"></h3>
+      <p id="scrambleHint" class="muted" style="margin-top: 8px;"></p>
+    </div>
+
+    <input id="scrambleInput" class="input" placeholder="তোমার উত্তর এখানে লেখো...">
+    <button class="fullBtn" id="checkScramble" style="margin-top: 10px;">Submit Answer</button>
+    <div id="scrambleResult" class="resultBox" style="text-align: center; margin-top: 15px;">উত্তর লিখে Submit করো</div>
+  </div>
 </section>
 
 <section id="result" class="page">
@@ -100,7 +100,7 @@
 
 <section id="translator" class="page">
   <button class="back" data-page="home">← Home</button>
-  <div class="card"><span class="pill">🌐 WORD TRANSLATOR</span><h2>Translate anything</h2><p class="muted">Word বা sentence লিখো। Real AI endpoint থাকলে rich translation পাওয়া যাবে।</p>
+  <div class="card"><span class="pill">🌐 WORD TRANSLATOR</span><h2>Translate anything</h2><p class="muted">Word বা sentence লিখো। Built-in dictionary থেকে অর্থ পাবে।</p>
     <textarea id="transInput" class="input" placeholder="Example: Resilient / আমি আজ স্কুলে যাব"></textarea>
     <div class="two" style="margin-top:10px"><select id="fromLang" class="input"><option>Auto Detect</option><option>English</option><option>বাংলা</option></select><select id="toLang" class="input"><option>বাংলা</option><option>English</option></select></div>
     <button class="fullBtn" id="translateBtn">Translate</button><div id="transOut" class="resultBox">Translation এখানে দেখা যাবে।</div>
@@ -109,7 +109,7 @@
 
 <section id="learn" class="page">
   <button class="back" data-page="home">← Home</button>
-  <div class="card"><span class="pill">📚 LEARN</span><h2>Learn smarter</h2><p class="muted">HSC/SSC science-oriented starter topics; content পরে expand করা যাবে।</p></div>
+  <div class="card"><span class="pill">📚 LEARN</span><h2>Learn smarter</h2><p class="muted">HSC/SSC science-oriented starter topics.</p></div>
   <div class="section grid">
     <div class="card"><h3>⚛️ Physics</h3><p class="muted">Mechanics, waves, electricity, optics.</p><button class="fullBtn" onclick="page('practice')">Practice Physics</button></div>
     <div class="card"><h3>🧪 Chemistry</h3><p class="muted">Concepts, reactions, calculations.</p><button class="fullBtn" onclick="page('practice')">Practice Chemistry</button></div>
@@ -122,7 +122,7 @@
 
 <section id="practice" class="page">
   <button class="back" data-page="home">← Home</button>
-  <div class="card"><span class="pill">📝 PRACTICE ARENA</span><h2>Quick Quiz</h2><p class="muted">Demo questions—AI/backend connected হলে unlimited dynamic quiz করা যাবে।</p>
+  <div class="card"><span class="pill">📝 PRACTICE ARENA</span><h2>Quick Quiz</h2><p class="muted">নিচের প্রশ্নগুলোর সঠিক উত্তর বেছে নাও।</p>
     <div id="quizBox"></div><button class="fullBtn" id="newQuiz">New Question</button>
   </div>
 </section>
@@ -142,7 +142,7 @@
 <section id="planner" class="page">
   <button class="back" data-page="home">← Home</button>
   <div class="two">
-    <div class="card"><span class="pill">📅 PLANNER</span><h2>Today's Tasks</h2><div style="display:flex;gap:8px"><input id="taskIn" class="input" placeholder="Add a task"><button class="send" id="addTask">+</button></div><div id="taskList" class="list" style="margin-top:12px"></div></div>
+    <div class="card"><span class="pill">📅 PLANNER</span><h2>Today's Tasks</h2><div style="display:flex;gap:8px"><input id="taskIn" class="input" placeholder="Add a task"><button class="fullBtn" style="width:50px;margin:0" id="addTask">+</button></div><div id="taskList" class="list" style="margin-top:12px"></div></div>
     <div class="card"><h3>🎯 Goal</h3><textarea id="goal" class="input" placeholder="My goal for today..."></textarea><button class="fullBtn" onclick="saveGoal()">Save Goal</button><div id="goalOut" class="resultBox"></div></div>
   </div>
 </section>
@@ -169,7 +169,6 @@
     <div class="toggle"><span>📚 Study tips</span><input type="checkbox" checked></div>
     <div class="toggle"><span>🧠 Daily quiz</span><input type="checkbox" checked></div>
     <div class="toggle"><span>🎓 Exam reminders</span><input type="checkbox" checked></div>
-    <div class="notice" style="margin-top:14px">Automatic daily push notifications require a secure push backend + service worker. This page provides the frontend permission/settings UI.</div>
   </div>
 </section>
 
@@ -187,17 +186,17 @@
 </div>
 
 <script>
-const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 function page(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id)?.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));
 function toast(t){const x=$("#toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2200)}
 function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function renderText(s){return escapeHtml(s).replace(/\*\*(.*?)\*\*/g,"<b>$1</b>").replace(/\n/g,"<br>")}
+
 const savedTheme=localStorage.getItem("sn_theme"); if(savedTheme==="dark")document.body.classList.add("dark");
 $("#themeBtn").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("sn_theme",document.body.classList.contains("dark")?"dark":"light");};
 
 const dictionary={hello:"হ্যালো; greeting: অভিবাদন",book:"বই",beautiful:"সুন্দর",resilient:"প্রতিকূলতা কাটিয়ে উঠতে সক্ষম",study:"পড়াশোনা",student:"শিক্ষার্থী",success:"সাফল্য",humble:"বিনয়ী",dream:"স্বপ্ন",knowledge:"জ্ঞান",water:"পানি",education:"শিক্ষা",love:"ভালোবাসা",friend:"বন্ধু",important:"গুরুত্বপূর্ণ",happy:"খুশি",brave:"সাহসী",honest:"সৎ",quick:"দ্রুত",grow:"বৃদ্ধি পাওয়া"};
-$("#translateBtn").onclick=()=>{const q=$("#transInput").value.trim();const out=$("#transOut");if(!q){out.textContent="আগে একটি word বা sentence লিখো।";return;}const to=$("#toLang").value;const key=q.toLowerCase().replace(/[.!?]$/,'');if(to==="বাংলা"){if(dictionary[key])out.textContent=dictionary[key];else if(/[\u0980-\u09FF]/.test(q))out.textContent="লেখাটি বাংলা মনে হচ্ছে। English-এ অর্থ জানতে To language থেকে English বেছে নাও।";else out.textContent="এই শব্দটি built-in mini dictionary-তে নেই। এটি একটি basic offline dictionary; দীর্ঘ বাক্যের নির্ভুল translation-এর জন্য online translator ব্যবহার করতে হবে।";}else{const reverse=Object.entries(dictionary).find(([en,bn])=>bn.split(";")[0].trim()===q);if(reverse)out.textContent=reverse[0];else if(!/[\u0980-\u09FF]/.test(q))out.textContent="Text appears to be English already.";else out.textContent="এই বাক্যের অনুবাদ mini dictionary-তে নেই। এটি basic offline dictionary, full sentence translation নয়।";}};
+$("#translateBtn").onclick=()=>{const q=$("#transInput").value.trim();const out=$("#transOut");if(!q){out.textContent="আগে একটি word বা sentence লিখো।";return;}const to=$("#toLang").value;const key=q.toLowerCase().replace(/[.!?]$/,'');if(to==="বাংলা"){if(dictionary[key])out.textContent=dictionary[key];else if(/[\u0980-\u09FF]/.test(q))out.textContent="লেখাটি বাংলা মনে হচ্ছে। English-এ অর্থ জানতে To language থেকে English বেছে নাও।";else out.textContent="এই শব্দটি built-in mini dictionary-তে নেই।";}else{const reverse=Object.entries(dictionary).find(([en,bn])=>bn.split(";")[0].trim()===q);if(reverse)out.textContent=reverse[0];else if(!/[\u0980-\u09FF]/.test(q))out.textContent="Text appears to be English already.";else out.textContent="এই বাক্যের অনুবাদ mini dictionary-তে নেই।";}};
 
 function calc(){try{const v=$("#calcIn").value.replace(/[^0-9+\-*/().%\s]/g,"");$("#calcOut").textContent=Function('"use strict";return('+v+')')()}catch{$("#calcOut").textContent="Invalid calculation"}}
 function percent(){const a=+$("#p1").value,b=+$("#p2").value;$("#pOut").textContent=b?(a/b*100).toFixed(2)+"%":"Enter valid numbers"}
@@ -212,7 +211,7 @@ function renderTasks(){const box=$("#taskList");if(!box)return;box.innerHTML=tas
 $("#addTask").onclick=()=>{const x=$("#taskIn").value.trim();if(x){tasks.push({text:x,done:false});$("#taskIn").value="";saveTasks()}}
 function saveGoal(){localStorage.setItem("sn_goal",$("#goal").value);$("#goalOut").textContent="Saved ✓"}
 $("#goal").value=localStorage.getItem("sn_goal")||"";
-function renderProgress(){const done=tasks.filter(x=>x.done).length;$("#doneCount").textContent=done;$("#totalCount").textContent=tasks.length;$("#streak").textContent=localStorage.getItem("sn_streak")||"0";$("#score").textContent=localStorage.getItem("sn_score")||"0"}
+function renderProgress(){const done=tasks.filter(x=>x.done).length;$("#doneCount").textContent=done;$("#totalCount").textContent=tasks.length;$("#streak").textContent=localStorage.getItem("sn_streak")\vert{}\vert{}"0";$("#score").textContent=localStorage.getItem("sn_score")||"0"}
 renderTasks();renderProgress();
 
 const questions=[
@@ -224,11 +223,57 @@ function showQuiz(){const x=questions[qi%questions.length];$("#quizBox").innerHT
 function answerQuiz(i,c){if(i===c){let s=+(localStorage.getItem("sn_score")||0)+1;localStorage.setItem("sn_score",s);toast("✅ Correct!")}else toast("❌ Try again");renderProgress();qi++;setTimeout(showQuiz,500)}
 $("#newQuiz").onclick=()=>{qi++;showQuiz()};showQuiz();
 
+// WORD SCRAMBLE GAME LOGIC
+const wordsList = [
+  { word: "STUDENT", hint: "যিনি পড়াশোনা করেন" },
+  { word: "SCIENCE", hint: "বিজ্ঞান সম্পর্কিত শাখা" },
+  { word: "PYTHON", hint: "একটি জনপ্রিয় প্রোগ্রামিং ভাষা" },
+  { word: "KNOWLEDGE", hint: "যার অর্থ জ্ঞান" },
+  { word: "SUCCESS", hint: "সাফল্য" },
+  { word: "BRAIN", hint: "মস্তিষ্ক" }
+];
+let currentWordObj = {};
+function loadNewWord() {
+  currentWordObj = wordsList[Math.floor(Math.random() * wordsList.length)];
+  let scrambled = currentWordObj.word.split('').sort(() => Math.random() - 0.5).join('');
+  if (scrambled === currentWordObj.word) {
+    scrambled = currentWordObj.word.split('').reverse().join('');
+  }
+  $("#scrambleWord").textContent = scrambled;
+  $("#scrambleHint").textContent = "Hint: " + currentWordObj.hint;
+  $("#scrambleInput").value = "";
+  $("#scrambleResult").textContent = "উত্তর লিখে Submit করো";
+}
+$("#checkScramble").onclick = () => {
+  const userAns = $("#scrambleInput").value.trim().toUpperCase();
+  const out = $("#scrambleResult");
+  if (!userAns) {
+    out.textContent = "আগে কিছু একটা লিখো!";
+    return;
+  }
+  if (userAns === currentWordObj.word) {
+    out.textContent = "🎉 অভিনন্দন! তোমার উত্তর সঠিক হয়েছে!";
+    toast("⭐ গেম পয়েন্ট যোগ হয়েছে!");
+    let score = +(localStorage.getItem("sn_score") || 0) + 2;
+    localStorage.setItem("sn_score", score);
+    renderProgress();
+    setTimeout(loadNewWord, 1800);
+  } else {
+    out.textContent = "❌ ভুল হয়েছে! আবার চেষ্টা করো।";
+  }
+};
+document.querySelectorAll("[data-page='games']").forEach(b => {
+  b.addEventListener("click", () => {
+    loadNewWord();
+    page('games');
+  });
+});
+
 const brains=["একটি জিনিস যত বেশি শুকায়, তত বেশি ভিজে—সেটা কী?","What has keys but cannot open locks?","তিনটি বাক্সের একটিতে prize আছে—logic দিয়ে কীভাবে খুঁজবে?"];let bi=0;function newBrain(){$("#brainQ").textContent=brains[bi++%brains.length]}newBrain();
 
 $("#notifyBtn").onclick=async()=>{if(!("Notification"in window)){toast("এই browser notification support করে না");return}const p=await Notification.requestPermission();toast(p==="granted"?"🔔 Notifications enabled":"Notification permission not granted");if(p==="granted")new Notification("StudyNest",{body:"আজকের study session শুরু করো! 📚"})};
 
-$("#globalSearch").addEventListener("keydown",e=>{if(e.key!=="Enter")return;const q=e.target.value.trim().toLowerCase();if(!q)return;const map=[["companion",["companion","study companion","student hub"]],["translator",["translate","meaning","word"]],["result",["result","ssc","hsc"]],["tools",["calculator","gpa","timer","tool"]],["learn",["learn","physics","chemistry","biology","ict"]],["practice",["mcq","quiz","practice"]],["planner",["plan","task","routine"]],["brain",["riddle","brain"]]];const hit=map.find(x=>x[1].some(k=>q.includes(k)));page(hit?hit[0]:"companion");if(!hit)toast("ফিচার খুঁজে পাওয়া যায়নি—Study Companion দেখানো হলো।")});
+$("#globalSearch").addEventListener("keydown",e=>{if(e.key!=="Enter")return;const q=e.target.value.trim().toLowerCase();if(!q)return;const map=[["companion",["companion","study companion","student hub"]],["translator",["translate","meaning","word"]],["result",["result","ssc","hsc"]],["games",["game","scramble","word"]],["tools",["calculator","gpa","timer","tool"]],["learn",["learn","physics","chemistry","biology","ict"]],["practice",["mcq","quiz","practice"]],["planner",["plan","task","routine"]],["brain",["riddle","brain"]]];const hit=map.find(x=>x[1].some(k=>q.includes(k)));page(hit?hit[0]:"companion");if(!hit)toast("ফিচার খুঁজে পাওয়া যায়নি—Study Companion দেখানো হলো।")});
 </script>
 </body>
 </html>
